@@ -134,7 +134,6 @@
 (peng-global-set-key (kbd "<C-tab>") 'other-window)
 (peng-global-set-key (kbd "s-v") 'view-mode)
 (peng-global-set-key (kbd "C-+") 'text-scale-increase)
-(peng-global-set-key (kbd "C-=") 'text-scale-increase)
 (peng-global-set-key (kbd "C--") 'text-scale-decrease)
 (peng-global-set-key (kbd "\C-cn") 'autopair-mode)
 (peng-global-set-key (kbd "C-x C-b") 'ibuffer)

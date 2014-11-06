@@ -22,6 +22,9 @@
 (require 'init-evil)
 (require 'init-evil-leader)
 
+;;; to config the elpa
+(require 'init-package)
+
 ;;; other plugins
 (require 'init-scheme)
 (require 'init-org)
@@ -60,6 +63,7 @@
 (require 'init-slime)
 (require 'init-magit)
 (require 'init-mew)
+(require 'init-expand-region)
 
 ;;; don't use too often
 ;; (require 'init-bm)

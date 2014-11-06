@@ -5,6 +5,9 @@
   (setq tags-file-name nil)
   (setq tags-table-list nil))
 
+;;; ----------------------------------------------------------------------
+;;; My own copy and paste line functon
+;;; ----------------------------------------------------------------------
 (defun peng-copy-one-line ()
   "copy one line in my favourite way"
   (interactive)
@@ -12,7 +15,6 @@
 	(end (line-end-position)))
     (kill-ring-save start end)
     (goto-char end)))
-
 (defun peng-yank-one-line ()
   "paste one line in my favourite way"
   (interactive)
@@ -20,6 +22,8 @@
   (newline))
 (global-set-key (kbd "C-c w") 'peng-copy-one-line)
 (global-set-key (kbd "C-c y") 'peng-yank-one-line)
+;;; ----------------------------------------------------------------------
+
 
 (defun peng-unshow-all-tools ()
   "hide menu and tool and scroll bar"
@@ -70,7 +74,9 @@
     )
   )
 
-;;; to print current buffer
+;;; ----------------------------------------------------------------------
+;;; to print current buffer to pdf files
+;;; ----------------------------------------------------------------------
 (defun peng-print-current-buffer ()
   (interactive)
   (let ((OUTPUT (concat "/tmp/"
@@ -85,22 +91,11 @@
 			       OUTPUT))))))
 ;;; need to install emacs-intl-fonts in ubuntu,and then set this variable,it can print chinese now
 (setq ps-multibyte-buffer 'bdf-font-except-latin)
+;;; ----------------------------------------------------------------------
 
-;;;
-(defun peng-sql-send-line ()
-  "send the current line to sql-inter.."
-  (interactive)
-   (sql-send-region (line-beginning-position)
-		    (line-end-position)))
-
-(defun peng-sql-send-remain ()
-  "send the remain content from current line to sql-inter.."
-  (interactive)
-  (sql-send-region (line-beginning-position)
-		   (point-max)))
-
-
-;;;begin need to be improved
+;;; ----------------------------------------------------------------------
+;;; need to be improved
+;;; ----------------------------------------------------------------------
 (defun peng-list-current-file-tags ()
   "list current files tags"
   (interactive)
@@ -116,51 +111,50 @@
   (cl-flet ((yes-or-no-p (&rest args) t)
 	 (y-or-n-p (&rest args) t))
     ad-do-it))
-;;;end need to be improved
+;;; ----------------------------------------------------------------------
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;eyerest function
+;;; ----------------------------------------------------------------------
+;;; eyerest function
+;;; ----------------------------------------------------------------------
 (defun peng-eyerest-reset ()
   (interactive)
   (shell-command "eyerest-cli -r"))
-
 (defun peng-eyerest-show-rest ()
   (interactive)
   (let ((time (string-to-int (shell-command-to-string "eyerest-cli -t %s"))))
     (message "%d:%d" (/ time 60)
 	     (% time 60))))
-
 (defun peng-eyerest-pause()
   (interactive)
   (shell-command "eyerest-cli -p"))
-
 (defun peng-eyerest-continue ()
   (interactive)
   (shell-command "eyerest-cli -c"))
-
 (defun peng-eyerest-restart ()
   (interactive)
   (let ((iseyerest (shell-command-to-string "eyerest-cli -s|grep -i active")))
     (if (string= iseyerest "")
 	(shell-command "eyerest-daemon")
       (shell-command "killall eyerest-daemon;eyerest-daemon"))))
-
 (defun peng-eyerest-kill ()
   (interactive)
   (shell-command "killall eyerest-daemon"))
-
 (defun peng-eye-gymnistic ()
   (interactive)
   (async-shell-command "mplayer /home/pengpengxp/music/eye_gymnastics.mp3" nil))
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;eyerest function
+;;; ----------------------------------------------------------------------
+
 
 (defun peng-goto-scratch ()
   (interactive)
   (switch-to-buffer "*scratch*"))
-
 (defun peng-show-major-mode ()
   (interactive)
   (message "%s" major-mode))
 
+;;; ----------------------------------------------------------------------
+;;; global-set-key with evil
+;;; ----------------------------------------------------------------------
 (defun peng-global-set-key (keys function)
   "use for key-binding with evil
 bind in global map and all evil map to make sure it works as I want
@@ -175,8 +169,13 @@ usage: (peng... \"keys-you-want-to-bind\" 'function-you-want-to-bind  "
   (define-key evil-operator-state-map keys function)
   (define-key global-map keys function)
   )
+;;; ----------------------------------------------------------------------
 
+
+
+;;; ----------------------------------------------------------------------
 ;;; I modified the from the helm-src file
+;;; ----------------------------------------------------------------------
 (defun peng-helm-etags-select (arg)
   "Preconfigured helm for etags.
 If called with a prefix argument or if any of the tag files have
@@ -208,6 +207,7 @@ This function aggregates three sources of tag files:
             :keymap helm-etags-map
             :default (list (concat "\\_<" str "\\_>") str)
             :buffer "*helm etags*"))))
+;;; ----------------------------------------------------------------------
 
 (defun peng-insert-counter-column (n)
   "insert 1 to n in n column

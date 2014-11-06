@@ -3,6 +3,17 @@
 (eval-after-load "sql"
   '(load-library "sql-indent"))
 
+(defun peng-sql-send-line ()
+  "send the current line to sql-inter.."
+  (interactive)
+   (sql-send-region (line-beginning-position)
+		    (line-end-position)))
+(defun peng-sql-send-remain ()
+  "send the remain content from current line to sql-inter.."
+  (interactive)
+  (sql-send-region (line-beginning-position)
+		   (point-max)))
+
 (defun peng-sql-mode ()
   (add-to-list 'ac-modes 'sql-mode)
   (linum-mode 1)

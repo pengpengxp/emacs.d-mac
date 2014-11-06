@@ -3,7 +3,11 @@
 ;; (add-to-list 'load-path (concat SITE-LISP "org-8.2.7c/lisp"))
 ;; (add-to-list 'load-path (concat SITE-LISP "org-8.2.7c/contrib/lisp"))
 
+(require 'evil)
+(require 'org)
+;;; ----------------------------------------------------------------------
 ;;; 设置环境变量
+;;; ----------------------------------------------------------------------
 (setq ORG-HOME "/home/pengpengxp/gtd")
 (setq ORG-AGENDA-FILES (list (concat ORG-HOME "/inbox.org")
 			     (concat ORG-HOME "/book.org")
@@ -19,24 +23,22 @@
 			     (concat ORG-HOME "/note.org")
 			     (concat ORG-HOME "/README.org")
 			     (concat ORG-HOME "/test.org")
+			     (concat ORG-HOME "/blog.org")
 			     (concat ORG-HOME "/Tips.org")
 			     (concat ORG-HOME "/trash.org")
 			     ))
 
-;;; 依赖
-(require 'evil)
 
+;;; ----------------------------------------------------------------------
 ;;; hook
+;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
-			    (interactive)
-			    (yas-global-mode 1)
 			    (auto-fill-mode 1)
 			    (local-set-key (kbd "<tab>") 'org-cycle)
 			    (local-set-key (kbd "<C-tab>") 'other-window)
 			    (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
 			    (setq truncate-lines nil)
-			    (yas-minor-mode -1)
-			    ;; (hl-line-mode 1)
+			    (yas-minor-mode 1)
 			    (local-set-key (kbd "C-c a") 'org-agenda)
 			    (setq org-agenda-files ORG-AGENDA-FILES)
 			    (setq org-directory ORG-HOME)
@@ -49,10 +51,26 @@
 				   (linum-on)
 				   (hl-line-mode 1)
 				   ))
+;;; ----------------------------------------------------------------------
 
+;;; ----------------------------------------------------------------------
+;;; 如果yas-expand失败后，tab作用就是之前的，一般是org-cycle
+;;; ----------------------------------------------------------------------
+(add-hook 'org-mode-hook
+          (let ((original-command (lookup-key org-mode-map [tab])))
+            `(lambda ()
+               (setq yas-fallback-behavior
+                     '(apply ,original-command))
+               (local-set-key [tab] 'yas-expand))))
+;;; ----------------------------------------------------------------------
+
+;;; ----------------------------------------------------------------------
 ;;;refile in several files,here is in the all org-agenda-files
+;;; ----------------------------------------------------------------------
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
 				 (ORG-REFILE-FILES :maxlevel . 9))))
+;;; ----------------------------------------------------------------------
+
 ;; (setq org-refile-use-outline-path ORG-HOME)
 ;; (setq org-refile-targets (quote ((nil :maxlevel . 9))))
 
