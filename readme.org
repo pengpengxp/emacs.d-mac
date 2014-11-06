@@ -1,0 +1,1023 @@
+#+STARTUP: hideblocks
+#+STARTUP: content
+
+This is My first repositry on GitHub
+
+I'm pengpengxp, who study in CQUPT in Chongqing, China.I like use
+emacs.
+
+I want to put my emacs configuration here
+
+email:pengpengxppri@gmail.com
+
+* 我的emacs配置
+  重新配置emacs也有一段时间了，今天早上也不想做事，不如就来补上这篇emacs
+  的配置文件的说明把。
+  
+  之前我的配置文件都是乱的。参考了网上别人的配置文件，将我的配置文件也
+  “格式化”了一下。
+** init.el                                                :needtobeimproved:
+init.el是总调用接口。首先在里面设置我的环境变量：
+  #+BEGIN_SRC emacs-lisp
+    ;;;设置环境变量
+    (setenv "PATH" (concat "/home/pengpengxp/peng_bin:" (getenv "PATH")))
+
+    (setq HOME (getenv "HOME"))
+    (setq DIR (concat HOME "/.emacs.d"))
+    (setq GTD (concat HOME "/gtd"))
+    (setq LISP (concat DIR "/lisp"))
+    (setq SITE-LISP (concat DIR "/site-lisp"))
+  #+END_SRC
+  然后设置load-path：
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path DIR)
+  (add-to-list 'load-path SITE-LISP)
+  (add-to-list 'load-path LISP)
+  (let ((default-directory SITE-LISP))    ;Don't add load-path after plugins every time
+    (normal-top-level-add-subdirs-to-load-path))
+#+END_SRC
+这最后一句是将所有SITE-LISP目录下的子目录都加入到了load-path中去了。
+（我的理解是这样的，但是没有具体测试是不是所有子目录）。其中SITE-LISP是
+我放置第三方插件的地方。这样不用每次添加插件的的时候都使用add-to-list
+手动添加了。这里可能需要改进一下。
+
+_*我觉得这样定义的load-path太多了。需要寻找的地方太多，可能影响速度。
+*_
+
+接下来是我copy别人的函数和自定义的函数：
+#+BEGIN_SRC emacs-lisp
+  (require 'init-peng-copyfun)            ;;;; some function I copyed from others
+  (require 'init-peng-prifun)             ;;;; load function wrote by pengpengxp
+#+END_SRC
+
+然后就是所有第三方插件：注意这些插件，必须首先加载evil。因为下面有很多
+ 按键绑定都是在evil的基础上绑定的。当然，也可以每次在需要加载的时候都
+ 调用一次
+#+BEGIN_SRC emacs-lisp
+  (require 'evil)
+#+END_SRC
+最后加载init-font.el和init-global.el；
+
+** site-lisp
+site-lisp目录用于存放所有第三方插件。直接下载下来放到这里就行了。我一
+般使用git clone *
+** lisp
+lisp目录用于存放我所有的init-*.el文件，就是我实际上的所有配置文件。每
+个文件都以provide结尾，以供init.el调用。
+*** init-evil.el                                                 :question:
+**** 安装了一些基于evil的插件：
+#+BEGIN_SRC emacs-lisp
+  (require 'evil-surround)
+  (require 'evil-nerd-commenter)
+  (require 'evil-visualstar)
+  (require 'evil-leader)
+  (require 'evil-numbers)
+#+END_SRC
+设置：
+#+BEGIN_SRC emacs-lisp
+  (evilnc-default-hotkeys)
+  (global-evil-surround-mode 1)
+  (evil-mode 1)
+  (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
+  (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
+  (setq evilnc-hotkey-comment-operator ",,")
+#+END_SRC
+**** 一些mode的initial-state
+evil中的state就是vi中的mode，emacs默认的mode还是以前mode的意思。evil总
+共有好几个state，其中我经常使用的就是normal,insert,emacs三个。evil对每
+个mode都是默认进入的normal。有些emacs的mode我不想使用evil。就设置为默
+认进入emacs-mode：
+
+_*问题：有些mode，比如bm-show-mode是在init.el后面才加载的。这样在前面
+设置也没有问题吗？还是说elisp没有“前后”之分？*_
+
+#+BEGIN_SRC emacs-lisp
+  ;;; 设置这些模式的默认evil模式
+  (evil-set-initial-state 'ibuffer-mode 'emacs)
+  (evil-set-initial-state 'bookmark-bmenu-mode 'emacs)
+  (evil-set-initial-state 'Info-mode 'emacs)
+  (evil-set-initial-state 'compilation-mode 'emacs)
+  (evil-set-initial-state 'help-mode 'emacs)
+  (evil-set-initial-state 'dired-mode 'emacs)
+  (evil-set-initial-state 'compilation-mode 'emacs)
+  (evil-set-initial-state 'apropos-mode 'emacs)
+  (evil-set-initial-state 'magit-mode  'emacs)
+  (evil-set-initial-state 'magit-process-mode 'emacs)
+  (evil-set-initial-state 'mew-draft-mode 'emacs)
+  (evil-set-initial-state 'mew-summary-mode 'emacs)
+  (evil-set-initial-state 'mew-message-mode 'emacs)
+  (evil-set-initial-state 'bm-show-mode 'emacs)
+  (evil-set-initial-state 'Man-mode 'emacs)
+#+END_SRC
+
+esc就是退出insert模式。不再是emacs中的esc
+#+BEGIN_SRC emacs-lisp
+  (setq evil-esc-delay 0)
+#+END_SRC
+
+****  定制insert-state
+*基本都是从网上找到的*
+
+我认为emacs在进行纯输入的时候是很强大的，不需要evil，所有我首先把所有
+evil-insert-state中的按键绑定都去掉：
+#+BEGIN_SRC emacs-lisp
+  ;; remove all keybindings from insert-state keymap,it is VERY VERY important
+  (setcdr evil-insert-state-map nil) 
+#+END_SRC
+然后把emacs模式下的所有按键绑定到insert模式下：
+#+BEGIN_SRC emacs-lisp
+  (define-key evil-insert-state-map
+    (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
+#+END_SRC
+在insert-mode下，esc需要能退出insert-mode到normal-mode中：
+#+BEGIN_SRC emacs-lisp
+  ;; but [escape] should switch back to normal state
+  (define-key evil-insert-state-map [escape] 'evil-normal-state)
+#+END_SRC
+之前我喜欢在vi中使用kj来退出insert回到normal中，这里抄了一个别人的函数：
+*（暂时还没有看懂）*
+#+BEGIN_SRC emacs-lisp
+  (define-key evil-insert-state-map "k" #'cofi/maybe-exit)
+  (evil-define-command cofi/maybe-exit ()
+    :repeat change
+    (interactive)
+    (let ((modified (buffer-modified-p)))
+      (insert "k")
+      (let ((evt (read-event (format "Insert %c to exit insert state" ?j)
+                             nil 0.5)))
+        (cond
+         ((null evt) (message ""))
+         ((and (integerp evt) (char-equal evt ?j))
+          (delete-char -1)
+          (set-buffer-modified-p modified)
+          (push 'escape unread-command-events))
+         (t (setq unread-command-events (append unread-command-events
+                                                (list evt))))))))
+#+END_SRC
+**** 按键绑定
+主要是定义evil-normal-state-map和evil-motion-state-map。刚开始的想法是
+把','定义成这两个map中的prefix-key：
+
+PS:但是我发现，直接使用[[*init-evil-leader.el][init-evil-leader.el]]比较简单了，不过evil-leader使
+ 用到最后感觉定制性没有那么强，现在暂时使用着evil-leader
+#+BEGIN_SRC emacs-lisp
+  (define-prefix-command 'peng-evil-global-map)
+  (define-key evil-normal-state-map (kbd ",") 'peng-evil-global-map)
+  (define-key evil-motion-state-map (kbd ",") 'peng-evil-global-map)
+#+END_SRC
+然后就是实际定义，使用define-key这样定义：
+#+BEGIN_SRC emacs-lisp
+  ;; ;;; normal-map
+  (define-key evil-normal-state-map (kbd "DEL") 'delete-other-windows)
+  (define-key evil-normal-state-map "ei " 'find-file)
+  (define-key evil-normal-state-map ",," 'evilnc-comment-operator)
+  (define-key evil-normal-state-map ",1" 'delete-other-windows)
+  (define-key evil-normal-state-map ",0" 'delete-window)
+  (define-key evil-normal-state-map ",2" 'split-window-below)
+  (define-key evil-normal-state-map ",3" 'split-window-right)
+  (define-key evil-normal-state-map ",u" 'winner-undo)
+  (define-key evil-normal-state-map ",r" 'winner-redo)
+  (define-key evil-normal-state-map ",h" 'eshell)
+  (define-key evil-normal-state-map ",p" 'switch-to-buffer)
+  (define-key evil-normal-state-map ",n" 'save-buffer)
+  (define-key evil-normal-state-map ",k" 'kill-buffer)
+  (define-key evil-normal-state-map ",w" 'eshell)
+  (define-key evil-normal-state-map ",b" 'ibuffer)
+  (define-key evil-normal-state-map "m" 'point-to-register)
+  (define-key evil-normal-state-map "'" 'jump-to-register)
+  (define-key evil-normal-state-map "-" 'split-window-below)
+  (define-key evil-normal-state-map "|" 'split-window-right)
+  (define-key evil-normal-state-map "q" 'View-quit)
+  (define-key evil-normal-state-map (kbd "C-n") 'evil-next-line)
+  (define-key evil-normal-state-map (kbd "C-r") 'isearch-backward)
+  (define-key evil-normal-state-map (kbd "C-p") 'evil-previous-line)
+  (define-key evil-normal-state-map (kbd "C-e") 'move-end-of-line)
+  (define-key evil-normal-state-map (kbd "M-.") 'find-tag)
+  (define-key evil-normal-state-map (kbd "C-b") 'backward-char)
+  (define-key evil-normal-state-map (kbd "C-f") 'forward-char)
+  (define-key evil-normal-state-map (kbd "K") 'man)
+
+  ;; ;;; motion map
+  (define-key evil-motion-state-map "ei " 'find-file)
+  (define-key evil-motion-state-map ",1" 'delete-other-windows)
+  (define-key evil-motion-state-map ",0" 'delete-window)
+  (define-key evil-motion-state-map ",2" 'split-window-below)
+  (define-key evil-motion-state-map ",3" 'split-window-right)
+  (define-key evil-motion-state-map ",u" 'winner-undo)
+  (define-key evil-motion-state-map ",r" 'winner-redo)
+  (define-key evil-motion-state-map ",h" 'eshell)
+  (define-key evil-motion-state-map ",p" 'switch-to-buffer)
+  (define-key evil-motion-state-map ",n" 'save-buffer)
+  (define-key evil-motion-state-map ",k" 'kill-buffer)
+  (define-key evil-motion-state-map ",w" 'eshell)
+  (define-key evil-motion-state-map ",b" 'ibuffer)
+  (define-key evil-motion-state-map "-" 'split-window-below)
+  (define-key evil-motion-state-map "|" 'split-window-right)
+  (define-key evil-motion-state-map "m" 'point-to-register)
+  (define-key evil-motion-state-map "'" 'jump-to-register)
+  (define-key evil-motion-state-map (kbd "C-n") 'evil-next-line)
+  (define-key evil-motion-state-map (kbd "C-r") 'isearch-backward)
+  (define-key evil-motion-state-map (kbd "C-p") 'evil-previous-line)
+  (define-key evil-motion-state-map (kbd "C-e") 'move-end-of-line)
+  (define-key evil-motion-state-map (kbd "M-.") 'find-tag)
+#+END_SRC
+visual-mode也需要一些emacs的移动方式以适合我的习惯：
+#+BEGIN_SRC emacs-lisp
+  (define-key evil-visual-state-map (kbd "C-e") 'move-end-of-line)
+  (define-key evil-visual-state-map (kbd "C-b") 'backward-char)
+  (define-key evil-visual-state-map (kbd "C-f") 'forward-char)
+#+END_SRC
+*最后一些是evil quit，我不是很懂，从网上抄过来的：*
+#+BEGIN_SRC emacs-lisp
+  ;; evil quit
+  (define-key evil-normal-state-map [escape] 'keyboard-quit)
+  (define-key evil-visual-state-map [escape] 'keyboard-quit)
+  (define-key minibuffer-local-map [escape] 'helm-keyboard-quit)
+  (define-key minibuffer-local-ns-map [escape] 'helm-keyboard-quit)
+  (define-key minibuffer-local-completion-map [escape] 'helm-keyboard-quit)
+  (define-key minibuffer-local-must-match-map [escape] 'helm-keyboard-quit)
+  (define-key minibuffer-local-isearch-map [escape] 'helm-keyboard-quit)
+#+END_SRC
+*** init-org.el
+**** 环境变量
+主要是为了方便我进行gtd设置，gtd文件主目录：
+#+BEGIN_SRC emacs-lisp
+  (setq ORG-HOME "/home/pengpengxp/gtd")
+#+END_SRC
+org-agenda文件
+
+*PS：org-agenda应该会只在这些文件中寻找事件，这样的目的是不再
+org-agenda中显示那些已经完成或者已经删掉的文件*
+#+BEGIN_SRC emacs-lisp
+  (setq ORG-AGENDA-FILES (list (concat ORG-HOME "/inbox.org")
+                               (concat ORG-HOME "/book.org")
+                               (concat ORG-HOME "/dreams.org")
+                               (concat ORG-HOME "/note.org")
+                               (concat ORG-HOME "/test.org")
+                               (concat ORG-HOME "/Tips.org")
+                               ))
+
+#+END_SRC
+org-refile
+
+*PS：refile的时候又需要在所有文件中都能refile*
+#+BEGIN_SRC emacs-lisp
+  (setq ORG-REFILE-FILES (list (concat ORG-HOME "/book.org")
+                               (concat ORG-HOME "/dreams.org")
+                               (concat ORG-HOME "/finished.org")
+                               (concat ORG-HOME "/inbox.org")
+                               (concat ORG-HOME "/note.org")
+                               (concat ORG-HOME "/README.org")
+                               (concat ORG-HOME "/test.org")
+                               (concat ORG-HOME "/Tips.org")
+                               (concat ORG-HOME "/trash.org")
+                               ))
+#+END_SRC
+**** hook
+org-mode-hook进行主要的org的设置：
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-mode-hook '(lambda ()
+                              (interactive)
+                              (local-set-key (kbd "<tab>") 'org-cycle)
+                              (local-set-key (kbd "<C-tab>") 'other-window)
+                              (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
+                              (setq truncate-lines nil)
+                              (yas-minor-mode -1)
+                              (auto-fill-mode 1)
+                              ;; (hl-line-mode 1)
+                              (local-set-key (kbd "C-c a") 'org-agenda)
+                              (setq org-agenda-files ORG-AGENDA-FILES)
+                              (setq org-directory ORG-HOME)
+                              (org-indent-mode 1) ;不显示哪么多个*
+                              (when window-system
+                                (local-set-key (kbd "<s-return>") 'org-insert-subheading))
+                              ))
+#+END_SRC
+org-agenda-hook定制一下我自己的东西:
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'org-agenda-mode-hook '(lambda ()
+                                     (delete-other-windows)
+                                     (linum-on)
+                                     (hl-line-mode 1)
+                                     ))
+#+END_SRC
+**** GTD设置
+使得refile可以在所有ORG-REFILE-FILES中进行：
+#+BEGIN_SRC emacs-lisp
+  (setq org-refile-targets (quote ((nil :maxlevel . 9)
+                                   (ORG-REFILE-FILES :maxlevel . 9))))
+#+END_SRC
+我的事件中所有可能的状态：
+#+BEGIN_SRC emacs-lisp
+  (setq org-todo-keywords '((sequence "TODO(t!)" 
+                                      "DOING(n)"
+                                      "WAITING(w)" ;waiting for others
+                                      "SOMEDAY(s)" ;I'll do it someday
+                                      "Dreams(i)"
+                                      "Tips(p)"
+                                      "|"
+                                      "DONE(d@/!)"
+                                      "ABORT(a@/!)"
+                                      )))
+#+END_SRC
+使用org-capture-template快速抓取事件：
+#+BEGIN_SRC emacs-lisp
+  (setq org-capture-templates 
+        '(("t" "News" entry (file+datetree (concat ORG-HOME "/inbox.org"))
+           "*  TODO  [#A]  %?\n %T")
+
+          ("i" "Dreams" entry (file+datetree (concat ORG-HOME "/dreams.org"))
+           "*  Dreams  %?\n %T")
+
+          ("s" "SOMEDAY" entry (file+datetree (concat ORG-HOME "/inbox.org"))
+           "*  SOMEDAY  %?\n %T")
+
+          ("p" "Tips" entry (file+datetree (concat ORG-HOME "/Tips.org"))
+           "*  Tips  %?\n %T")
+
+          ("b" "Book" entry (file+datetree (concat ORG-HOME "/book.org"))
+           "*  SOMEDAY  %?\n %T")
+
+          ("n" "Notes" entry (file+datetree (concat ORG-HOME "/note.org"))
+           "*  TODO  %?\n %T")
+
+          ("a" "Account" table-line (file+headline (concat ORG-HOME "/account.org.gpg") "Web accounts")
+           "|")
+
+          ("k" "test" entry (file+datetree (concat ORG-HOME "/test.org") "Tasks")
+           "* TODO  %?  \n %T")
+          ))
+#+END_SRC
+设置默认的org-default-note-file：
+#+BEGIN_SRC emacs-lisp
+  (setq org-default-notes-file (concat ORG-HOME "/inbox.org"))
+#+END_SRC
+设置使用方便使用org的全局按键绑定：
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c b") 'org-iswitchb)
+#+END_SRC
+定制自己的org-agenda选项：
+#+BEGIN_SRC emacs-lisp
+  ;;; 定制自己的org-agenda选项。这样Ctrl-a以后可供选择。
+  (setq org-agenda-custom-commands
+        '(
+          ("d" "Agenda and Home-related tasks"
+           (
+            (agenda "")
+            (todo "DOING")
+            (todo "WAITING")
+            ))
+          ("w" "things WAITING"
+           (
+            (agenda "")
+            (todo "WAITING")
+            ))
+          ("o" "things TODO"
+           (
+            (agenda "")
+            (todo "TODO")
+            ))
+          ;; ("h" . "h for peng's dispatcher") ; description for "h" prefix
+          ("ht" todo "TODO")
+          ("hn" todo "DOING")
+          ("hd" todo "DONE")
+          ("hw" todo "WAITING")
+          ("hi" todo "Dreams")
+          ("hp" todo "Tips")
+          ("hs" todo "SOMEDAY")
+          ))
+#+END_SRC
+org-agenda默认只显示一天的事件：
+#+BEGIN_SRC emacs-lisp
+  (setq org-agenda-span 'day)
+#+END_SRC
+*** init-org-export.el
+设置org的导出，我现在使用的，一般还是导出成html。所以主要还是针对html
+的设置，在导出html时，由于开启auto-fill，一段话可能分成多行，英文中两
+行之间加入一个空格就刚刚好，但是中文就不行，会出现多余的空格。解决办法
+是使用版本新一点的org-mode。然后加入下面这两个函数：
+
+*PS：因为貌似有冲突，我直接把emacs原来版本的org-mode删除了，然后使用下*
+*载的新版本原来版本的org-mode放在/usr/share/emacs/中，现在我的*
+*org-mode直接放在 SITE-LISP中了*
+
+
+#+BEGIN_SRC emacs-lisp
+  (defun clear-single-linebreak-in-cjk-string (string)
+    "clear single line-break between cjk characters that is usually soft line-breaks"
+    (let* ((regexp "\\([\u4E00-\u9FA5]\\)\n\\([\u4E00-\u9FA5]\\)")
+           (start (string-match regexp string)))
+      (while start
+        (setq string (replace-match "\\1\\2" nil nil string)
+              start (string-match regexp string start))))
+    string)
+  (defun ox-html-clear-single-linebreak-for-cjk (string backend info)
+    (when (org-export-derived-backend-p backend 'html)
+      (clear-single-linebreak-in-cjk-string string)))
+  (add-to-list 'org-export-filter-final-output-functions
+               'ox-html-clear-single-linebreak-for-cjk)
+#+END_SRC
+
+设置导出的css格式：
+#+BEGIN_SRC emacs-lisp
+  (setq org-html-head "<link href=\"css/org-manual.css\" rel=\"stylesheet\" type=\"text/css\">")
+#+END_SRC
+我的理解其实就是默认引用准备导出org文件目录下css目录中的、
+org-maual.css文件作为css格式。
+
+*当然，这需要该文件存在才行*
+*** init-eim.el                                                       :eim:
+**** 基本配置
+没什么好说的，直接照着eim中的readme配置好就能用了。把默认的输入法设置
+成eim-py就行：
+#+BEGIN_SRC emacs-lisp
+  (setq default-input-method "eim-py")
+#+END_SRC
+我觉得默认的C-\开启输入法不方便。自己绑定到了C-backspace上
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "<C-backspace>") 'toggle-input-method)
+#+END_SRC
+使用‘;’暂时输入中文，在cc-mode这些中不起作用，全局绑定成s-;：
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd ";") 'eim-insert-ascii)
+  (peng-global-set-key (kbd "s-;") 'eim-insert-ascii)
+#+END_SRC
+其中peng-global-set-key是我自己写的函数，用于在有evil的情况下的按键绑
+定。这是在使用evil是真正的全局设置。
+**** DONE 控制每页显示的词条数目                        :needtobeimproved:
+- State "DONE"       from "TODO"       [2014-11-05 三 16:33] \\
+  最后还是在py.txt中写了page-length=9,然后调用eim-build-table，结果莫名
+  其妙的就好了。eim没怎么吃透，有时间看看源码。
+- State "TODO"       from ""           [2014-11-05 三 11:43]
+刚开始我设置的是每页显示10个。但是后来发现一个bug是第10个条目我不能选
+择。所以现在想设置为9个。之前应该就在eim目录下的py.txt中写
+page-length=9就行了。但是每次重启emacs就会被重写为10。py.txt总是会被不
+明原因的重写。我不知道这是为什么？？
+**** DONE  eim中加入自己的词库！！！！                               :eim:
+- State "DONE"       from "DOING"      [2014-10-25 六 11:33] \\
+  首先想使用pyword2tbl.pl。结果perl一直都没有配置好。所以不能转换一些指
+  定的词库。
+  
+  然后试着直接修改了一下py.txt中的内容。但是发现每次重启py.txt都会被重置。
+  最后发现了这个otherpy.txt。修改这个词库文件没有问题。不会被重置。所以
+  最后的解决方案是：
+  
+  下载搜狗词库，自己把里面的'替换成为-。然后直接添加在otherpy.txt后面，
+  然后调用eim-build-table（可能需要一会儿）。保存重启就可以了。
+  
+  现在就是使用eim来输入的。感觉还不错。
+ <2014-10-24 五 21:12>
+
+  发现一个更加简单的添加词库的方式。在py.txt的开头有一个other-files选
+  项。在其中加入词库文件就可以了。其中词库文件格式就参考other_py.txt中
+  的就行。（其实我觉得应该就是py.txt中的格式）。
+
+  接下来就是自己制作自己的词库文件拉：拷贝other_py.txt到新词库文件中，
+  把Table下面的内容换成自己的词库。然后调用eim-build-table自动就可以构
+  建好这个词库文件。然后只需要将词库文件添加到py.txt的other-files选项
+  中就可以了。
+
+  暂时就用着网上找到的搜狗基础词库。没有找到更好的。但是基本能满足使用
+  需求了。
+
+  以后有需要可以自己构造自己的词库。
+
+  整个世界安静了。
+
+**** DONE emacs绑定中文标点到英文标点。              :needimprove:bug:eim:
+  结果就只是修改了py.txt中的Punctuation部份。将*对应的内容修改了一下，然
+  后使用eim-build-table重新构造了一下就行了。但是有一个bug，这样只能每次
+  输入一个*。同时按两下*也不行。
+
+<2014-10-27 一 11:31>
+
+*** init-global.el
+init-global.el是我的全局设置。其中包括一些对emacs本身就有的功能的一些
+配置，全局的按键绑定等等。
+**** MISC
+***** 不需要开启自动备份产生令人讨厌的~文件
+#+BEGIN_SRC emacs-lisp
+  (setq backup-inhibited t)
+#+END_SRC
+***** 开启desktop-save-mode
+下一次进入emacs的时候继续访问上次访问的文件。有利于工作的重新开展：
+#+BEGIN_SRC emacs-lisp
+  (desktop-save-mode 1)
+#+END_SRC
+***** 设置我的个人信息：
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "pengpengxp")
+  (setq user-mail-address "pengpengxppri@gmail.com")
+#+END_SRC
+***** 光标不要闪动：
+#+BEGIN_SRC emacs-lisp
+  (blink-cursor-mode -1)
+#+END_SRC
+***** 开始不需要使用menu-bar，scroll-bar这些
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+  (when window-system
+    (scroll-bar-mode -1))
+#+END_SRC
+***** 不是root用户的时候开启server：
+#+BEGIN_SRC emacs-lisp
+  (unless (string-equal "root" (getenv "USER"))
+    (require 'server)
+    (unless (server-running-p) (server-start)))
+#+END_SRC
+***** 关闭process的时候不需要询问。
+#+BEGIN_SRC emacs-lisp
+  (setq kill-buffer-query-functions
+        (remq 'process-kill-buffer-query-function
+              kill-buffer-query-functions))
+#+END_SRC
+***** 从王垠的配置中借鉴的
+使用更大的kill-ring。默认emacs滚动都是半屏半屏的滚动，不流畅，使emacs滚
+动更流畅一点。默认的mode设置成text-mode。当光标移动过来鼠标自动躲避到右
+上角：
+#+BEGIN_SRC emacs-lisp
+  (setq kill-ring-max 200)
+  (setq scroll-margin 3
+        scroll-conservatively 10000)
+  (setq default-major-mode 'text-mode)
+  (mouse-avoidance-mode 'banish)
+#+END_SRC
+***** 默认显示时间，开启对匹配括号的提示：
+#+BEGIN_SRC emacs-lisp
+  (display-time)
+  (show-paren-mode t)
+#+END_SRC
+***** F11直接全屏：
+#+BEGIN_SRC emacs-lisp
+  (when window-system
+    (progn
+      (peng-global-set-key [f11] '(lambda ()
+                               (interactive)
+                               (set-frame-parameter nil 'fullscreen
+                                                    (if (frame-parameter nil 'fullscreen) nil 'fullboth))
+                               ;; ;; If you want the fullscreen emacs to be very minimal (no tool bar, scroll bar, or menu bar, also add:
+                               (progn
+                                 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))  ;; no toolbar
+                                 (menu-bar-mode -1) ;;no menubar
+                                 ;; (scroll-bar-mode -1) ;; no scroll bar
+                                 )))))
+#+END_SRC
+***** 开启winner-mode，为它定义两个按键绑定：
+#+BEGIN_SRC emacs-lisp
+  (winner-mode 1)
+  (peng-global-set-key (kbd "C-c u") 'winner-undo)
+  (peng-global-set-key (kbd "C-c r") 'winner-redo)
+#+END_SRC
+***** 开启recentf-mode记录最近打开的文件：
+#+BEGIN_SRC emacs-lisp
+  (recentf-mode 1)
+#+END_SRC
+***** 回答yes-or-no的时候可以简单使用y或者n。这个我还没有测试成功：
+#+BEGIN_SRC emacs-lisp
+  (setq yes-or-no-p 'y-or-n-p)
+#+END_SRC
+***** 使用registor更加方便：
+#+BEGIN_SRC emacs-lisp
+  (peng-global-set-key (kbd "C-x SPC") 'point-to-register)
+  (peng-global-set-key (kbd "C-x j") 'jump-to-register)
+#+END_SRC
+*PS：我在bookmark配置中设置C-c j跳转bookmark*
+***** 主题设置
+#+BEGIN_SRC emacs-lisp
+  (when window-system
+    (load-theme 'misterioso nil nil)
+    (enable-theme 'misterioso)
+    )
+#+END_SRC
+***** 显示列号
+#+BEGIN_SRC emacs-lisp
+  (setq column-number-mode t)
+#+END_SRC
+***** 每次分割窗口的时候都水平切割
+也就是除非手动，禁止上下分割窗口。我不是很喜欢上下分割的窗口。
+#+BEGIN_SRC emacs-lisp
+  (setq split-height-threshold nil)
+  (setq split-width-threshold 0)
+#+END_SRC
+***** 加密文件
+使用easypg加密文件，默认每次修改加密文件都需要输入密码，感觉很麻烦，去
+掉了。这样每次只有第一次打开文件和重启emacs才需要输入密码。安全性没有
+那么高。但是考虑到我的emacs也就只有我用了。所以感觉还好。
+#+BEGIN_SRC emacs-lisp
+  (setq epa-file-cache-passphrase-for-symmetric-encryption t)
+#+END_SRC
+***** 自动revert-buffer
+当文件被其他编辑器修改以后，一般都是在terminal中使用vim修改。自动
+revert-buffer。
+#+BEGIN_SRC emacs-lisp
+(global-auto-revert-mode 1)
+#+END_SRC
+**** 按键绑定
+因为evil已经成了我很依赖的插件。所以这里全局绑定基本都使用的时我自己定
+义的peng-global-set-key。
+***** F5
+#+BEGIN_SRC emacs-lisp
+  ;;; f5-map use for compiling and eye protection
+  (define-prefix-command 'F5-map)
+  (global-set-key (kbd "<f5>") 'F5-map)
+  ;;; for compile
+  (peng-global-set-key (kbd "<f5> <f5>") 'compile)
+  (peng-global-set-key (kbd "<f5> r") 'recompile)
+
+  ;;;F5 for eye protected
+  (peng-global-set-key (kbd "<f5> ee") 'peng-eyerest-show-rest)
+  (peng-global-set-key (kbd "<f5> er") 'peng-eyerest-restart)
+  (peng-global-set-key (kbd "<f5> ep") 'peng-eyerest-pause)
+  (peng-global-set-key (kbd "<f5> ec") 'peng-eyerest-continue)
+  (peng-global-set-key (kbd "<f5> eg") 'peng-eye-gymnistic)
+  (peng-global-set-key (kbd "<f5> es") 'peng-eyerest-reset)
+  (peng-global-set-key (kbd "<f5> ek") 'peng-eyerest-kill)
+  ;;;F5 for eye protected
+#+END_SRC
+***** F6
+主要负责和系统交互
+#+BEGIN_SRC emacs-lisp
+  ;;; f6-map use for calling the system applications
+  (define-prefix-command 'F6-map)
+  (global-set-key (kbd "<f6>") 'F6-map)
+  ;;; 在当前文件夹快速打开文件管理器
+  (peng-global-set-key (kbd "<f6> e") '(lambda ()
+                                    (interactive)
+                                    (save-window-excursion
+                                      (save-restriction
+                                        (shell-command (concat "gnome-terminal -x thunar " default-directory))))))
+  (peng-global-set-key (kbd "<f6> n") '(lambda ()
+                                    (interactive)
+                                    (save-window-excursion
+                                      (save-restriction
+                                        (shell-command (concat "gnome-terminal -x nautilus " default-directory))))))
+  ;;; 在当前文件夹快速打开终端
+  (peng-global-set-key (kbd "<f6> t") '(lambda ()
+                                    (interactive)
+                                    (save-window-excursion
+                                      (save-restriction
+                                        (shell-command "gnome-terminal&")))))
+#+END_SRC
+***** F8
+主要的prefix-key
+#+BEGIN_SRC emacs-lisp
+  ;; f8-map the global key binding are all here
+  (define-prefix-command 'F8-map)
+  (global-set-key (kbd "<f8>") 'F8-map)
+
+  (peng-global-set-key (kbd "<f8> j") 'bookmark-jump)
+  (peng-global-set-key (kbd "<f8> w") 'save-buffer)
+  (peng-global-set-key (kbd "<f8> f") 'find-file)
+  (peng-global-set-key (kbd "<f8> d") 'kill-this-buffer)
+  (peng-global-set-key (kbd "<f8> q") 'kill-buffer-and-window)
+  (peng-global-set-key (kbd "<f8> r") 'recentf-open-files)
+  (peng-global-set-key (kbd "<f8> a") 'org-agenda)
+  (peng-global-set-key (kbd "<f8> s") 'peng-toggle-gnome-terminal)
+  (peng-global-set-key (kbd "<f8> <backspace>") 'delete-other-windows)
+  (peng-global-set-key (kbd "<f8> <return>") 'delete-window)
+  (peng-global-set-key (kbd "<f8> gg") 'peng-goto-scratch)
+  (peng-global-set-key (kbd "<f8> gn") 'peng-toggle-gnome-terminal)
+  (peng-global-set-key (kbd "<f8> go") 'peng-ibuffer-filter-org-mode)
+  (peng-global-set-key (kbd "<f8> ge") 'peng-ibuffer-filter-emacs-lisp-mode)
+  (peng-global-set-key (kbd "<f8> gd") 'peng-ibuffer-filter-dired-mode)
+  (peng-global-set-key (kbd "<f8> gc") 'peng-ibuffer-filter-c-mode)
+  (peng-global-set-key (kbd "<f8> gp") 'peng-ibuffer-filter-c++-mode)
+  (peng-global-set-key (kbd "<f8> <tab>") 'switch-to-buffer)
+  (peng-global-set-key (kbd "<f8> e") 'eshell)
+  (peng-global-set-key (kbd "<f8> x") 'execute-extended-command)
+  (peng-global-set-key (kbd "<f8> h k") 'describe-key)
+  (peng-global-set-key (kbd "<f8> h f") 'describe-function)
+  (peng-global-set-key (kbd "<f8> h v") 'describe-variable)
+  (peng-global-set-key (kbd "<f8> h r") 'info-emacs-manual)
+  (peng-global-set-key (kbd "<f8> 1") 'delete-other-windows)
+  (peng-global-set-key (kbd "<f8> 0") 'delete-window)
+  (peng-global-set-key (kbd "<f8> 2") 'split-window-below)
+  (peng-global-set-key (kbd "<f8> 3") 'split-window-right)
+  (peng-global-set-key (kbd "<f8> c u") 'winner-undo)
+  (peng-global-set-key (kbd "<f8> c r") 'winner-redo)
+  (peng-global-set-key (kbd "<f8> c m") 'shell-command)
+  (peng-global-set-key (kbd "<f8> c c") 'org-capture)
+  (peng-global-set-key (kbd "<f8> b") 'ibuffer)
+  (peng-global-set-key (kbd "<f8> <f8>") '(lambda ()
+                                            (interactive)
+                                            (switch-to-buffer (other-buffer))))
+#+END_SRC
+***** F9
+本来想用来使用register方便一点，但是好像使用的比较少。
+#+BEGIN_SRC emacs-lisp
+  (define-prefix-command 'F9-map)
+  (global-set-key (kbd "<f9>") 'F9-map)
+  (peng-global-set-key (kbd "<f9> <f9>") 'jump-to-register)
+  (peng-global-set-key (kbd "<f9> <f10>") 'point-to-register)
+#+END_SRC
+***** MISC
+#+BEGIN_SRC emacs-lisp
+  ;;; MISC
+  (peng-global-set-key (kbd "C-M-0") 'delete-window)
+  (peng-global-set-key (kbd "C-M-1") 'delete-other-windows)
+  (peng-global-set-key (kbd "C-M-2") 'split-window-below)
+  (peng-global-set-key (kbd "C-M-3") 'split-window-right)
+  ;; (peng-global-set-key (kbd "<C-tab>") '(lambda ()
+  ;;                                 (interactive)
+  ;;                                 (switch-to-buffer (other-buffer))))
+  (peng-global-set-key (kbd "<C-tab>") 'other-window)
+  (peng-global-set-key (kbd "s-v") 'view-mode)
+  (peng-global-set-key (kbd "C-+") 'text-scale-increase)
+  (peng-global-set-key (kbd "C-=") 'text-scale-increase)
+  (peng-global-set-key (kbd "C--") 'text-scale-decrease)
+  (peng-global-set-key (kbd "\C-cn") 'autopair-mode)
+  (peng-global-set-key (kbd "C-x C-b") 'ibuffer)
+  (peng-global-set-key (kbd "<C-up>") 'enlarge-window)
+  (peng-global-set-key (kbd "<C-down>") 'shrink-window)
+  (peng-global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
+  (peng-global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+#+END_SRC
+*** init-powerline.el
+我开始使用powerline好像是可以模拟vim中的状态栏。我觉得还是比较好看的。
+但是有一个问题就是这种情况下，使用evil就不能显示出evil的state。不使用
+powerline的时候是可以看见的。
+
+其实evil对应的state记录再evil-mode-line-tag这个变量之中。查阅源码
+powerline-default-theme函数其实就是对mode-line-format进行了一下设置。
+我把powerline-default-theme中所有的内容拷贝出来，在其中加入了作了一点
+点小小的改动，就能达到有evil+powerline状态栏正常显示evil-state的目的了。
+真得只是作了一点点的修改！
+#+BEGIN_SRC emacs-lisp
+    (setq-default mode-line-format
+                  '("%e"
+                    (:eval
+                     (let* ((active (powerline-selected-window-active))
+                            (mode-line (if active 'mode-line 'mode-line-inactive))
+                            (face1 (if active 'powerline-active1 'powerline-inactive1))
+                            (face2 (if active 'powerline-active2 'powerline-inactive2))
+                            (separator-left (intern (format "powerline-%s-%s"
+                                                            powerline-default-separator
+                                                            (car powerline-default-separator-dir))))
+                            (separator-right (intern (format "powerline-%s-%s"
+                                                             powerline-default-separator
+                                                             (cdr powerline-default-separator-dir))))
+                            (lhs (list (powerline-raw "%*" nil 'l)
+                                       ;; add by pengpengxp
+                                       (powerline-raw evil-mode-line-tag nil 'l)
+                                       (powerline-buffer-size nil 'l)
+                                       (powerline-raw mode-line-mule-info nil 'l)
+                                       (powerline-buffer-id nil 'l)
+                                       (when (and (boundp 'which-func-mode) which-func-mode)
+                                         (powerline-raw which-func-format nil 'l))
+                                       (powerline-raw " ")
+                                       (funcall separator-left mode-line face1)
+                                       (when (boundp 'erc-modified-channels-object)
+                                         (powerline-raw erc-modified-channels-object face1 'l))
+                                       (powerline-major-mode face1 'l)
+                                       (powerline-process face1)
+                                       (powerline-minor-modes face1 'l)
+                                       (powerline-narrow face1 'l)
+                                       (powerline-raw " " face1)
+                                       (funcall separator-left face1 face2)
+                                       (powerline-vc face2 'r)))
+                            (rhs (list (powerline-raw global-mode-string face2 'r)
+                                       (funcall separator-right face2 face1)
+                                       (powerline-raw "%4l" face1 'l)
+                                       (powerline-raw ":" face1 'l)
+                                       (powerline-raw "%3c" face1 'r)
+                                       (funcall separator-right face1 mode-line)
+                                       (powerline-raw " ")
+                                       (powerline-raw "%6p" nil 'r)
+                                       (powerline-hud face2 face1))))
+                       (concat (powerline-render lhs)
+                               (powerline-fill face2 (powerline-width rhs))
+                               (powerline-render rhs))))))
+  #+END_SRC
+*** init-sql.el
+使用sql-indent.el进行indent：
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load "sql"
+    '(load-library "sql-indent"))
+#+END_SRC
+
+然后做了一些基本的按键绑定，设置了sql-interactive-mode中evil为
+evil-emacs-state：
+
+*PS：其实这个evil-emacs-state可以统一到init-evil.el中设置*
+#+BEGIN_SRC emacs-lisp
+(defun peng-sql-mode ()
+  (add-to-list 'ac-modes 'sql-mode)
+  (linum-mode 1)
+  (local-set-key (kbd "<f5>") 'sql-send-buffer)
+  (local-set-key (kbd "<C-return>") 'peng-sql-send-line)
+  (local-set-key (kbd "<f8> s r") 'sql-send-region)
+  (local-set-key (kbd "<f8> s s") 'sql-send-string)
+  (local-set-key (kbd "<f8> s l") 'peng-sql-send-line)
+  (local-set-key (kbd "<f10>") 'sql-send-region)
+  (local-set-key (kbd "<f9>") 'peng-sql-send-remain)
+)
+(add-hook 'sql-mode-hook 'peng-sql-mode)
+
+;;sqli-mode:the interactive mode of sql
+(defun peng-sql-interactive-mode ()
+  (evil-emacs-state)
+  (sql-set-product 'ansi)
+  (sql-set-sqli-buffer-generally))
+(add-hook 'sql-interactive-mode-hook 'peng-sql-interactive-mode)
+#+END_SRC
+*** init-font.el
+为了要使得org中的table同时输入中文和英文的不产生混乱，必须使用大小对应
+配套的中英文字体。
+
+*PS：等宽字体。且一个中文和两个英文的宽度相同*
+
+*PS：这个问题只有在X-windows中才存在*
+
+这两个字体我还是找了很久，英文是Monaco-13。中文是苹果的Hiragino Sans
+GB W3.总的来说还是比较好看的。
+#+BEGIN_SRC emacs-lisp
+  ;;; 在X-window下才这样设置字体
+  (when window-system
+      (progn 
+        (set-frame-font "Monaco-13")
+        (set-fontset-font t 'han (font-spec :family "Hiragino Sans GB W3" :size 20))
+        )
+    )
+#+END_SRC
+
+*** init-guide-key.el
+emacs中按键太多了，使用这个插件可以在按键有中提醒你。开启
+guide-key-mode。设置delay为0.5s。最后定义需要提醒的prefix-key。
+
+*PS：这个功能我其实比较少用到*
+#+BEGIN_SRC emacs-lisp
+  (guide-key-mode 1)
+  (setq guide-key/idle-delay 0.5)
+  (setq guide-key/guide-key-sequence '("C-c" "C-c C-x" "C-x" "C-x r" "," ",c" ",l" "z"))
+#+END_SRC
+*** init-bookmark-bmemu-mode.el
+在init-evil.el中已经定义了bookmark为evil-emacs-state-mode。这里进行简
+单配置：bookmark修改时候自动保存。定义一个按键绑定：
+#+BEGIN_SRC emacs-lisp
+  (setq bookmark-save-flag 1)             ;let bookmark auto-saved when I change it
+  (define-key global-map (kbd "C-c j") 'bookmark-jump)
+#+END_SRC
+*** init-dired.el
+使用到现在，越来越喜欢在emacs中打开目录进行操作了。虽然偶尔还是会用用
+nautilus，thunar这些。但是真得已经越来越少了。dired-mode经过配置之后，
+确实很强大。配置文件里面，有很多东西是我在网上找的。
+**** peng-dired-do-copy                                 :needtobeimproved:
+我自己定义的函数，原来的函数在拷贝多个文件之后，总还是标记这这些文件。
+我这个函数，可以把from目录下所有的标记都删除。但是to目录下这些拷贝过去
+的文件还是有C的标记。想想，其实to目录下面，这些标记确实没有必要删除。
+确实是比较有用的提醒。
+#+BEGIN_SRC emacs-lisp
+  (defun peng-dired-do-copy ()
+    (interactive)
+    (progn
+      (dired-do-copy)
+      (dired-unmark-all-marks)
+      ))
+#+END_SRC
+
+希望的改进：拷贝以后，直接跳转到to目录去。
+**** hook
+#+BEGIN_SRC emacs-lisp
+  (defun peng-dired-mode ()
+    (hl-line-mode 1)
+    (dired-details-install)
+    (local-set-key (kbd "<tab>") 'dired-details-toggle)
+    (local-set-key (kbd "C") 'peng-dired-do-copy)
+    (define-key evil-emacs-state-map (kbd "M-<up>") 'dired-up-directory)
+    )
+  (add-hook 'dired-mode-hook 'peng-dired-mode)
+#+END_SRC
+**** 增强插件
+#+BEGIN_SRC emacs-lisp
+  (require 'dired-isearch)
+  (require 'wdired)
+  (require 'dired)
+  (require 'dired+)                       ;增强dired
+  (require 'dired-details)                ;Dired详细信息
+  (require 'dired-details+)               ;Dired详细消息切换
+  (require 'dired-x)
+#+END_SRC
+这是增强dired的一些配置，代码的注释基本能解释。其中
+my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些后缀名
+文件。很实用。;my-dired-omit-regexp需要会实用eamcs的正则表达式。这个我
+还不是很会。
+#+BEGIN_SRC emacs-lisp
+  (setq dired-recursive-copies t)               ;可以递归的进行拷贝
+  (setq dired-recursive-deletes t)              ;可以递归的删除目录
+  (setq dired-recursive-deletes 'always)        ;删除东西时不提示
+  (setq dired-recursive-copies 'always)         ;拷贝东西时不提示
+  ;; (toggle-dired-find-file-reuse-dir 1)          ;使用单一模式浏览Dired
+  (setq dired-details-hidden-string "[ ... ] ") ;设置隐藏dired里面详细信息的字符串
+  (setq dired-listing-switches "-aluh")         ;传给 ls 的参数，这里就可以设置显示大小的方式
+  (setq directory-free-space-args "-Pkh")       ;目录空间选项
+  (setq dired-omit-size-limit nil)              ;dired忽略的上限
+  (setq dired-dwim-target t)                    ;Dired试着猜处默认的目标目录
+  (setq my-dired-omit-status t)                 ;设置默认忽略文件
+  (setq my-dired-omit-regexp "^\\.?#\\|^\\..*") ;设置忽略文件的匹配正则表达式
+  (setq my-dired-omit-extensions '(".cache" ".o" ".elc"))   ;设置忽略文件的扩展名列表
+  (add-hook 'dired-after-readin-hook '(lambda ()
+                                        (progn
+                                          (require 'dired-extension)
+                                          (dired-sort-method)))) ;先显示目录, 然后显示文件
+  (add-hook 'dired-mode-hook '(lambda ()
+                                (progn
+                                  (require 'dired-extension)
+                                  (dired-omit-method)))) ;隐藏文件的方法
+#+END_SRC
+
+设置文件的默认的打开模式，这个是我最喜欢的，直接在上面用!。爽死：
+#+BEGIN_SRC emacs-lisp
+  (setq dired-guess-shell-alist-user                     ;设置文件默认打开的模式
+        (list
+          ;; 图书
+          (list "\\.chm$" '(concat
+                            "firefox chm:"            ;执行特定的命令
+                            (replace-regexp-in-string ;替换空格为%20
+                             " " "%20" (w3m-expand-file-name-as-url (dired-get-filename))) ;用URL的模式解析文件名
+                            " -q"))
+          ;; (list "\\.pdf$" "wine /data/Backup/WindowsTools/FoxitReader/FoxitReader.exe")
+          (list "\\.pdf$" "evince")
+          (list "\\.pdg$" "wine /data/Backup/WindowsTools/MiniPDG/pdgreader.exe")
+          ;; 多媒体
+          ;; (list (format "\\(%s\\)$" (emms-player-get emms-player-mplayer 'regex)) "mplayer")
+          (list "\\.\\(jpe?g\\|png\\)$" "gthumb" )
+          ;; 网页
+          (list "\\.html?$" "firefox")
+          ;; 压缩包
+          (list "\\.rar$" "unrar e -ad")
+          (list "\\.tar.bz2$" "tar jxvf")
+          (list "\\.gz$" "gzip -d")
+          (list "\\.mkv$" "smplayer")
+          (list "\\.rmvb$" "smplayer")
+          (list "\\.mp4$" "smplayer")
+          (list "\\.avi$" "smplayer")
+          (list "\\.doc$" "wps")
+          ;; 其他
+          (list "\\.exe$" "wine")))
+#+END_SRC
+**** TODO 剩下的这些还没有理解
+这些应该是dired有关于排序的。我还没有看到这里。中间还有一些注释掉的东
+西我也还没看。
+#+BEGIN_SRC emacs-lisp
+  (defvar one-key-menu-dired-sort-alist nil
+    "The `one-key' menu alist for DIRED-SORT.")
+
+  (setq one-key-menu-dired-sort-alist
+        '(
+          (("s" . "Size") . dired-sort-size)
+          (("x" . "Extension") . dired-sort-extension)
+          (("n" . "Name") . dired-sort-name)
+          (("t" . "Modified Time") . dired-sort-time)
+          (("u" . "Access Time") . dired-sort-utime)
+          (("c" . "Create Time") . dired-sort-ctime)))
+
+  (defun one-key-menu-dired-sort ()
+    "The `one-key' menu for DIRED-SORT."
+    (interactive)
+    (require 'one-key)
+    (require 'dired-sort)                 ;排序 dired 文件
+    (one-key-menu "DIRED-SORT" one-key-menu-dired-sort-alist t))
+#+END_SRC
+*** TODO wait for writing
+**** init-cc-mode.el
+**** init-w3m.el
+**** init-helm.el
+**** init-auctex.el
+**** init-auto-complete.el
+**** init-bm.el
+**** init-compilation.el
+**** init-cuda.el
+**** init-emacs-lisp.el
+**** init-eshell.el
+**** init-evil-leader.el
+**** init-flycheck.el
+**** init-global.el
+**** init-ibuffer.el
+**** init-icicles.el
+**** init-ido.el
+**** init-Info-mode.el
+**** init-latex.el
+**** init-lusty-explorer.el
+**** init-magit.el
+**** init-mew.el
+**** init-paredit.el
+**** init-peng-copyfun.el
+**** init-peng-prifun.el
+**** init-plugins.el
+**** init-scheme.el
+**** init-shell-pop.el
+**** init-shell-script.el
+**** init-slime.el
+**** init-smartparens.el
+**** init-smex.el
+**** init-sundry.el
+**** init-tags.el
+**** init-test.el
+**** init-uniquify.el
+**** init-weibo.el
+**** init-window-numbering.el
+**** init-yasnippet.el
+**** init-macro.el
