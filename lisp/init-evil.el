@@ -6,6 +6,7 @@
 (add-to-list 'load-path (concat EVIL-DIR "evil-leader"))
 (add-to-list 'load-path (concat EVIL-DIR "evil-numbers"))
 (require 'evil)
+(evil-mode 1)
 
 (require 'evil-surround)
 (require 'evil-nerd-commenter)
@@ -13,7 +14,9 @@
 (require 'evil-leader)
 (evilnc-default-hotkeys)
 (global-evil-surround-mode 1)
-(evil-mode 1)
+
+(require 'evil-matchit)			;在对应的tag中跳转，但是还是有些bug。
+(global-evil-matchit-mode 1)
 
 (require 'evil-numbers)
 (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)

@@ -28,5 +28,6 @@
 					    ))
 
 (peng-global-set-key (kbd "M-s o") 'helm-occur)
+(peng-global-set-key (kbd "M-s s") 'helm-occur-from-isearch)
 
 (provide 'init-helm)
