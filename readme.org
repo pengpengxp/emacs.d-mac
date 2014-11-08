@@ -981,6 +981,44 @@ my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些
     (require 'dired-sort)                 ;排序 dired 文件
     (one-key-menu "DIRED-SORT" one-key-menu-dired-sort-alist t))
 #+END_SRC
+*** init-yasnippet.el                                    :needtobeimproved:
+
+使用模版。刚开始的时候我使用默认配置挺好的。
+#+begin_src emacs-lisp
+  (require 'yasnippet)
+  (yas-global-mode 1)
+  (setq ac-source-yasnippet nil)          ;hope to use yasnippet with auto-complete
+#+end_src
+
+*Question*
+--------------------------------------------------------------------------------
+1) 但是后来发现，我在org-mode-hook中这样设置了以后，info这些的tab也变成
+   了yax/expand。这样设置的[tab]和<tab>这些是有什么区别？
+#+begin_src emacs-lisp
+  ;;; ----------------------------------------------------------------------
+  ;;; 如果yas-expand失败后，tab作用就是之前的，一般是org-cycle
+  ;;; ----------------------------------------------------------------------
+  (add-hook 'org-mode-hook
+            (let ((original-command (lookup-key org-mode-map [tab])))
+              `(lambda ()
+                 (setq yas-fallback-behavior
+                       '(apply ,original-command))
+                 (local-set-key [tab] 'yas-expand))))
+  ;;; ----------------------------------------------------------------------
+#+end_src
+--------------------------------------------------------------------------------
+
+*解决办法*
+--------------------------------------------------------------------------------
+1) 现在暂时还是这样设置，然后init-yasnippet.el中先不开启
+   yas-global-mode，而是在需要的mode中通过他们的hook单独调用
+   yas-minor-mode来开启：
+#+BEGIN_SRC emacs-lisp
+  (require 'yasnippet)
+  (yas-reload-all)
+  (setq ac-source-yasnippet nil)          ;hope to use yasnippet with auto-complete
+#+END_SRC
+--------------------------------------------------------------------------------
 *** TODO wait for writing
 **** init-cc-mode.el
 **** init-w3m.el
@@ -1019,5 +1057,4 @@ my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些
 **** init-uniquify.el
 **** init-weibo.el
 **** init-window-numbering.el
-**** init-yasnippet.el
 **** init-macro.el

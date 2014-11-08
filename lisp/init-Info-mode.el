@@ -1,5 +1,6 @@
 (add-hook 'Info-mode-hook '(lambda ()
-			     (interactive)
-			     (setq evil-emacs-state-cursor 'box)))
+			     (setq evil-emacs-state-cursor 'box)
+			     (local-set-key (kbd "<tab>") 'Info-next-reference)
+			     ))
 
 (provide 'init-Info-mode)

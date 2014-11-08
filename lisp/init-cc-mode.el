@@ -11,11 +11,13 @@
 	  (message "make occur some error"))))))
 
 (defun pengpengxp-c-common-mode ()
+  (yas-minor-mode 1)
   (linum-mode)
   (setq c-basic-offset 4)		;set the default indent offset
   (linum-mode 1)			;show the line number
   (local-set-key (kbd "C-j") 'view-stardict-in-buffer)
   ;; for the #if #else #endif
+  (define-key evil-normal-state-map (kbd "M-.") 'peng-helm-etags-select) ; shoule be file local!!
   (local-set-key (kbd "C-c C-u") 'c-up-conditional-with-else)
   (local-set-key (kbd "C-c C-n") 'c-down-conditional-with-else)
   (local-set-key (kbd "<f5> c") '(lambda ()
@@ -59,7 +61,8 @@
   (hl-line-mode 1)
   (autopair-on)
   (smartparens-mode -1)
-  (evil-close-folds)			;每次打开文件都是折叠的
+  ;; (evil-close-folds)			;每次打开文件都是折叠的
+  (define-key evil-normal-state-map (kbd "zi") 'hide-ifdefs)
   )
 (add-hook 'c-mode-common-hook 'pengpengxp-c-common-mode)
 

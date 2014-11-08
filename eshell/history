@@ -1,0 +1,10 @@
+ls
+find -type f 
+find -type f |grep netinet
+exit
+ls
+find -type f|grep types
+find -type f|grep types|grep sys
+exit
+exit
+exit

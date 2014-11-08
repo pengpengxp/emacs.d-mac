@@ -28,7 +28,6 @@
   (local-set-key (kbd "<left>") 'evil-backward-char)
   (local-set-key (kbd "<right>") 'evil-forward-char)
   (local-set-key (kbd "DEL") 'delete-window) ;;?????useless
-  (evil-define-key 'normal evil-normal-state-local-map (kbd "r") 'w3m-redisplay-this-page)
   )
 (add-hook 'w3m-mode-hook 'pengpengxp-w3m-mode)
 

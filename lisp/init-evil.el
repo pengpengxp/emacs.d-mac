@@ -35,6 +35,7 @@
 (evil-set-initial-state 'mew-message-mode 'emacs)
 (evil-set-initial-state 'bm-show-mode 'emacs)
 (evil-set-initial-state 'Man-mode 'emacs)
+(evil-set-initial-state 'w3m-mode  'emacs)
 
 
 ;;; esc就是退出insert模式。不再是emacs中的esc
