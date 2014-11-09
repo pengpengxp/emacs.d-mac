@@ -108,6 +108,7 @@
 (peng-global-set-key (kbd "<f8> c r") 'winner-redo)
 (peng-global-set-key (kbd "<f8> c m") 'shell-command)
 (peng-global-set-key (kbd "<f8> c c") 'org-capture)
+(peng-global-set-key (kbd "<f8> c l") 'calendar)
 (peng-global-set-key (kbd "<f8> b") 'ibuffer)
 (peng-global-set-key (kbd "<f8> <f8>") '(lambda ()
 					  (interactive)
@@ -212,5 +213,8 @@
 
 ;;; revert-buffer automaticcally
 (global-auto-revert-mode 1)
+
+;;; 这样以后，应该每次使用narrow这些都不需要提醒了
+(put 'narrow-to-region 'disabled nil)
 
 (provide 'init-global)

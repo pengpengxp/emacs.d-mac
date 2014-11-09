@@ -64,6 +64,8 @@
 (require 'init-magit)
 (require 'init-mew)
 (require 'init-expand-region)
+(require 'init-calendar)
+(require 'init-gnus)
 
 ;;; don't use too often
 ;; (require 'init-bm)
