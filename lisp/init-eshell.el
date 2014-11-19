@@ -16,6 +16,10 @@
     ;; simply delete the region
     (delete-region (point-min) (point-max))))
 
+(defun eshell/ei (arg)
+  "use ei as find-file"
+  (find-file arg))
+
 (require 'helm)
 (add-hook 'eshell-mode-hook
           #'(lambda ()

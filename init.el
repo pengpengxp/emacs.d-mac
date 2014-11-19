@@ -1,7 +1,7 @@
 ;;; --------------------------------------------------------------------------------
 ;;; 设置环境变量
 ;;; --------------------------------------------------------------------------------
-(setenv "PATH" (concat "/home/pengpengxp/peng_bin:" (getenv "PATH")))
+(setenv "PATH" (shell-command-to-string "bash -i -c 'echo -n $PATH' 2>/dev/null"))
 
 (setq HOME (getenv "HOME"))
 (setq DIR (concat HOME "/.emacs.d"))
@@ -42,6 +42,7 @@
 (require 'init-cuda)
 (require 'init-yasnippet)
 (require 'init-auto-complete)
+(require 'init-company-mode)		;company is the alternative for me
 
 (require 'init-helm)
 ;; (require 'init-ido)

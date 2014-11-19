@@ -172,6 +172,25 @@ usage: (peng... \"keys-you-want-to-bind\" 'function-you-want-to-bind  "
 ;;; ----------------------------------------------------------------------
 
 
+;;; ----------------------------------------------------------------------
+;;; local-set-key with evil
+;;; ----------------------------------------------------------------------
+(defun peng-local-set-key (keys function)
+  "use for key-binding with evil bind in local map and all evil
+map to make sure it works as I want
+
+绑定所有local-map。这才是是我需要的每个不同mode中的local-set-key
+usage: (peng... \"keys-you-want-to-bind\"
+'function-you-want-to-bind "
+  (define-key evil-normal-state-local-map keys function)
+  (define-key evil-emacs-state-local-map keys function)
+  (define-key evil-insert-state-local-map keys function)
+  (define-key evil-motion-state-local-map keys function)
+  (define-key evil-visual-state-local-map keys function)
+  (define-key evil-replace-state-local-map keys function)
+  (define-key evil-operator-state-local-map keys function)
+  )
+;;; ----------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------
 ;;; I modified the from the helm-src file

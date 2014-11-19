@@ -41,6 +41,7 @@
 (evil-set-initial-state 'w3m-mode  'emacs)
 (evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'gnus-group-mode 'emacs)
+(evil-set-initial-state 'inferior-scheme-mode 'emacs)
 
 ;;; esc就是退出insert模式。不再是emacs中的esc
 (setq evil-esc-delay 0)

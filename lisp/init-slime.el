@@ -1,8 +1,7 @@
 (require 'slime-autoloads)
 
 ;; Set your lisp system and, optionally, some contribs
-;; (setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "/opt/sbcl/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 
 (add-hook 'slime-mode-hook '(lambda ()
