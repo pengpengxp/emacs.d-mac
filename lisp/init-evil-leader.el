@@ -54,8 +54,15 @@
 				 " -pthread ;./a.out")))
 	       ))
   "m" '(lambda ()
-  	 (interactive)
-  	 (compile "make clean;make;")
+	 "Interrupt old compilation, if any, and recompile."
+	 (interactive)
+	 (ignore-errors 
+	   (process-kill-without-query 
+	    (get-buffer-process
+	     (get-buffer "*compilation*"))))
+	 (ignore-errors 
+	   (kill-buffer "*compilation*"))
+	 (compile "make clean;make")
 	 )
   "j" 'bookmark-jump
   "a" 'org-agenda
