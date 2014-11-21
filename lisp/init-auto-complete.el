@@ -12,4 +12,8 @@
 ;; (setq ac-auto-start nil)
 ;;;use auto-complete
 
+;;; use `C-n C-p' to select
+(define-key ac-completing-map (kbd "C-n") 'ac-next)
+(define-key ac-completing-map (kbd "C-p") 'ac-previous)
+
 (provide 'init-auto-complete)

@@ -1,6 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;write scheme in emacs
 (require 'cmuscheme)
+(require 'smart-tab)
 
 (setq scheme-program-name "mit-scheme")	;scheme is the default interpreter,here I change it to racket
 
@@ -91,14 +92,16 @@ PS: this function is inspired by Wang Yin."
 
 (add-hook 'scheme-mode-hook '(lambda ()
 			       (interactive)
+			       (smart-tab-mode-on)
+			       ;; (peng-local-set-key (kbd "<tab>") 'indent-for-tab-command)
+			       ;; (peng-local-set-key (kbd "<tab>") 'smart-tab)
+			       ;; (peng-local-set-key (kbd "<backtab>") 'ac-trigger-key-command)
 			       (peng-local-set-key (kbd "<f5> r") 'peng-scheme-send-region)
 			       (peng-local-set-key (kbd "<f5> l") 'peng-scheme-send-current-line)
 			       (peng-local-set-key (kbd "<f5> f") 'peng-scheme-load-current-file)
 			       (peng-local-set-key (kbd "C-x C-e") 'peng-scheme-send-last-sexp)
 			       (peng-local-set-key (kbd "C-c C-r") 'peng-scheme-send-region)
 			       (peng-local-set-key (kbd "C-c C-f") 'peng-scheme-load-current-file)
-			       (peng-local-set-key (kbd "<tab>") 'indent-for-tab-command)
-			       (peng-local-set-key (kbd "<backtab>") 'ac-trigger-key-command)
 			       (paredit-mode 1)
 			       (auto-complete-mode 1)
 			       ))

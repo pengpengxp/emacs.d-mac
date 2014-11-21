@@ -67,6 +67,7 @@
 (require 'init-expand-region)
 (require 'init-calendar)
 (require 'init-gnus)
+(require 'init-smart-tab)
 
 ;;; don't use too often
 ;; (require 'init-bm)
