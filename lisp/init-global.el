@@ -113,6 +113,9 @@
 (peng-global-set-key (kbd "<f8> <f8>") '(lambda ()
 					  (interactive)
 					  (switch-to-buffer (other-buffer))))
+(peng-global-set-key (kbd "<f8> zf") 'w3m-find-file)
+(peng-global-set-key (kbd "<f8> zb") 'w3m-browse-url)
+
 
 ;;; f9 map for using register temporarily
 (define-prefix-command 'F9-map)

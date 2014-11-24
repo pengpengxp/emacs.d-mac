@@ -28,6 +28,7 @@
   (local-set-key (kbd "<left>") 'evil-backward-char)
   (local-set-key (kbd "<right>") 'evil-forward-char)
   (local-set-key (kbd "DEL") 'delete-window) ;;?????useless
+  (smart-tab-mode-off)
   )
 (add-hook 'w3m-mode-hook 'pengpengxp-w3m-mode)
 

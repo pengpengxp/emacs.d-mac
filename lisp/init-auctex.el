@@ -18,5 +18,17 @@
 	    (company-mode-on)
 	    (autopair-on)
 	    ))
-
+;;; the keybinding
+(add-hook 'LaTeX-mode-hook
+	  (lambda ()
+	    (define-key evil-normal-state-local-map (kbd "SPC v") '(lambda ()
+								     (interactive)
+								     (let* ((basefile (file-name-base)))
+								       (compile (concat "tex "
+											(concat basefile ".tex")
+											" '\\end'"
+											";evince "
+											(concat basefile ".dvi")
+											))
+								       )))))
 (provide 'init-auctex)
