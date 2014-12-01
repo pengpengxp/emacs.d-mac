@@ -1,4 +1,5 @@
 ;; ;; pengpengxp's w3m-mode
+(require 'smart-tab)
 (add-to-list 'load-path (concat SITE-LISP "emacs-w3m"))
 (require 'w3m-load)
 (provide 'w3m-e23)
@@ -9,6 +10,11 @@
 (autoload 'w3m-search "w3m-search" "Search words using emacs-w3m." t)
 (setq w3m-use-toolbar t)
 (setq browse-url-browser-function 'w3m-browse-url)                 ;set w3m as emacs's default browser默认还是不启用算了
+(setq w3m-fill-column 70)
+(setq w3m-session-automatic-save 1)
+(setq w3m-session-deleted-save 1)
+(setq w3m-session-load-last-sessions 1)
+(setq w3m-use-title-buffer-name 1)	;use the title as buffer-name
 
 ;; 默认显示图片
 (setq w3m-default-display-inline-images t)
@@ -28,6 +34,13 @@
   (local-set-key (kbd "<left>") 'evil-backward-char)
   (local-set-key (kbd "<right>") 'evil-forward-char)
   (local-set-key (kbd "DEL") 'delete-window) ;;?????useless
+  (local-set-key (kbd "o") 'w3m-browse-url)
+  (local-set-key (kbd "C-w") 'kill-this-buffer)
+  (local-set-key (kbd "C-t") 'w3m-goto-new-session-url)
+  (local-set-key (kbd "l") 'w3m-next-buffer)
+  (local-set-key (kbd "h") 'w3m-previous-buffer)
+  (local-set-key (kbd "/") 'isearch-forward)
+  (local-set-key (kbd "b") 'switch-to-buffer)
   (smart-tab-mode-off)
   )
 (add-hook 'w3m-mode-hook 'pengpengxp-w3m-mode)
