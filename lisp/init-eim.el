@@ -18,9 +18,11 @@
 (global-set-key (kbd ";") 'eim-insert-ascii)
 (peng-global-set-key (kbd "s-;") 'eim-insert-ascii)
 
-(setq default-input-method "eim-py")
+(setq default-input-method "eim-wb")
 
 (add-hook 'eim-active-hook '(lambda ()
 			      (setq eim-page-length 9)))
+
+(setq eim-wb-history-file nil)		;不使用五笔记录上次输入位置
 
 (provide 'init-eim)

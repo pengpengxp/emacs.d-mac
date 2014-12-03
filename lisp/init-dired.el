@@ -105,7 +105,7 @@
       (list
         ;; 图书
         (list "\\.chm$" '(concat
-                          "firefox chm:"            ;执行特定的命令
+                          "google-chrome chm:"            ;执行特定的命令
                           (replace-regexp-in-string ;替换空格为%20
                            " " "%20" (w3m-expand-file-name-as-url (dired-get-filename))) ;用URL的模式解析文件名
                           " -q"))
@@ -116,7 +116,7 @@
         ;; (list (format "\\(%s\\)$" (emms-player-get emms-player-mplayer 'regex)) "mplayer")
         (list "\\.\\(jpe?g\\|png\\)$" "gthumb" )
         ;; 网页
-        (list "\\.html?$" "firefox")
+        (list "\\.html?$" "google-chrome")
         ;; 压缩包
         (list "\\.rar$" "unrar e -ad")
         (list "\\.tar.bz2$" "tar jxvf")

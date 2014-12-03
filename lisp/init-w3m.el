@@ -9,7 +9,11 @@
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
 (autoload 'w3m-search "w3m-search" "Search words using emacs-w3m." t)
 (setq w3m-use-toolbar t)
-(setq browse-url-browser-function 'w3m-browse-url)                 ;set w3m as emacs's default browser默认还是不启用算了
+;; (setq browse-url-browser-function 'w3m-browse-url)                 ;set w3m as emacs's default browser默认还是不启用算了
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome")
+
 (setq w3m-fill-column 70)
 (setq w3m-session-automatic-save 1)
 (setq w3m-session-deleted-save 1)

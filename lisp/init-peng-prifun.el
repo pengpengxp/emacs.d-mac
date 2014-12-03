@@ -1,10 +1,19 @@
 ;;; This is pengpengxp's private function
 
 (defun  peng-reset-tags-table ()
+  "reset the tags table to my defalt TAGS"
   (interactive)
+  (setq tags-table-list
+	'("~/.emacs.d/TAGS" "/usr/share/emacs/24.3/TAGS"))
   (setq tags-file-name nil)
-  (setq tags-table-list nil))
+  )
 
+(defun  peng-clear-tags-table ()
+  "reset the tags table to nil"
+  (interactive)
+  (setq tags-table-list nil)
+  (setq tags-file-name nil)
+  )
 ;;; ----------------------------------------------------------------------
 ;;; My own copy and paste line functon
 ;;; ----------------------------------------------------------------------
@@ -244,5 +253,26 @@ This function aggregates three sources of tag files:
       (beginning-of-line)
       (forward-char colpos)
       (setq i (1+ i)))))
+
+(defun peng-compile-current-file-as-plain-tex ()
+  "compile current file as plain tex.
+This function will send the current file to tex, and then input
+the `\end' to end the tex program. At last, use evince to display the result"
+  (interactive)
+  (let ((file-name (file-name-base)))
+    (compile (concat "tex "
+		     file-name
+		     ".tex"
+		     "'\\end';"
+		     "evince "
+		     file-name
+		     ".dvi"))))
+
+(defun peng-change-current-file-to-executable ()
+  "Change current file to executable"
+  (interactive)
+  (let ((file-name (buffer-file-name)))
+    (shell-command (concat "chmod a+x "
+			   file-name))))
 
 (provide 'init-peng-prifun)

@@ -59,18 +59,26 @@
 				  (interactive)
 				  (save-window-excursion
 				    (save-restriction
-				      (shell-command (concat "gnome-terminal -x thunar " default-directory))))))
+				      (shell-command (concat "thunar " 
+							     default-directory
+							     "&"))))))
 (peng-global-set-key (kbd "<f6> n") '(lambda ()
 				  (interactive)
 				  (save-window-excursion
 				    (save-restriction
-				      (shell-command (concat "gnome-terminal -x nautilus " default-directory))))))
+				      (shell-command (concat "nautilus " 
+							     default-directory
+							     "&"))))))
 ;;; 在当前文件夹快速打开终端
 (peng-global-set-key (kbd "<f6> t") '(lambda ()
 				  (interactive)
 				  (save-window-excursion
 				    (save-restriction
-				      (shell-command "gnome-terminal&")))))
+				      ;; (shell-command (concat "gnome-terminal 2>/dev/null "
+				      (shell-command (concat "gnome-terminal && ls "
+							     " "
+							     default-directory
+							     " &"))))))
 
 ;; f8-map the global key binding are all here
 (define-prefix-command 'F8-map)
@@ -117,11 +125,10 @@
 (peng-global-set-key (kbd "<f8> zb") 'w3m-browse-url)
 
 
-;;; f9 map for using register temporarily
+;;; f9 map for using pengpengxp's personal function
 (define-prefix-command 'F9-map)
 (global-set-key (kbd "<f9>") 'F9-map)
-(peng-global-set-key (kbd "<f9> <f9>") 'jump-to-register)
-(peng-global-set-key (kbd "<f9> <f10>") 'point-to-register)
+(peng-global-set-key (kbd "<f9> ce") 'peng-change-current-file-to-executable)
 
 (peng-global-set-key (kbd "<f12>") 'view-stardict-in-buffer)
 (peng-global-set-key (kbd "<delete>") 'view-stardict-in-buffer)

@@ -20,7 +20,7 @@
 	    ))
 ;;; the keybinding
 (add-hook 'LaTeX-mode-hook
-	  (lambda ()
+	  '(lambda ()
 	    (define-key evil-normal-state-local-map (kbd "SPC v") '(lambda ()
 								     (interactive)
 								     (let* ((basefile (file-name-base)))
@@ -30,5 +30,17 @@
 											";evince "
 											(concat basefile ".dvi")
 											))
-								       )))))
+								       )))
+	    ))
+(add-hook 'LaTeX-mode-hook '(lambda ()
+			      (interactive)
+			      (peng-local-set-key (kbd "<f8> v") 'peng-compile-current-file-as-plain-tex)
+			      ))
+
+(setq auto-mode-alist
+      (append
+       ;; the original tex-mode can't be use
+       '(("\\.tex\\'". latex-mode))
+       auto-mode-alist))
+
 (provide 'init-auctex)

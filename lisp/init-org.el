@@ -34,15 +34,22 @@
 ;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
 			    (auto-fill-mode 1)
+			    (define-key evil-normal-state-local-map (kbd "j") 'next-line)
+			    (define-key evil-normal-state-local-map (kbd "C-n") 'next-line)
+			    (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
+			    (define-key evil-normal-state-local-map (kbd "C-p") 'previous-line)
 			    (local-set-key (kbd "<tab>") 'org-cycle)
 			    (local-set-key (kbd "<C-tab>") 'other-window)
 			    (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
+			    (peng-local-set-key (kbd "<return>") 'org-return)
 			    (setq truncate-lines nil)
 			    (yas-minor-mode 1)
 			    (local-set-key (kbd "C-c a") 'org-agenda)
+			    (peng-local-set-key (kbd "C-c &") 'org-mark-ring-goto)
 			    (setq org-agenda-files ORG-AGENDA-FILES)
 			    (setq org-directory ORG-HOME)
 			    (org-indent-mode 1)	;不显示那么多个*
+			    (setq org-return-follows-link t) ;超连接可以使用回车打开
 			    (when window-system
 			      (local-set-key (kbd "<s-return>") 'org-insert-subheading))
 			    ))

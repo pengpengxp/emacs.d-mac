@@ -17,7 +17,8 @@
   (linum-mode 1)			;show the line number
   (local-set-key (kbd "C-j") 'view-stardict-in-buffer)
   ;; for the #if #else #endif
-  (define-key evil-normal-state-map (kbd "M-.") 'peng-helm-etags-select) ; shoule be file local!!
+  ;; (define-key evil-normal-state-map (kbd "M-.") 'peng-helm-etags-select) ; shoule be file local!!
+  (define-key evil-normal-state-map (kbd "M-.") 'find-tag) ; shoule be file local!!
   (local-set-key (kbd "C-c C-u") 'c-up-conditional-with-else)
   (local-set-key (kbd "C-c C-n") 'c-down-conditional-with-else)
   (local-set-key (kbd "<f5> c") '(lambda ()
