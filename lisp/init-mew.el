@@ -17,20 +17,38 @@
       'mew-send-hook))
 
 ;;; use smtp to send mail
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;my public mailbox
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mew-name "Xie Peng") ;; (user-full-name)
 (setq mew-user "pengpengxppub") ;; (user-login-name)
 (setq mew-mail-domain "sina.com")
 (setq mew-smtp-server "smtp.sina.com")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; use imap to receive mail
 ;; my sina mail
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;my public mailbox
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; (setq mew-proto "%")
+;; (setq mew-imap-user "pengpengxppub")  ;; (user-login-name)
+;; (setq mew-imap-server "imap.sina.com")    ;; if not localhost
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;my private mailbox
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq mew-proto "%")
-(setq mew-imap-user "pengpengxppub")  ;; (user-login-name)
+(setq mew-imap-user "pengpengxppri")  ;; (user-login-name)
 (setq mew-imap-server "imap.sina.com")    ;; if not localhost
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; ;; qq mail
 ;; (setq mew-proto "%")
 ;; (setq mew-imap-user "474364048")  ;; (user-login-name)
 ;; (setq mew-imap-server "imap.qq.com")    ;; if not localhost
 
+(setq mew-use-cached-passwd t)		;保存密码到内存。
+;; (setq mew-use-master-passwd t)		;保存密码到文件，有主密码
 (provide 'init-mew)

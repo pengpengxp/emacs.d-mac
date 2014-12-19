@@ -18,4 +18,28 @@
              'ox-html-clear-single-linebreak-for-cjk)
 
 (setq org-html-head "<link href=\"css/org-manual.css\" rel=\"stylesheet\" type=\"text/css\">")
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; setting export the org-file to pdf,copied from others
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 使用xelatex一步生成PDF，不是org-latex-to-pdf-process这个命令
+(setq org-latex-pdf-process
+      '(
+	"xelatex -interaction nonstopmode -output-directory %o %f"
+	"xelatex -interaction nonstopmode -output-directory %o %f"
+	"xelatex -interaction nonstopmode -output-directory %o %f"
+	"rm -fr %b.out %b.log %b.tex auto"
+	))
+   
+;;; 增加这个class
+(add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}"
+				  ("\\section{%s}" . "\\section*{%s}")
+				  ("\\subsection{%s}" . "\\subsection*{%s}")
+				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;;; 设置默认的class为ctexart
+(setq org-latex-default-class "ctexart")
+
 (provide 'init-org-export)

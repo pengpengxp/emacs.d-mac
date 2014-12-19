@@ -275,4 +275,20 @@ the `\end' to end the tex program. At last, use evince to display the result"
     (shell-command (concat "chmod a+x "
 			   file-name))))
 
+(defun peng-compile-current-latex-file-to-pdf ()
+  "把当前的buffer当做latax源文件来编译了
+
+默认的是调用三次xelatex，然后删除中间文件
+如果有其它需要，请直接使用命令行来完成"
+  (interactive)
+  (let ((tempfile (file-name-base))
+	(temppro "xelatex"))
+    (shell-command (concat "xelatex "
+			   (concat tempfile ".tex")
+			   ";xelatex "
+			   (concat tempfile ".tex")
+			   ";xelatex "
+			   (concat tempfile ".tex")
+			   (concat  ";rm -rf " tempfile ".out " tempfile ".log " tempfile ".tex" ";evince " tempfile ".pdf")))))
+
 (provide 'init-peng-prifun)

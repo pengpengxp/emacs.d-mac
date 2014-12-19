@@ -163,4 +163,18 @@
 (setq org-agenda-span 'day)
 
 
+;; 设置org-mode中对各种Babel语言支持，这样就可以通过`C-c C-c'执行这些命
+;; 令了
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (emacs-lisp . t)
+   (C . t)
+   (perl . t)
+   (sh . t)
+   (python . t)
+   (latex . t)
+   (js . t)
+   ))
+
 (provide 'init-org)
