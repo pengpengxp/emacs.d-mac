@@ -62,4 +62,42 @@ occurence of CHAR."
 (defun show-buffer-major-mode (buffer-or-string)
   "Returns the major mode associated with a buffer."
   (with-current-buffer buffer-or-string major-mode))
+
+;;; ----------------------------------------------------------------------
+;;; 写一些脚本文件，在保存的时候自动为其加上可执行权限，非常有用
+;;; ----------------------------------------------------------------------
+(setq my-shebang-patterns
+      (list "^#!/usr/.*/perl\\(\\( \\)\\|\\( .+ \\)\\)-w *.*"
+	    "^#!/usr/.*/sh"
+	    "^#!/usr/.*/bash"
+	    "^#!/bin/sh"
+	    "^#!/.*/perl"
+	    "^#!/.*/awk"
+	    "^#!/.*/sed"
+	    "^#!/bin/bash"))
+(add-hook
+ 'after-save-hook
+ (lambda ()
+   (if (not (= (shell-command (concat "test -x " (buffer-file-name))) 0))
+       (progn
+	 ;; This puts message in *Message* twice, but minibuffer
+	 ;; output looks better.
+	 (message (concat "Wrote " (buffer-file-name)))
+	 (save-excursion
+	   (goto-char (point-min))
+	   ;; Always checks every pattern even after
+	   ;; match.  Inefficient but easy.
+	   (dolist (my-shebang-pat my-shebang-patterns)
+	     (if (looking-at my-shebang-pat)
+		 (if (= (shell-command
+			 (concat "chmod u+x " (buffer-file-name)))
+			0)
+		     (message (concat
+			       "Wrote and made executable "
+			       (buffer-file-name))))))))
+     ;; This puts message in *Message* twice, but minibuffer output
+     ;; looks better.
+     (message (concat "Wrote " (buffer-file-name))))))
+;;; ----------------------------------------------------------------------
+
 (provide 'init-peng-copyfun)

@@ -35,6 +35,9 @@
 (add-hook 'LaTeX-mode-hook '(lambda ()
 			      (interactive)
 			      (peng-local-set-key (kbd "<f8> v") 'peng-compile-current-file-as-plain-tex)
+			      (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-compile-current-file-as-plain-tex)
+			      (peng-local-set-key (kbd "<f8> l") 'peng-compile-current-latex-file-to-pdf)
+			      (define-key evil-normal-state-local-map (kbd "SPC l") 'peng-compile-current-latex-file-to-pdf)
 			      ))
 
 (setq auto-mode-alist

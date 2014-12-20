@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>readme</title>
+<!-- 2014-12-20 六 12:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="pengpengxp" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link href="css/org-manual.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">readme</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 我的emacs配置</a>
+<ul>
+<li><a href="#sec-1-1">1.1. init.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needtobeimproved">needtobeimproved</span></span></a></li>
+<li><a href="#sec-1-2">1.2. site-lisp</a></li>
+<li><a href="#sec-1-3">1.3. lisp</a>
+<ul>
+<li><a href="#sec-1-3-1">1.3.1. init-evil.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="question">question</span></span></a></li>
+<li><a href="#sec-1-3-2">1.3.2. init-org.el</a></li>
+<li><a href="#sec-1-3-3">1.3.3. init-org-export.el</a></li>
+<li><a href="#sec-1-3-4">1.3.4. init-eim.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="eim">eim</span></span></a></li>
+<li><a href="#sec-1-3-5">1.3.5. init-global.el</a></li>
+<li><a href="#sec-1-3-6">1.3.6. init-powerline.el</a></li>
+<li><a href="#sec-1-3-7">1.3.7. init-sql.el</a></li>
+<li><a href="#sec-1-3-8">1.3.8. init-font.el</a></li>
+<li><a href="#sec-1-3-9">1.3.9. init-guide-key.el</a></li>
+<li><a href="#sec-1-3-10">1.3.10. init-bookmark-bmemu-mode.el</a></li>
+<li><a href="#sec-1-3-11">1.3.11. init-dired.el</a></li>
+<li><a href="#sec-1-3-12">1.3.12. init-yasnippet.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needtobeimproved">needtobeimproved</span></span></a></li>
+<li><a href="#sec-1-3-13">1.3.13. init-header2.el</a></li>
+<li><a href="#sec-1-3-14">1.3.14. init-auto-insert.el</a></li>
+<li><a href="#sec-1-3-15">1.3.15. <span class="todo TODO">TODO</span> wait for writing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+This is My first repositry on GitHub
+</p>
+
+<p>
+I'm pengpengxp, who study in CQUPT in Chongqing, China.I like use
+emacs.
+</p>
+
+<p>
+I want to put my emacs configuration here
+</p>
+
+<p>
+email:pengpengxppri@gmail.com
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 我的emacs配置</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+重新配置emacs也有一段时间了，今天早上也不想做事，不如就来补上这篇emacs
+的配置文件的说明把。
+</p>
+
+<p>
+之前我的配置文件都是乱的。参考了网上别人的配置文件，将我的配置文件也
+“格式化”了一下。
+</p>
+</div>
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> init.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needtobeimproved">needtobeimproved</span></span></h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+init.el是总调用接口。首先在里面设置我的环境变量：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;;</span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#29615;&#22659;&#21464;&#37327;</span>
+(setenv <span style="color: #ffc1c1;">"PATH"</span> (concat <span style="color: #ffc1c1;">"/home/pengpengxp/peng_bin:"</span> (getenv <span style="color: #ffc1c1;">"PATH"</span>)))
+
+(setq HOME (getenv <span style="color: #ffc1c1;">"HOME"</span>))
+(setq DIR (concat HOME <span style="color: #ffc1c1;">"/.emacs.d"</span>))
+(setq GTD (concat HOME <span style="color: #ffc1c1;">"/gtd"</span>))
+(setq LISP (concat DIR <span style="color: #ffc1c1;">"/lisp"</span>))
+(setq SITE-LISP (concat DIR <span style="color: #ffc1c1;">"/site-lisp"</span>))
+</pre>
+</div>
+<p>
+然后设置load-path：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path DIR)
+(add-to-list 'load-path SITE-LISP)
+(add-to-list 'load-path LISP)
+(<span style="color: #00ffff;">let</span> ((default-directory SITE-LISP))    <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">Don't add load-path after plugins every time</span>
+  (normal-top-level-add-subdirs-to-load-path))
+</pre>
+</div>
+<p>
+这最后一句是将所有SITE-LISP目录下的子目录都加入到了load-path中去了。
+（我的理解是这样的，但是没有具体测试是不是所有子目录）。其中SITE-LISP是我放置第三方插件的地方。这样不用每次添加插件的的时候都使用add-to-list
+手动添加了。这里可能需要改进一下。
+</p>
+
+<p>
+<span class="underline">*我觉得这样定义的load-path太多了。需要寻找的地方太多，可能影响速度。
+*</span>
+</p>
+
+<p>
+接下来是我copy别人的函数和自定义的函数：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">init-peng-copyfun</span>)            <span style="color: #fa8072; font-style: italic;">;;;; </span><span style="color: #ff7f24; font-style: italic;">some function I copyed from others</span>
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">init-peng-prifun</span>)             <span style="color: #fa8072; font-style: italic;">;;;; </span><span style="color: #ff7f24; font-style: italic;">load function wrote by pengpengxp</span>
+</pre>
+</div>
+
+<p>
+然后就是所有第三方插件：注意这些插件，必须首先加载evil。因为下面有很多
+ 按键绑定都是在evil的基础上绑定的。当然，也可以每次在需要加载的时候都
+ 调用一次
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">evil</span>)
+</pre>
+</div>
+<p>
+最后加载init-font.el和init-global.el；
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> site-lisp</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+site-lisp目录用于存放所有第三方插件。直接下载下来放到这里就行了。我一般使用git clone *
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> lisp</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+lisp目录用于存放我所有的init-*.el文件，就是我实际上的所有配置文件。每个文件都以provide结尾，以供init.el调用。
+</p>
+</div>
+<div id="outline-container-sec-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> init-evil.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="question">question</span></span></h4>
+<div class="outline-text-4" id="text-1-3-1">
+</div><ol class="org-ol"><li>安装了一些基于evil的插件：<br  /><div class="outline-text-5" id="text-1-3-1-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">evil-surround</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">evil-nerd-commenter</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">evil-visualstar</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">evil-leader</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">evil-numbers</span>)
+</pre>
+</div>
+<p>
+设置：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(evilnc-default-hotkeys)
+(global-evil-surround-mode 1)
+(evil-mode 1)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-c +"</span>) 'evil-numbers/inc-at-pt)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-c -"</span>) 'evil-numbers/dec-at-pt)
+(setq evilnc-hotkey-comment-operator <span style="color: #ffc1c1;">",,"</span>)
+</pre>
+</div>
+</div>
+</li>
+<li>一些mode的initial-state<br  /><div class="outline-text-5" id="text-1-3-1-2">
+<p>
+evil中的state就是vi中的mode，emacs默认的mode还是以前mode的意思。evil总共有好几个state，其中我经常使用的就是normal,insert,emacs三个。evil对每个mode都是默认进入的normal。有些emacs的mode我不想使用evil。就设置为默认进入emacs-mode：
+</p>
+
+<p>
+<span class="underline"><b>问题：有些mode，比如bm-show-mode是在init.el后面才加载的。这样在前面设置也没有问题吗？还是说elisp没有“前后”之分？</b></span>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#36825;&#20123;&#27169;&#24335;&#30340;&#40664;&#35748;evil&#27169;&#24335;</span>
+(evil-set-initial-state 'ibuffer-mode 'emacs)
+(evil-set-initial-state 'bookmark-bmenu-mode 'emacs)
+(evil-set-initial-state 'Info-mode 'emacs)
+(evil-set-initial-state 'compilation-mode 'emacs)
+(evil-set-initial-state 'help-mode 'emacs)
+(evil-set-initial-state 'dired-mode 'emacs)
+(evil-set-initial-state 'compilation-mode 'emacs)
+(evil-set-initial-state 'apropos-mode 'emacs)
+(evil-set-initial-state 'magit-mode  'emacs)
+(evil-set-initial-state 'magit-process-mode 'emacs)
+(evil-set-initial-state 'mew-draft-mode 'emacs)
+(evil-set-initial-state 'mew-summary-mode 'emacs)
+(evil-set-initial-state 'mew-message-mode 'emacs)
+(evil-set-initial-state 'bm-show-mode 'emacs)
+(evil-set-initial-state 'Man-mode 'emacs)
+</pre>
+</div>
+
+<p>
+esc就是退出insert模式。不再是emacs中的esc
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq evil-esc-delay 0)
+</pre>
+</div>
+</div>
+</li>
+
+<li>定制insert-state<br  /><div class="outline-text-5" id="text-1-3-1-3">
+<p>
+<b>基本都是从网上找到的</b>
+</p>
+
+<p>
+我认为emacs在进行纯输入的时候是很强大的，不需要evil，所有我首先把所有
+evil-insert-state中的按键绑定都去掉：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">remove all keybindings from insert-state keymap,it is VERY VERY important</span>
+(setcdr evil-insert-state-map nil)
+</pre>
+</div>
+<p>
+然后把emacs模式下的所有按键绑定到insert模式下：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key evil-insert-state-map
+  (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
+</pre>
+</div>
+<p>
+在insert-mode下，esc需要能退出insert-mode到normal-mode中：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">but [escape] should switch back to normal state</span>
+(define-key evil-insert-state-map [escape] 'evil-normal-state)
+</pre>
+</div>
+<p>
+之前我喜欢在vi中使用kj来退出insert回到normal中，这里抄了一个别人的函数：
+<b>（暂时还没有看懂）</b>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key evil-insert-state-map <span style="color: #ffc1c1;">"k"</span> #'cofi/maybe-exit)
+(<span style="color: #00ffff;">evil-define-command</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">cofi/maybe-exit</span> ()
+  <span style="color: #b0c4de;">:repeat</span> change
+  (interactive)
+  (<span style="color: #00ffff;">let</span> ((modified (buffer-modified-p)))
+    (insert <span style="color: #ffc1c1;">"k"</span>)
+    (<span style="color: #00ffff;">let</span> ((evt (read-event (format <span style="color: #ffc1c1;">"Insert %c to exit insert state"</span> ?j)
+                           nil 0.5)))
+      (<span style="color: #00ffff;">cond</span>
+       ((null evt) (message <span style="color: #ffc1c1;">""</span>))
+       ((and (integerp evt) (char-equal evt ?j))
+        (delete-char -1)
+        (set-buffer-modified-p modified)
+        (push 'escape unread-command-events))
+       (t (setq unread-command-events (append unread-command-events
+                                              (list evt))))))))
+</pre>
+</div>
+</div>
+</li>
+<li>按键绑定<br  /><div class="outline-text-5" id="text-1-3-1-4">
+<p>
+主要是定义evil-normal-state-map和evil-motion-state-map。刚开始的想法是把','定义成这两个map中的prefix-key：
+</p>
+
+<p>
+PS:但是我发现，直接使用<a href="#sec-1-3-15-11">init-evil-leader.el</a>比较简单了，不过evil-leader使
+ 用到最后感觉定制性没有那么强，现在暂时使用着evil-leader
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-prefix-command 'peng-evil-global-map)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">","</span>) 'peng-evil-global-map)
+(define-key evil-motion-state-map (kbd <span style="color: #ffc1c1;">","</span>) 'peng-evil-global-map)
+</pre>
+</div>
+<p>
+然后就是实际定义，使用define-key这样定义：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">;;; normal-map</span>
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"DEL"</span>) 'delete-other-windows)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">"ei "</span> 'find-file)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",,"</span> 'evilnc-comment-operator)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",1"</span> 'delete-other-windows)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",0"</span> 'delete-window)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",2"</span> 'split-window-below)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",3"</span> 'split-window-right)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",u"</span> 'winner-undo)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",r"</span> 'winner-redo)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",h"</span> 'eshell)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",p"</span> 'switch-to-buffer)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",n"</span> 'save-buffer)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",k"</span> 'kill-buffer)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",w"</span> 'eshell)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">",b"</span> 'ibuffer)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">"m"</span> 'point-to-register)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">"'"</span> 'jump-to-register)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">"-"</span> 'split-window-below)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">"|"</span> 'split-window-right)
+(define-key evil-normal-state-map <span style="color: #ffc1c1;">"q"</span> 'View-quit)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-n"</span>) 'evil-next-line)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-r"</span>) 'isearch-backward)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-p"</span>) 'evil-previous-line)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-e"</span>) 'move-end-of-line)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"M-."</span>) 'find-tag)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-b"</span>) 'backward-char)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"C-f"</span>) 'forward-char)
+(define-key evil-normal-state-map (kbd <span style="color: #ffc1c1;">"K"</span>) 'man)
+
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">;;; motion map</span>
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">"ei "</span> 'find-file)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",1"</span> 'delete-other-windows)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",0"</span> 'delete-window)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",2"</span> 'split-window-below)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",3"</span> 'split-window-right)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",u"</span> 'winner-undo)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",r"</span> 'winner-redo)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",h"</span> 'eshell)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",p"</span> 'switch-to-buffer)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",n"</span> 'save-buffer)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",k"</span> 'kill-buffer)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",w"</span> 'eshell)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">",b"</span> 'ibuffer)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">"-"</span> 'split-window-below)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">"|"</span> 'split-window-right)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">"m"</span> 'point-to-register)
+(define-key evil-motion-state-map <span style="color: #ffc1c1;">"'"</span> 'jump-to-register)
+(define-key evil-motion-state-map (kbd <span style="color: #ffc1c1;">"C-n"</span>) 'evil-next-line)
+(define-key evil-motion-state-map (kbd <span style="color: #ffc1c1;">"C-r"</span>) 'isearch-backward)
+(define-key evil-motion-state-map (kbd <span style="color: #ffc1c1;">"C-p"</span>) 'evil-previous-line)
+(define-key evil-motion-state-map (kbd <span style="color: #ffc1c1;">"C-e"</span>) 'move-end-of-line)
+(define-key evil-motion-state-map (kbd <span style="color: #ffc1c1;">"M-."</span>) 'find-tag)
+</pre>
+</div>
+<p>
+visual-mode也需要一些emacs的移动方式以适合我的习惯：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key evil-visual-state-map (kbd <span style="color: #ffc1c1;">"C-e"</span>) 'move-end-of-line)
+(define-key evil-visual-state-map (kbd <span style="color: #ffc1c1;">"C-b"</span>) 'backward-char)
+(define-key evil-visual-state-map (kbd <span style="color: #ffc1c1;">"C-f"</span>) 'forward-char)
+</pre>
+</div>
+<p>
+<b>最后一些是evil quit，我不是很懂，从网上抄过来的：</b>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">evil quit</span>
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'helm-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'helm-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'helm-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'helm-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'helm-keyboard-quit)
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> init-org.el</h4>
+<div class="outline-text-4" id="text-1-3-2">
+</div><ol class="org-ol"><li>环境变量<br  /><div class="outline-text-5" id="text-1-3-2-1">
+<p>
+主要是为了方便我进行gtd设置，gtd文件主目录：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq ORG-HOME <span style="color: #ffc1c1;">"/home/pengpengxp/gtd"</span>)
+</pre>
+</div>
+<p>
+org-agenda文件
+</p>
+
+<p>
+<b>PS：org-agenda应该会只在这些文件中寻找事件，这样的目的是不再
+org-agenda中显示那些已经完成或者已经删掉的文件</b>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq ORG-AGENDA-FILES (list (concat ORG-HOME <span style="color: #ffc1c1;">"/inbox.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/book.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/dreams.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/note.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/test.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/Tips.org"</span>)
+                             ))
+</pre>
+</div>
+<p>
+org-refile
+</p>
+
+<p>
+<b>PS：refile的时候又需要在所有文件中都能refile</b>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq ORG-REFILE-FILES (list (concat ORG-HOME <span style="color: #ffc1c1;">"/book.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/dreams.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/finished.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/inbox.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/note.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/README.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/test.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/Tips.org"</span>)
+                             (concat ORG-HOME <span style="color: #ffc1c1;">"/trash.org"</span>)
+                             ))
+</pre>
+</div>
+</div>
+</li>
+<li>hook<br  /><div class="outline-text-5" id="text-1-3-2-2">
+<p>
+org-mode-hook进行主要的org的设置：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook '(<span style="color: #00ffff;">lambda</span> ()
+                            (interactive)
+                            (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;tab&gt;"</span>) 'org-cycle)
+                            (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-tab&gt;"</span>) 'other-window)
+                            (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-return&gt;"</span>) 'org-insert-heading-respect-content)
+                            (setq truncate-lines nil)
+                            (yas-minor-mode -1)
+                            (auto-fill-mode 1)
+                            <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(hl-line-mode 1)</span>
+                            (local-set-key (kbd <span style="color: #ffc1c1;">"C-c a"</span>) 'org-agenda)
+                            (setq org-agenda-files ORG-AGENDA-FILES)
+                            (setq org-directory ORG-HOME)
+                            (org-indent-mode 1) <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#19981;&#26174;&#31034;&#21738;&#20040;&#22810;&#20010;*</span>
+                            (<span style="color: #00ffff;">when</span> window-system
+                              (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;s-return&gt;"</span>) 'org-insert-subheading))
+                            ))
+</pre>
+</div>
+<p>
+org-agenda-hook定制一下我自己的东西:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'org-agenda-mode-hook '(<span style="color: #00ffff;">lambda</span> ()
+                                   (delete-other-windows)
+                                   (linum-on)
+                                   (hl-line-mode 1)
+                                   ))
+</pre>
+</div>
+</div>
+</li>
+<li>GTD设置<br  /><div class="outline-text-5" id="text-1-3-2-3">
+<p>
+使得refile可以在所有ORG-REFILE-FILES中进行：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-refile-targets (quote ((nil <span style="color: #b0c4de;">:maxlevel</span> . 9)
+                                 (ORG-REFILE-FILES <span style="color: #b0c4de;">:maxlevel</span> . 9))))
+</pre>
+</div>
+<p>
+我的事件中所有可能的状态：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-todo-keywords '((sequence <span style="color: #ffc1c1;">"TODO(t!)"</span> 
+                                    <span style="color: #ffc1c1;">"DOING(n)"</span>
+                                    <span style="color: #ffc1c1;">"WAITING(w)"</span> <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">waiting for others</span>
+                                    <span style="color: #ffc1c1;">"SOMEDAY(s)"</span> <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">I'll do it someday</span>
+                                    <span style="color: #ffc1c1;">"Dreams(i)"</span>
+                                    <span style="color: #ffc1c1;">"Tips(p)"</span>
+                                    <span style="color: #ffc1c1;">"|"</span>
+                                    <span style="color: #ffc1c1;">"DONE(d@/!)"</span>
+                                    <span style="color: #ffc1c1;">"ABORT(a@/!)"</span>
+                                    )))
+</pre>
+</div>
+<p>
+使用org-capture-template快速抓取事件：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-capture-templates 
+      '((<span style="color: #ffc1c1;">"t"</span> <span style="color: #ffc1c1;">"News"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/inbox.org"</span>))
+         <span style="color: #ffc1c1;">"*  TODO  [#A]  %?\n %T"</span>)
+
+        (<span style="color: #ffc1c1;">"i"</span> <span style="color: #ffc1c1;">"Dreams"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/dreams.org"</span>))
+         <span style="color: #ffc1c1;">"*  Dreams  %?\n %T"</span>)
+
+        (<span style="color: #ffc1c1;">"s"</span> <span style="color: #ffc1c1;">"SOMEDAY"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/inbox.org"</span>))
+         <span style="color: #ffc1c1;">"*  SOMEDAY  %?\n %T"</span>)
+
+        (<span style="color: #ffc1c1;">"p"</span> <span style="color: #ffc1c1;">"Tips"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/Tips.org"</span>))
+         <span style="color: #ffc1c1;">"*  Tips  %?\n %T"</span>)
+
+        (<span style="color: #ffc1c1;">"b"</span> <span style="color: #ffc1c1;">"Book"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/book.org"</span>))
+         <span style="color: #ffc1c1;">"*  SOMEDAY  %?\n %T"</span>)
+
+        (<span style="color: #ffc1c1;">"n"</span> <span style="color: #ffc1c1;">"Notes"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/note.org"</span>))
+         <span style="color: #ffc1c1;">"*  TODO  %?\n %T"</span>)
+
+        (<span style="color: #ffc1c1;">"a"</span> <span style="color: #ffc1c1;">"Account"</span> table-line (file+headline (concat ORG-HOME <span style="color: #ffc1c1;">"/account.org.gpg"</span>) <span style="color: #ffc1c1;">"Web accounts"</span>)
+         <span style="color: #ffc1c1;">"|"</span>)
+
+        (<span style="color: #ffc1c1;">"k"</span> <span style="color: #ffc1c1;">"test"</span> entry (file+datetree (concat ORG-HOME <span style="color: #ffc1c1;">"/test.org"</span>) <span style="color: #ffc1c1;">"Tasks"</span>)
+         <span style="color: #ffc1c1;">"* TODO  %?  \n %T"</span>)
+        ))
+</pre>
+</div>
+<p>
+设置默认的org-default-note-file：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-default-notes-file (concat ORG-HOME <span style="color: #ffc1c1;">"/inbox.org"</span>))
+</pre>
+</div>
+<p>
+设置使用方便使用org的全局按键绑定：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #ffc1c1;">"C-c c"</span>) 'org-capture)
+(global-set-key (kbd <span style="color: #ffc1c1;">"C-c a"</span>) 'org-agenda)
+(global-set-key (kbd <span style="color: #ffc1c1;">"C-c l"</span>) 'org-store-link)
+(global-set-key (kbd <span style="color: #ffc1c1;">"C-c b"</span>) 'org-iswitchb)
+</pre>
+</div>
+<p>
+定制自己的org-agenda选项：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">&#23450;&#21046;&#33258;&#24049;&#30340;org-agenda&#36873;&#39033;&#12290;&#36825;&#26679;Ctrl-a&#20197;&#21518;&#21487;&#20379;&#36873;&#25321;&#12290;</span>
+(setq org-agenda-custom-commands
+      '(
+        (<span style="color: #ffc1c1;">"d"</span> <span style="color: #ffc1c1;">"Agenda and Home-related tasks"</span>
+         (
+          (agenda <span style="color: #ffc1c1;">""</span>)
+          (todo <span style="color: #ffc1c1;">"DOING"</span>)
+          (todo <span style="color: #ffc1c1;">"WAITING"</span>)
+          ))
+        (<span style="color: #ffc1c1;">"w"</span> <span style="color: #ffc1c1;">"things WAITING"</span>
+         (
+          (agenda <span style="color: #ffc1c1;">""</span>)
+          (todo <span style="color: #ffc1c1;">"WAITING"</span>)
+          ))
+        (<span style="color: #ffc1c1;">"o"</span> <span style="color: #ffc1c1;">"things TODO"</span>
+         (
+          (agenda <span style="color: #ffc1c1;">""</span>)
+          (todo <span style="color: #ffc1c1;">"TODO"</span>)
+          ))
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">("h" . "h for peng's dispatcher") ; description for "h" prefix</span>
+        (<span style="color: #ffc1c1;">"ht"</span> todo <span style="color: #ffc1c1;">"TODO"</span>)
+        (<span style="color: #ffc1c1;">"hn"</span> todo <span style="color: #ffc1c1;">"DOING"</span>)
+        (<span style="color: #ffc1c1;">"hd"</span> todo <span style="color: #ffc1c1;">"DONE"</span>)
+        (<span style="color: #ffc1c1;">"hw"</span> todo <span style="color: #ffc1c1;">"WAITING"</span>)
+        (<span style="color: #ffc1c1;">"hi"</span> todo <span style="color: #ffc1c1;">"Dreams"</span>)
+        (<span style="color: #ffc1c1;">"hp"</span> todo <span style="color: #ffc1c1;">"Tips"</span>)
+        (<span style="color: #ffc1c1;">"hs"</span> todo <span style="color: #ffc1c1;">"SOMEDAY"</span>)
+        ))
+</pre>
+</div>
+<p>
+org-agenda默认只显示一天的事件：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-agenda-span 'day)
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> init-org-export.el</h4>
+<div class="outline-text-4" id="text-1-3-3">
+<p>
+设置org的导出，我现在使用的，一般还是导出成html。所以主要还是针对html
+的设置，在导出html时，由于开启auto-fill，一段话可能分成多行，英文中两行之间加入一个空格就刚刚好，但是中文就不行，会出现多余的空格。解决办法是使用版本新一点的org-mode。然后加入下面这两个函数：
+</p>
+
+<p>
+<b>PS：因为貌似有冲突，我直接把emacs原来版本的org-mode删除了，然后使用下</b>
+<b>载的新版本原来版本的org-mode放在/usr/share/emacs/中，现在我的</b>
+<b>org-mode直接放在 SITE-LISP中了</b>
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">clear-single-linebreak-in-cjk-string</span> (string)
+  <span style="color: #f08080; font-style: italic;">"clear single line-break between cjk characters that is usually soft line-breaks"</span>
+  (<span style="color: #00ffff;">let*</span> ((regexp <span style="color: #ffc1c1;">"</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">(</span><span style="color: #ffc1c1;">[\u4E00-\u9FA5]</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">)</span><span style="color: #ffc1c1;">\n</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">(</span><span style="color: #ffc1c1;">[\u4E00-\u9FA5]</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">)</span><span style="color: #ffc1c1;">"</span>)
+         (start (string-match regexp string)))
+    (<span style="color: #00ffff;">while</span> start
+      (setq string (replace-match <span style="color: #ffc1c1;">"\\1\\2"</span> nil nil string)
+            start (string-match regexp string start))))
+  string)
+(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">ox-html-clear-single-linebreak-for-cjk</span> (string backend info)
+  (<span style="color: #00ffff;">when</span> (org-export-derived-backend-p backend 'html)
+    (clear-single-linebreak-in-cjk-string string)))
+(add-to-list 'org-export-filter-final-output-functions
+             'ox-html-clear-single-linebreak-for-cjk)
+</pre>
+</div>
+
+<p>
+设置导出的css格式：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq org-html-head <span style="color: #ffc1c1;">"&lt;link href=\"css/org-manual.css\" rel=\"stylesheet\" type=\"text/css\"&gt;"</span>)
+</pre>
+</div>
+<p>
+我的理解其实就是默认引用准备导出org文件目录下css目录中的、
+org-maual.css文件作为css格式。
+</p>
+
+<p>
+<b>当然，这需要该文件存在才行</b>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> init-eim.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="eim">eim</span></span></h4>
+<div class="outline-text-4" id="text-1-3-4">
+</div><ol class="org-ol"><li>基本配置<br  /><div class="outline-text-5" id="text-1-3-4-1">
+<p>
+没什么好说的，直接照着eim中的readme配置好就能用了。把默认的输入法设置成eim-py就行：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq default-input-method <span style="color: #ffc1c1;">"eim-py"</span>)
+</pre>
+</div>
+<p>
+我觉得默认的C-\开启输入法不方便。自己绑定到了C-backspace上
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-backspace&gt;"</span>) 'toggle-input-method)
+</pre>
+</div>
+<p>
+使用‘;’暂时输入中文，在cc-mode这些中不起作用，全局绑定成s-;：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #ffc1c1;">";"</span>) 'eim-insert-ascii)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"s-;"</span>) 'eim-insert-ascii)
+</pre>
+</div>
+<p>
+其中peng-global-set-key是我自己写的函数，用于在有evil的情况下的按键绑定。这是在使用evil是真正的全局设置。
+</p>
+</div>
+</li>
+<li><span class="done DONE">DONE</span> 控制每页显示的词条数目&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needtobeimproved">needtobeimproved</span></span><br  /><div class="outline-text-5" id="text-1-3-4-2">
+<ul class="org-ul">
+<li>State "DONE"       from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2014-11-05 三 16:33]</span></span> <br  />
+  最后还是在py.txt中写了page-length=9,然后调用eim-build-table，结果莫名其妙的就好了。eim没怎么吃透，有时间看看源码。
+</li>
+<li>State "TODO"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2014-11-05 三 11:43]</span></span>
+</li>
+</ul>
+<p>
+刚开始我设置的是每页显示10个。但是后来发现一个bug是第10个条目我不能选择。所以现在想设置为9个。之前应该就在eim目录下的py.txt中写
+page-length=9就行了。但是每次重启emacs就会被重写为10。py.txt总是会被不明原因的重写。我不知道这是为什么？？
+</p>
+</div>
+</li>
+<li><span class="done DONE">DONE</span> eim中加入自己的词库！！！！&#xa0;&#xa0;&#xa0;<span class="tag"><span class="eim">eim</span></span><br  /><div class="outline-text-5" id="text-1-3-4-3">
+<ul class="org-ul">
+<li>State "DONE"       from "DOING"      <span class="timestamp-wrapper"><span class="timestamp">[2014-10-25 六 11:33]</span></span> <br  />
+  首先想使用pyword2tbl.pl。结果perl一直都没有配置好。所以不能转换一些指定的词库。
+
+<p>
+然后试着直接修改了一下py.txt中的内容。但是发现每次重启py.txt都会被重置。
+最后发现了这个otherpy.txt。修改这个词库文件没有问题。不会被重置。所以最后的解决方案是：
+</p>
+
+<p>
+下载搜狗词库，自己把里面的'替换成为-。然后直接添加在otherpy.txt后面，
+然后调用eim-build-table（可能需要一会儿）。保存重启就可以了。
+</p>
+
+<p>
+ 现在就是使用eim来输入的。感觉还不错。
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2014-10-24 五 21:12&gt;</span></span>
+</p>
+
+<p>
+发现一个更加简单的添加词库的方式。在py.txt的开头有一个other-files选项。在其中加入词库文件就可以了。其中词库文件格式就参考other<sub>py</sub>.txt中的就行。（其实我觉得应该就是py.txt中的格式）。
+</p>
+
+<p>
+接下来就是自己制作自己的词库文件拉：拷贝other<sub>py</sub>.txt到新词库文件中，
+把Table下面的内容换成自己的词库。然后调用eim-build-table自动就可以构建好这个词库文件。然后只需要将词库文件添加到py.txt的other-files选项中就可以了。
+</p>
+
+<p>
+暂时就用着网上找到的搜狗基础词库。没有找到更好的。但是基本能满足使用需求了。
+</p>
+
+<p>
+以后有需要可以自己构造自己的词库。
+</p>
+
+<p>
+整个世界安静了。
+</p>
+</li>
+</ul>
+</div>
+</li>
+
+<li><span class="done DONE">DONE</span> emacs绑定中文标点到英文标点。&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needimprove">needimprove</span>&#xa0;<span class="bug">bug</span>&#xa0;<span class="eim">eim</span></span><br  /><div class="outline-text-5" id="text-1-3-4-4">
+<p>
+结果就只是修改了py.txt中的Punctuation部份。将*对应的内容修改了一下，然后使用eim-build-table重新构造了一下就行了。但是有一个bug，这样只能每次输入一个*。同时按两下*也不行。
+</p>
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2014-10-27 一 11:31&gt;</span></span>
+</p>
+</div>
+</li>
+
+<li><span class="todo TODO">TODO</span> 我开始使用五笔输入法<br  /><div class="outline-text-5" id="text-1-3-4-5">
+<ul class="org-ul">
+<li>State "TODO"       from ""           <span class="timestamp-wrapper"><span class="timestamp">[2014-12-20 六 11:07]</span></span>
+</li>
+</ul>
+<p>
+希望以后能配置成单字模式，我不想打词组，为的就是以后能盲打。
+</p>
+
+<p>
+也许以后可以在eim的基础上自己定制一个输入法。
+</p>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> init-global.el</h4>
+<div class="outline-text-4" id="text-1-3-5">
+<p>
+init-global.el是我的全局设置。其中包括一些对emacs本身就有的功能的一些配置，全局的按键绑定等等。
+</p>
+</div>
+<ol class="org-ol"><li>MISC<br  /><ol class="org-ol"><li>不需要开启自动备份产生令人讨厌的~文件<br  /><div class="outline-text-6" id="text-1-3-5-1-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq backup-inhibited t)
+</pre>
+</div>
+</div>
+</li>
+<li>开启desktop-save-mode<br  /><div class="outline-text-6" id="text-1-3-5-1-2">
+<p>
+下一次进入emacs的时候继续访问上次访问的文件。有利于工作的重新开展：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(desktop-save-mode 1)
+</pre>
+</div>
+</div>
+</li>
+<li>设置我的个人信息：<br  /><div class="outline-text-6" id="text-1-3-5-1-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq user-full-name <span style="color: #ffc1c1;">"pengpengxp"</span>)
+(setq user-mail-address <span style="color: #ffc1c1;">"pengpengxppri@gmail.com"</span>)
+</pre>
+</div>
+</div>
+</li>
+<li>光标不要闪动：<br  /><div class="outline-text-6" id="text-1-3-5-1-4">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(blink-cursor-mode -1)
+</pre>
+</div>
+</div>
+</li>
+<li>开始不需要使用menu-bar，scroll-bar这些<br  /><div class="outline-text-6" id="text-1-3-5-1-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)
+(<span style="color: #00ffff;">when</span> window-system
+  (scroll-bar-mode -1))
+</pre>
+</div>
+</div>
+</li>
+<li>不是root用户的时候开启server：<br  /><div class="outline-text-6" id="text-1-3-5-1-6">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">unless</span> (string-equal <span style="color: #ffc1c1;">"root"</span> (getenv <span style="color: #ffc1c1;">"USER"</span>))
+  (<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">server</span>)
+  (<span style="color: #00ffff;">unless</span> (server-running-p) (server-start)))
+</pre>
+</div>
+</div>
+</li>
+<li>关闭process的时候不需要询问。<br  /><div class="outline-text-6" id="text-1-3-5-1-7">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq kill-buffer-query-functions
+      (remq 'process-kill-buffer-query-function
+            kill-buffer-query-functions))
+</pre>
+</div>
+</div>
+</li>
+<li>从王垠的配置中借鉴的<br  /><div class="outline-text-6" id="text-1-3-5-1-8">
+<p>
+使用更大的kill-ring。默认emacs滚动都是半屏半屏的滚动，不流畅，使emacs滚动更流畅一点。默认的mode设置成text-mode。当光标移动过来鼠标自动躲避到右上角：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq kill-ring-max 200)
+(setq scroll-margin 3
+      scroll-conservatively 10000)
+(setq default-major-mode 'text-mode)
+(mouse-avoidance-mode 'banish)
+</pre>
+</div>
+</div>
+</li>
+<li>默认显示时间，开启对匹配括号的提示：<br  /><div class="outline-text-6" id="text-1-3-5-1-9">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(display-time)
+(show-paren-mode t)
+</pre>
+</div>
+</div>
+</li>
+<li>F11直接全屏：<br  /><div class="outline-text-6" id="text-1-3-5-1-10">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">when</span> window-system
+  (<span style="color: #00ffff;">progn</span>
+    (peng-global-set-key [f11] '(<span style="color: #00ffff;">lambda</span> ()
+                             (interactive)
+                             (set-frame-parameter nil 'fullscreen
+                                                  (<span style="color: #00ffff;">if</span> (frame-parameter nil 'fullscreen) nil 'fullboth))
+                             <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">;; If you want the fullscreen emacs to be very minimal (no tool bar, scroll bar, or menu bar, also add:</span>
+                             (<span style="color: #00ffff;">progn</span>
+                               (<span style="color: #00ffff;">if</span> (fboundp 'tool-bar-mode) (tool-bar-mode -1))  <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">no toolbar</span>
+                               (menu-bar-mode -1) <span style="color: #fa8072; font-style: italic;">;;</span><span style="color: #ff7f24; font-style: italic;">no menubar</span>
+                               <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(scroll-bar-mode -1) ;; no scroll bar</span>
+                               )))))
+</pre>
+</div>
+</div>
+</li>
+<li>开启winner-mode，为它定义两个按键绑定：<br  /><div class="outline-text-6" id="text-1-3-5-1-11">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(winner-mode 1)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-c u"</span>) 'winner-undo)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-c r"</span>) 'winner-redo)
+</pre>
+</div>
+</div>
+</li>
+<li>开启recentf-mode记录最近打开的文件：<br  /><div class="outline-text-6" id="text-1-3-5-1-12">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(recentf-mode 1)
+</pre>
+</div>
+</div>
+</li>
+<li>回答yes-or-no的时候可以简单使用y或者n。这个我还没有测试成功：<br  /><div class="outline-text-6" id="text-1-3-5-1-13">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq yes-or-no-p 'y-or-n-p)
+</pre>
+</div>
+</div>
+</li>
+<li>使用registor更加方便：<br  /><div class="outline-text-6" id="text-1-3-5-1-14">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-x SPC"</span>) 'point-to-register)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-x j"</span>) 'jump-to-register)
+</pre>
+</div>
+<p>
+<b>PS：我在bookmark配置中设置C-c j跳转bookmark</b>
+</p>
+</div>
+</li>
+<li>主题设置<br  /><div class="outline-text-6" id="text-1-3-5-1-15">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">when</span> window-system
+  (load-theme 'misterioso nil nil)
+  (enable-theme 'misterioso)
+  )
+</pre>
+</div>
+</div>
+</li>
+<li>显示列号<br  /><div class="outline-text-6" id="text-1-3-5-1-16">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq column-number-mode t)
+</pre>
+</div>
+</div>
+</li>
+<li>每次分割窗口的时候都水平切割<br  /><div class="outline-text-6" id="text-1-3-5-1-17">
+<p>
+也就是除非手动，禁止上下分割窗口。我不是很喜欢上下分割的窗口。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq split-height-threshold nil)
+(setq split-width-threshold 0)
+</pre>
+</div>
+</div>
+</li>
+<li>加密文件<br  /><div class="outline-text-6" id="text-1-3-5-1-18">
+<p>
+使用easypg加密文件，默认每次修改加密文件都需要输入密码，感觉很麻烦，去掉了。这样每次只有第一次打开文件和重启emacs才需要输入密码。安全性没有那么高。但是考虑到我的emacs也就只有我用了。所以感觉还好。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq epa-file-cache-passphrase-for-symmetric-encryption t)
+</pre>
+</div>
+</div>
+</li>
+<li>自动revert-buffer<br  /><div class="outline-text-6" id="text-1-3-5-1-19">
+<p>
+当文件被其他编辑器修改以后，一般都是在terminal中使用vim修改。自动
+revert-buffer。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-auto-revert-mode 1)
+</pre>
+</div>
+</div>
+</li></ol>
+</li>
+<li>按键绑定<br  /><div class="outline-text-5" id="text-1-3-5-2">
+<p>
+因为evil已经成了我很依赖的插件。所以这里全局绑定基本都使用的时我自己定义的peng-global-set-key。
+</p>
+</div>
+<ol class="org-ol"><li>F5<br  /><div class="outline-text-6" id="text-1-3-5-2-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">f5-map use for compiling and eye protection</span>
+(define-prefix-command 'F5-map)
+(global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt;"</span>) 'F5-map)
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">for compile</span>
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; &lt;f5&gt;"</span>) 'compile)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; r"</span>) 'recompile)
+
+<span style="color: #fa8072; font-style: italic;">;;;</span><span style="color: #ff7f24; font-style: italic;">F5 for eye protected</span>
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; ee"</span>) 'peng-eyerest-show-rest)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; er"</span>) 'peng-eyerest-restart)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; ep"</span>) 'peng-eyerest-pause)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; ec"</span>) 'peng-eyerest-continue)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; eg"</span>) 'peng-eye-gymnistic)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; es"</span>) 'peng-eyerest-reset)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt; ek"</span>) 'peng-eyerest-kill)
+<span style="color: #fa8072; font-style: italic;">;;;</span><span style="color: #ff7f24; font-style: italic;">F5 for eye protected</span>
+</pre>
+</div>
+</div>
+</li>
+<li>F6<br  /><div class="outline-text-6" id="text-1-3-5-2-2">
+<p>
+主要负责和系统交互
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">f6-map use for calling the system applications</span>
+(define-prefix-command 'F6-map)
+(global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f6&gt;"</span>) 'F6-map)
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">&#22312;&#24403;&#21069;&#25991;&#20214;&#22841;&#24555;&#36895;&#25171;&#24320;&#25991;&#20214;&#31649;&#29702;&#22120;</span>
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f6&gt; e"</span>) '(<span style="color: #00ffff;">lambda</span> ()
+                                  (interactive)
+                                  (<span style="color: #00ffff;">save-window-excursion</span>
+                                    (<span style="color: #00ffff;">save-restriction</span>
+                                      (shell-command (concat <span style="color: #ffc1c1;">"gnome-terminal -x thunar "</span> default-directory))))))
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f6&gt; n"</span>) '(<span style="color: #00ffff;">lambda</span> ()
+                                  (interactive)
+                                  (<span style="color: #00ffff;">save-window-excursion</span>
+                                    (<span style="color: #00ffff;">save-restriction</span>
+                                      (shell-command (concat <span style="color: #ffc1c1;">"gnome-terminal -x nautilus "</span> default-directory))))))
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">&#22312;&#24403;&#21069;&#25991;&#20214;&#22841;&#24555;&#36895;&#25171;&#24320;&#32456;&#31471;</span>
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f6&gt; t"</span>) '(<span style="color: #00ffff;">lambda</span> ()
+                                  (interactive)
+                                  (<span style="color: #00ffff;">save-window-excursion</span>
+                                    (<span style="color: #00ffff;">save-restriction</span>
+                                      (shell-command <span style="color: #ffc1c1;">"gnome-terminal&amp;"</span>)))))
+</pre>
+</div>
+</div>
+</li>
+<li>F8<br  /><div class="outline-text-6" id="text-1-3-5-2-3">
+<p>
+主要的prefix-key
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">f8-map the global key binding are all here</span>
+(define-prefix-command 'F8-map)
+(global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt;"</span>) 'F8-map)
+
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; j"</span>) 'bookmark-jump)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; w"</span>) 'save-buffer)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; f"</span>) 'find-file)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; d"</span>) 'kill-this-buffer)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; q"</span>) 'kill-buffer-and-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; r"</span>) 'recentf-open-files)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; a"</span>) 'org-agenda)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; s"</span>) 'peng-toggle-gnome-terminal)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; &lt;backspace&gt;"</span>) 'delete-other-windows)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; &lt;return&gt;"</span>) 'delete-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; gg"</span>) 'peng-goto-scratch)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; gn"</span>) 'peng-toggle-gnome-terminal)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; go"</span>) 'peng-ibuffer-filter-org-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; ge"</span>) 'peng-ibuffer-filter-emacs-lisp-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; gd"</span>) 'peng-ibuffer-filter-dired-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; gc"</span>) 'peng-ibuffer-filter-c-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; gp"</span>) 'peng-ibuffer-filter-c++-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; &lt;tab&gt;"</span>) 'switch-to-buffer)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; e"</span>) 'eshell)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; x"</span>) 'execute-extended-command)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; h k"</span>) 'describe-key)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; h f"</span>) 'describe-function)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; h v"</span>) 'describe-variable)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; h r"</span>) 'info-emacs-manual)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; 1"</span>) 'delete-other-windows)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; 0"</span>) 'delete-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; 2"</span>) 'split-window-below)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; 3"</span>) 'split-window-right)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; c u"</span>) 'winner-undo)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; c r"</span>) 'winner-redo)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; c m"</span>) 'shell-command)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; c c"</span>) 'org-capture)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; b"</span>) 'ibuffer)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; &lt;f8&gt;"</span>) '(<span style="color: #00ffff;">lambda</span> ()
+                                          (interactive)
+                                          (switch-to-buffer (other-buffer))))
+</pre>
+</div>
+</div>
+</li>
+<li>F9<br  /><div class="outline-text-6" id="text-1-3-5-2-4">
+<p>
+本来想用来使用register方便一点，但是好像使用的比较少。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-prefix-command 'F9-map)
+(global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f9&gt;"</span>) 'F9-map)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f9&gt; &lt;f9&gt;"</span>) 'jump-to-register)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;f9&gt; &lt;f10&gt;"</span>) 'point-to-register)
+</pre>
+</div>
+</div>
+</li>
+<li>MISC<br  /><div class="outline-text-6" id="text-1-3-5-2-5">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">MISC</span>
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-M-0"</span>) 'delete-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-M-1"</span>) 'delete-other-windows)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-M-2"</span>) 'split-window-below)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-M-3"</span>) 'split-window-right)
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(peng-global-set-key (kbd "&lt;C-tab&gt;") '(lambda ()</span>
+<span style="color: #fa8072; font-style: italic;">;;                                 </span><span style="color: #ff7f24; font-style: italic;">(interactive)</span>
+<span style="color: #fa8072; font-style: italic;">;;                                 </span><span style="color: #ff7f24; font-style: italic;">(switch-to-buffer (other-buffer))))</span>
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-tab&gt;"</span>) 'other-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"s-v"</span>) 'view-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-+"</span>) 'text-scale-increase)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-="</span>) 'text-scale-increase)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C--"</span>) 'text-scale-decrease)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"\C-cn"</span>) 'autopair-mode)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"C-x C-b"</span>) 'ibuffer)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-up&gt;"</span>) 'enlarge-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-down&gt;"</span>) 'shrink-window)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-left&gt;"</span>) 'shrink-window-horizontally)
+(peng-global-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-right&gt;"</span>) 'enlarge-window-horizontally)
+</pre>
+</div>
+</div>
+</li></ol>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-6" class="outline-4">
+<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> init-powerline.el</h4>
+<div class="outline-text-4" id="text-1-3-6">
+<p>
+我开始使用powerline好像是可以模拟vim中的状态栏。我觉得还是比较好看的。
+但是有一个问题就是这种情况下，使用evil就不能显示出evil的state。不使用
+powerline的时候是可以看见的。
+</p>
+
+<p>
+其实evil对应的state记录再evil-mode-line-tag这个变量之中。查阅源码
+powerline-default-theme函数其实就是对mode-line-format进行了一下设置。
+我把powerline-default-theme中所有的内容拷贝出来，在其中加入了作了一点点小小的改动，就能达到有evil+powerline状态栏正常显示evil-state的目的了。
+真得只是作了一点点的修改！
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default mode-line-format
+              '(<span style="color: #ffc1c1;">"%e"</span>
+                (<span style="color: #b0c4de;">:eval</span>
+                 (<span style="color: #00ffff;">let*</span> ((active (powerline-selected-window-active))
+                        (mode-line (<span style="color: #00ffff;">if</span> active 'mode-line 'mode-line-inactive))
+                        (face1 (<span style="color: #00ffff;">if</span> active 'powerline-active1 'powerline-inactive1))
+                        (face2 (<span style="color: #00ffff;">if</span> active 'powerline-active2 'powerline-inactive2))
+                        (separator-left (intern (format <span style="color: #ffc1c1;">"powerline-%s-%s"</span>
+                                                        powerline-default-separator
+                                                        (car powerline-default-separator-dir))))
+                        (separator-right (intern (format <span style="color: #ffc1c1;">"powerline-%s-%s"</span>
+                                                         powerline-default-separator
+                                                         (cdr powerline-default-separator-dir))))
+                        (lhs (list (powerline-raw <span style="color: #ffc1c1;">"%*"</span> nil 'l)
+                                   <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">add by pengpengxp</span>
+                                   (powerline-raw evil-mode-line-tag nil 'l)
+                                   (powerline-buffer-size nil 'l)
+                                   (powerline-raw mode-line-mule-info nil 'l)
+                                   (powerline-buffer-id nil 'l)
+                                   (<span style="color: #00ffff;">when</span> (and (boundp 'which-func-mode) which-func-mode)
+                                     (powerline-raw which-func-format nil 'l))
+                                   (powerline-raw <span style="color: #ffc1c1;">" "</span>)
+                                   (funcall separator-left mode-line face1)
+                                   (<span style="color: #00ffff;">when</span> (boundp 'erc-modified-channels-object)
+                                     (powerline-raw erc-modified-channels-object face1 'l))
+                                   (powerline-major-mode face1 'l)
+                                   (powerline-process face1)
+                                   (powerline-minor-modes face1 'l)
+                                   (powerline-narrow face1 'l)
+                                   (powerline-raw <span style="color: #ffc1c1;">" "</span> face1)
+                                   (funcall separator-left face1 face2)
+                                   (powerline-vc face2 'r)))
+                        (rhs (list (powerline-raw global-mode-string face2 'r)
+                                   (funcall separator-right face2 face1)
+                                   (powerline-raw <span style="color: #ffc1c1;">"%4l"</span> face1 'l)
+                                   (powerline-raw <span style="color: #ffc1c1;">":"</span> face1 'l)
+                                   (powerline-raw <span style="color: #ffc1c1;">"%3c"</span> face1 'r)
+                                   (funcall separator-right face1 mode-line)
+                                   (powerline-raw <span style="color: #ffc1c1;">" "</span>)
+                                   (powerline-raw <span style="color: #ffc1c1;">"%6p"</span> nil 'r)
+                                   (powerline-hud face2 face1))))
+                   (concat (powerline-render lhs)
+                           (powerline-fill face2 (powerline-width rhs))
+                           (powerline-render rhs))))))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3-7" class="outline-4">
+<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> init-sql.el</h4>
+<div class="outline-text-4" id="text-1-3-7">
+<p>
+使用sql-indent.el进行indent：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">eval-after-load</span> <span style="color: #ffc1c1;">"sql"</span>
+  '(load-library <span style="color: #ffc1c1;">"sql-indent"</span>))
+</pre>
+</div>
+
+<p>
+然后做了一些基本的按键绑定，设置了sql-interactive-mode中evil为
+evil-emacs-state：
+</p>
+
+<p>
+<b>PS：其实这个evil-emacs-state可以统一到init-evil.el中设置</b>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">peng-sql-mode</span> ()
+  (add-to-list 'ac-modes 'sql-mode)
+  (linum-mode 1)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;f5&gt;"</span>) 'sql-send-buffer)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;C-return&gt;"</span>) 'peng-sql-send-line)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; s r"</span>) 'sql-send-region)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; s s"</span>) 'sql-send-string)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;f8&gt; s l"</span>) 'peng-sql-send-line)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;f10&gt;"</span>) 'sql-send-region)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;f9&gt;"</span>) 'peng-sql-send-remain)
+)
+(add-hook 'sql-mode-hook 'peng-sql-mode)
+
+<span style="color: #fa8072; font-style: italic;">;;</span><span style="color: #ff7f24; font-style: italic;">sqli-mode:the interactive mode of sql</span>
+(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">peng-sql-interactive-mode</span> ()
+  (evil-emacs-state)
+  (sql-set-product 'ansi)
+  (sql-set-sqli-buffer-generally))
+(add-hook 'sql-interactive-mode-hook 'peng-sql-interactive-mode)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3-8" class="outline-4">
+<h4 id="sec-1-3-8"><span class="section-number-4">1.3.8</span> init-font.el</h4>
+<div class="outline-text-4" id="text-1-3-8">
+<p>
+为了要使得org中的table同时输入中文和英文的不产生混乱，必须使用大小对应配套的中英文字体。
+</p>
+
+<p>
+<b>PS：等宽字体。且一个中文和两个英文的宽度相同</b>
+</p>
+
+<p>
+<b>PS：这个问题只有在X-windows中才存在</b>
+</p>
+
+<p>
+这两个字体我还是找了很久，英文是Monaco-13。中文是苹果的Hiragino Sans
+GB W3.总的来说还是比较好看的。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">&#22312;X-window&#19979;&#25165;&#36825;&#26679;&#35774;&#32622;&#23383;&#20307;</span>
+(<span style="color: #00ffff;">when</span> window-system
+    (<span style="color: #00ffff;">progn</span> 
+      (set-frame-font <span style="color: #ffc1c1;">"Monaco-13"</span>)
+      (set-fontset-font t 'han (font-spec <span style="color: #b0c4de;">:family</span> <span style="color: #ffc1c1;">"Hiragino Sans GB W3"</span> <span style="color: #b0c4de;">:size</span> 20))
+      )
+  )
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3-9" class="outline-4">
+<h4 id="sec-1-3-9"><span class="section-number-4">1.3.9</span> init-guide-key.el</h4>
+<div class="outline-text-4" id="text-1-3-9">
+<p>
+emacs中按键太多了，使用这个插件可以在按键有中提醒你。开启
+guide-key-mode。设置delay为0.5s。最后定义需要提醒的prefix-key。
+</p>
+
+<p>
+<b>PS：这个功能我其实比较少用到</b>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(guide-key-mode 1)
+(setq guide-key/idle-delay 0.5)
+(setq guide-key/guide-key-sequence '(<span style="color: #ffc1c1;">"C-c"</span> <span style="color: #ffc1c1;">"C-c C-x"</span> <span style="color: #ffc1c1;">"C-x"</span> <span style="color: #ffc1c1;">"C-x r"</span> <span style="color: #ffc1c1;">","</span> <span style="color: #ffc1c1;">",c"</span> <span style="color: #ffc1c1;">",l"</span> <span style="color: #ffc1c1;">"z"</span>))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3-10" class="outline-4">
+<h4 id="sec-1-3-10"><span class="section-number-4">1.3.10</span> init-bookmark-bmemu-mode.el</h4>
+<div class="outline-text-4" id="text-1-3-10">
+<p>
+在init-evil.el中已经定义了bookmark为evil-emacs-state-mode。这里进行简单配置：bookmark修改时候自动保存。定义一个按键绑定：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq bookmark-save-flag 1)             <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">let bookmark auto-saved when I change it</span>
+(define-key global-map (kbd <span style="color: #ffc1c1;">"C-c j"</span>) 'bookmark-jump)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3-11" class="outline-4">
+<h4 id="sec-1-3-11"><span class="section-number-4">1.3.11</span> init-dired.el</h4>
+<div class="outline-text-4" id="text-1-3-11">
+<p>
+使用到现在，越来越喜欢在emacs中打开目录进行操作了。虽然偶尔还是会用用
+nautilus，thunar这些。但是真得已经越来越少了。dired-mode经过配置之后，
+确实很强大。配置文件里面，有很多东西是我在网上找的。
+</p>
+</div>
+<ol class="org-ol"><li>peng-dired-do-copy&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needtobeimproved">needtobeimproved</span></span><br  /><div class="outline-text-5" id="text-1-3-11-1">
+<p>
+我自己定义的函数，原来的函数在拷贝多个文件之后，总还是标记这这些文件。
+我这个函数，可以把from目录下所有的标记都删除。但是to目录下这些拷贝过去的文件还是有C的标记。想想，其实to目录下面，这些标记确实没有必要删除。
+确实是比较有用的提醒。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">peng-dired-do-copy</span> ()
+  (interactive)
+  (<span style="color: #00ffff;">progn</span>
+    (dired-do-copy)
+    (dired-unmark-all-marks)
+    ))
+</pre>
+</div>
+
+<p>
+希望的改进：拷贝以后，直接跳转到to目录去。
+</p>
+</div>
+</li>
+<li>hook<br  /><div class="outline-text-5" id="text-1-3-11-2">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">peng-dired-mode</span> ()
+  (hl-line-mode 1)
+  (dired-details-install)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"&lt;tab&gt;"</span>) 'dired-details-toggle)
+  (local-set-key (kbd <span style="color: #ffc1c1;">"C"</span>) 'peng-dired-do-copy)
+  (define-key evil-emacs-state-map (kbd <span style="color: #ffc1c1;">"M-&lt;up&gt;"</span>) 'dired-up-directory)
+  )
+(add-hook 'dired-mode-hook 'peng-dired-mode)
+</pre>
+</div>
+</div>
+</li>
+<li>增强插件<br  /><div class="outline-text-5" id="text-1-3-11-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-isearch</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">wdired</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired</span>)
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired+</span>)                       <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#22686;&#24378;dired</span>
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-details</span>)                <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">Dired&#35814;&#32454;&#20449;&#24687;</span>
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-details+</span>)               <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">Dired&#35814;&#32454;&#28040;&#24687;&#20999;&#25442;</span>
+(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-x</span>)
+</pre>
+</div>
+<p>
+这是增强dired的一些配置，代码的注释基本能解释。其中
+my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些后缀名文件。很实用。;my-dired-omit-regexp需要会实用eamcs的正则表达式。这个我还不是很会。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq dired-recursive-copies t)               <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#21487;&#20197;&#36882;&#24402;&#30340;&#36827;&#34892;&#25335;&#36125;</span>
+(setq dired-recursive-deletes t)              <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#21487;&#20197;&#36882;&#24402;&#30340;&#21024;&#38500;&#30446;&#24405;</span>
+(setq dired-recursive-deletes 'always)        <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#21024;&#38500;&#19996;&#35199;&#26102;&#19981;&#25552;&#31034;</span>
+(setq dired-recursive-copies 'always)         <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#25335;&#36125;&#19996;&#35199;&#26102;&#19981;&#25552;&#31034;</span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(toggle-dired-find-file-reuse-dir 1)          ;&#20351;&#29992;&#21333;&#19968;&#27169;&#24335;&#27983;&#35272;Dired</span>
+(setq dired-details-hidden-string <span style="color: #ffc1c1;">"[ ... ] "</span>) <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#38544;&#34255;dired&#37324;&#38754;&#35814;&#32454;&#20449;&#24687;&#30340;&#23383;&#31526;&#20018;</span>
+(setq dired-listing-switches <span style="color: #ffc1c1;">"-aluh"</span>)         <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#20256;&#32473; ls &#30340;&#21442;&#25968;&#65292;&#36825;&#37324;&#23601;&#21487;&#20197;&#35774;&#32622;&#26174;&#31034;&#22823;&#23567;&#30340;&#26041;&#24335;</span>
+(setq directory-free-space-args <span style="color: #ffc1c1;">"-Pkh"</span>)       <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#30446;&#24405;&#31354;&#38388;&#36873;&#39033;</span>
+(setq dired-omit-size-limit nil)              <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">dired&#24573;&#30053;&#30340;&#19978;&#38480;</span>
+(setq dired-dwim-target t)                    <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">Dired&#35797;&#30528;&#29468;&#22788;&#40664;&#35748;&#30340;&#30446;&#26631;&#30446;&#24405;</span>
+(setq my-dired-omit-status t)                 <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#40664;&#35748;&#24573;&#30053;&#25991;&#20214;</span>
+(setq my-dired-omit-regexp <span style="color: #ffc1c1;">"^\\.?#</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">|</span><span style="color: #ffc1c1;">^\\..*"</span>) <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#24573;&#30053;&#25991;&#20214;&#30340;&#21305;&#37197;&#27491;&#21017;&#34920;&#36798;&#24335;</span>
+(setq my-dired-omit-extensions '(<span style="color: #ffc1c1;">".cache"</span> <span style="color: #ffc1c1;">".o"</span> <span style="color: #ffc1c1;">".elc"</span>))   <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#24573;&#30053;&#25991;&#20214;&#30340;&#25193;&#23637;&#21517;&#21015;&#34920;</span>
+(add-hook 'dired-after-readin-hook '(<span style="color: #00ffff;">lambda</span> ()
+                                      (<span style="color: #00ffff;">progn</span>
+                                        (<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-extension</span>)
+                                        (dired-sort-method)))) <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#20808;&#26174;&#31034;&#30446;&#24405;, &#28982;&#21518;&#26174;&#31034;&#25991;&#20214;</span>
+(add-hook 'dired-mode-hook '(<span style="color: #00ffff;">lambda</span> ()
+                              (<span style="color: #00ffff;">progn</span>
+                                (<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-extension</span>)
+                                (dired-omit-method)))) <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#38544;&#34255;&#25991;&#20214;&#30340;&#26041;&#27861;</span>
+</pre>
+</div>
+
+<p>
+设置文件的默认的打开模式，这个是我最喜欢的，直接在上面用!。爽死：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq dired-guess-shell-alist-user                     <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#35774;&#32622;&#25991;&#20214;&#40664;&#35748;&#25171;&#24320;&#30340;&#27169;&#24335;</span>
+      (list
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#22270;&#20070;</span>
+        (list <span style="color: #ffc1c1;">"\\.chm$"</span> '(concat
+                          <span style="color: #ffc1c1;">"firefox chm:"</span>            <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#25191;&#34892;&#29305;&#23450;&#30340;&#21629;&#20196;</span>
+                          (replace-regexp-in-string <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#26367;&#25442;&#31354;&#26684;&#20026;%20</span>
+                           <span style="color: #ffc1c1;">" "</span> <span style="color: #ffc1c1;">"%20"</span> (w3m-expand-file-name-as-url (dired-get-filename))) <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#29992;URL&#30340;&#27169;&#24335;&#35299;&#26512;&#25991;&#20214;&#21517;</span>
+                          <span style="color: #ffc1c1;">" -q"</span>))
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(list "\\.pdf$" "wine /data/Backup/WindowsTools/FoxitReader/FoxitReader.exe")</span>
+        (list <span style="color: #ffc1c1;">"\\.pdf$"</span> <span style="color: #ffc1c1;">"evince"</span>)
+        (list <span style="color: #ffc1c1;">"\\.pdg$"</span> <span style="color: #ffc1c1;">"wine /data/Backup/WindowsTools/MiniPDG/pdgreader.exe"</span>)
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#22810;&#23186;&#20307;</span>
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(list (format "\\(%s\\)$" (emms-player-get emms-player-mplayer 'regex)) "mplayer")</span>
+        (list <span style="color: #ffc1c1;">"\\.</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">(</span><span style="color: #ffc1c1;">jpe?g</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">|</span><span style="color: #ffc1c1;">png</span><span style="color: #ffc1c1; font-weight: bold;">\\</span><span style="color: #ffc1c1; font-weight: bold;">)</span><span style="color: #ffc1c1;">$"</span> <span style="color: #ffc1c1;">"gthumb"</span> )
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#32593;&#39029;</span>
+        (list <span style="color: #ffc1c1;">"\\.html?$"</span> <span style="color: #ffc1c1;">"firefox"</span>)
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#21387;&#32553;&#21253;</span>
+        (list <span style="color: #ffc1c1;">"\\.rar$"</span> <span style="color: #ffc1c1;">"unrar e -ad"</span>)
+        (list <span style="color: #ffc1c1;">"\\.tar.bz2$"</span> <span style="color: #ffc1c1;">"tar jxvf"</span>)
+        (list <span style="color: #ffc1c1;">"\\.gz$"</span> <span style="color: #ffc1c1;">"gzip -d"</span>)
+        (list <span style="color: #ffc1c1;">"\\.mkv$"</span> <span style="color: #ffc1c1;">"smplayer"</span>)
+        (list <span style="color: #ffc1c1;">"\\.rmvb$"</span> <span style="color: #ffc1c1;">"smplayer"</span>)
+        (list <span style="color: #ffc1c1;">"\\.mp4$"</span> <span style="color: #ffc1c1;">"smplayer"</span>)
+        (list <span style="color: #ffc1c1;">"\\.avi$"</span> <span style="color: #ffc1c1;">"smplayer"</span>)
+        (list <span style="color: #ffc1c1;">"\\.doc$"</span> <span style="color: #ffc1c1;">"wps"</span>)
+        <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#20854;&#20182;</span>
+        (list <span style="color: #ffc1c1;">"\\.exe$"</span> <span style="color: #ffc1c1;">"wine"</span>)))
+</pre>
+</div>
+</div>
+</li>
+<li><span class="todo TODO">TODO</span> 剩下的这些还没有理解<br  /><div class="outline-text-5" id="text-1-3-11-4">
+<p>
+这些应该是dired有关于排序的。我还没有看到这里。中间还有一些注释掉的东西我也还没看。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">defvar</span> <span style="color: #7fffd4;">one-key-menu-dired-sort-alist</span> nil
+  <span style="color: #f08080; font-style: italic;">"The `</span><span style="color: #f08080; font-weight: bold; font-style: italic;">one-key</span><span style="color: #f08080; font-style: italic;">' menu alist for DIRED-SORT."</span>)
+
+(setq one-key-menu-dired-sort-alist
+      '(
+        ((<span style="color: #ffc1c1;">"s"</span> . <span style="color: #ffc1c1;">"Size"</span>) . dired-sort-size)
+        ((<span style="color: #ffc1c1;">"x"</span> . <span style="color: #ffc1c1;">"Extension"</span>) . dired-sort-extension)
+        ((<span style="color: #ffc1c1;">"n"</span> . <span style="color: #ffc1c1;">"Name"</span>) . dired-sort-name)
+        ((<span style="color: #ffc1c1;">"t"</span> . <span style="color: #ffc1c1;">"Modified Time"</span>) . dired-sort-time)
+        ((<span style="color: #ffc1c1;">"u"</span> . <span style="color: #ffc1c1;">"Access Time"</span>) . dired-sort-utime)
+        ((<span style="color: #ffc1c1;">"c"</span> . <span style="color: #ffc1c1;">"Create Time"</span>) . dired-sort-ctime)))
+
+(<span style="color: #00ffff;">defun</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">one-key-menu-dired-sort</span> ()
+  <span style="color: #f08080; font-style: italic;">"The `</span><span style="color: #f08080; font-weight: bold; font-style: italic;">one-key</span><span style="color: #f08080; font-style: italic;">' menu for DIRED-SORT."</span>
+  (interactive)
+  (<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">one-key</span>)
+  (<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">dired-sort</span>)                 <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">&#25490;&#24207; dired &#25991;&#20214;</span>
+  (one-key-menu <span style="color: #ffc1c1;">"DIRED-SORT"</span> one-key-menu-dired-sort-alist t))
+</pre>
+</div>
+</div>
+</li></ol>
+</div>
+<div id="outline-container-sec-1-3-12" class="outline-4">
+<h4 id="sec-1-3-12"><span class="section-number-4">1.3.12</span> init-yasnippet.el&#xa0;&#xa0;&#xa0;<span class="tag"><span class="needtobeimproved">needtobeimproved</span></span></h4>
+<div class="outline-text-4" id="text-1-3-12">
+<p>
+使用模版。刚开始的时候我使用默认配置挺好的。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">yasnippet</span>)
+(yas-global-mode 1)
+(setq ac-source-yasnippet nil)          <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">hope to use yasnippet with auto-complete</span>
+</pre>
+</div>
+
+<p>
+<b>Question</b>
+</p>
+<hr  />
+<ol class="org-ol">
+<li>但是后来发现，我在org-mode-hook中这样设置了以后，info这些的tab也变成了yax/expand。这样设置的[tab]和&lt;tab&gt;这些是有什么区别？
+</li>
+</ol>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">----------------------------------------------------------------------</span>
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">&#22914;&#26524;yas-expand&#22833;&#36133;&#21518;&#65292;tab&#20316;&#29992;&#23601;&#26159;&#20043;&#21069;&#30340;&#65292;&#19968;&#33324;&#26159;org-cycle</span>
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">----------------------------------------------------------------------</span>
+(add-hook 'org-mode-hook
+          (<span style="color: #00ffff;">let</span> ((original-command (lookup-key org-mode-map [tab])))
+            `(<span style="color: #00ffff;">lambda</span> ()
+               (setq yas-fallback-behavior
+                     '(apply ,original-command))
+               (local-set-key [tab] 'yas-expand))))
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">----------------------------------------------------------------------</span>
+</pre>
+</div>
+<hr  />
+
+<p>
+<b>解决办法</b>
+</p>
+<hr  />
+<ol class="org-ol">
+<li>现在暂时还是这样设置，然后init-yasnippet.el中先不开启
+yas-global-mode，而是在需要的mode中通过他们的hook单独调用
+yas-minor-mode来开启：
+</li>
+</ol>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">yasnippet</span>)
+(yas-reload-all)
+(setq ac-source-yasnippet nil)          <span style="color: #fa8072; font-style: italic;">;</span><span style="color: #ff7f24; font-style: italic;">hope to use yasnippet with auto-complete</span>
+</pre>
+</div>
+<hr  />
+</div>
+</div>
+<div id="outline-container-sec-1-3-13" class="outline-4">
+<h4 id="sec-1-3-13"><span class="section-number-4">1.3.13</span> init-header2.el</h4>
+<div class="outline-text-4" id="text-1-3-13">
+<p>
+自动添加header。包括对文件的描述，作者，创建和修改时间等。我自己作了一些小小的改动，比如我现在不想加入版权信息等等。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-elisp">(<span style="color: #00ffff;">require</span> '<span style="color: #8470ff; font-weight: bold;">header2</span>)
+<span style="color: #fa8072; font-style: italic;">;;;; </span><span style="color: #ff7f24; font-style: italic;">&#36825;&#26159;&#21442;&#32771;header2.el&#20013;&#30340;&#20195;&#30721;&#65292;&#25226;&#36825;&#20123;&#23450;&#20041;&#25104;&#23439;</span>
+(<span style="color: #00ffff;">defsubst</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">peng-email-address</span> ()
+  <span style="color: #f08080; font-style: italic;">"Insert my own email address"</span>
+  (insert header-prefix-string <span style="color: #ffc1c1;">"Email: "</span> <span style="color: #ffc1c1;">"pengpengxppri@gmail.com"</span> <span style="color: #ffc1c1;">"\n"</span>))
+(<span style="color: #00ffff;">defsubst</span> <span style="color: #00fa9a; font-size: 110%; font-weight: bold;">peng-header-author</span> ()
+  <span style="color: #f08080; font-style: italic;">"Insert my own email address"</span>
+  (insert header-prefix-string <span style="color: #ffc1c1;">"Author: "</span> <span style="color: #ffc1c1;">"pengpengxp"</span> <span style="color: #ffc1c1;">"\n"</span>))
+
+<span style="color: #fa8072; font-style: italic;">;;;; </span><span style="color: #ff7f24; font-style: italic;">&#26681;&#25454;&#21407;&#22987;&#30340;`</span><span style="color: #ff7f24; font-weight: bold; font-style: italic;">make-header-hook</span><span style="color: #ff7f24; font-style: italic;">'&#33258;&#24049;&#23450;&#21046;&#20102;&#19968;&#19979;</span>
+(setq make-header-hook '(
+                         header-title
+                         header-blank
+                         header-file-name
+                         header-description
+                         peng-header-author
+                         peng-email-address
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-maintainer</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-copyright</span>
+                         header-creation-date
+                         header-version
+                         header-modification-date
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-pkg-requires</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-modification-author</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-update-count</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-url</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-doc-url</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-keywords</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-compatibility</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-blank</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-lib-requires</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-end-line</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-commentary</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-blank</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-blank</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-blank</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-end-line</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-history</span>
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-blank</span>
+                         header-blank
+                         header-end-line
+                         <span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">header-free-software</span>
+                         header-code
+                         header-eof
+                         ))
+(<span style="color: #00ffff;">provide</span> '<span style="color: #8470ff; font-weight: bold;">init-header2</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3-14" class="outline-4">
+<h4 id="sec-1-3-14"><span class="section-number-4">1.3.14</span> init-auto-insert.el</h4>
+<div class="outline-text-4" id="text-1-3-14">
+<p>
+其实和header2.el的作用差不多，我使用auto-insert来自动添加一些我不想重复输入的代码，配合header2提供的make-header来生成header注释信息。感觉还不错。全局自动打开auto-insert-mode，每次新建文件的时候会自动提示是否添加auto-insert template。也可以在空白文件中显式使用auto-insert来添加。
+</p>
+
+<p>
+<b>问题</b>
+</p>
+<hr  />
+<ol class="org-ol">
+<li>不是新建的文件就不会添加，这是怎么实现的呢？
+</li>
+<li>老样子，latex-mode的模版没有弄好。
+</li>
+</ol>
+<hr  />
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">init-auto-insert.el --- </span>
+<span style="color: #fa8072; font-style: italic;">;; </span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Filename: init-auto-insert.el</span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Description: </span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Author: pengpengxp</span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Email: pengpengxppri@gmail.com</span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Created: &#20845; 12&#26376; 20 11:37:54 2014 (+0800)</span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Version: </span>
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">Last-Updated: </span>
+<span style="color: #fa8072; font-style: italic;">;; </span>
+<span style="color: #fa8072; font-style: italic;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #fa8072; font-style: italic;">;; </span>
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">Code:</span>
+
+
+(define-auto-insert 'org-mode '(nil <span style="color: #ffc1c1;">"#+OPTIONS: ^:{}</span>
+<span style="color: #ffc1c1;">#+STARTUP: showall</span>
+<span style="color: #ffc1c1;">"</span>))
+(define-auto-insert 'c-mode '(nil <span style="color: #ffc1c1;">"#include &lt;stdio.h&gt;</span>
+<span style="color: #ffc1c1;">#include &lt;stdlib.h&gt;</span>
+<span style="color: #ffc1c1;">#include &lt;string.h&gt;</span>
+
+<span style="color: #ffc1c1;">int main(int args,char *argv[])</span>
+<span style="color: #ffc1c1;">{</span>
+
+<span style="color: #ffc1c1;">}"</span>))
+
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">(add-hook 'find-file-hook 'auto-insert)</span>
+(auto-insert-mode 1)
+
+<span style="color: #fa8072; font-style: italic;">;; </span><span style="color: #ff7f24; font-style: italic;">&#19981;&#35201;&#27599;&#27425;&#37117;&#38382;&#25105;&#26159;&#21542;&#38656;&#35201;&#28155;&#21152;</span>
+(setq auto-insert-query nil)
+
+(<span style="color: #00ffff;">provide</span> '<span style="color: #8470ff; font-weight: bold;">init-auto-insert</span>)
+
+<span style="color: #fa8072; font-style: italic;">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+<span style="color: #fa8072; font-style: italic;">;;; </span><span style="color: #ff7f24; font-style: italic;">init-auto-insert.el ends here</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-1-3-15" class="outline-4">
+<h4 id="sec-1-3-15"><span class="section-number-4">1.3.15</span> <span class="todo TODO">TODO</span> wait for writing</h4>
+<div class="outline-text-4" id="text-1-3-15">
+</div><ol class="org-ol"><li>init-cc-mode.el<br  /></li>
+<li>init-w3m.el<br  /></li>
+<li>init-helm.el<br  /></li>
+<li>init-auctex.el<br  /></li>
+<li>init-auto-complete.el<br  /></li>
+<li>init-bm.el<br  /></li>
+<li>init-compilation.el<br  /></li>
+<li>init-cuda.el<br  /></li>
+<li>init-emacs-lisp.el<br  /></li>
+<li>init-eshell.el<br  /></li>
+<li>init-evil-leader.el<br  /></li>
+<li>init-flycheck.el<br  /></li>
+<li>init-global.el<br  /></li>
+<li>init-ibuffer.el<br  /></li>
+<li>init-icicles.el<br  /></li>
+<li>init-ido.el<br  /></li>
+<li>init-Info-mode.el<br  /></li>
+<li>init-latex.el<br  /></li>
+<li>init-lusty-explorer.el<br  /></li>
+<li>init-magit.el<br  /></li>
+<li>init-mew.el<br  /></li>
+<li>init-paredit.el<br  /></li>
+<li>init-peng-copyfun.el<br  /></li>
+<li>init-peng-prifun.el<br  /></li>
+<li>init-plugins.el<br  /></li>
+<li>init-scheme.el<br  /></li>
+<li>init-shell-pop.el<br  /></li>
+<li>init-shell-script.el<br  /></li>
+<li>init-slime.el<br  /></li>
+<li>init-smartparens.el<br  /></li>
+<li>init-smex.el<br  /></li>
+<li>init-sundry.el<br  /></li>
+<li>init-tags.el<br  /></li>
+<li>init-test.el<br  /></li>
+<li>init-uniquify.el<br  /></li>
+<li>init-weibo.el<br  /></li>
+<li>init-window-numbering.el<br  /></li>
+<li>init-macro.el<br  /><div class="outline-text-5" id="text-1-3-15-38">
+</div>
+</li></ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: pengpengxp</p>
+<p class="date">Created: 2014-12-20 六 12:00</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.7c)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

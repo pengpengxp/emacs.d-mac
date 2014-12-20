@@ -43,6 +43,8 @@
 (require 'init-yasnippet)
 (require 'init-auto-complete)
 (require 'init-company-mode)		;company is the alternative for me
+(require 'init-header2)
+(require 'init-auto-insert)
 
 (require 'init-helm)
 ;; (require 'init-ido)

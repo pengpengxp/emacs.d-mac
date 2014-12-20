@@ -1,3 +1,18 @@
+# readme.org --- 
+# 
+# Filename: readme.org
+# Description: 
+# Author: pengpengxp
+# Email: pengpengxppri@gmail.com
+# Created: 六 12月 20 11:09:36 2014 (+0800)
+# Version: 
+# Last-Updated: 
+# 
+# 
+
+# Code:
+
+
 #+STARTUP: hideblocks
 #+STARTUP: content
 
@@ -494,6 +509,11 @@ page-length=9就行了。但是每次重启emacs就会被重写为10。py.txt总
 
 <2014-10-27 一 11:31>
 
+**** TODO 我开始使用五笔输入法
+- State "TODO"       from ""           [2014-12-20 六 11:07]
+希望以后能配置成单字模式，我不想打词组，为的就是以后能盲打。
+
+也许以后可以在eim的基础上自己定制一个输入法。
 *** init-global.el
 init-global.el是我的全局设置。其中包括一些对emacs本身就有的功能的一些
 配置，全局的按键绑定等等。
@@ -1019,6 +1039,110 @@ my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些
   (setq ac-source-yasnippet nil)          ;hope to use yasnippet with auto-complete
 #+END_SRC
 --------------------------------------------------------------------------------
+*** init-header2.el
+自动添加header。包括对文件的描述，作者，创建和修改时间等。我自己作了一
+些小小的改动，比如我现在不想加入版权信息等等。
+#+BEGIN_SRC elisp
+  (require 'header2)
+  ;;;; 这是参考header2.el中的代码，把这些定义成宏
+  (defsubst peng-email-address ()
+    "Insert my own email address"
+    (insert header-prefix-string "Email: " "pengpengxppri@gmail.com" "\n"))
+  (defsubst peng-header-author ()
+    "Insert my own email address"
+    (insert header-prefix-string "Author: " "pengpengxp" "\n"))
+
+  ;;;; 根据原始的`make-header-hook'自己定制了一下
+  (setq make-header-hook '(
+                           header-title
+                           header-blank
+                           header-file-name
+                           header-description
+                           peng-header-author
+                           peng-email-address
+                           ;; header-maintainer
+                           ;; header-copyright
+                           header-creation-date
+                           header-version
+                           header-modification-date
+                           ;; header-pkg-requires
+                           ;; header-modification-author
+                           ;; header-update-count
+                           ;; header-url
+                           ;; header-doc-url
+                           ;; header-keywords
+                           ;; header-compatibility
+                           ;; header-blank
+                           ;; header-lib-requires
+                           ;; header-end-line
+                           ;; header-commentary
+                           ;; header-blank
+                           ;; header-blank
+                           ;; header-blank
+                           ;; header-end-line
+                           ;; header-history
+                           ;; header-blank
+                           header-blank
+                           header-end-line
+                           ;; header-free-software
+                           header-code
+                           header-eof
+                           ))
+  (provide 'init-header2)
+
+
+#+END_SRC
+*** init-auto-insert.el
+其实和header2.el的作用差不多，我使用auto-insert来自动添加一些我不想重
+复输入的代码，配合header2提供的make-header来生成header注释信息。感觉还
+不错。全局自动打开auto-insert-mode，每次新建文件的时候会自动提示是否添
+加auto-insert template。也可以在空白文件中显式使用auto-insert来添加。
+
+*问题*
+--------------------------------------------------------------------------------
+1) 不是新建的文件就不会添加，这是怎么实现的呢？
+2) 老样子，latex-mode的模版没有弄好。
+--------------------------------------------------------------------------------
+#+BEGIN_SRC elisp
+  ;;; init-auto-insert.el --- 
+  ;; 
+  ;; Filename: init-auto-insert.el
+  ;; Description: 
+  ;; Author: pengpengxp
+  ;; Email: pengpengxppri@gmail.com
+  ;; Created: 六 12月 20 11:37:54 2014 (+0800)
+  ;; Version: 
+  ;; Last-Updated: 
+  ;; 
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; 
+  ;;; Code:
+
+
+  (define-auto-insert 'org-mode '(nil "#+OPTIONS: ^:{}
+  ,#+STARTUP: showall
+  "))
+  (define-auto-insert 'c-mode '(nil "#include <stdio.h>
+  #include <stdlib.h>
+  #include <string.h>
+
+  int main(int args,char *argv[])
+  {
+
+  }"))
+
+  ;; (add-hook 'find-file-hook 'auto-insert)
+  (auto-insert-mode 1)
+
+  ;; 不要每次都问我是否需要添加
+  (setq auto-insert-query nil)
+
+  (provide 'init-auto-insert)
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;; init-auto-insert.el ends here
+
+#+END_SRC
 *** TODO wait for writing
 **** init-cc-mode.el
 **** init-w3m.el
@@ -1058,3 +1182,6 @@ my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些
 **** init-weibo.el
 **** init-window-numbering.el
 **** init-macro.el
+
+# 
+# readme.org ends here
