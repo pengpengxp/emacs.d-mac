@@ -301,4 +301,20 @@ the `\end' to end the tex program. At last, use evince to display the result"
 	  (shell-command (concat "evince "
 				 TEMPFILE
 				 ".pdf&")))))))
+
+
+(defun peng-run-current-script ()
+  (interactive)
+  (let ((temp-file-full-name (buffer-file-name))
+	(temp-file-base-name (file-name-base)))
+    (if temp-file-full-name
+	(if (not (= (shell-command (concat "test -x " temp-file-full-name)) 0))
+	    (progn
+	      (shell-command (concat "chmod a+x " temp-file-full-name))
+	      (compile temp-file-full-name))
+	  (progn
+	    (compile temp-file-full-name)))
+      )))
+
+
 (provide 'init-peng-prifun)

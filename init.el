@@ -87,6 +87,7 @@
 (require 'init-cc-mode)
 (require 'init-bookmark-bmemu-mode)
 (require 'init-Info-mode)
+(require 'init-ruby)
 
 ;;; set my default tags table
 (require 'init-tags)
