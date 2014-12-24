@@ -33,7 +33,26 @@
 	))
    
 ;;; 增加这个class
-(add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}"
+(add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}
+[NO-DEFAULT-PACKAGES]
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{wrapfig}
+\\usepackage{rotating}
+\\usepackage[normalem]{ulem}
+\\usepackage{amsmath}
+\\usepackage{textcomp}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{amssymb}
+\\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
+\\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+\\tolerance=1000
+"
 				  ("\\section{%s}" . "\\section*{%s}")
 				  ("\\subsection{%s}" . "\\subsection*{%s}")
 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")

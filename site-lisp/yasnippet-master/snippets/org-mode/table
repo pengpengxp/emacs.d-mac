@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: table
+# key: table
+# --
+#+CAPTION: $1
+#+ATTR_LATEX: :align |p{5cm}|p{5cm}| :environment longtable
+|----------+------+
+| <l>      | <l>  |
+|----------+------+
+| $2       | $0   |
+|----------+------+

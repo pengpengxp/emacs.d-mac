@@ -16,7 +16,9 @@
 "))
 
 (define-auto-insert 'org-mode '(nil "#+OPTIONS: ^:{}
-#+STARTUP: showall
+#+STARTUP: content
+#+STARTUP: align
+#+STARUP: hideblocks
 "))
 
 (define-auto-insert 'c-mode '(nil "#include <stdio.h>

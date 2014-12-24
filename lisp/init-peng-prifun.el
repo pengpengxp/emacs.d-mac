@@ -108,18 +108,17 @@
 (defun peng-list-current-file-tags ()
   "list current files tags"
   (interactive)
-  (shell-command (concat "etags ./*"))
-  (visit-tags-table (concat (helm-current-directory)
-  			    "TAGS"))
-  (list-tags (buffer-file-name))
-  ;; (delete-window)
-  ;; (switch-to-buffer "*Tags List*")
-  ;; (delete-other-windows)
+  (cl-flet ((yes-or-no-p (args) t)
+	    (y-or-n-p (args) t))
+    (shell-command (concat "etags ./*"))
+    (visit-tags-table (concat (helm-current-directory)
+			      "TAGS"))
+    (list-tags (buffer-file-name))
+    ;; (delete-window)
+    ;; (switch-to-buffer "*Tags List*")
+    ;; (delete-other-windows)
+    )
   )
-(defadvice peng-list-current-file-tags (around stfu compile activate)
-  (cl-flet ((yes-or-no-p (&rest args) t)
-	 (y-or-n-p (&rest args) t))
-    ad-do-it))
 ;;; ----------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------
@@ -289,6 +288,17 @@ the `\end' to end the tex program. At last, use evince to display the result"
 			   (concat tempfile ".tex")
 			   ";xelatex "
 			   (concat tempfile ".tex")
-			   (concat  ";rm -rf " tempfile ".out " tempfile ".log " tempfile ".tex" ";evince " tempfile ".pdf")))))
+			   (concat  ";rm -rf " tempfile ".out " tempfile ".log " tempfile ".aux " tempfile ".toc" ";evince " tempfile ".pdf")))))
 
+(defun peng-org-latex-export-to-pdf-and-open ()
+  "export the org source file to pdf and open it"
+  (interactive)
+  (save-excursion
+    (save-window-excursion
+      (let ((TEMPFILE (file-name-base)))
+	(progn
+	  (org-latex-export-to-pdf)
+	  (shell-command (concat "evince "
+				 TEMPFILE
+				 ".pdf&")))))))
 (provide 'init-peng-prifun)
