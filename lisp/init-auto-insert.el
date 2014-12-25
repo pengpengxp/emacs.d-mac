@@ -18,6 +18,9 @@
 (define-auto-insert 'ruby-mode '(nil "#!/usr/bin/ruby
 "))
 
+(define-auto-insert 'enh-ruby-mode '(nil "#!/usr/bin/ruby
+"))
+
 (define-auto-insert 'emacs-lisp-mode '(nil ""))	;默认的设置有问题，我不让它输入任何东西了
 
 

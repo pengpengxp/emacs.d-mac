@@ -203,8 +203,10 @@
 
 ;;; theme
 (when window-system
-  (load-theme 'manoj-dark nil nil)
-  (enable-theme 'manoj-dark)
+  ;; (load-theme 'manoj-dark nil nil)
+  ;; (enable-theme 'manoj-dark)
+  (load-theme 'deeper-blue nil nil)
+  (enable-theme 'deeper-blue)
   )
 
 ;;; MISC
