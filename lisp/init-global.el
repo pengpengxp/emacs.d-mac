@@ -56,29 +56,22 @@
 (global-set-key (kbd "<f6>") 'F6-map)
 ;;; 在当前文件夹快速打开文件管理器
 (peng-global-set-key (kbd "<f6> e") '(lambda ()
-				  (interactive)
-				  (save-window-excursion
-				    (save-restriction
-				      (shell-command (concat "thunar " 
-							     default-directory
-							     "&"))))))
+				       (interactive)
+				       (peng-async-shell-command (concat "thunar " 
+							      default-directory
+							      "&"))))
 (peng-global-set-key (kbd "<f6> n") '(lambda ()
-				  (interactive)
-				  (save-window-excursion
-				    (save-restriction
-				      (shell-command (concat "nautilus " 
-							     default-directory
-							     "&"))))))
+				       (interactive)
+				       (peng-async-shell-command (concat "nautilus " 
+							      default-directory
+							      "&"))))
 ;;; 在当前文件夹快速打开终端
 (peng-global-set-key (kbd "<f6> t") '(lambda ()
-				  (interactive)
-				  (save-window-excursion
-				    (save-restriction
-				      ;; (shell-command (concat "gnome-terminal 2>/dev/null "
-				      (shell-command (concat "gnome-terminal && ls "
-							     " "
-							     default-directory
-							     " &"))))))
+				       (interactive)
+				       (peng-async-shell-command (concat "gnome-terminal && ls "
+									 " "
+									 default-directory
+									 " &"))))
 
 ;; f8-map the global key binding are all here
 (define-prefix-command 'F8-map)

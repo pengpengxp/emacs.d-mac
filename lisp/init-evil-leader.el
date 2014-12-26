@@ -66,6 +66,8 @@
 	 )
   "j" 'bookmark-jump
   "a" 'org-agenda
+  "DEL" 'delete-other-windows
+  "<backspace>" 'delete-other-windows
   )
 
 (provide 'init-evil-leader)

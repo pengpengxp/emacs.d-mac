@@ -41,6 +41,7 @@
 			    (define-key evil-normal-state-local-map (kbd "h") 'backward-char)
 			    (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
 			    (define-key evil-normal-state-local-map (kbd "C-p") 'previous-line)
+			    (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-org-latex-export-to-pdf-and-open)
 			    (define-key evil-insert-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
 			    (define-key evil-emacs-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
 			    (local-set-key (kbd "<tab>") 'org-cycle)

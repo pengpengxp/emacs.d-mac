@@ -282,13 +282,13 @@ the `\end' to end the tex program. At last, use evince to display the result"
   (interactive)
   (let ((tempfile (file-name-base))
 	(temppro "xelatex"))
-    (shell-command (concat "xelatex "
-			   (concat tempfile ".tex")
-			   ";xelatex "
-			   (concat tempfile ".tex")
-			   ";xelatex "
-			   (concat tempfile ".tex")
-			   (concat  ";rm -rf " tempfile ".out " tempfile ".log " tempfile ".aux " tempfile ".toc" ";evince " tempfile ".pdf")))))
+    (peng-async-shell-command (concat "xelatex "
+				      (concat tempfile ".tex")
+				      ";xelatex "
+				      (concat tempfile ".tex")
+				      ";xelatex "
+				      (concat tempfile ".tex")
+				      (concat  ";rm -rf " tempfile ".out " tempfile ".log " tempfile ".aux " tempfile ".toc" ";evince " tempfile ".pdf")))))
 
 (defun peng-org-latex-export-to-pdf-and-open ()
   "export the org source file to pdf and open it"
@@ -304,6 +304,7 @@ the `\end' to end the tex program. At last, use evince to display the result"
 
 
 (defun peng-run-current-script ()
+  "make current file excutbale and just run it"
   (interactive)
   (let ((temp-file-full-name (buffer-file-name))
 	(temp-file-base-name (file-name-base)))
@@ -316,5 +317,20 @@ the `\end' to end the tex program. At last, use evince to display the result"
 	    (compile temp-file-full-name)))
       )))
 
+(defun peng-async-shell-command (COM)
+  "Run the shell command asynchronize Don't ask me whether to
+create a new buffer just because the default buffer is used.
+
+For this reason, I create a random output buffer rather than the
+default one every time I launch a shell command.
+
+The COM is what you want to excute. It MUST be a string."
+  (save-window-excursion
+    (save-excursion
+      (let ((RANDOM-NUM (message "%s" (random 10000))))
+      (async-shell-command COM
+			   (get-buffer-create 
+			    (concat "peng-async-shell-command-output-" RANDOM-NUM)))  
+	))))
 
 (provide 'init-peng-prifun)

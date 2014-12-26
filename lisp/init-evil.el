@@ -22,13 +22,14 @@
 (define-key evil-normal-state-map (kbd "C-c +") 'evil-numbers/inc-at-pt)
 (define-key evil-normal-state-map (kbd "C-c -") 'evil-numbers/dec-at-pt)
 
-;;; 设置这些模式的默认evil模式
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 设置这些模式的默认evil模式，我原本希望这些模式都是emacs模式，但是这
+;;; 让我的evil-leader不是特别方便跳转，所以最后我干脆还是直接指定有些
+;;; mode的默认模式为normal，然后手动把我需要的按键绑定上
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (evil-set-initial-state 'ibuffer-mode 'emacs)
 (evil-set-initial-state 'bookmark-bmenu-mode 'emacs)
-(evil-set-initial-state 'Info-mode 'emacs)
 (evil-set-initial-state 'compilation-mode 'emacs)
-(evil-set-initial-state 'help-mode 'emacs)
-(evil-set-initial-state 'dired-mode 'emacs)
 (evil-set-initial-state 'compilation-mode 'emacs)
 (evil-set-initial-state 'apropos-mode 'emacs)
 (evil-set-initial-state 'magit-mode  'emacs)
@@ -37,11 +38,64 @@
 (evil-set-initial-state 'mew-summary-mode 'emacs)
 (evil-set-initial-state 'mew-message-mode 'emacs)
 (evil-set-initial-state 'bm-show-mode 'emacs)
-(evil-set-initial-state 'Man-mode 'emacs)
 (evil-set-initial-state 'w3m-mode  'emacs)
 (evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'gnus-group-mode 'emacs)
 (evil-set-initial-state 'inferior-scheme-mode 'emacs)
+
+
+(evil-set-initial-state 'Man-mode 'normal)
+
+;;; pengpengxp's evil-info-mode
+(evil-set-initial-state 'help-mode 'normal)
+(add-hook 'help-mode-hook '(lambda ()
+			     (interactive)
+			     (define-key evil-normal-state-local-map (kbd "TAB") 'forward-button)
+			     (define-key evil-normal-state-local-map (kbd "<tab>") 'forward-button)
+			     (define-key evil-normal-state-local-map (kbd "<backtab>") 'backward-button)
+			     (define-key evil-normal-state-local-map (kbd "<S-iso-lefttab>") 'backward-button)
+			     (define-key evil-normal-state-local-map (kbd "q") 'quit-window)
+			     ))
+
+;;; pengpengxp's evil-info-mode
+(evil-set-initial-state 'Info-mode 'normal)
+(add-hook 'Info-mode-hook '(lambda ()
+			     (interactive)
+			     (define-key evil-normal-state-local-map (kbd "<tab>") 'Info-next-reference)
+			     (define-key evil-normal-state-local-map (kbd "TAB") 'Info-next-reference)
+			     (define-key evil-normal-state-local-map (kbd "<backtab>") 'Info-prev-reference)
+			     (define-key evil-normal-state-local-map (kbd "B") 'Info-history-back)
+			     (define-key evil-normal-state-local-map (kbd "^") 'Info-up)
+			     (define-key evil-normal-state-local-map (kbd "d") 'Info-directory)
+			     (define-key evil-normal-state-local-map (kbd "q") 'Info-exit)
+			     (define-key evil-normal-state-local-map (kbd "n") 'Info-next)
+			     (define-key evil-normal-state-local-map (kbd "p") 'Info-prev)
+			     ))
+
+;;; pengpengxp's evil-dired-mode
+(evil-set-initial-state 'dired-mode 'normal)
+(add-hook 'dired-mode-hook '(lambda ()
+			     (interactive)
+			     (define-key evil-normal-state-local-map (kbd "<tab>") 'dired-details-toggle)
+			     (define-key evil-normal-state-local-map (kbd "TAB") 'dired-details-toggle)
+			     (define-key evil-normal-state-local-map (kbd "r") 'revert-buffer)
+			     (define-key evil-normal-state-local-map (kbd "f") 'dired-goto-file)
+			     (define-key evil-normal-state-local-map (kbd "v") 'dired-view-file)
+			     (define-key evil-normal-state-local-map (kbd "q") 'quit-window)
+			     (define-key evil-normal-state-local-map (kbd "C") 'peng-dired-do-copy)
+			     (define-key evil-normal-state-local-map (kbd "R") 'dired-do-rename)
+			     (define-key evil-normal-state-local-map (kbd "m") 'dired-mark)
+			     (define-key evil-normal-state-local-map (kbd "u") 'dired-unmark)
+			     (define-key evil-normal-state-local-map (kbd "U") 'dired-unmark-all-marks)
+			     (define-key evil-normal-state-local-map (kbd "DEL") 'dired-unmark-backward)
+			     (define-key evil-normal-state-local-map (kbd "<backspace>") 'dired-unmark-backward)
+			     (define-key evil-normal-state-local-map (kbd "e i SPC") 'find-file)
+			     (define-key evil-normal-state-local-map (kbd "G") 'evil-goto-line)
+			     (define-key evil-normal-state-local-map (kbd "gg") 'evil-goto-first-line)
+			     (define-key evil-normal-state-local-map (kbd "<M-up>") 'dired-up-directory)
+))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 ;;; esc就是退出insert模式。不再是emacs中的esc
 (setq evil-esc-delay 0)
