@@ -277,34 +277,49 @@ the `\end' to end the tex program. At last, use evince to display the result"
 (defun peng-compile-current-latex-file-to-pdf ()
   "把当前的buffer当做latax源文件来编译了
 
-默认的是调用三次xelatex，然后删除中间文件
-如果有其它需要，请直接使用命令行来完成"
+默认的是调用三次xelatex，然后删除中间文件如果有其它需要，请直接使
+用命令行来完成"
   (interactive)
   (let ((tempfile (file-name-base))
 	(temppro "xelatex"))
-    (peng-async-shell-command (concat "xelatex "
-				      (concat tempfile ".tex")
-				      ";xelatex "
-				      (concat tempfile ".tex")
-				      ";xelatex "
-				      (concat tempfile ".tex")
-				      (concat  ";rm -rf " tempfile ".out " tempfile ".log " tempfile ".aux " tempfile ".toc" ";evince " tempfile ".pdf")))))
+    (shell-command (concat  "rm -rf " tempfile ".bbl " tempfile ".blg " 
+			    tempfile ".out " tempfile ".log " tempfile ".aux " 
+			    tempfile ".toc" tempfile ".pdf"))
+    (compile (concat "xelatex "
+		     (concat tempfile ".tex")
+		     ";xelatex "
+		     (concat tempfile ".tex")
+		     ";xelatex "
+		     (concat tempfile ".tex")
+		     (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
+			      tempfile ".out " tempfile ".log " tempfile ".aux " 
+			      tempfile ".toc" ";evince " tempfile ".pdf")))))
 
 (defun peng-org-latex-export-to-pdf-and-open ()
-  "export the org source file to pdf and open it"
+  "Export the org source file to pdf, delete the intermediate
+file and open the pdf file."
   (interactive)
   (save-excursion
-    (save-window-excursion
-      (let ((TEMPFILE (file-name-base)))
+      (let ((TEMPFILE (message "%s" (file-name-base))))
 	(progn
-	  (org-latex-export-to-pdf)
-	  (shell-command (concat "evince "
-				 TEMPFILE
-				 ".pdf&")))))))
-
+	  (shell-command (concat "rm -rf " TEMPFILE ".pdf"))
+	  (org-latex-export-to-latex)
+	  (compile (concat "xelatex "
+			   (concat TEMPFILE ".tex")
+			   ";xelatex "
+			   (concat TEMPFILE ".tex")
+			   ";xelatex "
+			   (concat TEMPFILE ".tex")
+			   (concat  ";rm -rf " TEMPFILE ".bbl " TEMPFILE ".blg " 
+				    TEMPFILE ".out " TEMPFILE ".log " TEMPFILE ".aux " 
+				    TEMPFILE ".toc" ";rm -f " TEMPFILE ".tex"
+				    ";evince " TEMPFILE ".pdf")))
+	  ))))
 
 (defun peng-run-current-script ()
-  "make current file excutbale and just run it"
+  "make current file excutbale and just run it
+
+Not just shell-script, You can run any script as you like"
   (interactive)
   (let ((temp-file-full-name (buffer-file-name))
 	(temp-file-base-name (file-name-base)))

@@ -64,6 +64,28 @@
   (smartparens-mode -1)
   ;; (evil-close-folds)			;每次打开文件都是折叠的
   (define-key evil-normal-state-map (kbd "zi") 'hide-ifdefs)
+  (define-key evil-normal-state-local-map (kbd "SPC v") '(lambda ()
+							   (interactive)
+							   (cond ((string= major-mode "c-mode")
+								  (compile (concat "gcc -g "
+										   (buffer-file-name)
+										   " -pthread;./a.out")))
+								 ((string= major-mode "c++-mode")
+								  (compile (concat "g++ -g "
+										   (buffer-file-name)
+										   " -pthread ;./a.out")))
+								 )))
+  (define-key evil-normal-state-local-map (kbd "SPC m") '(lambda ()
+							   "Interrupt old compilation, if any, and recompile."
+							   (interactive)
+							   (ignore-errors 
+							     (process-kill-without-query 
+							      (get-buffer-process
+							       (get-buffer "*compilation*"))))
+							   (ignore-errors 
+							     (kill-buffer "*compilation*"))
+							   (compile "make clean;make")))
+
   )
 (add-hook 'c-mode-common-hook 'pengpengxp-c-common-mode)
 

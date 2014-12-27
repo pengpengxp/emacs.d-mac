@@ -38,32 +38,11 @@
   "hv" 'describe-variable
   "hm" 'describe-mode
   "hr" 'info-emacs-manual
+  "hi" 'info
   "cu" 'winner-undo
   "cr" 'winner-redo
   "cm" 'shell-command
   "cc" 'org-capture
-  "v" '(lambda ()
-	 (interactive)
-	 (cond ((string= major-mode "c-mode")
-		(compile (concat "gcc -g "
-				 (buffer-file-name)
-				 " -pthread;./a.out")))
-	       ((string= major-mode "c++-mode")
-		(compile (concat "g++ -g "
-				 (buffer-file-name)
-				 " -pthread ;./a.out")))
-	       ))
-  "m" '(lambda ()
-	 "Interrupt old compilation, if any, and recompile."
-	 (interactive)
-	 (ignore-errors 
-	   (process-kill-without-query 
-	    (get-buffer-process
-	     (get-buffer "*compilation*"))))
-	 (ignore-errors 
-	   (kill-buffer "*compilation*"))
-	 (compile "make clean;make")
-	 )
   "j" 'bookmark-jump
   "a" 'org-agenda
   "DEL" 'delete-other-windows

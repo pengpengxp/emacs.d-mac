@@ -13,4 +13,7 @@
 ;;; compile的时候随着output输出而滚动，还可以定制其他。请查info
 (setq compilation-scroll-output t)
 
+;;; kill the last compilation without ask yes or no
+(setq compilation-always-kill t)
+
 (provide 'init-compilation)

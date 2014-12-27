@@ -46,7 +46,7 @@
 
 (evil-set-initial-state 'Man-mode 'normal)
 
-;;; pengpengxp's evil-info-mode
+;;; pengpengxp's evil-help-mode
 (evil-set-initial-state 'help-mode 'normal)
 (add-hook 'help-mode-hook '(lambda ()
 			     (interactive)
@@ -70,6 +70,7 @@
 			     (define-key evil-normal-state-local-map (kbd "q") 'Info-exit)
 			     (define-key evil-normal-state-local-map (kbd "n") 'Info-next)
 			     (define-key evil-normal-state-local-map (kbd "p") 'Info-prev)
+			     (define-key evil-normal-state-local-map (kbd "i") 'Info-menu)
 			     ))
 
 ;;; pengpengxp's evil-dired-mode
