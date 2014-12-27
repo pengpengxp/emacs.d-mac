@@ -1,3 +1,18 @@
+;;; init-auctex.el --- 
+;; 
+;; Filename: init-auctex.el
+;; Description: 
+;; Author: pengpengxp
+;; Email: pengpengxppri@gmail.com
+;; Created: 六 12月 27 17:11:45 2014 (+0800)
+;; Version: 
+;; Last-Updated: 
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;;; Code:
+
+
 ;;;; use the auctex
 ;;;; WATCH OUT:you must have installed the texlive
 ;;; when you install,you need to make and make install
@@ -10,6 +25,8 @@
 ;;;;use xelatex to compile latex file
 
 (require 'tex)
+(require 'out-xtra)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; peng-bib是默认的
@@ -36,47 +53,135 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 	    (company-mode-on)
 	    (autopair-on)
 	    (TeX-PDF-mode 1)
+	    (smart-tab-mode-off)
+	    (outline-minor-mode)
 	    ))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; the keybinding
 (add-hook 'LaTeX-mode-hook
 	  '(lambda ()
+	     ;; compile the plain tex file
 	    (define-key evil-normal-state-local-map (kbd "SPC v") '(lambda ()
 								     (interactive)
 								     (let* ((basefile (file-name-base)))
 								       (compile (concat "tex "
 											(concat basefile ".tex")
 											" '\\end'"
-											";evince "
+											";xdvi "
 											(concat basefile ".dvi")
 											))
 								       )))
+	    ;; only use xelatex once
+	    (define-key evil-normal-state-local-map (kbd "SPC o")
+	      '(lambda ()
+		 (interactive)
+		 (let* ((tempfile (file-name-base)))
+		   (progn
+		     (shell-command (concat  "rm -rf " tempfile ".bbl " tempfile ".blg " 
+					     tempfile ".out " tempfile ".log " tempfile ".aux " 
+					     tempfile ".toc" tempfile ".pdf"))
+		     (compile (concat "xelatex "
+				      (concat tempfile ".tex")
+				      (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
+					       tempfile ".out " tempfile ".log " tempfile ".aux " 
+					       tempfile ".toc" ";evince " tempfile ".pdf")))
+		     ))))
+	    ;; use xelatex,bibtex,xelatex for some bibliography
+	    (define-key evil-normal-state-local-map (kbd "SPC b")
+	      '(lambda ()
+		 (interactive)
+		 (let* ((tempfile (file-name-base)))
+		   (progn
+		     (shell-command (concat  "rm -rf " tempfile ".bbl " tempfile ".blg " 
+					     tempfile ".out " tempfile ".log " tempfile ".aux " 
+					     tempfile ".toc" tempfile ".pdf"))
+		     (compile (concat "xelatex "
+				      (concat tempfile ".tex")
+				      (concat ";bibtex " tempfile ".aux")
+				      (concat ";xelatex " tempfile ".tex")
+				      (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
+					       tempfile ".out " tempfile ".log " tempfile ".aux " 
+					       tempfile ".toc" ";evince " tempfile ".pdf")))
+		     ))))
 	    ))
 (add-hook 'LaTeX-mode-hook '(lambda ()
 			      (interactive)
 			      (peng-local-set-key (kbd "<f8> v") 'peng-compile-current-file-as-plain-tex)
 			      (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-compile-current-file-as-plain-tex)
 			      (peng-local-set-key (kbd "<f8> l") 'peng-compile-current-latex-file-to-pdf)
+			      ;; compile three times using xelatex
 			      (define-key evil-normal-state-local-map (kbd "SPC l") 'peng-compile-current-latex-file-to-pdf)
+			      ;; command master for multi-choise
 			      (define-key evil-normal-state-local-map (kbd "SPC m") 'TeX-command-master)
+			      ;; the viewer
 			      (define-key evil-normal-state-local-map (kbd "SPC cv") 'TeX-view)
+			      (peng-local-set-key (kbd "C-x ns") 'peng-latex-narrow-section)
+			      (peng-local-set-key (kbd "C-x ne") 'peng-latex-narrow-environment)
+			      ;; for use of the outline-minor-mode
+			      (peng-local-set-key (kbd "<tab>") 'outline-toggle-children)
+			      (peng-local-set-key (kbd "TAB") 'outline-toggle-children)
 			      ))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; anther settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq auto-mode-alist
       (append
        ;; the original tex-mode can't be use
        '(("\\.tex\\'". latex-mode))
        auto-mode-alist))
 
+(setq TeX-electric-escape t)		; bind TeX-insert-macro to
+					; `\', it is very convenient
+
+;;; 不这样设置，使用TeX-insert-macro选\usepacke之后不能自动补全。查看
+;;; exec-path文挡说这是什么for subprocess。注：不设置这个，emacs从命令
+;;; 行启动是可以使用的。应该就是一些变量的问题。
+(setq exec-path (append exec-path '("/usr/local/texlive/2013/bin/i386-linux")))
+
+(setq TeX-auto-save t) ; Enable parse on save.
+
+;; Automatically remove all tabs from a file before saving it. And use
+;; space to instead it.
+(setq TeX-auto-untabify t)
+
+
+;;    The following example add `\item' and `\bibliography' headers, with
+;; `\bibliography' at the same outline level as `\section', and `\item'
+;; being below `\subparagraph'.
+(setq TeX-outline-extra
+      '(("[ \t]*\\\\\\(bib\\)?item\\b" 7)
+     	("\\\\bibliography\\b" 2)))
+
+(setq-default TeX-master nil) ; Query for master file.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; my personal function in latex-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun peng-latex-narrow-section ()
+  "narrow to current section
+
+inspired from the org-narrow-to-subtree"
+  (interactive)
+  (LaTeX-mark-section)
+  (narrow-to-region (region-beginning)
+		    (region-end))
+  (keyboard-quit))
+
+(defun peng-latex-narrow-environment ()
+  "narrow to current environment
+
+inspired from the org-narrow-to-subtree"
+  (interactive)
+  (LaTeX-mark-environment)
+  (narrow-to-region (region-beginning)
+		    (region-end))
+  (keyboard-quit))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (provide 'init-auctex)
 
-
-
-
-
-
-
-
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init-auctex.el ends here

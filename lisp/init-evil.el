@@ -46,6 +46,23 @@
 
 (evil-set-initial-state 'Man-mode 'normal)
 
+;;; pengpengxp's evil-toc-mode
+(evil-set-initial-state 'reftex-toc-mode 'normal)
+(add-hook 'reftex-toc-mode-hook '(lambda ()
+			     (interactive)
+			     (define-key evil-normal-state-local-map (kbd "TAB") 'forward-button)
+			     (define-key evil-normal-state-local-map (kbd "<tab>") 'forward-button)
+			     (define-key evil-normal-state-local-map (kbd "<backtab>") 'backward-button)
+			     (define-key evil-normal-state-local-map (kbd "<S-iso-lefttab>") 'backward-button)
+			     (define-key evil-normal-state-local-map (kbd "q") 'reftex-toc-quit)
+			     (define-key evil-normal-state-local-map (kbd "r") 'reftex-toc-rescan)
+			     ;; (define-key evil-normal-state-local-map (kbd "SPC") 'reftex-toc-view-line)
+			     (define-key evil-normal-state-local-map (kbd "RET") 'reftex-toc-goto-line-and-hide)
+			     (define-key evil-normal-state-local-map (kbd "l") 'reftex-toc-toggle-labels)
+			     (define-key evil-normal-state-local-map (kbd "f") 'reftex-toc-toggle-follow)
+			     (define-key evil-normal-state-local-map (kbd "x") 'reftex-toc-external)
+			     (define-key evil-normal-state-local-map (kbd "?") 'reftex-toc-show-help)
+			     ))
 ;;; pengpengxp's evil-help-mode
 (evil-set-initial-state 'help-mode 'normal)
 (add-hook 'help-mode-hook '(lambda ()
