@@ -1,0 +1,2 @@
+alias ei (find-file)
+alias ll ls -alF

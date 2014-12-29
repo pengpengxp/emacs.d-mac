@@ -8,10 +8,8 @@
 /usr/local/texlive/2013/texmf-dist/doc
 ~
 /home/pengpengxp/gtd
-/home/pengpengxp/peng_bin
 /home/pengpengxp/netp/peng-c-version-xkin
 /home/pengpengxp/.fvwm
-/home/pengpengxp
 /home/pengpengxp/VirtualBox VMs
 /home/pengpengxp/文档/2012研究生培养/专利/tex
 /home/pengpengxp/gtd
@@ -19,7 +17,6 @@
 /home/pengpengxp/.i3
 /home/pengpengxp/Dropbox
 /home/pengpengxp/.emacs.d/lisp
-/home/pengpengxp/peng_bin
 /home/pengpengxp/文档/2012研究生培养/专利
 /home/pengpengxp/.i3
 /home/pengpengxp/文档/2012研究生培养/专利
@@ -27,5 +24,8 @@
 /home/pengpengxp/.emacs.d/lisp
 ~/.emacs.d/site-lisp/auctex/auctex
 /home/pengpengxp/.emacs.d/site-lisp/auctex/auctex
-/tmp
 /tmp/pdf
+/home/pengpengxp/peng_bin
+/home/pengpengxp
+/tmp
+/tmp/temp

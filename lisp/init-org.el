@@ -35,6 +35,12 @@
 ;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
 			    (auto-fill-mode 1)
+			    (define-key evil-normal-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
+			    (define-key evil-visual-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
+
+			    (define-key evil-normal-state-local-map (kbd "C-c C-u") 'outline-up-heading)
+			    (define-key evil-visual-state-local-map (kbd "C-c C-u") 'outline-up-heading)
+
 			    (define-key evil-normal-state-local-map (kbd "j") 'next-line)
 			    (define-key evil-normal-state-local-map (kbd "C-n") 'next-line)
 			    (define-key evil-normal-state-local-map (kbd "l") 'forward-char)
@@ -44,7 +50,6 @@
 			    (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-org-latex-export-to-pdf-and-open)
 			    (define-key evil-insert-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
 			    (define-key evil-emacs-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
-			    (local-set-key (kbd "<tab>") 'org-cycle)
 			    (local-set-key (kbd "<C-tab>") 'other-window)
 			    (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
 			    (peng-local-set-key (kbd "<return>") 'org-return)
@@ -54,6 +59,8 @@
 			    (yas-minor-mode 1)
 			    (local-set-key (kbd "C-c a") 'org-agenda)
 			    (peng-local-set-key (kbd "C-c &") 'org-mark-ring-goto)
+			    (peng-local-set-key (kbd "<tab>") 'org-cycle)
+			    (peng-local-set-key (kbd "TAB") 'org-cycle)
 			    (setq org-agenda-files ORG-AGENDA-FILES)
 			    (setq org-directory ORG-HOME)
 			    (org-indent-mode 1)	;不显示那么多个*

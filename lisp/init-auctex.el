@@ -26,6 +26,7 @@
 
 (require 'tex)
 (require 'out-xtra)
+(require 'outline-magic)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,7 +42,6 @@
 				       (file-name-base))))
 (add-hook 'LaTeX-mode-hook
 	  (lambda ()
-	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-compile nil t))
 	    (add-to-list 'TeX-command-list '("peng-bib-inter"
 					     "rm -f %b.aux %b.toc %b.log %b.pdf %b.bbl %b.blg %b.toc;\
 xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf" 
@@ -49,7 +49,8 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 	    (add-to-list 'TeX-command-list '("peng-bib" "rm -f %b.aux %b.toc %b.log %b.pdf %b.bbl %b.blg %b.toc;\
 xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf" 
 					     TeX-run-compile nil t))
-	    (setq TeX-command-default "peng-bib")
+	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-compile nil t))
+	    (setq TeX-command-default "XeLaTeX")
 	    (company-mode-on)
 	    (autopair-on)
 	    (TeX-PDF-mode 1)
@@ -100,6 +101,7 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 				      (concat tempfile ".tex")
 				      (concat ";bibtex " tempfile ".aux")
 				      (concat ";xelatex " tempfile ".tex")
+				      (concat ";xelatex " tempfile ".tex")
 				      (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
 					       tempfile ".out " tempfile ".log " tempfile ".aux " 
 					       tempfile ".toc" ";evince " tempfile ".pdf")))
@@ -119,8 +121,8 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 			      (peng-local-set-key (kbd "C-x ns") 'peng-latex-narrow-section)
 			      (peng-local-set-key (kbd "C-x ne") 'peng-latex-narrow-environment)
 			      ;; for use of the outline-minor-mode
-			      (peng-local-set-key (kbd "<tab>") 'outline-toggle-children)
-			      (peng-local-set-key (kbd "TAB") 'outline-toggle-children)
+			      (peng-local-set-key (kbd "<tab>") 'outline-cycle)
+			      (peng-local-set-key (kbd "TAB") 'outline-cycle)
 			      ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -150,9 +152,10 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 ;;    The following example add `\item' and `\bibliography' headers, with
 ;; `\bibliography' at the same outline level as `\section', and `\item'
 ;; being below `\subparagraph'.
-(setq TeX-outline-extra
-      '(("[ \t]*\\\\\\(bib\\)?item\\b" 7)
-     	("\\\\bibliography\\b" 2)))
+;; (setq TeX-outline-extra
+;;       '(("[ \t]*\\\\\\(bib\\)?item\\b" 7)
+;;      	("\\\\bibliography\\b" 2)))
+
 
 (setq-default TeX-master nil) ; Query for master file.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

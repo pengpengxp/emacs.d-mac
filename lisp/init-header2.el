@@ -1,3 +1,20 @@
+;;; init-header2.el --- 
+;; 
+;; Filename: init-header2.el
+;; 
+;; Description: 
+;; 
+;; Author: pengpengxp
+;; Email: pengpengxppri@gmail.com
+;; Created: 六 12月 27 20:59:43 2014 (+0800)
+;; Version: 
+;; Last-Updated: 
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;;; Code:
+
+
 (require 'header2)
 ;;;; 这是参考header2.el中的代码，把这些定义成宏
 (defsubst peng-email-address ()
@@ -12,7 +29,9 @@
 			 header-title
 			 header-blank
 			 header-file-name
+			 header-blank
 			 header-description
+			 header-blank
 			 peng-header-author
 			 peng-email-address
 			 ;; header-maintainer
@@ -45,3 +64,6 @@
 			 ))
 (provide 'init-header2)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init-header2.el ends here
