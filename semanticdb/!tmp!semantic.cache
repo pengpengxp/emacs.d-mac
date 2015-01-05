@@ -1,0 +1,71 @@
+;; Object tmp/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tmp/"
+  :tables (list 
+   (semanticdb-table "main.java"
+    :major-mode 'jde-mode
+    :tags 
+        '( ("main" type
+               (:typemodifiers ("public")
+                :members 
+                  ( ("main" function
+                       (:typemodifiers ("public" "static")
+                        :arguments 
+                          ( ("args" variable
+                               (:dereference 1
+                                :type "String")
+                                (reparse-symbol formal_parameters) [838 851]))                          
+                        :type "void")
+                        (reparse-symbol class_member_declaration) [814 938]))                  
+                :type "class")
+                nil [789 940]))          
+    :file "main.java"
+    :pointmax 941
+    :fsize 940
+    :lastmodtime '(21674 13970 85781 93000)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "main.c"
+    :major-mode 'c-mode
+    :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("stdlib.h" include (:system-flag t) nil [20 39])
+            ("string.h" include (:system-flag t) nil [40 59])
+            ("test_t" type
+               (:typedef ("test_s" type (:type "struct") nil nil)
+                :superclasses "test_s"
+                :type "typedef")
+                nil [61 118])
+            ("test_s" type
+               (:members 
+                  ( ("a" variable (:type "int") (reparse-symbol classsubparts) [90 96])
+                    ("b" variable (:type "char") (reparse-symbol classsubparts) [102 109]))                  
+                :type "struct")
+                nil [61 118])
+            ("function" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("a" variable (:type "int") (reparse-symbol arg-sub-list) [134 140]))                  
+                :type "void")
+                nil [120 141])
+            ("main" function
+               (:arguments 
+                  ( ("args" variable (:type "int") (reparse-symbol arg-sub-list) [151 160])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [160 173]))                  
+                :type "int")
+                nil [142 267]))          
+    :file "main.c"
+    :pointmax 268
+    :fsize 267
+    :lastmodtime '(21673 11488 527910 699000)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!tmp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

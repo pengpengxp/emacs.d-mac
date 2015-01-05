@@ -89,6 +89,7 @@
 (require 'init-bookmark-bmemu-mode)
 (require 'init-Info-mode)
 (require 'init-ruby)
+(require 'init-java.el)
 
 ;;; set my default tags table
 (require 'init-tags)

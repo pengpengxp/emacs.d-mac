@@ -1,0 +1,563 @@
+;; Object c/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "c/"
+  :tables (list 
+   (semanticdb-table "main.c"
+    :major-mode 'c-mode
+    :tags 
+        '( ("_FILE_OFFSET_BITS" variable (:constant-flag t) nil [9 26])
+            ("unistd.h" include (:system-flag t) nil [35 54])
+            ("stdio.h" include (:system-flag t) nil [57 75])
+            ("stdlib.h" include (:system-flag t) nil [78 97])
+            ("sys/stat.h" include (:system-flag t) nil [100 121])
+            ("sys/types.h" include (:system-flag t) nil [124 146])
+            ("dirent.h" include (:system-flag t) nil [149 168])
+            ("string.h" include (:system-flag t) nil [171 190])
+            ("time.h" include (:system-flag t) nil [193 210])
+            ("signal.h" include (:system-flag t) nil [213 232])
+            ("sys/time.h" include (:system-flag t) nil [235 256])
+            ("stdarg.h" include (:system-flag t) nil [259 278])
+            ("errno.h" include (:system-flag t) nil [281 299])
+            ("BOOL" variable (:constant-flag t) nil [858 862])
+            ("TRUE" variable (:constant-flag t) nil [877 881])
+            ("FALSE" variable (:constant-flag t) nil [894 899])
+            ("MAX_FMTSTR_LENGTH" variable (:constant-flag t) nil [912 929])
+            ("COPY_BUF_SIZE" variable (:constant-flag t) nil [979 992])
+            ("MAX_PATH_LENGTH" variable (:constant-flag t) nil [1025 1040])
+            ("GBYTES" variable (:constant-flag t) nil [1079 1085])
+            ("MBYTES" variable (:constant-flag t) nil [1117 1123])
+            ("KBYTES" variable (:constant-flag t) nil [1148 1154])
+            ("HOUR" variable (:constant-flag t) nil [1170 1174])
+            ("MINUTE" variable (:constant-flag t) nil [1195 1201])
+            ("OPP_CONTINUE" variable (:constant-flag t) nil [1215 1227])
+            ("OPP_SKIP" variable (:constant-flag t) nil [1240 1248])
+            ("OPP_CANCEL" variable (:constant-flag t) nil [1261 1271])
+            ("MSGT_PROMPT" variable (:constant-flag t) nil [1305 1316])
+            ("MSGT_WARNING" variable (:constant-flag t) nil [1329 1341])
+            ("MSGT_ERROR" variable (:constant-flag t) nil [1354 1364])
+            ("MSGT_VERBOSE" variable (:constant-flag t) nil [1377 1389])
+            ("MSGT_DEMO" variable (:constant-flag t) nil [1402 1411])
+            ("each_opp_t" variable
+               (:functionpointer-flag t
+                :type "int")
+                nil [1658 1738])
+            ("sig_handler_t" variable
+               (:functionpointer-flag t
+                :type "void")
+                nil [1749 1776])
+            ("sum_file" variable (:type "int") nil [1795 1812])
+            ("sum_dir" variable (:type "int") nil [1815 1831])
+            ("sum_size" variable (:type "long long") nil [1834 1857])
+            ("copied_file" variable (:type "int") nil [1860 1880])
+            ("copied_dir" variable (:type "int") nil [1883 1902])
+            ("copied_size" variable (:type "long long") nil [1905 1931])
+            ("copy_start_time" variable (:type ("time_t" type (:type "class") nil nil)) nil [1934 1961])
+            ("status_pause" variable (:type "int") nil [1964 1990])
+            ("opt_d" variable (:type "int") nil [1993 2012])
+            ("opt_f" variable (:type "int") nil [2015 2034])
+            ("opt_q" variable (:type "int") nil [2037 2056])
+            ("opt_r" variable (:type "int") nil [2059 2078])
+            ("opt_v" variable (:type "int") nil [2081 2100])
+            ("human_size" function
+               (:pointer 1
+                :arguments 
+                  ( ("s" variable (:type "long long") (reparse-symbol arg-sub-list) [2137 2149])
+                    ("hs" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2150 2159]))                  
+                :type "char")
+                nil [2120 2534])
+            ("human_time" function
+               (:pointer 1
+                :arguments 
+                  ( ("t" variable (:type ("time_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2585 2594])
+                    ("text" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2595 2606]))                  
+                :type "char")
+                nil [2568 2976])
+            ("print_message" function
+               (:arguments 
+                  ( ("t" variable (:type "int") (reparse-symbol arg-sub-list) [3094 3100])
+                    ("fmt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3101 3117])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [3118 3122]))                  
+                :type "void")
+                nil [3075 3464])
+            ("make_path" function
+               (:pointer 1
+                :arguments 
+                  ( ("dest" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3536 3547])
+                    ("frt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3548 3564])
+                    ("snd" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3565 3581]))                  
+                :type "char")
+                nil [3520 4028])
+            ("show_status" function
+               (:arguments 
+                  ( ("finish" variable (:type "int") (reparse-symbol arg-sub-list) [4063 4075]))                  
+                :type "void")
+                nil [4046 5242])
+            ("timer_handler" function
+               (:arguments 
+                  ( ("signum" variable (:type "int") (reparse-symbol arg-sub-list) [5281 5292]))                  
+                :type "void")
+                nil [5262 5373])
+            ("install_timer" function
+               (:arguments 
+                  ( ("sec" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5413 5424])
+                    ("handler_func" variable (:type ("sig_handler_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5425 5453]))                  
+                :type "void")
+                nil [5394 5979])
+            ("walk" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6120 6142])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6143 6163])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6164 6186])
+                    ("opp" variable (:type ("each_opp_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6187 6202]))                  
+                :type "int")
+                nil [6111 8290])
+            ("sum_up" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8320 8342])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8343 8363])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8364 8386])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8387 8409]))                  
+                :type "int")
+                nil [8309 8711])
+            ("demo" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8737 8759])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8760 8780])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8781 8803])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8804 8826]))                  
+                :type "int")
+                nil [8728 9420])
+            ("action" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9448 9470])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9471 9491])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9492 9514])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [9515 9537]))                  
+                :type "int")
+                nil [9437 15311])
+            ("usage" function (:type "void") nil [15328 15845])
+            ("is_self_copy" function
+               (:arguments 
+                  ( ("src" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15905 15921])
+                    ("dest" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15922 15939]))                  
+                :type "int")
+                nil [15887 16280])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [16311 16320])
+                    ("args" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16321 16334]))                  
+                :type "int")
+                nil [16302 20015]))          
+    :file "main.c"
+    :pointmax 20018
+    :fsize 21851
+    :lastmodtime '(21666 41896 778513 421000)
+    :unmatched-syntax '((TYPEDEF 1741 . 1748) (TYPEDEF 1650 . 1657))
+    :lexical-table 
+        '(("MSGT_VERBOSE" . ((number "3" 1390 . 1391)))
+          ("MSGT_WARNING" . ((number "1" 1342 . 1343)))
+          ("TRUE" . ((number "1" 882 . 883)))
+          ("HOUR" . ((semantic-list "(60 * 60)" 1175 . 1184)))
+          ("MSGT_PROMPT" . ((number "0" 1317 . 1318)))
+          ("FALSE" . ((number "0" 900 . 901)))
+          ("OPP_CONTINUE" . ((number "0" 1228 . 1229)))
+          ("MSGT_DEMO" . ((number "4" 1412 . 1413)))
+          ("COPY_BUF_SIZE" . ((number "4096" 993 . 997)))
+          ("KBYTES" . ((number "1024" 1155 . 1159)))
+          ("MAX_FMTSTR_LENGTH" . ((number "2048" 930 . 934)))
+          ("OPP_CANCEL" . ((number "2" 1272 . 1273)))
+          ("GBYTES" . ((semantic-list "(1024 * 1024 * 1024)" 1086 . 1106)))
+          ("MINUTE" . ((number "60" 1202 . 1204)))
+          ("BOOL" . ((INT "int" 863 . 866)))
+          ("MAX_PATH_LENGTH" . ((semantic-list "(PATH_MAX + 1)" 1041 . 1055)))
+          ("MBYTES" . ((semantic-list "(1024 * 1024)" 1124 . 1137)))
+          ("MSGT_ERROR" . ((number "2" 1365 . 1366)))
+          ("_FILE_OFFSET_BITS" . ((number "64" 27 . 29)))
+          ("OPP_SKIP" . ((number "1" 1249 . 1250)))
+          )
+
+    )
+   (semanticdb-table "xcp.c"
+    :major-mode 'c-mode
+    :tags 
+        '( ("_FILE_OFFSET_BITS" variable (:constant-flag t) nil [9 26])
+            ("unistd.h" include (:system-flag t) nil [35 54])
+            ("stdio.h" include (:system-flag t) nil [57 75])
+            ("stdlib.h" include (:system-flag t) nil [78 97])
+            ("sys/stat.h" include (:system-flag t) nil [100 121])
+            ("sys/types.h" include (:system-flag t) nil [124 146])
+            ("dirent.h" include (:system-flag t) nil [149 168])
+            ("string.h" include (:system-flag t) nil [171 190])
+            ("time.h" include (:system-flag t) nil [193 210])
+            ("signal.h" include (:system-flag t) nil [213 232])
+            ("sys/time.h" include (:system-flag t) nil [235 256])
+            ("stdarg.h" include (:system-flag t) nil [259 278])
+            ("errno.h" include (:system-flag t) nil [281 299])
+            ("BOOL" variable (:constant-flag t) nil [858 862])
+            ("TRUE" variable (:constant-flag t) nil [877 881])
+            ("FALSE" variable (:constant-flag t) nil [894 899])
+            ("MAX_FMTSTR_LENGTH" variable (:constant-flag t) nil [912 929])
+            ("COPY_BUF_SIZE" variable (:constant-flag t) nil [979 992])
+            ("MAX_PATH_LENGTH" variable (:constant-flag t) nil [1025 1040])
+            ("GBYTES" variable (:constant-flag t) nil [1079 1085])
+            ("MBYTES" variable (:constant-flag t) nil [1117 1123])
+            ("KBYTES" variable (:constant-flag t) nil [1148 1154])
+            ("HOUR" variable (:constant-flag t) nil [1170 1174])
+            ("MINUTE" variable (:constant-flag t) nil [1195 1201])
+            ("OPP_CONTINUE" variable (:constant-flag t) nil [1215 1227])
+            ("OPP_SKIP" variable (:constant-flag t) nil [1240 1248])
+            ("OPP_CANCEL" variable (:constant-flag t) nil [1261 1271])
+            ("MSGT_PROMPT" variable (:constant-flag t) nil [1305 1316])
+            ("MSGT_WARNING" variable (:constant-flag t) nil [1329 1341])
+            ("MSGT_ERROR" variable (:constant-flag t) nil [1354 1364])
+            ("MSGT_VERBOSE" variable (:constant-flag t) nil [1377 1389])
+            ("MSGT_DEMO" variable (:constant-flag t) nil [1402 1411])
+            ("each_opp_t" variable
+               (:functionpointer-flag t
+                :type "int")
+                nil [1658 1738])
+            ("sig_handler_t" variable
+               (:functionpointer-flag t
+                :type "void")
+                nil [1749 1776])
+            ("sum_file" variable (:type "int") nil [1795 1812])
+            ("sum_dir" variable (:type "int") nil [1815 1831])
+            ("sum_size" variable (:type "long long") nil [1834 1857])
+            ("copied_file" variable (:type "int") nil [1860 1880])
+            ("copied_dir" variable (:type "int") nil [1883 1902])
+            ("copied_size" variable (:type "long long") nil [1905 1931])
+            ("copy_start_time" variable (:type ("time_t" type (:type "class") nil nil)) nil [1934 1961])
+            ("status_pause" variable (:type "int") nil [1964 1990])
+            ("opt_d" variable (:type "int") nil [1993 2012])
+            ("opt_f" variable (:type "int") nil [2015 2034])
+            ("opt_q" variable (:type "int") nil [2037 2056])
+            ("opt_r" variable (:type "int") nil [2059 2078])
+            ("opt_v" variable (:type "int") nil [2081 2100])
+            ("human_size" function
+               (:pointer 1
+                :arguments 
+                  ( ("s" variable (:type "long long") (reparse-symbol arg-sub-list) [2137 2149])
+                    ("hs" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2150 2159]))                  
+                :type "char")
+                nil [2120 2534])
+            ("human_time" function
+               (:pointer 1
+                :arguments 
+                  ( ("t" variable (:type ("time_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2585 2594])
+                    ("text" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2595 2606]))                  
+                :type "char")
+                nil [2568 2976])
+            ("print_message" function
+               (:arguments 
+                  ( ("t" variable (:type "int") (reparse-symbol arg-sub-list) [3094 3100])
+                    ("fmt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3101 3117])
+                    ("..." variable (:type "vararg") (reparse-symbol arg-sub-list) [3118 3122]))                  
+                :type "void")
+                nil [3075 3464])
+            ("make_path" function
+               (:pointer 1
+                :arguments 
+                  ( ("dest" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3536 3547])
+                    ("frt" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3548 3564])
+                    ("snd" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3565 3581]))                  
+                :type "char")
+                nil [3520 4028])
+            ("show_status" function
+               (:arguments 
+                  ( ("finish" variable (:type "int") (reparse-symbol arg-sub-list) [4063 4075]))                  
+                :type "void")
+                nil [4046 5242])
+            ("timer_handler" function
+               (:arguments 
+                  ( ("signum" variable (:type "int") (reparse-symbol arg-sub-list) [5281 5292]))                  
+                :type "void")
+                nil [5262 5373])
+            ("install_timer" function
+               (:arguments 
+                  ( ("sec" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5413 5424])
+                    ("handler_func" variable (:type ("sig_handler_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5425 5453]))                  
+                :type "void")
+                nil [5394 5979])
+            ("walk" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6120 6142])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6143 6163])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [6164 6186])
+                    ("opp" variable (:type ("each_opp_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6187 6202]))                  
+                :type "int")
+                nil [6111 8290])
+            ("sum_up" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8320 8342])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8343 8363])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8364 8386])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8387 8409]))                  
+                :type "int")
+                nil [8309 8711])
+            ("demo" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8737 8759])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8760 8780])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8781 8803])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [8804 8826]))                  
+                :type "int")
+                nil [8728 9420])
+            ("action" function
+               (:arguments 
+                  ( ("path_from" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9448 9470])
+                    ("path_to" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9471 9491])
+                    ("path_tree" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [9492 9514])
+                    ("st" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("stat" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [9515 9537]))                  
+                :type "int")
+                nil [9437 15311])
+            ("usage" function (:type "void") nil [15328 15845])
+            ("is_self_copy" function
+               (:arguments 
+                  ( ("src" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15905 15921])
+                    ("dest" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [15922 15939]))                  
+                :type "int")
+                nil [15887 16280])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [16311 16320])
+                    ("args" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [16321 16334]))                  
+                :type "int")
+                nil [16302 20015]))          
+    :file "xcp.c"
+    :pointmax 20018
+    :fsize 21851
+    :lastmodtime '(21666 41896 778513 421000)
+    :unmatched-syntax '((TYPEDEF 1741 . 1748) (TYPEDEF 1650 . 1657))
+    :lexical-table 
+        '(("MSGT_VERBOSE" . ((number "3" 1390 . 1391)))
+          ("MSGT_WARNING" . ((number "1" 1342 . 1343)))
+          ("TRUE" . ((number "1" 882 . 883)))
+          ("HOUR" . ((semantic-list "(60 * 60)" 1175 . 1184)))
+          ("MSGT_PROMPT" . ((number "0" 1317 . 1318)))
+          ("FALSE" . ((number "0" 900 . 901)))
+          ("OPP_CONTINUE" . ((number "0" 1228 . 1229)))
+          ("MSGT_DEMO" . ((number "4" 1412 . 1413)))
+          ("COPY_BUF_SIZE" . ((number "4096" 993 . 997)))
+          ("KBYTES" . ((number "1024" 1155 . 1159)))
+          ("MAX_FMTSTR_LENGTH" . ((number "2048" 930 . 934)))
+          ("OPP_CANCEL" . ((number "2" 1272 . 1273)))
+          ("GBYTES" . ((semantic-list "(1024 * 1024 * 1024)" 1086 . 1106)))
+          ("MINUTE" . ((number "60" 1202 . 1204)))
+          ("BOOL" . ((INT "int" 863 . 866)))
+          ("MAX_PATH_LENGTH" . ((semantic-list "(PATH_MAX + 1)" 1041 . 1055)))
+          ("MBYTES" . ((semantic-list "(1024 * 1024)" 1124 . 1137)))
+          ("MSGT_ERROR" . ((number "2" 1365 . 1366)))
+          ("_FILE_OFFSET_BITS" . ((number "64" 27 . 29)))
+          ("OPP_SKIP" . ((number "1" 1249 . 1250)))
+          )
+
+    )
+   )
+  :file "!home!pengpengxp!workshop!c!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

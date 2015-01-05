@@ -40,6 +40,7 @@
 ;;; for compile
 (peng-global-set-key (kbd "<f5> <f5>") 'compile)
 (peng-global-set-key (kbd "<f5> r") 'recompile)
+(peng-global-set-key (kbd "<f5> l") 'peng-list-current-file-tags)
 
 ;;;F5 for eye protected
 (peng-global-set-key (kbd "<f5> ee") 'peng-eyerest-show-rest)

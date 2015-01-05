@@ -34,7 +34,7 @@
 ;;; hook
 ;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
-			    (auto-fill-mode 1)
+			    (auto-fill-mode 0)
 			    (define-key evil-normal-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 			    (define-key evil-visual-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 

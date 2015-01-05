@@ -108,17 +108,17 @@
 (defun peng-list-current-file-tags ()
   "list current files tags"
   (interactive)
-  (cl-flet ((yes-or-no-p (args) t)
+  (flet ((yes-or-no-p (args) t)
 	    (y-or-n-p (args) t))
-    (shell-command (concat "etags ./*"))
+    (shell-command (concat "etags " 
+			   (format "%s" (buffer-file-name))))
     (visit-tags-table (concat (helm-current-directory)
 			      "TAGS"))
     (list-tags (buffer-file-name))
-    ;; (delete-window)
-    ;; (switch-to-buffer "*Tags List*")
-    ;; (delete-other-windows)
-    )
-  )
+    (delete-window)
+    (switch-to-buffer "*Tags List*")
+    (delete-other-windows)
+    ))
 ;;; ----------------------------------------------------------------------
 
 ;;; ----------------------------------------------------------------------

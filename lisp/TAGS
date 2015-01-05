@@ -1,0 +1,4 @@
+
+/home/pengpengxp/.emacs.d/lisp/init-java.el,73
+(defadvice jde-compile 55,1436
+(defun peng-jde-compile-and-run 61,1604
