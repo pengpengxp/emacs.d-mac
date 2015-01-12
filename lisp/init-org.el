@@ -35,6 +35,7 @@
 ;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
 			    (auto-fill-mode 0)
+			    (peng-local-set-key (kbd "<f5> <f5>") 'peng-org-latex-insert-math)
 			    (define-key evil-normal-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 			    (define-key evil-visual-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 
@@ -48,6 +49,8 @@
 			    (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
 			    (define-key evil-normal-state-local-map (kbd "C-p") 'previous-line)
 			    (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-org-latex-export-to-pdf-and-open)
+			    (define-key evil-normal-state-local-map (kbd "SPC cv") 'peng-org-view)
+			    (define-key evil-normal-state-local-map (kbd "<f5> cv") 'peng-org-view)
 			    (define-key evil-insert-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
 			    (define-key evil-emacs-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
 			    (local-set-key (kbd "<C-tab>") 'other-window)
@@ -126,7 +129,7 @@
 	;;  "*  SOMEDAY  %?\n %T")
 
 	("n" "Notes" entry (file+datetree (concat ORG-HOME "/note.org"))
-	 "*  TODO  %?\n %T")
+	 "*  %?\n %T")
 
 	("j" "Important-Day" entry (file+datetree (concat ORG-HOME "/note.org"))
 	 "*  Important-Day  %?\n %T")

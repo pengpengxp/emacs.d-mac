@@ -46,6 +46,7 @@
 (require 'init-header2)
 (require 'init-auto-insert)
 (require 'init-outline-minor-mode.el)
+(require 'init-color-theme)
 
 (require 'init-helm)
 ;; (require 'init-ido)

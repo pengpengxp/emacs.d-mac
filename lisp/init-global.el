@@ -195,14 +195,6 @@
 (peng-global-set-key (kbd "C-x SPC") 'point-to-register)
 (peng-global-set-key (kbd "C-x j") 'jump-to-register)
 
-;;; theme
-(when window-system
-  ;; (load-theme 'manoj-dark nil nil)
-  ;; (enable-theme 'manoj-dark)
-  (load-theme 'deeper-blue nil nil)
-  (enable-theme 'deeper-blue)
-  )
-
 ;;; MISC
 (peng-unshow-all-tools)
 (setq column-number-mode t)

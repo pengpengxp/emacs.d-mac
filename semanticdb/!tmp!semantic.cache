@@ -16,13 +16,13 @@
                                 :type "String")
                                 (reparse-symbol formal_parameters) [838 851]))                          
                         :type "void")
-                        (reparse-symbol class_member_declaration) [814 938]))                  
+                        (reparse-symbol class_member_declaration) [814 916]))                  
                 :type "class")
-                nil [789 940]))          
+                nil [789 918]))          
     :file "main.java"
-    :pointmax 941
-    :fsize 940
-    :lastmodtime '(21674 13970 85781 93000)
+    :pointmax 919
+    :fsize 918
+    :lastmodtime '(21674 14799 229755 133000)
     :unmatched-syntax 'nil
     )
    (semanticdb-table "main.c"
