@@ -49,7 +49,7 @@
 \\usepackage{marvosym}
 \\usepackage{wasysym}
 \\usepackage{amssymb}
-\\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}
+\\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
 \\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \\tolerance=1000
 "

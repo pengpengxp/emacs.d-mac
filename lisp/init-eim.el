@@ -15,7 +15,7 @@
 (require 'eim-extra)
 (global-set-key (kbd "<C-backspace>") 'toggle-input-method)
 ;; 用 ; 暂时输入英文
-(global-set-key (kbd ";") 'eim-insert-ascii)
+(define-key evil-insert-state-map (kbd ";") 'eim-insert-ascii)
 (peng-global-set-key (kbd "s-;") 'eim-insert-ascii)
 
 (setq default-input-method "eim-wb")

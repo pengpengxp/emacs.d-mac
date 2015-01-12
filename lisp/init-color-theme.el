@@ -32,8 +32,11 @@
 (color-theme-initialize)
 
 ;;; I don't understand why I must load it rather than only require it?
-(load-file (concat SITE-LISP "/color-theme-6.6.0/emacs-colors-solarized.el"))
-(require 'color-theme-solarized)
+
+(when window-system
+  (progn
+    (load-file (concat SITE-LISP "/color-theme-6.6.0/emacs-colors-solarized.el"))
+    (require 'color-theme-solarized)))
 
 (color-theme-solarized-dark)
 

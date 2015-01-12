@@ -35,6 +35,7 @@
 ;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
 			    (auto-fill-mode 0)
+			    (visual-line-mode 1)
 			    (peng-local-set-key (kbd "<f5> <f5>") 'peng-org-latex-insert-math)
 			    (define-key evil-normal-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 			    (define-key evil-visual-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
@@ -61,9 +62,12 @@
 			    (setq truncate-lines nil)
 			    (yas-minor-mode 1)
 			    (local-set-key (kbd "C-c a") 'org-agenda)
+			    (when (not (window-system))
+			      (progn
+				(peng-local-set-key (kbd "<tab>") 'org-cycle)
+				(peng-local-set-key (kbd "TAB") 'org-cycle)))
 			    (peng-local-set-key (kbd "C-c &") 'org-mark-ring-goto)
-			    (peng-local-set-key (kbd "<tab>") 'org-cycle)
-			    (peng-local-set-key (kbd "TAB") 'org-cycle)
+
 			    (setq org-agenda-files ORG-AGENDA-FILES)
 			    (setq org-directory ORG-HOME)
 			    (org-indent-mode 1)	;不显示那么多个*
@@ -114,7 +118,7 @@
 				    )))
 (setq org-capture-templates 
       '(("t" "News" entry (file+datetree (concat ORG-HOME "/inbox.org"))
-	 "*  TODO  [#A]  %?\n %T")
+	 "*  TODO  [#A]  %?\n  %T")
 
 	("i" "Dreams" entry (file+datetree (concat ORG-HOME "/dreams.org"))
 	 "*  Dreams  %?\n %T")
@@ -194,5 +198,10 @@
    (latex . t)
    (js . t)
    ))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; for the footnote: insert footnote inline by default
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq org-footnote-define-inline  t)
 
 (provide 'init-org)

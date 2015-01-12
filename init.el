@@ -47,6 +47,7 @@
 (require 'init-auto-insert)
 (require 'init-outline-minor-mode.el)
 (require 'init-color-theme)
+(require 'init-ace-jump.el)
 
 (require 'init-helm)
 ;; (require 'init-ido)
@@ -91,6 +92,7 @@
 (require 'init-Info-mode)
 (require 'init-ruby)
 (require 'init-java.el)
+(require 'init-visual-line-mode)
 
 ;;; set my default tags table
 (require 'init-tags)

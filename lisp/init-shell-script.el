@@ -22,6 +22,7 @@
 (defun peng-shell-script-mode ()
   (hl-line-mode 1)
   (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-run-current-script)
+  (peng-local-set-key (kbd "C-c C-v") 'peng-run-current-script)
 )
 
 (add-hook 'sh-mode-hook 'peng-shell-script-mode)

@@ -87,7 +87,7 @@
 							   (compile "make clean;make")))
 
   )
-(add-hook 'c-mode-common-hook 'pengpengxp-c-common-mode)
+(add-hook 'c-mode-hook 'pengpengxp-c-common-mode)
 
 ;;use <RET> to indent a new line 
 (defun my-make-CR-do-indent ()
