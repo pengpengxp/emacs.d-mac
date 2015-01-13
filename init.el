@@ -56,6 +56,7 @@
 ;; (require 'init-smex)
 
 (require 'init-eim)
+(require 'init-chinese-pyim)
 (require 'init-auctex)			;;;;you need to install auctex first
 (require 'init-smartparens)
 (require 'init-window-numbering)

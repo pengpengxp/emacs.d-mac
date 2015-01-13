@@ -1,0 +1,46 @@
+;; -*- coding: utf-8 -*-
+- 达日
+a 阿
+d 的
+d-r 达日
+dao 到
+ge 个
+huai 坏
+n-d 年代
+n-sh 你是
+n-sh-sh 你是谁
+ni-shi 你是
+ni-shi-shui 你是谁
+nian-dai 年代
+r 人
+s 所
+s-g 搜狗
+s-z 所在
+sh-j 升级
+sh-j-d 升级到
+sh-r-f 输入法
+sheng-ji 升级
+sheng-ji-dao 升级到
+shi 是
+shu-ru-fa 输入法
+shui 谁
+sou-gou 搜狗
+suo-zai 所在
+w-s 我所
+w-sh 我是
+wo 我
+wo- 我所
+wo-shi 我是
+y-g 一个
+y-sh 也是 野食
+ye 也
+ye-shi 也是 野食
+yi 一 义
+yi-ge 一个
+z-h 最好
+zh-sh 这是
+zhe 这
+zhe-shi 这是
+zhi 置
+zui 最
+zui-hao 最好

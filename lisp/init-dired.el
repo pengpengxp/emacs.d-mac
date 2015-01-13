@@ -13,6 +13,7 @@
   (local-set-key (kbd "<tab>") 'dired-details-toggle)
   (local-set-key (kbd "C") 'peng-dired-do-copy)
   (define-key evil-emacs-state-map (kbd "M-<up>") 'dired-up-directory)
+  (auto-revert-mode 1)
   )
 (add-hook 'dired-mode-hook 'peng-dired-mode)
 

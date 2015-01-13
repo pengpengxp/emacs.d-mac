@@ -121,6 +121,36 @@ file and open the pdf file."
 				    ";evince " TEMPFILE ".pdf")))
 	  ))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; convert all marked org files to pdf. I copied from internet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'dired+)
+;; (defun peng-dired-org-to-pdf ()
+;;   (interactive)
+;;   (mapc
+;;    (lambda (f)
+;;      (with-current-buffer
+;;          (find-file-noselect f)
+;;        (org-latex-export-to-pdf)))
+;;    (dired-get-marked-files)))
+(defun peng-dired-org-to-pdf ()
+  (interactive)
+  (let ((files
+         (if (eq major-mode 'dired-mode)
+             (dired-get-marked-files)
+           (let ((default-directory (read-directory-name "dir: ")))
+             (mapcar #'expand-file-name 
+                     (file-expand-wildcards "*.org"))))))
+    ;; (message "%s" files)
+    (mapc
+     (lambda (f)
+       (with-current-buffer
+           (find-file-noselect f)
+         (org-latex-export-to-pdf)))
+     files)
+    ))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun peng-org-latex-export-to-pdf-and-open-with-bib ()
   "Export the org source file to pdf, delete the intermediate
 file and open the pdf file. also compile the bibliography"
