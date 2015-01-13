@@ -28,6 +28,7 @@
 ;;; other plugins
 (require 'init-scheme)
 (require 'init-org)
+(require 'init-gtd)
 (require 'init-org-export)
 (require 'init-emacs-lisp)
 (require 'init-w3m)

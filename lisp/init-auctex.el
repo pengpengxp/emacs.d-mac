@@ -188,6 +188,30 @@ inspired from the org-narrow-to-subtree"
   (keyboard-quit))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; personal function
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun peng-compile-current-latex-file-to-pdf ()
+  "把当前的buffer当做latax源文件来编译了
+
+默认的是调用三次xelatex，然后删除中间文件如果有其它需要，请直接使
+用命令行来完成"
+  (interactive)
+  (let ((tempfile (file-name-base))
+	(temppro "xelatex"))
+    (shell-command (concat  "rm -rf " tempfile ".bbl " tempfile ".blg " 
+			    tempfile ".out " tempfile ".log " tempfile ".aux " 
+			    tempfile ".toc" tempfile ".pdf"))
+    (compile (concat "xelatex "
+		     (concat tempfile ".tex")
+		     ";xelatex "
+		     (concat tempfile ".tex")
+		     ";xelatex "
+		     (concat tempfile ".tex")
+		     (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
+			      tempfile ".out " tempfile ".log " tempfile ".aux " 
+			      tempfile ".toc" ";evince " tempfile ".pdf")))))
+
 (provide 'init-auctex)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
