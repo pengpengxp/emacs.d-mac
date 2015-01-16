@@ -51,6 +51,7 @@
 (require 'init-ace-jump.el)
 
 (require 'init-helm)
+;; (require 'init-ido-cb.el)
 ;; (require 'init-ido)
 ;; (require 'init-icicles)
 ;; (require 'init-smex)

@@ -55,6 +55,7 @@ NEW-WRAP-COLUMN disables this behavior."
 
 ;; (set-visual-wrap-column fill-column)
 (setq visual-line-fringe-indicators '(left-arrow nil))
+(setq word-wrap nil)
 
 (provide 'init-visual-line-mode)
 

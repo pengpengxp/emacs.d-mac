@@ -9,8 +9,11 @@
 ;;; rebinding the tab
 (define-key helm-map (kbd "TAB") 'helm-next-line)
 (define-key helm-map (kbd "<backtab>") 'helm-previous-line)
-;; For find-file etc.
+
+;; For find-file etc.This is very helpful when I'm familliar with TAB
+;; complesion
 (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+
 ;; For helm-find-files etc.
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 

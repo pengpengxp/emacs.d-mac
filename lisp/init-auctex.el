@@ -60,6 +60,7 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 	    (TeX-PDF-mode 1)
 	    (smart-tab-mode-off)
 	    (outline-minor-mode)
+	    (setq TeX-engine 'xetex)
 	    ))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -151,6 +152,7 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 ;; Automatically remove all tabs from a file before saving it. And use
 ;; space to instead it.
 (setq TeX-auto-untabify t)
+
 
 
 ;;    The following example add `\item' and `\bibliography' headers, with

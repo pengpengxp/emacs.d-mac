@@ -33,12 +33,19 @@
 
 ;;; I don't understand why I must load it rather than only require it?
 
-(when window-system
+;; (when window-system
+;;   (progn
+;;     (load-file (concat SITE-LISP "/color-theme-6.6.0/emacs-colors-solarized.el"))
+;;     (require 'color-theme-solarized)))
+
+(if (display-graphic-p)
   (progn
     (load-file (concat SITE-LISP "/color-theme-6.6.0/emacs-colors-solarized.el"))
-    (require 'color-theme-solarized)))
+    (require 'color-theme-solarized)
+    ;; (color-theme-solarized-dark)
+    (color-theme-deep-blue)
+))
 
-(color-theme-solarized-dark)
 
 (provide 'init-color-theme)
 

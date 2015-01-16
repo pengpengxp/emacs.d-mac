@@ -37,7 +37,7 @@
 (defun peng-unshow-all-tools ()
   "hide menu and tool and scroll bar"
   (interactive)
-  (when window-system 
+  (if (display-graphic-p)
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1)
@@ -45,7 +45,7 @@
 (defun peng-show-all-tools ()
   "show menu and tool and scroll bar"
   (interactive)
-  (when window-system
+  (if (display-graphic-p)
     (menu-bar-mode t)
     (tool-bar-mode t)
     (scroll-bar-mode t)

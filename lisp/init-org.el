@@ -18,11 +18,18 @@
 			    (define-key evil-normal-state-local-map (kbd "C-c C-u") 'outline-up-heading)
 			    (define-key evil-visual-state-local-map (kbd "C-c C-u") 'outline-up-heading)
 
+			    (define-key evil-visual-state-local-map (kbd "j") 'next-line)
+			    (define-key evil-visual-state-local-map (kbd "<down>") 'next-line)
+			    (define-key evil-visual-state-local-map (kbd "k") 'previous-line)
+			    (define-key evil-visual-state-local-map (kbd "<up>") 'previous-line)
+
 			    (define-key evil-normal-state-local-map (kbd "j") 'next-line)
+			    (define-key evil-normal-state-local-map (kbd "<down>") 'next-line)
 			    (define-key evil-normal-state-local-map (kbd "C-n") 'next-line)
 			    (define-key evil-normal-state-local-map (kbd "l") 'forward-char)
 			    (define-key evil-normal-state-local-map (kbd "h") 'backward-char)
 			    (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
+			    (define-key evil-normal-state-local-map (kbd "<up>") 'previous-line)
 			    (define-key evil-normal-state-local-map (kbd "C-p") 'previous-line)
 			    (define-key evil-normal-state-local-map (kbd "SPC v") 'peng-org-latex-export-to-pdf-and-open)
 			    (define-key evil-normal-state-local-map (kbd "SPC cv") 'peng-org-view)
@@ -33,11 +40,12 @@
 			    (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
 			    (peng-local-set-key (kbd "<return>") 'org-return)
 			    (peng-local-set-key (kbd "C-c (") 'reftex-citation)
-			    (peng-local-set-key (kbd "<f9>") 'peng-org-latex-export-to-pdf-and-open)
+			    (peng-local-set-key (kbd "<f9>") 'peng-org-latex-export-to-pdf-and-open-no-content)
+			    (peng-local-set-key (kbd "<f10>") 'peng-org-latex-export-to-pdf-and-open)
 			    (setq truncate-lines nil)
 			    (yas-minor-mode 1)
 			    (local-set-key (kbd "C-c a") 'org-agenda)
-			    (when (not (window-system))
+			    (if (not (display-graphic-p))
 			      (progn
 				(peng-local-set-key (kbd "<tab>") 'org-cycle)
 				(peng-local-set-key (kbd "TAB") 'org-cycle)))
@@ -45,9 +53,9 @@
 
 			    (setq org-agenda-files ORG-AGENDA-FILES)
 			    (setq org-directory ORG-HOME)
-			    (org-indent-mode 1)	;不显示那么多个*
+			    ;; (org-indent-mode 1)	;不显示那么多个*
 			    (setq org-return-follows-link t) ;超连接可以使用回车打开
-			    (when window-system
+			    (if (display-graphic-p)
 			      (local-set-key (kbd "<s-return>") 'org-insert-subheading))
 			    ))
 ;;; ----------------------------------------------------------------------
@@ -121,6 +129,26 @@ file and open the pdf file."
 				    ";evince " TEMPFILE ".pdf")))
 	  ))))
 
+(defun peng-org-latex-export-to-pdf-and-open-no-content ()
+  "Export the org source file to pdf, delete the intermediate
+file and open the pdf file."
+  (interactive)
+  (save-excursion
+      (let ((TEMPFILE (message "%s" (file-name-base))))
+	(progn
+	  (shell-command (concat "rm -rf " TEMPFILE ".pdf"))
+	  (org-latex-export-to-latex)
+	  (compile (concat "xelatex "
+			   (concat TEMPFILE ".tex")
+			   ;; ";xelatex "
+			   ;; (concat TEMPFILE ".tex")
+			   ;; ";xelatex "
+			   ;; (concat TEMPFILE ".tex")
+			   (concat  ";rm -rf " TEMPFILE ".bbl " TEMPFILE ".blg " 
+				    TEMPFILE ".out " TEMPFILE ".log " TEMPFILE ".aux " 
+				    TEMPFILE ".toc" ";rm -f " TEMPFILE ".tex"
+				    ";evince " TEMPFILE ".pdf")))
+	  ))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; convert all marked org files to pdf. I copied from internet
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -11,8 +11,12 @@
 
 ;;; 开始不需要使用menu-bar，scroll-bar这些
 (menu-bar-mode -1)
-(when window-system
-  (scroll-bar-mode -1))
+
+;; (when window-system
+;;   (scroll-bar-mode -1))
+
+(if (display-graphic-p)
+    (scroll-bar-mode -1))
 
 ;; Only start server mode if I'm not root
 (unless (string-equal "root" (getenv "USER"))
@@ -163,7 +167,20 @@
 
 ;;;; the following should give fullscreen mode when F11 is depressed,I find it from the internet
 ;;; only usefull in Xemacs,you don't need it in terminal 
-(when window-system
+;; (when window-system
+;;   (progn
+;;     (peng-global-set-key [f11] '(lambda ()
+;; 			     (interactive)
+;; 			     (set-frame-parameter nil 'fullscreen
+;; 						  (if (frame-parameter nil 'fullscreen) nil 'fullboth))
+;; 			     ;; ;; If you want the fullscreen emacs to be very minimal (no tool bar, scroll bar, or menu bar, also add:
+;; 			     (progn
+;; 			       (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))  ;; no toolbar
+;; 			       (menu-bar-mode -1) ;;no menubar
+;; 			       ;; (scroll-bar-mode -1) ;; no scroll bar
+;; 			       )))))
+
+(if (display-graphic-p)
   (progn
     (peng-global-set-key [f11] '(lambda ()
 			     (interactive)
@@ -175,7 +192,6 @@
 			       (menu-bar-mode -1) ;;no menubar
 			       ;; (scroll-bar-mode -1) ;; no scroll bar
 			       )))))
-
 ;; for winner-mode
 (winner-mode 1)
 (peng-global-set-key (kbd "C-c u") 'winner-undo)
