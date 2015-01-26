@@ -1,4 +1,8 @@
 ;;; eshell mode
+(require 'shell-switcher)
+
+(setq shell-switcher-mode t)
+
 (defun peng-eshell-mode-hook ()
   (linum-mode 1)
   )
@@ -6,7 +10,7 @@
 
 ;;; ielm-mode hook
 (defun peng-ielm-mode-hook ()
-  (auto-complete-mode 1))
+  (company-mode 1))
 (add-hook 'ielm-mode-hook 'peng-eshell-mode-hook)
 
 (defun eshell/clear ()
@@ -20,11 +24,41 @@
   "use ei as find-file"
   (find-file arg))
 
-(require 'helm)
-(add-hook 'eshell-mode-hook
-          #'(lambda ()
-              (define-key eshell-mode-map
-                [remap eshell-pcomplete]
-                'helm-esh-pcomplete)))
+(defun eshell/vi (arg)
+  "use vi as find-file"
+  (find-file arg))
+
+(defun eshell/cj ()
+  "jump to bookmark"
+  (let ((temp (completing-read "Bookmarks: " (bookmark-all-names))))
+    (bookmark-jump temp)))
+
+(defun eshell/\,cj ()
+  "jump to bookmark"
+  (let ((temp (completing-read "Bookmarks: " (bookmark-all-names))))
+    (bookmark-jump temp)))
+
+;; (defun eshell/\,xb ()
+;;   "switch buffer in eshell"
+;;   (let ((buffer (completing-read "Buffers: " 
+;; 				 (mapcar 'buffer-name (buffer-list)))))
+;;     (switch-to-buffer buffer)))
+
+(defun eshell/\,xb ()
+  "switch buffer in eshell"
+  (let ((buffer (buffer-name (other-buffer))))
+    (switch-to-buffer buffer)))
+
+(defun eshell/\,xf ()
+  "use ei as find-file"
+  (let ((file (read-file-name "FILE: ")))
+    (find-file file)))
+
+;; (require 'helm)
+;; (add-hook 'eshell-mode-hook
+;;           #'(lambda ()
+;;               (define-key eshell-mode-map
+;;                 [remap eshell-pcomplete]
+;;                 'helm-esh-pcomplete)))
 
 (provide 'init-eshell)

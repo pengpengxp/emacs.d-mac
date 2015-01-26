@@ -40,6 +40,7 @@
 			    (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
 			    (peng-local-set-key (kbd "<return>") 'org-return)
 			    (peng-local-set-key (kbd "C-c (") 'reftex-citation)
+			    (peng-local-set-key (kbd "C-c )") 'reftex-reference)
 			    (peng-local-set-key (kbd "<f9>") 'peng-org-latex-export-to-pdf-and-open-no-content)
 			    (peng-local-set-key (kbd "<f10>") 'peng-org-latex-export-to-pdf-and-open)
 			    (setq truncate-lines nil)
@@ -72,8 +73,11 @@
                (local-set-key [tab] 'yas-expand))))
 ;;; ----------------------------------------------------------------------
 
+
+;;; ----------------------------------------------------------------------
 ;; 设置org-mode中对各种Babel语言支持，这样就可以通过`C-c C-c'执行这些命
 ;; 令了
+;;; ----------------------------------------------------------------------
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
@@ -84,7 +88,16 @@
    (python . t)
    (latex . t)
    (js . t)
+   (ruby . t)
+   (ditaa . t)
+   (R . t)
    ))
+;;; 可以禁止`C-c C-c`在code block中进行执行命令，但是我不需要
+;; (setq org-babel-no-eval-on-ctrl-c-ctrl-c nil)
+
+;;; 每次执行的时候不再询问了yes-or-no了
+(setq org-confirm-babel-evaluate nil)
+;;; ----------------------------------------------------------------------
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; for the footnote: insert footnote inline by default
@@ -162,6 +175,10 @@ file and open the pdf file."
 ;;        (org-latex-export-to-pdf)))
 ;;    (dired-get-marked-files)))
 (defun peng-dired-org-to-pdf ()
+  "convert the marked org files to pdf in dired-mode.
+otherwise,you need to input a directory name. this function will
+try to convert all of the org files in the directory you just
+type to pdf automatically"
   (interactive)
   (let ((files
          (if (eq major-mode 'dired-mode)

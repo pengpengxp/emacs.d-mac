@@ -1,0 +1,28 @@
+;; Object emacs24-starter-kit/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "emacs24-starter-kit/"
+  :tables (list 
+   (semanticdb-table "Makefile"
+    :major-mode 'makefile-gmake-mode
+    :tags 
+        '( ("EMACS" variable (:default-value ("emacs")) nil [29 41])
+            ("BATCH" variable (:default-value ("$(EMACS)" "--batch" "-Q" "--eval" "'(require (quote org))'" "--eval" "'(setq starter-kit-dir default-directory)'")) nil [42 149])
+            ("FILES" variable (:default-value ("starter-kit.org" "starter-kit-bindings.org" "starter-kit-defuns.org" "starter-kit-misc.org" "starter-kit-registers.org")) nil [150 285])
+            ("FILESO" variable (:default-value ("$(FILES:.org=.el)")) nil [286 313])
+            ("all" function (:arguments ("el")) nil [314 417])
+            ("el" function (:arguments ("$(FILES)")) nil [418 527])
+            ("%.el" function (:arguments ("%.org")) nil [528 586])
+            ("doc" function (:arguments ("doc/index.html")) nil [587 607])
+            ("doc/index.html" function nil nil [608 823])
+            ("clean" function nil nil [824 932]))          
+    :file "Makefile"
+    :pointmax 932
+    :fsize 931
+    :lastmodtime '(21543 64046 232241 705000)
+    :unmatched-syntax '((shell-command 832 . 931) (bol 831 . 831))
+    )
+   )
+  :file "!home!pengpengxp!data!other_emacs.d_config!emacs24-starter-kit!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -306,5 +306,13 @@ The COM is what you want to excute. It MUST be a string."
 			    (concat "peng-async-shell-command-output-" RANDOM-NUM)))  
 	))))
 
+(defun peng-switch-to-org-agenda ()
+  "switch to buffer *Org Agenda*
+if that buffer is not exits,call org-agenda"
+  (interactive)
+  (let ((buffer (get-buffer "*Org Agenda*")))
+    (if buffer
+	(switch-to-buffer "*Org Agenda*")
+      (org-agenda))))
 
 (provide 'init-peng-prifun)

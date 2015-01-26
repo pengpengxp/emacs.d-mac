@@ -38,7 +38,8 @@ NEW-WRAP-COLUMN disables this behavior."
         (when (window-live-p (car windows))
           (with-selected-window (car windows)
             (update-visual-wrap-column)))
-        (setq windows (cdr windows))))))
+        (setq windows (cdr windows))))
+    (setq word-wrap nil)))
 
 (defun update-visual-wrap-column ()
   (if (not visual-wrap-column)

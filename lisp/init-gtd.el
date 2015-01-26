@@ -137,7 +137,7 @@
 	))
 
 ;;;默认显示一天的事件
-(setq org-agenda-span 'week)
+(setq org-agenda-span 'day)
 
 (provide 'init-gtd)
 

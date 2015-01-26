@@ -5,7 +5,7 @@
 (load "popup")
 (load "auto-complete")
 (load "auto-complete-config")
-(ac-config-default)
+;; (ac-config-default)
 (ac-set-trigger-key "<tab>")		;hope to use yasnippet with auto-complete
 
 ;; (ac-set-trigger-key "TAB")

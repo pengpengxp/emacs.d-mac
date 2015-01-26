@@ -39,6 +39,11 @@
 									     (delete-window)
 									     )))
 				))
+(add-hook 'jde-mode-hook (lambda ()
+			   (interactive)
+			   (yas-minor-mode-on)
+			   (autopair-mode 1)
+			   ))
 
 ;;; useless temporarily, I just need a function to combine the
 ;;; jde-compile and jde-run

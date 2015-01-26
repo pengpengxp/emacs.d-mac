@@ -63,17 +63,20 @@
 (define-key evil-normal-state-map (kbd "SPC B") 'bookmark-bmenu-list)
 (define-key evil-normal-state-map (kbd "SPC r") 'recentf-open-files)
 (define-key evil-normal-state-map (kbd "SPC TAB") 'switch-to-buffer)
+
 (define-key evil-normal-state-map (kbd "SPC 1") 'delete-other-windows)
 (define-key evil-normal-state-map (kbd "SPC 0") 'delete-window)
 (define-key evil-normal-state-map (kbd "SPC 2") 'split-window-below)
 (define-key evil-normal-state-map (kbd "SPC 3") 'split-window-right)
 (define-key evil-normal-state-map (kbd "SPC DEL") 'delete-other-windows)
+
 (define-key evil-normal-state-map (kbd "SPC go") 'peng-ibuffer-filter-org-mode)
 (define-key evil-normal-state-map (kbd "SPC gc") 'peng-ibuffer-filter-c-mode)
 (define-key evil-normal-state-map (kbd "SPC ge") 'peng-ibuffer-filter-emacs-lisp-mode)
 (define-key evil-normal-state-map (kbd "SPC gs") 'peng-ibuffer-filter-sql-mode)
 (define-key evil-normal-state-map (kbd "SPC gd") 'peng-ibuffer-filter-dired-mode)
 (define-key evil-normal-state-map (kbd "SPC gp") 'peng-ibuffer-filter-c++-mode)
+
 (define-key evil-normal-state-map (kbd "SPC hf") 'describe-function)
 (define-key evil-normal-state-map (kbd "SPC hk") 'describe-key)
 (define-key evil-normal-state-map (kbd "SPC hc") 'describe-key-briefly)
@@ -81,10 +84,12 @@
 (define-key evil-normal-state-map (kbd "SPC hm") 'describe-mode)
 (define-key evil-normal-state-map (kbd "SPC hr") 'info-emacs-manual)
 (define-key evil-normal-state-map (kbd "SPC hi") 'info)
+
 (define-key evil-normal-state-map (kbd "SPC cu") 'winner-undo)
 (define-key evil-normal-state-map (kbd "SPC cr") 'winner-redo)
 (define-key evil-normal-state-map (kbd "SPC cm") 'shell-command)
 (define-key evil-normal-state-map (kbd "SPC cc") 'org-capture)
+
 (define-key evil-normal-state-map (kbd "SPC j") 'bookmark-jump)
 (define-key evil-normal-state-map (kbd "SPC a") 'org-agenda)
 (define-key evil-normal-state-map (kbd "SPC DEL") 'delete-other-windows)

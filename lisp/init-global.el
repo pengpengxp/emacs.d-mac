@@ -150,6 +150,7 @@
 (peng-global-set-key (kbd "<C-down>") 'shrink-window)
 (peng-global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (peng-global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
+(peng-global-set-key (kbd "C-c C-b") 'peng-switch-to-org-agenda)
 
 ;;;use for the alias `ls --color=auto`,if you don't use it,there will be some garbled
 ;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

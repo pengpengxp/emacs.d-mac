@@ -19,3 +19,36 @@
     ))
 
 (provide 'init-test)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; (defun peng-test (key)
+;;   (interactive)
+;;   (insert key))
+
+;; (define-prefix-command 'peng-test-map)
+;; (define-key global-map (kbd ",") 'peng-test-map)
+;; (define-key global-map (kbd ",xf") 'find-file)
+;; (define-key global-map (kbd ",xb") 'switch-to-buffer)
+
+
+;; (define-key global-map (kbd ",xr") '(lambda ()
+;; 				      (interactive)
+;; 				      (peng-test ",xr")))
+
+;; (define-key global-map (kbd "<f12>") '(lambda ()
+;; 					(interactive)
+;; 					(message "xipeng")))
+
+
+;; (defmacro peng-kk ()
+;;   ""
+;;   (interactive)
+;;   `(define-key global-map (kbd "<f12>") '(lambda ()
+;; 					(interactive)
+;; 					(message "xiepeng ni ha wos dfsdfso"))))
+
+;; (macroexpand '(peng-kk))
+
+;; (define-key global-map (kbd "<f12>") (quote (lambda nil (interactive) (message "xiepeng ni h stwetrao"))))
+
