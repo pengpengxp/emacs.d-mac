@@ -75,6 +75,17 @@
 										   (buffer-file-name)
 										   " -pthread ;./a.out")))
 								 )))
+  (peng-local-set-key (kbd "C-c C-c") '(lambda ()
+					 (interactive)
+					 (cond ((string= major-mode "c-mode")
+						(compile (concat "gcc -g "
+								 (buffer-file-name)
+								 " -pthread;./a.out")))
+					       ((string= major-mode "c++-mode")
+						(compile (concat "g++ -g "
+								 (buffer-file-name)
+								 " -pthread ;./a.out")))
+					       )))
   (define-key evil-normal-state-local-map (kbd "SPC m") '(lambda ()
 							   "Interrupt old compilation, if any, and recompile."
 							   (interactive)

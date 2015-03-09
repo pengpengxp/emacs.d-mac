@@ -1,0 +1,73 @@
+#+OPTIONS: ^:{}
+#+STARTUP: content
+#+STARTUP: align
+#+STARUP: hideblocks
+
+* 简单使用方法
+  在 Emacs 中预览结果 C-c C-c 使用该功能的前提是系统中有将 Markdown 文本转化为 HTML 的 Markdown 命令。如何配置？请看这篇博文。
+
+  C-c C-c m 转化为 HTML，在另一个 buffer 中预览 HTML 文件，个人觉得没太大意义
+
+  C-c C-c p 转化为 HTML，在浏览器中预览
+
+  C-c C-c e 转化为 HTML，保存为文件
+
+  C-c C-c v 转化为 HTML，保存为文件，并在浏览器中预览
+
+* 参考的 [[http://panqiincs.github.io/blog/2013/05/03/emacs-markdown-mode/][这里]]。
+熟练掌握一个工具最高效的方法就是多去使用它。
+
+进入到 Linux 的世界后，为了更好地生存下去，我开始花时间学习那些世界上最顶尖的工具。比如 Vim, LaTeX, make, gdb…这些软件中，我用得最熟练的当属编辑器之神 Vim 了，在基于命令行和使用文本配置的 Linux 系统下，不会使用 Vim 便寸步难行，因此它是我最常使用的软件之一。其他的那些软件，大多是我暂时不需要的，学习之后的荒废造成了大量的遗忘，浪费了我不少时间。
+
+熟练掌握 Vim 之后，我把目光转向了神的编辑器 Emacs。我想学习 Emacs 的主要原因是，它可以被打造成集世界上最强大编程工具于一身的 IDE。于是，我现在就要找到一个可以使用它的地方，以便熟练掌握它。之前我一直用 Vim 编辑我的博文，由于我的 Vim 显示简体中文有问题（因为我系统里的字体都是开源字体，大多是为正体中文设计的），暂时也不知道该如何配置，于是想换用 Emacs 编辑 Markdown。当我打开一个 Markdown 文本时，发现 Emacs 默认并没有 Markdown 模式。网络的智慧是无穷的，果然，我找到了Emacs Markdown Mode。
+
+接下来便是本文的主题，其实我的工作只是一个蹩脚的翻译。
+
+安装
+
+将 markdown-mode.el 放到 Emacs 的 load-path 中，并在 .emacs 配置文件中添加如下内容以支持 .markdown 和 .md 文件:
+
+1
+2
+3
+4
+(autoload 'markdown-mode "markdown-mode"
+	"Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'". markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'". markdown-mode))
+至此，大功告成。给大家看看我的效果：
+
+image
+
+使用
+
+现在用 Emacs 写博文真是一种享受。会 Emacs 的人会发现，下面提到的多数快捷键和 Emacs 的基础快捷键相关，我只列出常用的：（下面提到的 buffer, kill 和 kill ring 都是 Emacs 的专属名词）
+
+在 Emacs 中预览结果 C-c C-c
+使用该功能的前提是系统中有将 Markdown 文本转化为 HTML 的 Markdown 命令。如何配置？请看这篇博文。
+C-c C-c m 转化为 HTML，在另一个 buffer 中预览 HTML 文件，个人觉得没太大意义
+C-c C-c p 转化为 HTML，在浏览器中预览
+C-c C-c e 转化为 HTML，保存为文件
+C-c C-c v 转化为 HTML，保存为文件，并在浏览器中预览
+超链接 Hyperlinks C-c C-a
+C-c C-a l 插入[]()形式的链接，C-c C-a L 插入 [LinkText][Label] 形式的链接。在这种形式下，如果光标附近有文字或是 Active Region，会自动被选择当作 LinkText。后一种形式会提示你在 Minibuffer 中输入 LinkText，LinkLabel 和可选的 LinkTitle。
+图片 Images C-a C-i
+C-c C-i i 和 C-c C-i I，两者的区别和超链接的类似。
+样式 Styles C-a C-s
+C-c C-s e 插入斜体字（e 表示 emphasis）
+C-c C-s s 插入粗体字（s 表示 strong）
+C-c C-s c 插入代码，比如开头的快捷键框框就是它的效果
+标题 Headings C-c C-t
+我最常用的 C-c C-t n ，n 从 1 - 6， 表示各级标题。比如 C-c C-t 3 得到 ### Heading ###
+C-c C-t h 根据前面的标题自动选择标题级别。C-c C-t H 类似，不同的是它尝试得到带下划线的标题
+一些零散的快捷键
+C-c - 插入水平线
+C-c C-o 如果该点是一个链接(Hyperlink)，就会在浏览器中打开它的 URL，如果该点是维基百科链接(wikilink)，就会在另一个 Buffer 中打开
+C-c C-j 如果该点坐在的位置是一个 Hyperlink，按下此快捷键就会在 Link Text 和 Link URL 之间跳转。同样也适用于脚注(footnote)等其它类似目标
+C-c C-- 和 C-c C-= Promotion 和 Demotion（抱歉，想不到合适的中文翻译）。例如，在 ### ### 附近按下 C-c C-- 会使它变成 ## ##，按下 C-c C-= 会使它变成 #### ####。前者让 Heading 升级，后者让 Heading 降级
+C-c C-k 将该点的目标 kill 掉，并将其内容送到 kill ring 中，适用于以下的目标：inline code, headings, horizonal rules, links, images, email address 等
+C-c C-n,C-c C-p,C-c C-f,C-c C-b,C-c C-u 在 Heading 之间移动，自己去试试吧
+M-{,M-},C-M-a,C-M-e,C-M-h 快速跳转，和 Emacs 基础快捷键操作一样
+结束
+
+花了好几个小时，终于在 Emacs 中完成了这篇文章，真累啊！不过，我发现自己的 Emacs 水平又涨了不少，Keep Practice!

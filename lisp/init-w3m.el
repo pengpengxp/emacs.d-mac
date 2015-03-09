@@ -12,7 +12,7 @@
 ;; (setq browse-url-browser-function 'w3m-browse-url)                 ;set w3m as emacs's default browser默认还是不启用算了
 
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome")
+      browse-url-generic-program "open")
 
 (setq w3m-fill-column 70)
 (setq w3m-session-automatic-save 1)

@@ -21,7 +21,8 @@
 ;;; ----------------------------------------------------------------------
 ;;; 设置环境变量
 ;;; ----------------------------------------------------------------------
-(setq ORG-HOME "/home/pengpengxp/org/gtd")
+
+(setq ORG-HOME (concat HOME "/org/gtd"))
 
 (setq ORG-AGENDA-FILES (list (concat ORG-HOME "/inbox.org")
 			     ;; (concat ORG-HOME "/book.org")

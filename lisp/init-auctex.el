@@ -44,10 +44,10 @@
 	  (lambda ()
 	    (add-to-list 'TeX-command-list '("peng-bib-inter"
 					     "rm -f %b.aux %b.toc %b.log %b.pdf %b.bbl %b.blg %b.toc;\
-xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf" 
+xelatex %t;bibtex %b.aux;xelatex %t;open %b.pdf" 
 					     TeX-run-compile t t))
 	    (add-to-list 'TeX-command-list '("peng-bib" "rm -f %b.aux %b.toc %b.log %b.pdf %b.bbl %b.blg %b.toc;\
-xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf" 
+xelatex %t;bibtex %b.aux;xelatex %t;open %b.pdf" 
 					     TeX-run-compile nil t))
 	    (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-compile nil t))
 	    (setq TeX-command-default "XeLaTeX")
@@ -91,7 +91,7 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 				      (concat tempfile ".tex")
 				      (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
 					       tempfile ".out " tempfile ".log " tempfile ".aux " 
-					       tempfile ".toc" ";evince " tempfile ".pdf")))
+					       tempfile ".toc" ";open " tempfile ".pdf")))
 		     ))))
 	    ;; use xelatex,bibtex,xelatex for some bibliography
 	    (define-key evil-normal-state-local-map (kbd "SPC b")
@@ -109,7 +109,7 @@ xelatex %t;bibtex %b.aux;xelatex %t;evince %b.pdf"
 				      (concat ";xelatex " tempfile ".tex")
 				      (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
 					       tempfile ".out " tempfile ".log " tempfile ".aux " 
-					       tempfile ".toc" ";evince " tempfile ".pdf")))
+					       tempfile ".toc" ";open " tempfile ".pdf")))
 		     ))))
 	    ))
 (add-hook 'LaTeX-mode-hook '(lambda ()
@@ -212,7 +212,7 @@ inspired from the org-narrow-to-subtree"
 		     (concat tempfile ".tex")
 		     (concat  ";rm -rf " tempfile ".bbl " tempfile ".blg " 
 			      tempfile ".out " tempfile ".log " tempfile ".aux " 
-			      tempfile ".toc" ";evince " tempfile ".pdf")))))
+			      tempfile ".toc" ";open " tempfile ".pdf")))))
 
 (provide 'init-auctex)
 

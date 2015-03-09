@@ -78,6 +78,32 @@
 (require 'dired-details+)               ;Dired详细消息切换
 (require 'dired-x)
 
+;;; pengpengxp's evil-dired-mode 特殊定制了evil开启后的按键绑定
+(require 'evil)
+(evil-set-initial-state 'dired-mode 'normal)
+(add-hook 'dired-mode-hook '(lambda ()
+			     (interactive)
+			     (define-key evil-normal-state-local-map (kbd "<tab>") 'dired-details-toggle)
+			     (define-key evil-normal-state-local-map (kbd "TAB") 'dired-details-toggle)
+			     (define-key evil-normal-state-local-map (kbd "r") 'revert-buffer)
+			     (define-key evil-normal-state-local-map (kbd "f") 'dired-goto-file)
+			     (define-key evil-normal-state-local-map (kbd "v") 'dired-view-file)
+			     (define-key evil-normal-state-local-map (kbd "q") 'quit-window)
+			     (define-key evil-normal-state-local-map (kbd "C") 'peng-dired-do-copy)
+			     (define-key evil-normal-state-local-map (kbd "R") 'dired-do-rename)
+			     (define-key evil-normal-state-local-map (kbd "m") 'dired-mark)
+			     (define-key evil-normal-state-local-map (kbd "u") 'dired-unmark)
+			     (define-key evil-normal-state-local-map (kbd "U") 'dired-unmark-all-marks)
+			     (define-key evil-normal-state-local-map (kbd "DEL") 'dired-unmark-backward)
+			     (define-key evil-normal-state-local-map (kbd "<backspace>") 'dired-unmark-backward)
+			     (define-key evil-normal-state-local-map (kbd "e i SPC") 'find-file)
+			     (define-key evil-normal-state-local-map (kbd "G") 'evil-goto-line)
+			     (define-key evil-normal-state-local-map (kbd "gg") 'evil-goto-first-line)
+			     (define-key evil-normal-state-local-map (kbd "<M-up>") 'dired-up-directory)
+
+			     (define-key evil-normal-state-local-map (kbd "SPC") 'peng-evil-spc-map) ;use spc in dire mode
+))
+
 ;;; Code:
 
 (setq dired-recursive-copies t)               ;可以递归的进行拷贝
@@ -111,22 +137,22 @@
                            " " "%20" (w3m-expand-file-name-as-url (dired-get-filename))) ;用URL的模式解析文件名
                           " -q"))
         ;; (list "\\.pdf$" "wine /data/Backup/WindowsTools/FoxitReader/FoxitReader.exe")
-        (list "\\.pdf$" "evince")
+        (list "\\.pdf$" "open")
         (list "\\.pdg$" "wine /data/Backup/WindowsTools/MiniPDG/pdgreader.exe")
         ;; 多媒体
         ;; (list (format "\\(%s\\)$" (emms-player-get emms-player-mplayer 'regex)) "mplayer")
-        (list "\\.\\(jpe?g\\|png\\)$" "gthumb" )
+        (list "\\.\\(jpe?g\\|png\\)$" "open" )
         ;; 网页
         (list "\\.html?$" "google-chrome")
         ;; 压缩包
         (list "\\.rar$" "unrar e -ad")
         (list "\\.tar.bz2$" "tar jxvf")
         (list "\\.gz$" "gzip -d")
-        (list "\\.mkv$" "smplayer")
-        (list "\\.rmvb$" "smplayer")
-        (list "\\.mp4$" "smplayer")
-        (list "\\.avi$" "smplayer")
-        (list "\\.doc$" "wps")
+        (list "\\.mkv$" "open")
+        (list "\\.rmvb$" "open")
+        (list "\\.mp4$" "open")
+        (list "\\.avi$" "open")
+        (list "\\.doc$" "open")
         ;; 其他
         (list "\\.exe$" "wine")))
 

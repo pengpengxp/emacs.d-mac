@@ -5,14 +5,18 @@
 
 (setq HOME (getenv "HOME"))
 (setq DIR (concat HOME "/.emacs.d"))
-(setq GTD (concat HOME "/gtd"))
+;;(setq GTD (concat HOME "/gtd"))
 (setq LISP (concat DIR "/lisp"))
 (setq SITE-LISP (concat DIR "/site-lisp"))
-(add-to-list 'load-path DIR)
+;; (add-to-list 'load-path DIR)
 (add-to-list 'load-path SITE-LISP)
 (add-to-list 'load-path LISP)
 (let ((default-directory SITE-LISP))	;Don't add load-path after plugins every time
   (normal-top-level-add-subdirs-to-load-path))
+
+
+;; for mac
+(require 'init-mac.el)
 
 ;;; my plugins
 (require 'init-peng-copyfun)		;;;; some function I copyed from others
@@ -23,9 +27,9 @@
 (require 'init-evil-leader)
 
 ;;; to config the elpa
-(require 'init-package)
+;; (require 'init-package)
 
-;;; other plugins
+;;;;; other plugins
 (require 'init-scheme)
 (require 'init-org)
 (require 'init-gtd)
@@ -49,19 +53,28 @@
 (require 'init-outline-minor-mode.el)
 (require 'init-color-theme)
 (require 'init-ace-jump.el)
-
+(require 'init-sr-speedbar)
+(require 'init-tabbar)
+(require 'init-deft)
+(require 'init-markdown)
 (require 'init-helm)
+
+;;; the use of dash
+(require 'helm-dash)			; do not need dash
+(require 'init-dash)			; use dash in emacs
+
 ;; (require 'init-ido-cb.el)
 ;; (require 'init-ido)
 ;; (require 'init-icicles)
 ;; (require 'init-smex)
 
 (require 'init-eim)
-(require 'init-chinese-pyim)
+;; (require 'init-chinese-pyim)
+
 (require 'init-auctex)			;;;;you need to install auctex first
 (require 'init-smartparens)
 (require 'init-window-numbering)
-(require 'init-powerline)
+;; (require 'init-powerline)
 (require 'init-guide-key)
 (require 'init-lusty-explorer)		; 和helm有些其别。平时没怎么用到
 (require 'init-shell-pop)
@@ -76,6 +89,8 @@
 (require 'init-calendar)
 (require 'init-gnus)
 (require 'init-smart-tab)
+
+;; (require 'init-ecb)			; 代码浏览起来更加好，但是应该需要更多的资源
 
 ;;; don't use too often
 ;; (require 'init-bm)

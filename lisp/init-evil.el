@@ -62,6 +62,7 @@
 			     (define-key evil-normal-state-local-map (kbd "x") 'reftex-toc-external)
 			     (define-key evil-normal-state-local-map (kbd "?") 'reftex-toc-show-help)
 			     ))
+
 ;;; pengpengxp's evil-help-mode
 (evil-set-initial-state 'help-mode 'normal)
 (add-hook 'help-mode-hook '(lambda ()
@@ -72,45 +73,6 @@
 			     (define-key evil-normal-state-local-map (kbd "<S-iso-lefttab>") 'backward-button)
 			     (define-key evil-normal-state-local-map (kbd "q") 'quit-window)
 			     ))
-
-;;; pengpengxp's evil-info-mode
-(evil-set-initial-state 'Info-mode 'normal)
-(add-hook 'Info-mode-hook '(lambda ()
-			     (interactive)
-			     (define-key evil-normal-state-local-map (kbd "<tab>") 'Info-next-reference)
-			     (define-key evil-normal-state-local-map (kbd "TAB") 'Info-next-reference)
-			     (define-key evil-normal-state-local-map (kbd "<backtab>") 'Info-prev-reference)
-			     (define-key evil-normal-state-local-map (kbd "B") 'Info-history-back)
-			     (define-key evil-normal-state-local-map (kbd "^") 'Info-up)
-			     (define-key evil-normal-state-local-map (kbd "d") 'Info-directory)
-			     (define-key evil-normal-state-local-map (kbd "q") 'Info-exit)
-			     (define-key evil-normal-state-local-map (kbd "n") 'Info-next)
-			     (define-key evil-normal-state-local-map (kbd "p") 'Info-prev)
-			     (define-key evil-normal-state-local-map (kbd "i") 'Info-menu)
-			     ))
-
-;;; pengpengxp's evil-dired-mode
-(evil-set-initial-state 'dired-mode 'normal)
-(add-hook 'dired-mode-hook '(lambda ()
-			     (interactive)
-			     (define-key evil-normal-state-local-map (kbd "<tab>") 'dired-details-toggle)
-			     (define-key evil-normal-state-local-map (kbd "TAB") 'dired-details-toggle)
-			     (define-key evil-normal-state-local-map (kbd "r") 'revert-buffer)
-			     (define-key evil-normal-state-local-map (kbd "f") 'dired-goto-file)
-			     (define-key evil-normal-state-local-map (kbd "v") 'dired-view-file)
-			     (define-key evil-normal-state-local-map (kbd "q") 'quit-window)
-			     (define-key evil-normal-state-local-map (kbd "C") 'peng-dired-do-copy)
-			     (define-key evil-normal-state-local-map (kbd "R") 'dired-do-rename)
-			     (define-key evil-normal-state-local-map (kbd "m") 'dired-mark)
-			     (define-key evil-normal-state-local-map (kbd "u") 'dired-unmark)
-			     (define-key evil-normal-state-local-map (kbd "U") 'dired-unmark-all-marks)
-			     (define-key evil-normal-state-local-map (kbd "DEL") 'dired-unmark-backward)
-			     (define-key evil-normal-state-local-map (kbd "<backspace>") 'dired-unmark-backward)
-			     (define-key evil-normal-state-local-map (kbd "e i SPC") 'find-file)
-			     (define-key evil-normal-state-local-map (kbd "G") 'evil-goto-line)
-			     (define-key evil-normal-state-local-map (kbd "gg") 'evil-goto-first-line)
-			     (define-key evil-normal-state-local-map (kbd "<M-up>") 'dired-up-directory)
-))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -156,79 +118,9 @@
 					      (list evt))))))))
 ;; ***************************************************************copy
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; evil-define-key
-;; use ',' as prefix key
-(define-prefix-command 'peng-evil-global-map)
-(define-key evil-normal-state-map (kbd ",") 'peng-evil-global-map)
-(define-key evil-normal-state-map (kbd ",h") 'peng-evil-global-map)
-(define-key evil-motion-state-map (kbd ",") 'peng-evil-global-map)
-(define-key evil-motion-state-map (kbd ",h") 'peng-evil-global-map)
-
-;; ;;; normal-map
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; for test
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key evil-normal-state-map ",xs" 'save-buffer)
-(define-key evil-normal-state-map ",xb" 'switch-to-buffer)
-(define-key evil-normal-state-map ",xk" 'kill-buffer)
-(define-key evil-normal-state-map ",xf" 'find-file)
-(define-key evil-normal-state-map ",xx" 'execute-extended-command)
-
-(define-key evil-normal-state-map ",xrm" 'bookmark-set)
-(define-key evil-normal-state-map ",xrb" 'bookmark-jump)
-(define-key evil-normal-state-map ",xrr" 'copy-rectangle-to-register)
-
-(define-key evil-normal-state-map ",cj" 'bookmark-jump)
-(define-key evil-normal-state-map ",ca" 'org-agenda)
-(define-key evil-normal-state-map ",cc" 'org-capture)
-(define-key evil-normal-state-map ",cu" 'winner-undo)
-(define-key evil-normal-state-map ",cr" 'winner-redo)
-(define-key evil-normal-state-map ",c " 'ace-jump-mode)
-(define-key evil-normal-state-map ",cm" 'shell-command)
-
-(define-key evil-normal-state-map ",hk" 'describe-key)
-(define-key evil-normal-state-map ",hf" 'describe-function)
-(define-key evil-normal-state-map ",hm" 'describe-mode)
-(define-key evil-normal-state-map ",hv" 'describe-variable)
-(define-key evil-normal-state-map ",hr" 'info-emacs-manual)
-(define-key evil-normal-state-map ",hi" 'info)
-
-(define-key evil-normal-state-map ",gg" '(lambda ()
-					   (interactive) 
-					   (switch-to-buffer "*scratch*")))
-(define-key evil-normal-state-map (kbd ",go") 'peng-ibuffer-filter-org-mode)
-(define-key evil-normal-state-map (kbd ",gc") 'peng-ibuffer-filter-c-mode)
-(define-key evil-normal-state-map (kbd ",ge") 'peng-ibuffer-filter-emacs-lisp-mode)
-(define-key evil-normal-state-map (kbd ",gs") 'peng-ibuffer-filter-sql-mode)
-(define-key evil-normal-state-map (kbd ",gd") 'peng-ibuffer-filter-dired-mode)
-(define-key evil-normal-state-map (kbd ",gp") 'peng-ibuffer-filter-c++-mode)
-
-(define-key evil-normal-state-map ",q" 'kill-buffer-and-window)
-(define-key evil-normal-state-map ",d" 'kill-this-buffer)
-(define-key evil-normal-state-map ",j" 'bookmark-jump)
-(define-key evil-normal-state-map ",e" 'eshell)
-(define-key evil-normal-state-map ",w" 'save-buffer)
-(define-key evil-normal-state-map (kbd ", B") 'bookmark-bmenu-list)
-(define-key evil-normal-state-map (kbd ",r") 'recentf-open-files)
-(define-key evil-normal-state-map (kbd ", DEL") 'delete-other-windows)
-(define-key evil-normal-state-map (kbd ", <backspace>") 'delete-other-windows)
-
-(define-key evil-normal-state-map (kbd "DEL") 'delete-other-windows)
-(define-key evil-normal-state-map "ei " 'find-file)
-(define-key evil-normal-state-map ",," 'evilnc-comment-operator)
-(define-key evil-normal-state-map ",1" 'delete-other-windows)
-(define-key evil-normal-state-map ",0" 'delete-window)
-(define-key evil-normal-state-map ",2" 'split-window-below)
-(define-key evil-normal-state-map ",3" 'split-window-right)
-(define-key evil-normal-state-map ",b" 'ibuffer)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; (define-key evil-normal-state-map ",u" 'winner-undo)
-;; (define-key evil-normal-state-map ",r" 'winner-redo)
-;; (define-key evil-normal-state-map ",h" 'eshell)
-;; (define-key evil-normal-state-map ",p" 'switch-to-buffer)
-;; (define-key evil-normal-state-map ",n" 'save-buffer)
-;; (define-key evil-normal-state-map ",k" 'kill-buffer)
+(define-key evil-normal-state-map (kbd "M-n") 'scroll-up-command)
 
 (define-key evil-normal-state-map "m" 'point-to-register)
 (define-key evil-normal-state-map "'" 'jump-to-register)
@@ -244,20 +136,6 @@
 (define-key evil-normal-state-map (kbd "C-f") 'forward-char)
 (define-key evil-normal-state-map (kbd "K") 'man)
 
-;; ;;; motion map
-(define-key evil-motion-state-map "ei " 'find-file)
-(define-key evil-motion-state-map ",1" 'delete-other-windows)
-(define-key evil-motion-state-map ",0" 'delete-window)
-(define-key evil-motion-state-map ",2" 'split-window-below)
-(define-key evil-motion-state-map ",3" 'split-window-right)
-;; (define-key evil-motion-state-map ",u" 'winner-undo)
-;; (define-key evil-motion-state-map ",r" 'winner-redo)
-;; (define-key evil-motion-state-map ",h" 'eshell)
-;; (define-key evil-motion-state-map ",p" 'switch-to-buffer)
-;; (define-key evil-motion-state-map ",n" 'save-buffer)
-;; (define-key evil-motion-state-map ",k" 'kill-buffer)
-;; (define-key evil-motion-state-map ",w" 'eshell)
-(define-key evil-motion-state-map ",b" 'ibuffer)
 (define-key evil-motion-state-map "-" 'split-window-below)
 (define-key evil-motion-state-map "|" 'split-window-right)
 (define-key evil-motion-state-map "m" 'point-to-register)
@@ -281,5 +159,9 @@
 (define-key minibuffer-local-completion-map [escape] 'helm-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'helm-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'helm-keyboard-quit)
+
+;;; define two special key for personal use
+(require 'init-evil-spc-map)
+(require 'init-evil-comma-map)
 
 (provide 'init-evil)

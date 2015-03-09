@@ -139,7 +139,7 @@ file and open the pdf file."
 			   (concat  ";rm -rf " TEMPFILE ".bbl " TEMPFILE ".blg " 
 				    TEMPFILE ".out " TEMPFILE ".log " TEMPFILE ".aux " 
 				    TEMPFILE ".toc" ";rm -f " TEMPFILE ".tex"
-				    ";evince " TEMPFILE ".pdf")))
+				    ";open " TEMPFILE ".pdf")))
 	  ))))
 
 (defun peng-org-latex-export-to-pdf-and-open-no-content ()
@@ -160,7 +160,7 @@ file and open the pdf file."
 			   (concat  ";rm -rf " TEMPFILE ".bbl " TEMPFILE ".blg " 
 				    TEMPFILE ".out " TEMPFILE ".log " TEMPFILE ".aux " 
 				    TEMPFILE ".toc" ";rm -f " TEMPFILE ".tex"
-				    ";evince " TEMPFILE ".pdf")))
+				    ";open " TEMPFILE ".pdf")))
 	  ))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; convert all marked org files to pdf. I copied from internet
@@ -216,7 +216,7 @@ file and open the pdf file. also compile the bibliography"
 			   (concat  ";rm -rf " TEMPFILE ".bbl " TEMPFILE ".blg " 
 				    TEMPFILE ".out " TEMPFILE ".log " TEMPFILE ".aux " 
 				    TEMPFILE ".toc" ";rm -f " TEMPFILE ".tex"
-				    ";evince " TEMPFILE ".pdf")))
+				    ";open " TEMPFILE ".pdf")))
 	  ))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

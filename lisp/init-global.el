@@ -62,7 +62,7 @@
 ;;; 在当前文件夹快速打开文件管理器
 (peng-global-set-key (kbd "<f6> e") '(lambda ()
 				       (interactive)
-				       (peng-async-shell-command (concat "thunar " 
+				       (peng-async-shell-command (concat "open " 
 							      default-directory
 							      "&"))))
 (peng-global-set-key (kbd "<f6> n") '(lambda ()
@@ -77,6 +77,7 @@
 									 " "
 									 default-directory
 									 " &"))))
+
 
 ;; f8-map the global key binding are all here
 (define-prefix-command 'F8-map)
@@ -146,8 +147,9 @@
 (peng-global-set-key (kbd "C--") 'text-scale-decrease)
 (peng-global-set-key (kbd "\C-cn") 'autopair-mode)
 (peng-global-set-key (kbd "C-x C-b") 'ibuffer)
-(peng-global-set-key (kbd "<C-up>") 'enlarge-window)
-(peng-global-set-key (kbd "<C-down>") 'shrink-window)
+
+;; (peng-global-set-key (kbd "<C-up>") 'enlarge-window)
+;; (peng-global-set-key (kbd "<C-down>") 'shrink-window)
 (peng-global-set-key (kbd "<C-left>") 'shrink-window-horizontally)
 (peng-global-set-key (kbd "<C-right>") 'enlarge-window-horizontally)
 (peng-global-set-key (kbd "C-c C-b") 'peng-switch-to-org-agenda)
@@ -231,5 +233,18 @@
 
 ;;; 这样以后，应该每次使用narrow这些都不需要提醒了
 (put 'narrow-to-region 'disabled nil)
+
+;;; 每次退出时都问问我是不是真的想退出，避免按错键了
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+
+(when window-system
+  (peng-global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
 (provide 'init-global)

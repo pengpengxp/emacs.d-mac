@@ -1145,6 +1145,23 @@ my-dired-omit-extensions我经常使用。这个可以使dired自动忽略一些
 #+END_SRC
 *** TODO wait for writing
 **** init-cc-mode.el
+     自己写了一个调用shell命令`make clean;make;a.out'的函数，但是需要依赖于`gnome-terminal'。在mac上还没有配置。
+     #+BEGIN_SRC emacs-lisp
+       (defun peng-c-gnome-terminal-make-and-run ()
+         (interactive)
+         (save-window-excursion
+           (save-restriction
+             (let ((result (shell-command "make clean;make")))
+               (if (string= (message "%s" result) "0")
+                   (if (y-or-n-p "run the program?y-or-not?")
+                       (shell-command "gnome-terminal -x bash -c \"./a.out;exec bash\" "))
+                 (message "make occur some error"))))))
+     #+END_SRC
+
+***** cc-mode在加载时通过hook调用的函数
+      #+BEGIN_SRC emacs-lisp
+      
+      #+END_SRC
 **** init-w3m.el
 **** init-helm.el
 **** init-auctex.el

@@ -54,11 +54,33 @@
   (let ((file (read-file-name "FILE: ")))
     (find-file file)))
 
+(defun eshell/\,cu ()
+  "winner-undo"
+  (winner-undo))
+
+(defun eshell/\,cr ()
+  "winner-redo"
+  (winner-redo))
+
+(defun eshell/\,ca ()
+  "org-agenda"
+  (org-agenda))
+
 ;; (require 'helm)
 ;; (add-hook 'eshell-mode-hook
 ;;           #'(lambda ()
 ;;               (define-key eshell-mode-map
 ;;                 [remap eshell-pcomplete]
 ;;                 'helm-esh-pcomplete)))
+
+;;;; quik jump in eshell 
+(require 'eshell-z)			
+(cond ((string-equal system-type "darwin")
+       (defun eshell/zo (arg)
+	 "zo to open current directory"
+	 (peng-async-shell-command (concat "open "
+					   arg
+					   "&"))))
+      )
 
 (provide 'init-eshell)
