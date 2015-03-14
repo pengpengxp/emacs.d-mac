@@ -42,8 +42,8 @@
 (evil-set-initial-state 'calendar-mode 'emacs)
 (evil-set-initial-state 'gnus-group-mode 'emacs)
 (evil-set-initial-state 'inferior-scheme-mode 'emacs)
-
 (evil-set-initial-state 'Man-mode 'normal)
+(evil-set-initial-state 'eshell-mode 'emacs)
 
 ;;; pengpengxp's evil-toc-mode
 (evil-set-initial-state 'reftex-toc-mode 'normal)

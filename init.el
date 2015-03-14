@@ -34,6 +34,7 @@
 (require 'init-org)
 (require 'init-gtd)
 (require 'init-org-export)
+(require 'init-org-page)
 (require 'init-emacs-lisp)
 (require 'init-w3m)
 (require 'init-latex)
