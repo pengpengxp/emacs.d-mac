@@ -54,13 +54,32 @@ xelatex %t;bibtex %b.aux;xelatex %t;open %b.pdf"
 	    (company-mode-on)
 	    (autopair-on)
 	    (local-set-key (kbd "M-q") 'fill-paragraph)
-	    (hl-line-mode 1)
 	    (reftex-mode)
 	    (auto-fill-mode -1)
 	    (TeX-PDF-mode 1)
 	    (smart-tab-mode-off)
 	    (outline-minor-mode)
 	    (setq TeX-engine 'xetex)
+	    (visual-line-mode 1)
+
+	    (define-key evil-visual-state-local-map (kbd "j") 'next-line)
+	    (define-key evil-visual-state-local-map (kbd "<down>") 'next-line)
+	    (define-key evil-visual-state-local-map (kbd "k") 'previous-line)
+	    (define-key evil-visual-state-local-map (kbd "<up>") 'previous-line)
+
+	    (define-key evil-normal-state-local-map (kbd "j") 'next-line)
+	    (define-key evil-normal-state-local-map (kbd "<down>") 'next-line)
+	    (define-key evil-normal-state-local-map (kbd "C-n") 'next-line)
+	    (define-key evil-normal-state-local-map (kbd "l") 'forward-char)
+	    (define-key evil-normal-state-local-map (kbd "h") 'backward-char)
+	    (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
+	    (define-key evil-normal-state-local-map (kbd "<up>") 'previous-line)
+	    (define-key evil-normal-state-local-map (kbd "C-p") 'previous-line)
+	    (peng-local-set-key (kbd "C-c C-n") 'outline-next-heading)
+	    (peng-local-set-key (kbd "C-c C-p") 'outline-previous-heading)
+
+	    
+	    (hl-line-mode -1)
 	    ))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -128,6 +147,7 @@ xelatex %t;bibtex %b.aux;xelatex %t;open %b.pdf"
 			      ;; for use of the outline-minor-mode
 			      (peng-local-set-key (kbd "<tab>") 'outline-cycle)
 			      (peng-local-set-key (kbd "TAB") 'outline-cycle)
+			      (peng-local-set-key (kbd "C-c C-v") 'compile)
 			      ))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -5,7 +5,11 @@
 
 (defun peng-eshell-mode-hook ()
   (linum-mode 1)
+  (peng-local-set-key (kbd "C-r") 'helm-eshell-history)
+  (setq eshell-history-size 10000)	;记录很多命令，方便直接调用
+  (setq eshell-last-dir-ring-size 100)	;记录100个目录
   )
+
 (add-hook 'eshell-mode-hook 'peng-eshell-mode-hook)
 
 ;;; ielm-mode hook

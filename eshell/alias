@@ -1,1 +1,4 @@
 alias ll ls -alF
+alias gst git status
+alias gbr git branch
+alias grep /usr/bin/grep

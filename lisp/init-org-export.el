@@ -52,7 +52,6 @@
 \\usepackage{amssymb}
 \\usepackage{booktabs}
 \\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
-\\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
 \\tolerance=1000
 "
 				  ("\\section{%s}" . "\\section*{%s}")
@@ -64,3 +63,6 @@
 (setq org-latex-default-class "ctexart")
 
 (provide 'init-org-export)
+
+;;; 保存一下的设置，以后可能会用到。
+;; \\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
