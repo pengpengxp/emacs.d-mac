@@ -90,6 +90,8 @@
 (require 'init-calendar)
 (require 'init-gnus)
 (require 'init-smart-tab)
+(require 'init-calfw)
+(require 'alarm)
 
 ;; (require 'init-ecb)			; 代码浏览起来更加好，但是应该需要更多的资源
 

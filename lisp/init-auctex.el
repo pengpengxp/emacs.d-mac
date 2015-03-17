@@ -144,9 +144,14 @@ xelatex %t;bibtex %b.aux;xelatex %t;open %b.pdf"
 			      (define-key evil-normal-state-local-map (kbd "SPC cv") 'TeX-view)
 			      (peng-local-set-key (kbd "C-x ns") 'peng-latex-narrow-section)
 			      (peng-local-set-key (kbd "C-x ne") 'peng-latex-narrow-environment)
+
 			      ;; for use of the outline-minor-mode
-			      (peng-local-set-key (kbd "<tab>") 'outline-cycle)
-			      (peng-local-set-key (kbd "TAB") 'outline-cycle)
+			      (define-key evil-normal-state-local-map (kbd "<tab>") 'outline-cycle)
+			      (define-key evil-normal-state-local-map (kbd "TAB") 'outline-cycle)
+
+			      (define-key evil-insert-state-local-map (kbd "<tab>") 'LaTeX-indent-line)
+			      (define-key evil-insert-state-local-map (kbd "TAB") 'LaTeX-indent-line)
+
 			      (peng-local-set-key (kbd "C-c C-v") 'compile)
 			      ))
 

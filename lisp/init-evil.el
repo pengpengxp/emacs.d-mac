@@ -44,6 +44,7 @@
 (evil-set-initial-state 'inferior-scheme-mode 'emacs)
 (evil-set-initial-state 'Man-mode 'normal)
 (evil-set-initial-state 'eshell-mode 'emacs)
+(evil-set-initial-state 'cfw:details-mode 'emacs)
 
 ;;; pengpengxp's evil-toc-mode
 (evil-set-initial-state 'reftex-toc-mode 'normal)
