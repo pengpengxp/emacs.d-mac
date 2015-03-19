@@ -33,6 +33,7 @@
 	"rm -fr %b.out %b.log %b.tex auto"
 	))
    
+;;; 暂时注释掉
 ;;; 增加这个class
 (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}
 [NO-DEFAULT-PACKAGES]
@@ -54,6 +55,7 @@
 \\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
 \\tolerance=1000
 "
+  ("\\chapter{%s}" . "\\chapter*{%s}")
 				  ("\\section{%s}" . "\\section*{%s}")
 				  ("\\subsection{%s}" . "\\subsection*{%s}")
 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -66,3 +68,32 @@
 
 ;;; 保存一下的设置，以后可能会用到。
 ;; \\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+
+;; (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}
+;; [NO-DEFAULT-PACKAGES]
+;; \\usepackage[utf8]{inputenc}
+;; \\usepackage[T1]{fontenc}
+;; \\usepackage{fixltx2e}
+;; \\usepackage{graphicx}
+;; \\usepackage{longtable}
+;; \\usepackage{float}
+;; \\usepackage{wrapfig}
+;; \\usepackage{rotating}
+;; \\usepackage[normalem]{ulem}
+;; \\usepackage{amsmath}
+;; \\usepackage{textcomp}
+;; \\usepackage{marvosym}
+;; \\usepackage{wasysym}
+;; \\usepackage{amssymb}
+;; \\usepackage{booktabs}
+;; \\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
+;; \\tolerance=1000
+;; "
+;;   ("\\chapter{%s}" . "\\chapter*{%s}")
+;; 				  ("\\section{%s}" . "\\section*{%s}")
+;; 				  ("\\subsection{%s}" . "\\subsection*{%s}")
+;; 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;; 				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;; 				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+;; ;;; 设置默认的class为ctexart
+;; (setq org-latex-default-class "ctexart")
