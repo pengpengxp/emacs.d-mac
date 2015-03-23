@@ -59,4 +59,6 @@
   (ibuffer-switch-to-saved-filters "dired"))
 
 
+;;; 不显示以`*'开头的buffer
+(add-to-list 'ibuffer-never-show-predicates "^\\*")
 (provide 'init-ibuffer)
