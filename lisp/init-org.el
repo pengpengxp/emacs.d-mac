@@ -12,6 +12,11 @@
 			    (toggle-word-wrap -1)
 			    (auto-fill-mode 0)
 			    (visual-line-mode 1)
+
+			    ;; 在normal是用回车就是查字典
+			    (define-key evil-normal-state-local-map (kbd "RET") 'view-stardict-in-buffer)
+			    (define-key evil-normal-state-local-map (kbd "<return>") 'view-stardict-in-buffer)
+
 			    (peng-local-set-key (kbd "<f5> <f5>") 'peng-org-latex-insert-math)
 			    (define-key evil-normal-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 			    (define-key evil-visual-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)

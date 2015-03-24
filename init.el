@@ -55,7 +55,7 @@
 (require 'init-color-theme)
 (require 'init-ace-jump.el)
 (require 'init-sr-speedbar)
-(require 'init-tabbar)
+;; (require 'init-tabbar)
 (require 'init-deft)
 (require 'init-markdown)
 (require 'init-helm)

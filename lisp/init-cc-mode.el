@@ -11,6 +11,7 @@
 	  (message "make occur some error"))))))
 
 (defun pengpengxp-c-common-mode ()
+  (peng-local-set-key (kbd "C-c C-v") 'compile)
   (yas-minor-mode 1)
   (linum-mode)
   (setq c-basic-offset 4)		;set the default indent offset
@@ -104,5 +105,12 @@
 (defun my-make-CR-do-indent ()
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
+
+;;; 在写C的时候使用cscope来查看源码
+(add-hook 'c-mode-common-hook
+	  '(lambda ()
+	     (require 'xcscope)
+	     (peng-local-set-key (kbd "C-c s p") 'cscope-pop-mark)
+	     ))
 
 (provide 'init-cc-mode)

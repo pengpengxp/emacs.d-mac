@@ -59,6 +59,10 @@
   (ibuffer-switch-to-saved-filters "dired"))
 
 
-;;; 不显示以`*'开头的buffer
+;;; 不显示某些buffer
+;;; 不显示`*'开头的buffer
+(require 'ibuf-ext)
 (add-to-list 'ibuffer-never-show-predicates "^\\*")
+(add-to-list 'ibuffer-never-show-predicates "TAGS")
+
 (provide 'init-ibuffer)
