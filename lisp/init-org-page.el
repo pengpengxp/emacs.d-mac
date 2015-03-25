@@ -18,8 +18,10 @@
 
 (require 'org-page)
 
-;; (setq op/repository-directory "path/to/your/org/repository")   ;; the repository location
-;; (setq op/site-domain "http://your.personal.site.com/")         ;; your domain
+(setq op/repository-directory "/tmp/org/temp/")   ;; the repository location
+
+;; (setq op/site-domain "http://pengpengxp.github.io/")         ;; your domain
+
 ;; ;;; the configuration below you should choose one, not both
 ;; (setq op/personal-disqus-shortname "your_disqus_shortname")    ;; your disqus commenting system
 ;; (setq op/personal-duoshuo-shortname "your_duoshuo_shortname")  ;; your duoshuo commenting system

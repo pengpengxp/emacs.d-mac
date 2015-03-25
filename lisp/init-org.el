@@ -13,11 +13,13 @@
 			    (auto-fill-mode 0)
 			    (visual-line-mode 1)
 
-			    ;; 在normal是用回车就是查字典
+			    ;; 在normal是用回车就是查字典，其它还就是`org-return'
+			    (peng-local-set-key (kbd "<return>") 'org-return)
 			    (define-key evil-normal-state-local-map (kbd "RET") 'view-stardict-in-buffer)
 			    (define-key evil-normal-state-local-map (kbd "<return>") 'view-stardict-in-buffer)
 
 			    (peng-local-set-key (kbd "<f5> <f5>") 'peng-org-latex-insert-math)
+
 			    (define-key evil-normal-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 			    (define-key evil-visual-state-local-map (kbd "C-c C-n") 'outline-next-visible-heading)
 
@@ -44,7 +46,6 @@
 			    (define-key evil-emacs-state-local-map (kbd "<M-tab>") 'ispell-complete-word)
 			    (local-set-key (kbd "<C-tab>") 'other-window)
 			    (local-set-key (kbd "<C-return>") 'org-insert-heading-respect-content)
-			    (peng-local-set-key (kbd "<return>") 'org-return)
 			    (peng-local-set-key (kbd "C-c (") 'reftex-citation)
 			    (peng-local-set-key (kbd "C-c )") 'reftex-reference)
 			    (peng-local-set-key (kbd "<f9>") 'peng-org-latex-export-to-pdf-and-open-no-content)

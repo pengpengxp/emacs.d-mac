@@ -24,7 +24,8 @@
 (define-auto-insert 'emacs-lisp-mode '(nil ""))	;默认的设置有问题，我不让它输入任何东西了
 
 
-(define-auto-insert 'org-mode '(nil "#+OPTIONS: ^:{}
+(define-auto-insert 'org-mode '(nil "# -*- word-wrap: nil; -*-
+#+OPTIONS: ^:{}
 #+STARTUP: content
 #+STARTUP: align
 #+STARUP: hideblocks
