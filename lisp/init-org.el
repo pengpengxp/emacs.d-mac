@@ -53,10 +53,12 @@
 			    (setq truncate-lines nil)
 			    (yas-minor-mode 1)
 			    (local-set-key (kbd "C-c a") 'org-agenda)
+
 			    (if (not (display-graphic-p))
 			      (progn
 				(peng-local-set-key (kbd "<tab>") 'org-cycle)
-				(peng-local-set-key (kbd "TAB") 'org-cycle)))
+				(peng-local-set-key (kbd "TAB") 'org-cycle)
+				))
 			    (peng-local-set-key (kbd "C-c &") 'org-mark-ring-goto)
 
 			    (setq org-agenda-files ORG-AGENDA-FILES)

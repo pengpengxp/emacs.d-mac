@@ -35,7 +35,61 @@
    
 ;;; 暂时注释掉
 ;;; 增加这个class
+;; (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}
+;; [NO-DEFAULT-PACKAGES]
+;; \\usepackage[utf8]{inputenc}
+;; \\usepackage[T1]{fontenc}
+;; \\usepackage{fixltx2e}
+;; \\usepackage{graphicx}
+;; \\usepackage{longtable}
+;; \\usepackage{float}
+;; \\usepackage{wrapfig}
+;; \\usepackage{rotating}
+;; \\usepackage[normalem]{ulem}
+;; \\usepackage{amsmath}
+;; \\usepackage{textcomp}
+;; \\usepackage{marvosym}
+;; \\usepackage{wasysym}
+;; \\usepackage{amssymb}
+;; \\usepackage{booktabs}
+;; \\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
+;; \\tolerance=1000
+;; "
+;;   ("\\chapter{%s}" . "\\chapter*{%s}")
+;; 				  ("\\section{%s}" . "\\section*{%s}")
+;; 				  ("\\subsection{%s}" . "\\subsection*{%s}")
+;; 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;; 				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;; 				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 (add-to-list 'org-latex-classes '("ctexart" "\\documentclass[11pt]{ctexart}
+[NO-DEFAULT-PACKAGES]
+\\usepackage[utf8]{inputenc}
+\\usepackage[T1]{fontenc}
+\\usepackage{fixltx2e}
+\\usepackage{graphicx}
+\\usepackage{longtable}
+\\usepackage{float}
+\\usepackage{wrapfig}
+\\usepackage{rotating}
+\\usepackage[normalem]{ulem}
+\\usepackage{amsmath}
+\\usepackage{textcomp}
+\\usepackage{marvosym}
+\\usepackage{wasysym}
+\\usepackage{amssymb}
+\\usepackage{booktabs}
+\\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
+\\tolerance=1000
+"
+				  ("\\section{%s}" . "\\section*{%s}")
+				  ("\\subsection{%s}" . "\\subsection*{%s}")
+				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; just for my big-thesis
+(add-to-list 'org-latex-classes '("peng-big-thesis" "\\documentclass[11pt]{ctexart}
 [NO-DEFAULT-PACKAGES]
 \\usepackage[utf8]{inputenc}
 \\usepackage[T1]{fontenc}
@@ -61,6 +115,7 @@
 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
 				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 ;;; 设置默认的class为ctexart
 (setq org-latex-default-class "ctexart")
 

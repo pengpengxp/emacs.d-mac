@@ -79,8 +79,6 @@
 (define-key evil-normal-state-map (kbd ", DEL") 'delete-other-windows)
 (define-key evil-normal-state-map (kbd ", <backspace>") 'delete-other-windows)
 
-(define-key evil-normal-state-map (kbd "DEL") 'delete-other-windows)
-(define-key evil-normal-state-map "ei " 'find-file)
 (define-key evil-normal-state-map ",," 'evilnc-comment-operator)
 (define-key evil-normal-state-map ",1" 'delete-other-windows)
 (define-key evil-normal-state-map ",0" 'delete-window)
@@ -99,7 +97,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; motion map
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key evil-motion-state-map "ei " 'find-file)
 (define-key evil-motion-state-map ",1" 'delete-other-windows)
 (define-key evil-motion-state-map ",0" 'delete-window)
 (define-key evil-motion-state-map ",2" 'split-window-below)

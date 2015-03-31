@@ -36,7 +36,7 @@
 (require 'init-org-export)
 (require 'init-org-page)
 (require 'init-emacs-lisp)
-(require 'init-w3m)
+;;(require 'init-w3m)
 (require 'init-latex)
 (require 'init-compilation)
 (require 'init-sundry)
@@ -94,6 +94,7 @@
 (require 'alarm)
 (require 'pinyin-search)
 (require 'init-mustache)
+(require 'init-xcscope)
 
 ;; (require 'init-ecb)			; 代码浏览起来更加好，但是应该需要更多的资源
 
@@ -114,7 +115,7 @@
 (require 'init-bookmark-bmemu-mode)
 (require 'init-Info-mode)
 (require 'init-ruby)
-(require 'init-java.el)
+;; (require 'init-java.el)
 (require 'init-visual-line-mode)
 
 ;;; set my default tags table

@@ -161,8 +161,16 @@
 (define-key minibuffer-local-must-match-map [escape] 'helm-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'helm-keyboard-quit)
 
+(define-key evil-normal-state-map (kbd "DEL") 'delete-other-windows)
+(define-key evil-motion-state-map (kbd "DEL") 'delete-other-windows)
+(define-key evil-normal-state-map (kbd "<backspace>") 'delete-other-windows)
+(define-key evil-motion-state-map (kbd "<backspace>") 'delete-other-windows)
+(define-key evil-normal-state-map "ei " 'find-file)
+(define-key evil-motion-state-map "ei " 'find-file)
+
 ;;; define two special key for personal use
 (require 'init-evil-spc-map)
-(require 'init-evil-comma-map)
+
+;; (require 'init-evil-comma-map)
 
 (provide 'init-evil)
