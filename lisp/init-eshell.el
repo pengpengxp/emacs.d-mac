@@ -17,6 +17,12 @@
   (company-mode 1))
 (add-hook 'ielm-mode-hook 'peng-eshell-mode-hook)
 
+(if (string= system-type "darwin")
+    (defun eshell/pengpwd ()
+      "copy current dirctory to clipboard, only usefull on mac"
+      (shell-command-to-string "pwd|pbcopy")))
+
+
 (defun eshell/clear ()
   "Clears the shell buffer ala Unix's clear or DOS' cls"
   ;; the shell prompts are read-only, so clear that for the duration

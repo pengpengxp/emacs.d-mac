@@ -9,6 +9,7 @@
 ;;; hook
 ;;; ----------------------------------------------------------------------
 (add-hook 'org-mode-hook '(lambda ()
+			    (turn-on-cdlatex)
 			    (toggle-word-wrap -1)
 			    (auto-fill-mode 0)
 			    (visual-line-mode 1)

@@ -1,7 +1,7 @@
 CWD          = $(shell pwd)
 SCRIPT       = $(CWD)/script
 GIT_DIR      = $(CWD)/.git
-EMACS       ?= emacs
+EMACS       ?= /Users/pengpengxp/Applications/Emacs.app/Contents/MacOS/Emacs
 EMACSFLAGS   = --batch -Q
 CASK         = cask
 VERSION     := $(shell EMACS=$(EMACS) $(CASK) version)
