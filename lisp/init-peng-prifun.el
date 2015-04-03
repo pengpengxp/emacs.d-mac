@@ -315,4 +315,42 @@ if that buffer is not exits,call org-agenda"
 	(switch-to-buffer "*Org Agenda*")
       (org-agenda))))
 
+;;; only usefull on mac
+(if (string= system-type "darwin")
+    (progn
+      (require 'org-capture)
+      (defun peng-get-chrome-current-tab-url ()
+	"Get the URL of the active tab of the first window"
+	(interactive)
+	(let ((result (do-applescript
+		       (concat
+			"set frontmostApplication to path to frontmost application\n"
+			"tell application \"Google Chrome\"\n"
+			"	set theUrl to get URL of active tab of first window\n"
+			"	set theResult to (get theUrl) \n"
+			"end tell\n"
+			"activate application (frontmostApplication as text)\n"
+			"set links to {}\n"
+			"copy theResult to the end of links\n"
+			"return links as string\n"))))
+	  (insert result)))
+      (defun peng-get-chrome-current-tab-url-to-org-capture ()
+	"Get the URL of the active tab of the first window"
+	(interactive)
+	(let ((result (do-applescript
+		       (concat
+			"set frontmostApplication to path to frontmost application\n"
+			"tell application \"Google Chrome\"\n"
+			"	set theUrl to get URL of active tab of first window\n"
+			"	set theResult to (get theUrl) \n"
+			"end tell\n"
+			"activate application (frontmostApplication as text)\n"
+			"set links to {}\n"
+			"copy theResult to the end of links\n"
+			"return links as string\n")))
+	      (title (read-from-minibuffer "The title of your linke: " (format-time-string "%Y-%m-%d"))))
+	  (format "%s" (concat "[[" (format "%s" result) "]" "[" title "]]"))))
+
+      ))
+
 (provide 'init-peng-prifun)

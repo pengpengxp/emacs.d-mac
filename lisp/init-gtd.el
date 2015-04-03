@@ -97,6 +97,9 @@
 	;; ("a" "Account" table-line (file+headline (concat ORG-HOME "/account.org.gpg") "Web accounts")
 	;;  "|")
 
+	("l" "link" entry (file(concat ORG-HOME "/inbox.org"))
+	 "* TODO  %(peng-get-chrome-current-tab-url-to-org-capture)  \n %T")
+
 	("k" "test" entry (file(concat ORG-HOME "/test.org") "Tasks")
 	 "* TODO  %?  \n %T")
 	))
