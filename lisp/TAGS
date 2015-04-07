@@ -1,4 +1,449 @@
 
-/home/pengpengxp/.emacs.d/lisp/init-java.el,73
-(defadvice jde-compile 55,1436
-(defun peng-jde-compile-and-run 61,1604
+init-auctex.el,146
+(defun peng-latex-narrow-section 197,7755
+(defun peng-latex-narrow-environment 207,7980
+(defun peng-compile-current-latex-file-to-pdf 221,8434
+
+init-auto-complete.el,76
+(define-key ac-completing-map 16,471
+(define-key ac-completing-map 17,523
+
+init-auto-insert.el,302
+(define-auto-insert 'sh-mode sh-mode15,307
+(define-auto-insert 'ruby-mode ruby-mode18,360
+(define-auto-insert 'enh-ruby-mode enh-ruby-mode21,419
+(define-auto-insert 'emacs-lisp-mode emacs-lisp-mode24,482
+(define-auto-insert 'org-mode org-mode27,594
+(define-auto-insert 'c-mode c-mode34,735
+
+init-bm.el,84
+(define-key evil-normal-state-map 13,495
+(define-key evil-normal-state-map 14,549
+
+init-bookmark-bmemu-mode.el,30
+(define-key global-map 7,200
+
+init-calfw.el,38
+(defun peng-cfw:calendar-mode 11,188
+
+init-cc-mode.el,126
+(defun peng-c-gnome-terminal-make-and-run 3,76
+(defun pengpengxp-c-common-mode 13,442
+(defun my-make-CR-do-indent 105,3792
+
+init-chinese-pyim.el,32
+(defun peng-pyim-add-dict 3,25
+
+init-company-mode.el,177
+(define-key company-active-map 8,195
+(define-key company-active-map 9,260
+(defun check-expansion 43,1305
+(defun do-yas-expand 51,1488
+(defun tab-indent-or-complete 55,1577
+
+init-compilation.el,35
+(defun peng-compilation-mode 2,25
+
+init-dired.el,154
+(defun peng-dired-do-copy 3,66
+(defun peng-dired-mode 10,177
+(defvar one-key-menu-dired-sort-alist 239,10225
+(defun one-key-menu-dired-sort 251,10655
+
+init-eim.el,42
+(define-key evil-insert-state-map 18,501
+
+init-emacs-lisp.el,40
+(defun pengpengxp-emacs-lisp-mode 2,95
+
+init-eshell.el,402
+(defun peng-eshell-mode-hook 6,73
+(defun peng-ielm-mode-hook 16,414
+(defun eshell/clear 26,692
+(defun eshell/ei 33,951
+(defun eshell/vi 37,1018
+(defun eshell/cj 41,1085
+(defun eshell/\,46,1223
+(defun eshell/\,57,1551
+(defun eshell/\,62,1681
+(defun eshell/\,67,1793
+(defun eshell/\,71,1849
+(defun eshell/\,75,1905
+(defun user-tab 99,2537
+(defun user-ret 118,3062
+(defun user-spc 145,3952
+
+init-evil-comma-map.el,2479
+(define-prefix-command 'peng-evil-comma-map)peng-evil-comma-map20,462
+(define-key evil-normal-state-map 21,507
+(define-key evil-normal-state-map 22,573
+(define-key evil-motion-state-map 23,640
+(define-key evil-motion-state-map 24,706
+(define-key evil-normal-state-map 30,935
+(define-key evil-normal-state-map 31,989
+(define-key evil-normal-state-map 32,1048
+(define-key evil-normal-state-map 33,1102
+(define-key evil-normal-state-map 34,1154
+(define-key evil-normal-state-map 35,1221
+(define-key evil-normal-state-map 39,1338
+(define-key evil-normal-state-map 40,1394
+(define-key evil-normal-state-map 41,1451
+(define-key evil-normal-state-map 42,1521
+(define-key evil-normal-state-map 43,1580
+(define-key evil-normal-state-map 44,1641
+(define-key evil-normal-state-map 45,1701
+(define-key evil-normal-state-map 47,1760
+(define-key evil-normal-state-map 48,1816
+(define-key evil-normal-state-map 49,1869
+(define-key evil-normal-state-map 50,1923
+(define-key evil-normal-state-map 51,1977
+(define-key evil-normal-state-map 52,2031
+(define-key evil-normal-state-map 53,2087
+(define-key evil-normal-state-map 55,2144
+(define-key evil-normal-state-map 56,2199
+(define-key evil-normal-state-map 57,2259
+(define-key evil-normal-state-map 58,2315
+(define-key evil-normal-state-map 59,2375
+(define-key evil-normal-state-map 60,2435
+(define-key evil-normal-state-map 62,2483
+(define-key evil-normal-state-map 65,2599
+(define-key evil-normal-state-map 66,2676
+(define-key evil-normal-state-map 67,2751
+(define-key evil-normal-state-map 68,2835
+(define-key evil-normal-state-map 69,2912
+(define-key evil-normal-state-map 70,2991
+(define-key evil-normal-state-map 72,3069
+(define-key evil-normal-state-map 73,3133
+(define-key evil-normal-state-map 74,3191
+(define-key evil-normal-state-map 75,3246
+(define-key evil-normal-state-map 76,3294
+(define-key evil-normal-state-map 77,3347
+(define-key evil-normal-state-map 79,3484
+(define-key evil-normal-state-map 80,3555
+(define-key evil-normal-state-map 82,3635
+(define-key evil-normal-state-map 83,3700
+(define-key evil-normal-state-map 84,3762
+(define-key evil-normal-state-map 85,3817
+(define-key evil-normal-state-map 86,3877
+(define-key evil-normal-state-map 87,3937
+(define-key evil-motion-state-map 100,4537
+(define-key evil-motion-state-map 101,4599
+(define-key evil-motion-state-map 102,4654
+(define-key evil-motion-state-map 103,4714
+(define-key evil-motion-state-map 111,5161
+
+init-evil-spc-map.el,2252
+(define-prefix-command 'peng-evil-spc-map)peng-evil-spc-map20,430
+(define-key evil-normal-state-map 21,473
+(define-key evil-normal-state-map 22,541
+(define-key evil-normal-state-map 23,610
+(define-key evil-normal-state-map 25,679
+(define-key evil-normal-state-map 27,744
+(define-key evil-normal-state-map 28,804
+(define-key evil-normal-state-map 30,867
+(define-key evil-normal-state-map 31,930
+(define-key evil-normal-state-map 32,998
+(define-key evil-normal-state-map 33,1061
+(define-key evil-normal-state-map 34,1122
+(define-key evil-normal-state-map 35,1198
+(define-key evil-normal-state-map 39,1322
+(define-key evil-normal-state-map 40,1387
+(define-key evil-normal-state-map 41,1453
+(define-key evil-normal-state-map 42,1532
+(define-key evil-normal-state-map 48,1817
+(define-key evil-normal-state-map 49,1874
+(define-key evil-normal-state-map 50,1941
+(define-key evil-normal-state-map 51,2014
+(define-key evil-normal-state-map 52,2072
+(define-key evil-normal-state-map 53,2142
+(define-key evil-normal-state-map 54,2211
+(define-key evil-normal-state-map 55,2280
+(define-key evil-normal-state-map 56,2351
+(define-key evil-normal-state-map 57,2415
+(define-key evil-normal-state-map 58,2484
+(define-key evil-normal-state-map 59,2553
+(define-key evil-normal-state-map 61,2627
+(define-key evil-normal-state-map 62,2707
+(define-key evil-normal-state-map 63,2785
+(define-key evil-normal-state-map 64,2872
+(define-key evil-normal-state-map 65,2952
+(define-key evil-normal-state-map 66,3034
+(define-key evil-normal-state-map 68,3115
+(define-key evil-normal-state-map 69,3184
+(define-key evil-normal-state-map 70,3248
+(define-key evil-normal-state-map 71,3320
+(define-key evil-normal-state-map 72,3389
+(define-key evil-normal-state-map 73,3454
+(define-key evil-normal-state-map 74,3523
+(define-key evil-normal-state-map 75,3592
+(define-key evil-normal-state-map 77,3649
+(define-key evil-normal-state-map 78,3712
+(define-key evil-normal-state-map 79,3775
+(define-key evil-normal-state-map 80,3840
+(define-key evil-normal-state-map 82,3904
+(define-key evil-normal-state-map 83,3968
+(define-key evil-normal-state-map 84,4029
+(define-key evil-normal-state-map 85,4102
+(define-key evil-normal-state-map 86,4183
+
+init-evil.el,1958
+(define-key evil-normal-state-map 22,703
+(define-key evil-normal-state-map 23,776
+(define-key evil-insert-state-map95,4419
+(define-key evil-insert-state-map 100,4560
+(define-key evil-insert-state-map 104,4706
+(define-key evil-normal-state-map 124,5424
+(define-key evil-normal-state-map 126,5491
+(define-key evil-normal-state-map 127,5549
+(define-key evil-normal-state-map 128,5606
+(define-key evil-normal-state-map 129,5665
+(define-key evil-normal-state-map 130,5724
+(define-key evil-normal-state-map 131,5774
+(define-key evil-normal-state-map 132,5837
+(define-key evil-normal-state-map 133,5902
+(define-key evil-normal-state-map 134,5969
+(define-key evil-normal-state-map 135,6034
+(define-key evil-normal-state-map 136,6091
+(define-key evil-normal-state-map 137,6153
+(define-key evil-normal-state-map 138,6214
+(define-key evil-motion-state-map 140,6265
+(define-key evil-motion-state-map 141,6324
+(define-key evil-motion-state-map 142,6383
+(define-key evil-motion-state-map 143,6441
+(define-key evil-motion-state-map 144,6498
+(define-key evil-motion-state-map 145,6561
+(define-key evil-motion-state-map 146,6626
+(define-key evil-motion-state-map 147,6693
+(define-key evil-motion-state-map 148,6758
+(define-key evil-visual-state-map 151,6832
+(define-key evil-visual-state-map 152,6897
+(define-key evil-visual-state-map 153,6959
+(define-key evil-normal-state-map 156,7034
+(define-key evil-visual-state-map 157,7093
+(define-key minibuffer-local-map 158,7152
+(define-key minibuffer-local-ns-map 159,7215
+(define-key minibuffer-local-completion-map 160,7281
+(define-key minibuffer-local-must-match-map 161,7355
+(define-key minibuffer-local-isearch-map 162,7429
+(define-key evil-normal-state-map 164,7501
+(define-key evil-motion-state-map 165,7570
+(define-key evil-normal-state-map 166,7639
+(define-key evil-motion-state-map 167,7716
+(define-key evil-normal-state-map 168,7793
+(define-key evil-motion-state-map 169,7845
+
+init-global.el,225
+(define-prefix-command 'F5-map)F5-map42,1017
+(define-prefix-command 'F6-map)F6-map60,1781
+(define-prefix-command 'F8-map)F8-map83,2555
+(define-prefix-command 'F9-map)F9-map128,4861
+(defun ask-before-closing 240,8921
+
+init-header2.el,74
+(defsubst peng-email-address 20,391
+(defsubst peng-header-author 23,529
+
+init-helm.el,137
+(define-key helm-map 10,224
+(define-key helm-map 11,274
+(define-key helm-read-file-map 15,419
+(define-key helm-find-files-map 18,524
+
+init-ibuffer.el,303
+(defun peng-ibuffer-mode 2,17
+(defun peng-ibuffer-filter-c-mode 36,495
+(defun peng-ibuffer-filter-c++-mode 40,601
+(defun peng-ibuffer-filter-org-mode 44,711
+(defun peng-ibuffer-filter-emacs-lisp-mode 48,821
+(defun peng-ibuffer-filter-sql-mode 52,939
+(defun peng-ibuffer-filter-dired-mode 56,1049
+
+init-ido-cb.el,76
+(defun steve-ido-choose-from-recentf 16,470
+(defun ido-goto-symbol 25,831
+
+init-java.el,73
+(defadvice jde-compile 61,1624
+(defun peng-jde-compile-and-run 67,1792
+
+init-lusty-explorer.el,34
+(defun lusty-sudo-explorer 8,325
+
+init-org-export.el,105
+(defun clear-single-linebreak-in-cjk-string 7,143
+(defun ox-html-clear-single-linebreak-for-cjk 15,534
+
+init-org.el,299
+(defun peng-org-latex-insert-math 119,5454
+(defun peng-org-view 125,5604
+(defun peng-org-latex-export-to-pdf-and-open 133,5841
+(defun peng-org-latex-export-to-pdf-and-open-no-content 154,6539
+(defun peng-dired-org-to-pdf 186,7689
+(defun peng-org-latex-export-to-pdf-and-open-with-bib 208,8445
+
+init-outline-minor-mode.el,45
+(defun set-outline-minor-mode-regexp 24,607
+
+init-peng-copyfun.el,244
+(defun close-all-buffers 4,71
+(defun wy-go-to-char 12,297
+(defun peng-line-up 23,682
+(defun peng-line-down 33,914
+(defun org-insert-src-block 44,1146
+(defun show-buffer-major-mode 62,1894
+(defun peng-remove-orgmode-latex-labels 103,3396
+
+init-peng-prifun.el,1140
+(defun  peng-reset-tags-table 3,43
+(defun  peng-clear-tags-table 11,244
+(defun peng-copy-one-line 20,575
+(defun peng-yank-one-line 27,781
+(defun peng-unshow-all-tools 37,1066
+(defun peng-show-all-tools 45,1256
+(defun peng-edit-current-file-as-root 55,1469
+(defun peng-line-up 65,1765
+(defun peng-line-down 75,1997
+(defun peng-print-current-buffer 89,2420
+(defun peng-list-current-file-tags 108,3082
+(defun peng-eyerest-reset 127,3746
+(defun peng-eyerest-show-rest 130,3827
+(defun peng-eyerest-pause(135,4008
+(defun peng-eyerest-continue 138,4088
+(defun peng-eyerest-restart 141,4172
+(defun peng-eyerest-kill 147,4428
+(defun peng-eye-gymnistic 150,4516
+(defun peng-goto-scratch 156,4719
+(defun peng-show-major-mode 159,4797
+(defun peng-global-set-key 166,5053
+(defun peng-local-set-key 186,5984
+(defun peng-helm-etags-select 206,6955
+(defun peng-insert-counter-column 239,8486
+(defun peng-compile-current-file-as-plain-tex 256,8925
+(defun peng-change-current-file-to-executable 270,9338
+(defun peng-run-current-script 277,9542
+(defun peng-async-shell-command 293,10063
+(defun peng-switch-to-org-agenda 309,10629
+
+init-ruby.el,30
+(defun peng-ruby-mode 18,451
+
+init-scheme.el,214
+(defun kh/get-scheme-proc-create 8,215
+(defun peng-scheme-send-last-sexp 16,494
+(defun peng-scheme-load-current-file 40,1315
+(defun peng-scheme-send-current-line 57,1795
+(defun peng-scheme-send-region 75,2298
+
+init-shell-script.el,38
+(defun peng-shell-script-mode 22,503
+
+init-sql.el,139
+(defun peng-sql-send-line 6,109
+(defun peng-sql-send-remain 11,269
+(defun peng-sql-mode 17,442
+(defun peng-sql-interactive-mode 31,969
+
+init-sr-speedbar.el,42
+(define-key evil-normal-state-map 10,281
+
+init-tabbar.el,117
+(defcustom tabbar-hide-header-button 29,556
+(defun tabbar-filter 46,1209
+(defun tabbar-filter-buffer-list 50,1317
+
+init-test.el,23
+(defun peng-test 4,57
+
+init-visual-line-mode.el,115
+(defvar visual-wrap-column 19,436
+(defun set-visual-wrap-column 21,469
+(defun update-visual-wrap-column 44,1517
+
+init-w3m.el,35
+(defun pengpengxp-w3m-mode 27,980
+
+init-yasnippet.el,0
+
+init-xcscope.el,0
+
+init-window-numbering.el,0
+
+init-weibo.el,0
+
+init-uniquify.el,0
+
+init-tags.el,0
+
+init-sundry.el,0
+
+init-smex.el,0
+
+init-smartparens.el,0
+
+init-smart-tab.el,0
+
+init-slime.el,0
+
+init-shell-pop.el,0
+
+init-powerline.el,0
+
+init-plugins.el,0
+
+init-paredit.el,0
+
+init-package.el,0
+
+init-org-page.el,0
+
+init-mustache.el,0
+
+init-multi-term.el,0
+
+init-mew.el,0
+
+init-markdown.el,0
+
+init-magit.el,0
+
+init-macro.el,0
+
+init-mac.el,0
+
+init-latex.el,0
+
+init-ido.el,0
+
+init-icicles.el,0
+
+init-guide-key.el,0
+
+init-gtd.el,0
+
+init-gnus.el,0
+
+init-font.el,0
+
+init-flycheck.el,0
+
+init-expand-region.el,0
+
+init-evil-leader.el,0
+
+init-ecb.el,0
+
+init-deft.el,0
+
+init-dash.el,0
+
+init-cuda.el,0
+
+init-color-theme.el,0
+
+init-calendar.el,0
+
+init-ace-jump.el,0
+
+init-Info-mode.el,0
+
+init-BSDmakefile-mode.el,0

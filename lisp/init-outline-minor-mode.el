@@ -54,6 +54,7 @@
        '(eshell-mode "^[^#$\n]* [#$] ")
        ;; '(ruby-mode "[ ]+def \\|cloud_pattern\\|[ ]+cloud_node")
        ;; '(Man-mode "^[A-Z]+")
+       '(term-mode ".*pengpengxp@pengpengxp-mac-air.*")
        ))
  
 (mapc (lambda (mode-name) 
@@ -64,6 +65,7 @@
         eshell-mode-hook
         ;; ruby-mode-hook
         ;; Man-mode-hook
+	term-mode-hook
         ))
 ;;; ***************************从网上拷贝的，我只需要设置eshell和shell为outline-minor可折叠就行了*************************************
 

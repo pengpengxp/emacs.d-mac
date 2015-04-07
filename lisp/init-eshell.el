@@ -1,20 +1,45 @@
 ;;; eshell mode
 (require 'shell-switcher)
-
 (setq shell-switcher-mode t)
+
+(setq eshell-glob-case-insensitive t)	;glob不区分大小写
+(setq eshell-error-if-no-glob t)	;如果glob出现不匹配则认为出错，这和zsh是一样的，和bash不同
+(setq eshell-cmpl-ignore-case t)	;在补全filename的时候不区分大小写
+
+;;; copy from the website
+(require 'eshell)
+(require 'em-smart)
+(setq eshell-where-to-jump 'begin)
+(setq eshell-review-quick-commands nil)
+(setq eshell-smart-space-goes-to-end t)
+;;; copy from the website
+
+;;; 这个find-file比我自己定义的好很多。可以同时打开多个文件。我最后定义了两个alias
+(defun eshell/ff (&rest args)
+  "Opens a file in emacs."
+  (when (not (null args))
+    (mapc #'find-file (mapcar #'expand-file-name (eshell-flatten-list (reverse args))))))
+
+(defalias 'eshell/vi 'eshell/ff)
+(defalias 'eshell/ei 'eshell/ff)
+
+;; (defun eshell/ei (arg)
+;;   "use ei as find-file"
+;;   (find-file arg))
 
 (defun peng-eshell-mode-hook ()
   (linum-mode 1)
   (peng-local-set-key (kbd "C-r") 'helm-eshell-history)
   (setq eshell-history-size 10000)	;记录很多命令，方便直接调用
-  ;; (setq eshell-last-dir-ring-size 100)	;记录100个目录，感觉没太大用
+  (setq eshell-last-dir-ring-size 200)	;记录100个目录，感觉没太大用
+  (company-mode -1)
   )
 
 (add-hook 'eshell-mode-hook 'peng-eshell-mode-hook)
 
 ;;; ielm-mode hook
 (defun peng-ielm-mode-hook ()
-  (company-mode 1))
+  (company-mode -1))
 (add-hook 'ielm-mode-hook 'peng-eshell-mode-hook)
 
 (if (string= system-type "darwin")
@@ -29,10 +54,6 @@
   (let ((inhibit-read-only t))
     ;; simply delete the region
     (delete-region (point-min) (point-max))))
-
-(defun eshell/ei (arg)
-  "use ei as find-file"
-  (find-file arg))
 
 (defun eshell/vi (arg)
   "use vi as find-file"
@@ -76,12 +97,14 @@
   "org-agenda"
   (org-agenda))
 
-;; (require 'helm)
-;; (add-hook 'eshell-mode-hook
-;;           #'(lambda ()
-;;               (define-key eshell-mode-map
-;;                 [remap eshell-pcomplete]
-;;                 'helm-esh-pcomplete)))
+
+;;; 这儿使用`helm-esh-pcomplete'有bug。只能使用`completion-at-point'
+(require 'helm)
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map
+                [remap eshell-pcomplete]
+                'completion-at-point)))
 
 ;;;; quik jump in eshell 
 (require 'eshell-z)			
@@ -93,6 +116,34 @@
 					   "&"))))
       )
 
+;;; 看了别人的配置，自己定制的，可以使用结合helm来跳转和打开目录
+(defun eshell/j ()
+  "Quickly jump to previous directories."
+  (eshell/cd (helm-comp-read "Jump to directory: "
+                                  (delete-dups (ring-elements eshell-last-dir-ring)))))
+
+(if (string= system-type "darwin")
+    (defun eshell/jo ()
+       "Quickly jump to previous directories."
+       (let ((result (helm-comp-read "Open the directory: "
+				     (delete-dups (ring-elements eshell-last-dir-ring)))))
+	 (peng-async-shell-command (concat "open " result)))))
+
+;;; pengpengxp's eshell prompt
+(defun my-current-git-branch ()
+  (let ((branch (car (loop for match in (split-string (shell-command-to-string "git branch") "\n")
+                           when (string-match "^\*" match)
+                           collect match))))
+    (if (not (eq branch nil))
+        (concat " [" (substring branch 2) "]")
+      "")))
+
+(defun pengpengxp-eshell-prompt ()
+  (concat (propertize (abbreviate-file-name (eshell/pwd)) 'face 'eshell-prompt)
+          (propertize (my-current-git-branch) 'face 'font-lock-function-name-face)
+          (propertize " $ " 'face 'font-lock-constant-face)))
+
+(setq eshell-prompt-function #'pengpengxp-eshell-prompt)
 
 ;; ********************************copy from others********************************
 ;; 可以比较智能，但是我暂时没使用
