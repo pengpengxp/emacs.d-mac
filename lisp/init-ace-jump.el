@@ -15,7 +15,10 @@
 ;;; Code:
 
 ;; (require 'ace-jump-mode)
+
 (require 'evil)
+(require 'ace-pinyin)
+(ace-pinyin-global-mode 1)
 
 (autoload
   'ace-jump-mode
@@ -34,9 +37,9 @@
 (setq ace-jump-mode-case-fold nil)
 
 ;; you can select the key you prefer to
-(peng-global-set-key (kbd "C-c SPC") 'ace-jump-mode)
-;; (define-key evil-normal-state-map (kbd "f") 'ace-jump-mode)
-;; (define-key evil-normal-state-map (kbd "F") 'evil-find-char)
+(peng-global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
+(define-key evil-normal-state-map (kbd "f") 'ace-pinyin-jump-char)
+(define-key evil-normal-state-map (kbd "F") 'evil-find-char)
 
 
 (provide 'init-ace-jump.el)

@@ -141,8 +141,9 @@
 (peng-global-set-key (kbd "<C-tab>") '(lambda ()
 				   (interactive)
 				   (switch-to-buffer (other-buffer))))
+
 ;; (peng-global-set-key (kbd "<C-tab>") 'other-window)
-;; (peng-global-set-key (kbd "<C-tab>") 'switch-to-buffer)
+(peng-global-set-key (kbd "<M-tab>") 'switch-to-buffer)
 
 (peng-global-set-key (kbd "s-v") 'view-mode)
 (peng-global-set-key (kbd "C-+") 'text-scale-increase)

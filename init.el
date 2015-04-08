@@ -36,7 +36,7 @@
 (require 'init-org-export)
 (require 'init-org-page)
 (require 'init-emacs-lisp)
-(require 'init-w3m)
+;;(require 'init-w3m)
 (require 'init-latex)
 (require 'init-compilation)
 (require 'init-sundry)
@@ -97,6 +97,11 @@
 (require 'init-xcscope)
 (require 'cdlatex)
 (require 'init-term-mode)
+
+
+;;; hydra需要配置，暂时不用
+;; (require 'hydra)
+;; (require 'hydra-ox)
 
 ;; (require 'init-ecb)			; 代码浏览起来更加好，但是应该需要更多的资源
 

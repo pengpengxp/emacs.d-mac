@@ -13,6 +13,16 @@
 ;; For find-file etc.This is very helpful when I'm familliar with TAB
 ;; complesion
 (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
+(define-key helm-read-file-map (kbd "<tab>") 'helm-execute-persistent-action)
+
+;;; 在`eshell'中使用helm时这样会好一点
+(define-key helm-comp-read-map (kbd "TAB") 'helm-confirm-and-exit-minibuffer)
+(define-key helm-comp-read-map (kbd "<tab>") 'helm-confirm-and-exit-minibuffer)
+(define-key helm-comp-read-map (kbd "<C-tab>") 'helm-confirm-and-exit-minibuffer)
+
+(require 'helm-eshell)
+(define-key helm-esh-completion-map (kbd "<tab>") 'helm-confirm-and-exit-minibuffer)
+(define-key helm-esh-completion-map (kbd "<C-tab>") 'helm-confirm-and-exit-minibuffer)
 
 ;; For helm-find-files etc.
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)

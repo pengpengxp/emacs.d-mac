@@ -98,13 +98,15 @@
   (org-agenda))
 
 
-;;; 这儿使用`helm-esh-pcomplete'有bug。只能使用`completion-at-point'
+;;; 这儿使用`helm-esh-pcomplete'有bug。只能使用`completion-at-point'，
+;;; 结果使用`completion-at-point'补全中文的时候出现多于的`\'。所以换回
+;;; 来了。凑合着先用着。
 (require 'helm)
 (add-hook 'eshell-mode-hook
           #'(lambda ()
               (define-key eshell-mode-map
                 [remap eshell-pcomplete]
-                'completion-at-point)))
+                'helm-esh-pcomplete)))
 
 ;;;; quik jump in eshell 
 (require 'eshell-z)			

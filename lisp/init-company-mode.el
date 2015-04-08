@@ -1,5 +1,6 @@
 (require 'company)
 
+;;; 打开company-mode
 (add-hook 'prog-mode-hook 'global-company-mode)
 (add-hook 'cmake-mode-hook 'global-company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
