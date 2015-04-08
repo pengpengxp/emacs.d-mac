@@ -21,6 +21,7 @@
     (mapc #'find-file (mapcar #'expand-file-name (eshell-flatten-list (reverse args))))))
 
 (defalias 'eshell/vi 'eshell/ff)
+(defalias 'eshell/vim 'eshell/ff)
 (defalias 'eshell/ei 'eshell/ff)
 
 ;; (defun eshell/ei (arg)

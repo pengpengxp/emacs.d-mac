@@ -97,7 +97,7 @@
 (require 'init-xcscope)
 (require 'cdlatex)
 (require 'init-term-mode)
-
+(require 'darkroom-mode)
 
 ;;; hydra需要配置，暂时不用
 ;; (require 'hydra)
