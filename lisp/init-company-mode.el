@@ -94,4 +94,6 @@
 
 (peng-global-set-key (kbd "M-s M-s f") 'company-files)
 
+(define-key evil-insert-state-map (kbd "C-t") 'company-other-backend) ;快速切换backends
+
 (provide 'init-company-mode)

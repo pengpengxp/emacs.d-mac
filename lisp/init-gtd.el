@@ -64,11 +64,11 @@
 (setq org-todo-keywords '((sequence "TODO(t!)" 
 				    "DOING(n)"
 				    "WAITING(w)" ;waiting for others
-                                    "SOMEDAY(s)" ;I'll do it someday
 				    "Dreams(i)"
 				    "Tips(p)"
 				    "Important-Day(j)"
 				    "|"
+                                    "SOMEDAY(s)" ;I'll do it someday
 				    "DONE(d@/!)"
 				    "ABORT(a@/!)"
 				    )))
@@ -141,7 +141,7 @@
 	))
 
 ;;;默认显示一天的事件
-(setq org-agenda-span 'day)
+(setq org-agenda-span 'week)
 
 (provide 'init-gtd)
 

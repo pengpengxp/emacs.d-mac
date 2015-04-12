@@ -14,6 +14,7 @@
 (let ((default-directory SITE-LISP))	;Don't add load-path after plugins every time
   (normal-top-level-add-subdirs-to-load-path))
 
+(require 'init-el-get)
 
 ;; for mac
 (require 'init-mac.el)
@@ -27,7 +28,7 @@
 (require 'init-evil-leader)
 
 ;;; to config the elpa
-;; (require 'init-package)
+(require 'init-package)
 
 ;;;;; other plugins
 (require 'init-scheme)
@@ -97,7 +98,7 @@
 (require 'init-xcscope)
 (require 'cdlatex)
 (require 'init-term-mode)
-(require 'darkroom-mode)
+(require 'init-ispell)
 
 ;;; hydra需要配置，暂时不用
 ;; (require 'hydra)
