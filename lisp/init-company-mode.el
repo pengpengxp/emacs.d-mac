@@ -20,6 +20,7 @@
      (add-to-list 'company-backends 'company-cmake)
      ;; can't work with TRAMP
      (setq company-backends (delete 'company-ropemacs company-backends))
+
      ;; (setq company-backends (delete 'company-capf company-backends))
      ;; I don't like the downcase word in company-dabbrev
      ;; for languages use camel case naming convention
@@ -29,7 +30,7 @@
 
      (setq company-show-numbers t)
      ;; (setq company-begin-commands '(self-insert-command))
-     (setq company-idle-delay 0.2)
+     (setq company-idle-delay 0)
      (setq company-clang-insert-arguments nil)
      ))
 
@@ -38,6 +39,34 @@
 ;;   (if (company-manual-begin)
 ;;       (company-complete-common)
 ;;     (indent-according-to-mode)))
+
+
+;; (setq company-backends '(
+;; 			 ;; (
+;; 			 ;; company-clang
+;; 			 ;; company-xcode
+;; 			 ;; company-keywords
+;; 			 ;; company-semantic
+;; 			 ;; company-capf
+;; 			 ;; company-dabbrev
+;; 			 ;; )
+;; 			 company-bbdb
+;; 			 company-nxml
+;; 			 company-semantic
+;; 			 company-clang
+;; 			 company-xcode
+;; 			 company-cmake
+
+;; 			 (company-dabbrev-code
+;; 			  company-gtags
+;; 			  company-etags
+;; 			  company-keywords)
+			 
+;; 			 company-oddmuse
+;; 			 company-files
+;; 			 company-eclim
+;; 			 company-dabbrev
+;; 			 ))
 
 
 (require 'yasnippet)
@@ -62,5 +91,7 @@
 	(if (check-expansion)
 	    (company-complete-common)
 	  (indent-for-tab-command)))))
+
+(peng-global-set-key (kbd "M-s M-s f") 'company-files)
 
 (provide 'init-company-mode)

@@ -89,7 +89,7 @@
 				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 ;; just for my big-thesis
-(add-to-list 'org-latex-classes '("peng-big-thesis" "\\documentclass[11pt]{ctexart}
+(add-to-list 'org-latex-classes '("peng-big-thesis" "\\documentclass[11pt]{ctexbook}
 [NO-DEFAULT-PACKAGES]
 \\usepackage[utf8]{inputenc}
 \\usepackage[T1]{fontenc}

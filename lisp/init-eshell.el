@@ -24,16 +24,17 @@
 (defalias 'eshell/vim 'eshell/ff)
 (defalias 'eshell/ei 'eshell/ff)
 
-;; (defun eshell/ei (arg)
-;;   "use ei as find-file"
-;;   (find-file arg))
+(defun peng-eshell-company-files ()
+  (interactive)
+  (company-begin-backend 'company-files)
+  )
 
 (defun peng-eshell-mode-hook ()
   (linum-mode 1)
   (peng-local-set-key (kbd "C-r") 'helm-eshell-history)
   (setq eshell-history-size 10000)	;记录很多命令，方便直接调用
-  (setq eshell-last-dir-ring-size 200)	;记录100个目录，感觉没太大用
-  (company-mode -1)
+  (setq eshell-last-dir-ring-size 200)	;记录200个目录
+  (company-mode 1)
   )
 
 (add-hook 'eshell-mode-hook 'peng-eshell-mode-hook)

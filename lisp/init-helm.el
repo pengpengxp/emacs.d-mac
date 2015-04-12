@@ -2,6 +2,7 @@
 (add-to-list 'load-path (concat SITE-LISP "helm"))
 (require 'helm-config)
 (require 'helm-etags+)
+(require 'helm-ag)
 
 (helm-mode 1)
 ;;; make sure Enter do what I want
@@ -43,5 +44,8 @@
 (peng-global-set-key (kbd "M-s o") 'helm-occur)
 (peng-global-set-key (kbd "M-s s") 'helm-occur-from-isearch)
 (peng-global-set-key (kbd "M-s i") 'helm-imenu)
+(peng-global-set-key (kbd "M-s a") 'helm-ag-this-file)
+(peng-global-set-key (kbd "M-s A") 'helm-ag)
+(peng-global-set-key (kbd "M-s p") 'helm-ag-pop-stack)
 
 (provide 'init-helm)

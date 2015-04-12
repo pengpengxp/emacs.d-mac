@@ -1,5 +1,6 @@
 ;;; package --- pengpengxp-cc-mode 
 ;;; open gnome-terminal to make and run
+
 (defun peng-c-gnome-terminal-make-and-run ()
   (interactive)
   (save-window-excursion
@@ -14,7 +15,6 @@
   (peng-local-set-key (kbd "C-c C-v") 'compile)
   (yas-minor-mode 1)
   (linum-mode)
-  (setq c-basic-offset 4)		;set the default indent offset
   (linum-mode 1)			;show the line number
   (local-set-key (kbd "C-j") 'view-stardict-in-buffer)
   ;; for the #if #else #endif
@@ -60,6 +60,7 @@
   (hs-minor-mode)
   (local-set-key (kbd "C-c t") 'hs-toggle-hiding)
   (c-set-style "k&r")
+  (setq c-basic-offset 4)		;`c-set-style'中会设置这个值，所以一定要在其之后
   (hl-line-mode 1)
   (autopair-on)
   (smartparens-mode -1)
@@ -97,7 +98,6 @@
 							   (ignore-errors 
 							     (kill-buffer "*compilation*"))
 							   (compile "make clean;make")))
-
   )
 (add-hook 'c-mode-hook 'pengpengxp-c-common-mode)
 
