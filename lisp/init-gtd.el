@@ -149,6 +149,50 @@
 ;;;默认显示一天的事件
 (setq org-agenda-span 'week)
 
+
+;;; 配置org-to-appt进行系统级别的提醒
+(require 'appt)
+(appt-activate t)
+
+(setq appt-message-warning-time 5)	;设置提前多久通知
+
+;;;`appt-display-interval'是在`appt-message-warning-time'到达后，每过多久循环通知
+
+;; (setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
+
+(setq appt-display-mode-line nil)
+
+; use appointment data from org-mode
+(defun my-org-agenda-to-appt ()
+  (interactive)
+  (setq appt-time-msg-list nil)
+  (org-agenda-to-appt))
+
+;;; 我的shell-script提醒程序
+(setq my-appt-notification-app (concat (getenv "HOME") "/bin/appt-notification.sh"))
+
+(defun my-appt-display (min-to-app new-time msg)
+  (if (atom min-to-app)
+    (call-process my-appt-notification-app nil nil nil min-to-app msg)
+  (dolist (i (number-sequence 0 (1- (length min-to-app))))
+    (call-process my-appt-notification-app nil nil nil (nth i min-to-app) (nth i msg)))))
+
+; 把默认的提醒方式换成我自己的程序
+(setq appt-disp-window-function 'my-appt-display)
+
+; 每次保存文件以后可以自动刷新
+(add-hook 'after-save-hook
+          '(lambda ()
+             (if (string= (buffer-file-name) (concat (getenv "HOME") "/org/gtd/inbox.org"))
+                 (my-org-agenda-to-appt))))
+
+; 每次开启emacs后和中午12点刷新
+(my-org-agenda-to-appt)
+(run-at-time "12:05am" (* 24 3600) 'my-org-agenda-to-appt)
+
+;;; 每次打开`org-agenda'后都刷新一次
+(add-hook 'org-agenda-finalize-hook 'my-org-agenda-to-appt)
+
 (provide 'init-gtd)
 
 

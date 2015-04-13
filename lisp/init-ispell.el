@@ -80,11 +80,13 @@
 
 ;;; 暂时还没有使用aspell
 (setq-default ispell-program-name "/usr/local/Cellar/ispell/3.3.02/bin/ispell")
+;; (setq-default ispell-program-name "aspell")
 
 ;; (setq-default ispell-extra-args '("--reverse")) ;修复aspell与ispell冲突的bug
 ;; (setq ispell-personal-dictionary "~/.emacs.d/deepin-emacs/Configure-File/Ispell/personal-dictionary") ;设置个人词典
 ;; (setq ispell-silently-savep t)          ;保存自己的个人词典不需要询问
-(setq ispell-dictionary "english")      ;设置英文词典
+;; (setq ispell-dictionary "english")      ;设置英文词典
+(ispell-change-dictionary "american" t)
 
 (provide 'init-ispell)
 

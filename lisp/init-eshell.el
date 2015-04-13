@@ -24,6 +24,15 @@
 (defalias 'eshell/vim 'eshell/ff)
 (defalias 'eshell/ei 'eshell/ff)
 
+;;; 照着`eshell/ff'定义了一个`eshell/o'函数
+(defun eshell/o (&rest args)
+  "Opens a file in emacs."
+  (when (not (null args))
+    (mapc '(lambda (a)
+	     (shell-command (concat "open "
+				    a)))
+	  (mapcar #'expand-file-name (eshell-flatten-list (reverse args))))))
+
 (defun peng-eshell-company-files ()
   (interactive)
   (company-begin-backend 'company-files)

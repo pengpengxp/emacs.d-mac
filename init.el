@@ -1,7 +1,22 @@
 ;;; --------------------------------------------------------------------------------
 ;;; 设置环境变量
 ;;; --------------------------------------------------------------------------------
-(setenv "PATH" (shell-command-to-string "bash -i -c 'echo -n $PATH' 2>/dev/null"))
+;; (setenv "PATH" (shell-command-to-string "bash -i -c 'echo -n $PATH' 2>/dev/null"))
+(let ((path (shell-command-to-string ". ~/.peng_bashrc; echo -n $PATH")))
+  (setenv "PATH" path)
+  (setq exec-path 
+        (append
+         (split-string-and-unquote path ":")
+         exec-path)))
+
+;;; 设置语系变量
+(setenv "LANG" "zh_CN.UTF-8")
+(setenv "LC_COLLATE" "zh_CN.UTF-8")
+(setenv "LC_CTYPE" "zh_CN.UTF-8")
+(setenv "LC_MESSAGES" "zh_CN.UTF-8")
+(setenv "LC_MONETARY" "zh_CN.UTF-8")
+(setenv "LC_NUMERIC" "zh_CN.UTF-8")
+(setenv "LC_TIME" "zh_CN.UTF-8")
 
 (setq HOME (getenv "HOME"))
 (setq DIR (concat HOME "/.emacs.d"))
