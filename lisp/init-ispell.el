@@ -58,10 +58,10 @@
 ;;; Change log:
 ;;
 ;; 2008/10/20
-;;      First realead.
+;;      First released.
 ;;
 
-;;; Acknowledgements:
+;;; Acknowledgement:
 ;;
 ;;
 ;;
@@ -74,6 +74,7 @@
 ;;; Require
 
 (require 'ispell)
+(require 'rw-ispell)
 
 ;;; Code:
 

@@ -14,7 +14,7 @@
 (let ((default-directory SITE-LISP))	;Don't add load-path after plugins every time
   (normal-top-level-add-subdirs-to-load-path))
 
-(require 'init-el-get)
+;;(require 'init-el-get)
 
 ;; for mac
 (require 'init-mac.el)
@@ -50,7 +50,7 @@
 (require 'init-yasnippet)
 (require 'init-auto-complete)
 (require 'init-company-mode)		;company is the alternative for me
-(require 'init-header2)
+;;(require 'init-header2)
 (require 'init-auto-insert)
 (require 'init-outline-minor-mode.el)
 (require 'init-color-theme)
@@ -59,6 +59,7 @@
 ;; (require 'init-tabbar)
 (require 'init-deft)
 (require 'init-markdown)
+
 (require 'init-helm)
 
 ;;; the use of dash

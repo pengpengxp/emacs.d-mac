@@ -63,9 +63,10 @@
 ;;; 所有可能的状态
 (setq org-todo-keywords '((sequence "TODO(t!)" 
 				    "DOING(n)"
+				    "PLAN(p)"
 				    "WAITING(w)" ;waiting for others
 				    "Dreams(i)"
-				    "Tips(p)"
+				    "Tips(T)"
 				    "Important-Day(j)"
 				    "|"
                                     "SOMEDAY(s)" ;I'll do it someday
@@ -73,8 +74,12 @@
 				    "ABORT(a@/!)"
 				    )))
 (setq org-capture-templates 
-      '(("t" "New TODO item" entry (file(concat ORG-HOME "/inbox.org"))
+      '(
+	("t" "New TODO item" entry (file(concat ORG-HOME "/inbox.org"))
 	 "*  TODO  [#C]  %?\n  %T")
+
+	("p" "New plan item" entry (file(concat ORG-HOME "/inbox.org"))
+	 "*  PLAN [#C]  %?\n  %T")
 
 	("i" "Dreams" entry (file(concat ORG-HOME "/dreams.org"))
 	 "*  Dreams  %?\n %T")
@@ -117,6 +122,7 @@
 	("d" "Agenda and Home-related tasks"
 	 (
 	  (agenda "")
+	  (todo "PLAN")
 	  (todo "DOING")
 	  (todo "WAITING")
 	  ))

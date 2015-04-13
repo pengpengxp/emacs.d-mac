@@ -2,18 +2,20 @@
 ;;; 增加一些仓库
 ;;; ----------------------------------------------------------------------
 
-;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
-;;                          ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-archives '(
+			 ;; ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+			 ))
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;;(add-to-list 'package-archives
+;;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;;
+;;(add-to-list 'package-archives
+;;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 (provide 'init-package)
-
-
 
 ;;; 执行下面，如果没有安装对应的软件包，则会自己自动安装
 ;; (defvar prelude-packages
