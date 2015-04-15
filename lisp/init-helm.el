@@ -4,7 +4,9 @@
 (require 'helm-etags+)
 (require 'helm-ag)
 
+;;; 默认不打开
 (helm-mode 1)
+
 ;;; make sure Enter do what I want
 (setq helm-exit-idle-delay 0)
 ;;; rebinding the tab

@@ -75,16 +75,16 @@
 (require 'init-deft)
 (require 'init-markdown)
 
-(require 'init-helm)
 
+(require 'init-ido)
+(require 'init-smex)
+(require 'init-icicles)
+;; (require 'init-ido-cb.el)
+
+(require 'init-helm)
 ;;; the use of dash
 (require 'helm-dash)			; do not need dash
 (require 'init-dash)			; use dash in emacs
-
-;; (require 'init-ido-cb.el)
-;; (require 'init-ido)
-;; (require 'init-icicles)
-;; (require 'init-smex)
 
 (require 'init-eim)
 ;; (require 'init-chinese-pyim)

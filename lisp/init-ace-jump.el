@@ -38,8 +38,8 @@
 
 ;; you can select the key you prefer to
 (peng-global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
-(define-key evil-normal-state-map (kbd "f") 'ace-pinyin-jump-char)
-(define-key evil-normal-state-map (kbd "F") 'evil-find-char)
+;; (define-key evil-normal-state-map (kbd "f") 'ace-pinyin-jump-char)
+;; (define-key evil-normal-state-map (kbd "F") 'evil-find-char)
 
 
 (provide 'init-ace-jump.el)

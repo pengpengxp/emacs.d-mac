@@ -30,7 +30,10 @@
 			     (concat ORG-HOME "/note.org")
 			     (concat ORG-HOME "/test.org")
 			     (concat ORG-HOME "/Tips.org")
+			     (concat ORG-HOME "/someday.org")
+			     (concat ORG-HOME "/daily.org")
 			     ))
+
 (setq ORG-REFILE-FILES (list 
 			;; (concat ORG-HOME "/book.org")
 			(concat ORG-HOME "/dreams.org")
@@ -42,6 +45,7 @@
 			(concat ORG-HOME "/blog.org")
 			(concat ORG-HOME "/Tips.org")
 			(concat ORG-HOME "/trash.org")
+			(concat ORG-HOME "/someday.org")
 			     ))
 
 (add-hook 'org-agenda-mode-hook '(lambda ()
@@ -66,7 +70,7 @@
 				    "PLAN(p)"
 				    "WAITING(w)" ;waiting for others
 				    "Dreams(i)"
-				    "Tips(T)"
+				    "CYCLE(c)"
 				    "Important-Day(j)"
 				    "|"
                                     "SOMEDAY(s)" ;I'll do it someday
@@ -78,8 +82,8 @@
 	("t" "New TODO item" entry (file(concat ORG-HOME "/inbox.org"))
 	 "*  TODO  [#C]  %?\n  %T")
 
-	("p" "New plan item" entry (file(concat ORG-HOME "/inbox.org"))
-	 "*  PLAN [#C]  %?\n  %T")
+	("p" "New plan item" entry (file(concat ORG-HOME "/daily.org"))
+	 "*  PLAN  %?\n  %T")
 
 	("i" "Dreams" entry (file(concat ORG-HOME "/dreams.org"))
 	 "*  Dreams  %?\n %T")
@@ -147,18 +151,18 @@
 	))
 
 ;;;默认显示一天的事件
-(setq org-agenda-span 'week)
+(setq org-agenda-span 'day)
 
 
 ;;; 配置org-to-appt进行系统级别的提醒
 (require 'appt)
 (appt-activate t)
 
-(setq appt-message-warning-time 5)	;设置提前多久通知
-
 ;;;`appt-display-interval'是在`appt-message-warning-time'到达后，每过多久循环通知
+(setq appt-message-warning-time 5)	;设置提前多久通知
+(setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
 
-;; (setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
+
 
 (setq appt-display-mode-line nil)
 
@@ -184,6 +188,10 @@
 (add-hook 'after-save-hook
           '(lambda ()
              (if (string= (buffer-file-name) (concat (getenv "HOME") "/org/gtd/inbox.org"))
+                 (my-org-agenda-to-appt))))
+(add-hook 'after-save-hook
+          '(lambda ()
+             (if (string= (buffer-file-name) (concat (getenv "HOME") "/org/gtd/daily.org"))
                  (my-org-agenda-to-appt))))
 
 ; 每次开启emacs后和中午12点刷新
