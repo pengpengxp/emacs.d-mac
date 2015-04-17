@@ -2,7 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/tmp/" . "KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/")
+ ("/tmp/" . "emacs-config-master/")
  ("/Users/pengpengxp/.emacs.d/site-lisp/helm/" . "helm-dash/")
  ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/" . "src/")
  ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/" . "gpu/")
@@ -15,12 +15,16 @@
 ;; ----- ido-work-directory-list -----
 (
  "/tmp/"
- "/tmp/KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/"
  "/Users/pengpengxp/.emacs.d/lisp/"
+ "/tmp/emacs-config-master/"
+ "/Users/pengpengxp/Applications/Emacs.app/Contents/Resources/info/"
+ "/Users/pengpengxp/.emacs.d/site-lisp/helm/helm-dash/"
+ "/Users/pengpengxp/Documents/2012研究生培养/big_大论文/"
+ "/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/"
  "/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/gpu/"
+ "/tmp/KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/"
  "/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/cpu/"
  "/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/data/"
- "/Users/pengpengxp/Documents/2012研究生培养/big_大论文/"
  "/Users/pengpengxp/org/gtd/"
  "/Users/pengpengxp/.emacs.d/"
  "/Users/pengpengxp/.emacs.d/site-lisp/"
@@ -28,49 +32,69 @@
 
 ;; ----- ido-work-file-list -----
 (
- "main.sh"
- "ksfetch"
- "init-compilation.el"
- "init-ido.el"
- "test.c"
  "main.c"
- "head.h"
- "main.cu"
- "key"
- "makefile"
+ "init-evil.el"
+ "init-evil-comma-map.el"
+ "init-keys.el"
+ "main.org"
+ "tlh-keys.el"
+ "htmlfontify.info.gz"
+ "tlh-alias.el"
+ "README.md"
+ "oth-ido.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/Users/pengpengxp/.emacs.d/" (21806 23055 0 0) "url/" "tramp" "TAGS" "site-lisp/" "semanticdb/" "recentf" "readme.pdf" "readme.org" "readme.html" "pyim/" "lisp/" "init.el" "init-simple.el" "init-export.el" "image-dired/" "ido.last" "eww-bookmarks" "eshell/" "elpa/" "ede-projects.el" "data/" "css/" "cscope.out" "cscope.files" "cfs-profiles.d/" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" ".org-id-locations" ".gitignore" ".git/" ".emacs.desktop.lock" ".emacs.desktop" ".DS_Store" ".cask/" "../" "./")
+ ("/Users/pengpengxp/.emacs.d/lisp/" (21808 51976 0 0) "TAGS" "init-yasnippet.el" "init-xcscope.el~" "init-xcscope.el" "init-window-numbering.el" "init-weibo.el" "init-w3m.el" "init-visual-line-mode.el" "init-uniquify.el" "init-test.el" "init-term-mode.el" "init-tags.el" "init-tabbar.el" "init-sundry.el" "init-sr-speedbar.el" "init-sql.el" "init-smex.el" "init-smartparens.el" "init-smart-tab.el" "init-slime.el" "init-shell-script.el" "init-shell-pop.el" "init-scheme.el" "init-ruby.el" "init-powerline.el" "init-plugins.el" "init-peng-prifun.el" "init-peng-copyfun.el" "init-paredit.el" "init-package.el" "init-outline-minor-mode.el" "init-org.el" "init-org-page.el" "init-org-export.el" "init-mustache.el" "init-multi-term.el" "init-mew.el" "init-markdown.el" "init-magit.el" "init-macro.el" "init-mac.el" "init-lusty-explorer.el" "init-latex.el" "init-keys.el" "init-java.el" "init-ispell.el" "init-Info-mode.el" "init-ido.el" "init-ido-cb.el" "init-icicles.el" "init-ibuffer.el" "init-helm.el" "init-header2.el" "init-guide-key.el" "init-gtd.el" "init-gnus.el" "init-global.el" "init-font.el" "init-flycheck.el" "init-expand-region.el" "init-evil.el" "init-evil-leader.el" "init-eshell.el" "init-emacs-lisp.el" "init-el-get.el" "init-eim.el" "init-ecb.el" "init-dired.el" "init-deft.el" "init-dash.el" "init-cuda.el" "init-compilation.el" "init-company-mode.el" "init-color-theme.el" "init-chinese-pyim.el" "init-cc-mode.el" "init-calfw.el" "init-calendar.el" "init-BSDmakefile-mode.el" "init-bookmark-bmemu-mode.el" "init-bm.el" "init-auto-insert.el" "init-auto-complete.el" "init-auctex.el" "init-ace-jump.el" ".DS_Store" ".#init-evil.el" "../" "./")
 
- ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/" (21806 22959 0 0) "论文格式规范/" "word-timingye-题名页和声明面可以使用word/" "thanks.tex" "test.bst_bak" "test.bst" "template/" "temp.tex" "TAGS" "src/" "run.sh" "references.bib_bak" "references.bib" "references/" "Makefile" "main.tex" "main.pdf" "ltxpng/" "img/" "header.tex" "GBT7714-2005NLang_Upp.bst" "frontpage.tex" "frontpage.aux" "draft.pdf" "draft.org" "cscope.out" "cscope.files" "cqupt_thesis_lcx_modify.cls" "cqupt_thesis.cls" "cqupt_thesis.bst" "chapter06.tex" "chapter05.tex" "chapter04.tex" "chapter03.tex" "chapter02.tex" "chapter01.tex" "backup/" "auto/" "appendices.tex" "appendices.aux" "acknowledgement.tex" "acknowledgement.aux" "abstract.tex" "abstract.aux" ".gitignore" ".git/" ".DS_Store" "../" "./")
+ ("/Users/pengpengxp/" (21808 51490 0 0) "workshop/" "VirtualBox VMs/" "sorg/" "Public/" "Pictures/" "pengpengxp.github.io/" "org/" "Music/" "Movies/" "Library/" "Downloads/" "Documents/" "Desktop/" "Calibre 书库/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-pengpengxp的MacBook Air-5.0.5" ".zcompdump-MacBook Air-5.0.5" ".z.25305" ".z.24500" ".z.19698" ".z.18205" ".z" ".Xauthority" ".wireshark-etc/" ".wireshark/" ".w3m/" ".vimrc" ".vimperatorrc" ".vimperator/" ".viminfo" ".vim/" ".Trash/" ".tmux.conf" ".TeXpen/" ".swt/" ".subversion/" ".stardict/" ".ssh/" ".sqlite_history" ".smex-items" ".slate" ".ShadowsocksX/" ".sdcv_history" ".rnd" ".plexht/" ".percol.d/" ".peng_bashrc" ".org_bak/" ".org-timestamps/" ".oh-my-zsh/" ".nutstore/" ".npm/" ".mplayer/" ".local/" ".lldb/" ".lesshst" ".htoprc" ".gtk-bookmarks" ".gnuplot_history" ".gnupg/" ".gitconfig" ".gem/" ".fontconfig/" ".fasd" ".emacs.keyfreq" ".emacs.desktop" ".emacs.d/" ".emacs.bmk" ".emacs" ".ecb-tip-of-day.el" ".DS_Store" ".dia-etc/" ".dia/" ".dbus-keyrings/" ".data/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".bash_profile.macports-saved_2015-02-15_at_16:37:00" ".bash_profile.macports-saved_2015-02-14_at_00:26:27" ".bash_profile" ".bash_history" ".backups/" ".android/" "../" "./")
 
- ("/Users/pengpengxp/.emacs.d/lisp/" (21806 22970 0 0) "TAGS" "init-yasnippet.el" "init-xcscope.el~" "init-xcscope.el" "init-window-numbering.el" "init-weibo.el" "init-w3m.el" "init-visual-line-mode.el" "init-uniquify.el" "init-test.el" "init-term-mode.el" "init-tags.el" "init-tabbar.el" "init-sundry.el" "init-sr-speedbar.el" "init-sql.el" "init-smex.el" "init-smartparens.el" "init-smart-tab.el" "init-slime.el" "init-shell-script.el" "init-shell-pop.el" "init-scheme.el" "init-ruby.el" "init-powerline.el" "init-plugins.el" "init-peng-prifun.el" "init-peng-copyfun.el" "init-paredit.el" "init-package.el" "init-outline-minor-mode.el" "init-org.el" "init-org-page.el" "init-org-export.el" "init-mustache.el" "init-multi-term.el" "init-mew.el" "init-markdown.el" "init-magit.el" "init-macro.el" "init-mac.el" "init-lusty-explorer.el" "init-latex.el" "init-java.el" "init-ispell.el" "init-Info-mode.el" "init-ido.el" "init-ido-cb.el" "init-icicles.el" "init-ibuffer.el" "init-helm.el" "init-header2.el" "init-guide-key.el" "init-gtd.el" "init-gnus.el" "init-global.el" "init-font.el" "init-flycheck.el" "init-expand-region.el" "init-evil.el" "init-evil-spc-map.el" "init-evil-leader.el" "init-evil-comma-map.el" "init-eshell.el" "init-emacs-lisp.el" "init-el-get.el" "init-eim.el" "init-ecb.el" "init-dired.el" "init-deft.el" "init-dash.el" "init-cuda.el" "init-compilation.el" "init-company-mode.el" "init-color-theme.el" "init-chinese-pyim.el" "init-cc-mode.el" "init-calfw.el" "init-calendar.el" "init-BSDmakefile-mode.el" "init-bookmark-bmemu-mode.el" "init-bm.el" "init-auto-insert.el" "init-auto-complete.el" "init-auctex.el" "init-ace-jump.el" ".DS_Store" "../" "./")
+ ("/tmp/" (21808 49899 0 0) "test.org" "oth-ido.el" "main.org" "main.c" "KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/" "gpu/" "emacs-config-master.zip" "emacs-config-master/" "cqupte.xls" "cqupt_3.xls" "com.apple.launchd.kzD00NjzD5/" "com.apple.launchd.HH8yS3Q8M8/" "com.apple.launchd.GQpNyYEeeu/" "com.apple.launchd.3PeEshQ0iH/" "appt-notificaiton.txt" "ace-pinyin.el" "ace-jump-mode/" "a.out.dSYM/" "a.out" ".DS_Store" "../" "./")
 
- ("/Users/pengpengxp/" (21806 23027 0 0) "workshop/" "VirtualBox VMs/" "sorg/" "Public/" "Pictures/" "pengpengxp.github.io/" "org/" "Music/" "Movies/" "Library/" "Downloads/" "Documents/" "Desktop/" "Calibre 书库/" "bin/" "Applications/" ".zshrc" ".zsh_history" ".zsh-update" ".zcompdump-pengpengxp的MacBook Air-5.0.5" ".zcompdump-MacBook Air-5.0.5" ".z.25305" ".z.24500" ".z.19698" ".z.18205" ".z" ".Xauthority" ".wireshark-etc/" ".wireshark/" ".w3m/" ".vimrc" ".vimperatorrc" ".vimperator/" ".viminfo" ".vim/" ".Trash/" ".tmux.conf" ".TeXpen/" ".swt/" ".subversion/" ".stardict/" ".ssh/" ".sqlite_history" ".smex-items" ".slate" ".ShadowsocksX/" ".sdcv_history" ".rnd" ".plexht/" ".percol.d/" ".peng_bashrc" ".org_bak/" ".org-timestamps/" ".oh-my-zsh/" ".nutstore/" ".npm/" ".mplayer/" ".local/" ".lldb/" ".lesshst" ".htoprc" ".gtk-bookmarks" ".gnuplot_history" ".gnupg/" ".gitconfig" ".gem/" ".fontconfig/" ".fasd" ".emacs.keyfreq" ".emacs.desktop" ".emacs.d/" ".emacs.bmk" ".emacs" ".ecb-tip-of-day.el" ".DS_Store" ".dia-etc/" ".dia/" ".dbus-keyrings/" ".data/" ".cups/" ".config/" ".CFUserTextEncoding" ".cache/" ".bash_profile.macports-saved_2015-02-15_at_16:37:00" ".bash_profile.macports-saved_2015-02-14_at_00:26:27" ".bash_profile" ".bash_history" ".backups/" ".android/" "../" "./")
+ ("/Users/" (21723 20668 0 0) "Shared/" "pengpengxp/" ".localized" "../" "./")
 
- ("/Users/pengpengxp/org/gtd/" (21806 21401 0 0) "trash.org" "Tips.org" "test.org" "TAGS" "someday.org" "note.org" "inbox.org" "finished.org" "dreams.org" "data/" "daily.org" "blog.org" "backup.sh" ".gitignore" ".git/" ".DS_Store" "../" "./")
+ ("/Users/pengpengxp/org/gtd/" (21808 39256 0 0) "trash.org" "Tips.org" "test.org" "TAGS" "someday.org" "note.org" "inbox.org" "finished.org" "dreams.org" "data/" "daily.org" "blog.org" "backup.sh" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/tmp/KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/" (21808 44875 0 0) "ksfetch" "../" "./")
+
+ ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/gpu/" (21807 12487 0 0) "TAGS" "readme.org" "queue.h" "queue.cu" "ptestoutput" "makefile" "main.cu" "kernel.h" "kernel.cu" "head.h" "function.cu" "cuPrintf.cuh" "cuPrintf.cu" "cscope.out" "cscope.files" "auto/" "a.out.dSYM/" ".gitignore" ".git/" ".DS_Store" "'" "../" "./")
+
+ ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/" (21807 13447 0 0) "论文格式规范/" "word-timingye-题名页和声明面可以使用word/" "thanks.tex" "test.bst_bak" "test.bst" "template/" "temp.tex" "TAGS" "src/" "run.sh" "references.bib_bak" "references.bib" "references/" "Makefile" "main.tex" "main.pdf" "ltxpng/" "img/" "header.tex" "GBT7714-2005NLang_Upp.bst" "frontpage.tex" "frontpage.aux" "draft.pdf" "draft.org" "cscope.out" "cscope.files" "cqupt_thesis_lcx_modify.cls" "cqupt_thesis.cls" "cqupt_thesis.bst" "chapter06.tex" "chapter05.tex" "chapter04.tex" "chapter03.tex" "chapter02.tex" "chapter01.tex" "backup/" "auto/" "appendices.tex" "appendices.aux" "acknowledgement.tex" "acknowledgement.aux" "abstract.tex" "abstract.aux" ".gitignore" ".git/" ".DS_Store" "../" "./")
+
+ ("/Users/pengpengxp/.emacs.d/" (21808 45482 0 0) "url/" "tramp" "TAGS" "site-lisp/" "SessionDesktop.el" "semanticdb/" "recentf" "readme.pdf" "readme.org" "readme.html" "pyim/" "lisp/" "init.el" "init-simple.el" "init-export.el" "image-dired/" "ido.last~" "ido.last" "eww-bookmarks" "eshell/" "elpa/" "ede-projects.el" "data/" "css/" "cscope.out" "cscope.files" "cfs-profiles.d/" "auto-save-list/" "ac-comphist.dat" "abbrev_defs" ".org-id-locations" ".gitignore" ".git/" ".emacs.desktop.lock" ".emacs.desktop" ".DS_Store" ".cask/" "../" "./")
+
+ ("/Users/pengpengxp/Applications/Emacs.app/" (21781 111 0 0) "Contents/" "../" "./")
+
+ ("/Users/pengpengxp/Applications/Emacs.app/Contents/" (21781 111 0 0) "Resources/" "PkgInfo" "MacOS/" "Info.plist" "../" "./")
+
+ ("/Users/pengpengxp/Applications/Emacs.app/Contents/Resources/" (21781 165 0 0) "var/" "site-lisp/" "man/" "lisp/" "info/" "etc/" "English.lproj/" "Emacs.icns" "document.icns" "Credits.html" "../" "./")
+
+ ("/tmp/emacs-config-master/" (21808 38452 0 0) "tlh-system.el" "tlh-startup.el" "tlh-sound.el" "tlh-registers.el" "tlh-osx.el" "tlh-notify.el" "tlh-mode.el" "tlh-linux.el" "tlh-keys.el" "tlh-init.el" "tlh-ido.el" "tlh-gnus.el" "tlh-erc.el" "tlh-emms.el" "tlh-emacs.el" "tlh-custom.el" "tlh-alias.el" "README.md" ".DS_Store" "../" "./")
+
+ ("/etc/" (21807 1799 0 0) "zshenv" "xtab" "ttys" "syslog.conf" "sudoers" "sshd_config" "ssh_host_rsa_key.pub" "ssh_host_rsa_key" "ssh_host_key.pub" "ssh_host_key" "ssh_host_dsa_key.pub" "ssh_host_dsa_key" "ssh_config" "snmp/" "shells" "services" "security/" "rtadvd.conf" "rpc" "rmtab" "resolv.conf_bak" "resolv.conf" "rc.netboot" "rc.imaging" "rc.common" "racoon/" "protocols" "profile" "ppp/" "postfix/" "php.ini.default" "php-fpm.conf.default" "pf.os" "pf.conf" "pf.anchors/" "periodic/" "paths.d/" "paths" "passwd" "pam.d/" "openldap/" "ntp_opendirectory.conf" "ntp.conf" "ntp-restrict.conf" "notify.conf" "nfs.conf" "newsyslog.d/" "newsyslog.conf" "networks" "nanorc" "moduli" "master.passwd" "manpaths.d/" "manpaths" "man.conf" "mail.rc" "mach_init_per_user.d/" "mach_init_per_login_session.d/" "mach_init.d/" "locate.rc" "localtime" "krb5.keytab" "kern_loader.conf" "irbrc" "hosts.equiv" "hosts" "group" "gettytab" "ftpusers" "ftpd.conf.default" "ftpd.conf" "fstab.hd" "find.codes" "emond.d/" "efax.rc" "dnsextd.conf" "defaults/" "cups/" "csh.logout" "csh.login" "csh.cshrc" "com.apple.screensharing.agent.launchd" "bootpd.plist" "bashrc" "autofs.conf" "auto_master" "auto_home" "asl.conf" "asl/" "apache2/" "aliases.db" "aliases" "afpovertcp.cfg" "../" "./")
+
+ ("/Network/" (21519 26469 0 0) "../" "./")
+
+ ("/Users/pengpengxp/org/" (21807 52833 0 0) "科学上网.org" "手机应用识别系统的思路.org" "我的linux学习笔记.org" "我的latex学习笔记.pdf" "我的latex学习笔记.org" "我的java学习笔记.org" "我的emacs和lisp学习笔记.pdf" "我的emacs和lisp学习笔记.org" "我的C语言学习笔记.pdf" "我的C语言学习笔记.org" "安装gentoo的简单总结.org" "大论文/" "使用org-mode自动生成中文pdf的配置（org-mode学习笔记）.pdf" "使用org-mode自动生成中文pdf的配置（org-mode学习笔记）.org" "使用org-mode写博客.org" "使用deft来记笔记.org.org" "ubuntu14.04-software-list.org" "sorg/" "share.txt" "share-NSConflict-pengpengxp.txt" "sed-and-awk.org" "ruhetigao_bianchengxiaolv如何提高编程效率.pdf" "ruhetigao_bianchengxiaolv如何提高编程效率.org" "qingqing.txt" "pdf/" "org-agenda-提醒设置.org" "mac使用笔记.pdf" "mac使用笔记.org" "gtd/" "eye.org" "emacs-readme.org" "debain安装.pdf" "debain安装.org" "css/" "book.org" "book-borrow-from-library.org" "auto/" "2014程老师学生成果统计.org" ".git/" ".emacs-NSConflict-pengpengxp.desktop" ".DS_Store" "../" "./")
+
+ ("/Users/pengpengxp/.emacs.d/site-lisp/" (21807 51622 0 0) "xcscope/" "window-numbering/" "weibo/" "var/" "tabbar/" "stardict.el" "sr-speedbar.el" "sql-indent.el" "smooth-scroll.el" "smartparens/" "smart-tab.el" "slime/" "shell-switcher/" "shell-pop/" "share/" "s/" "quack.el" "powerline/" "popwin-el/" "pinyin-search.el" "paredit.el" "outline-magic.el" "out-xtra.el" "org-page-master/" "org-8.2.7c/" "names/" "mustache.el-master/" "multi-term.el" "moe-theme.el-master/" "Mew/" "markdown-mode/" "magit/" "lusty-explorer.el" "jdee-2.4.1/" "iedit/" "ibuffer-vc.el" "hydra-master/" "ht.el-master/" "hide-region.el" "helm/" "header2/" "guide-key/" "flycheck/" "expand-region/" "evil/" "eshell-z/" "enhanced-ruby-mode/" "emacs-w3m/" "emacs-eim/" "emacs-calfw/" "ecb-master/" "dired/" "deft-turbo/" "dash-at-point-master/" "dash/" "darkroom-mode/" "company-mode/" "color-theme-6.6.0/" "chinese-pyim/" "chinese-fonts-setup/" "cdlatex.el" "cal-china-x.el" "c-eldoc.el" "bm/" "autopair/" "auto-complete-1.3.1/" "auctex-11.87.tar.gz" "auctex/" "ascii.el" "alarm.el" ".travis.yml" ".gitignore" ".DS_Store" "../" "./")
+
+ ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/" (21807 13162 0 0) "result.org" "gpu/" "data/" "cpu_bak_2015-04-08/" "cpu/" ".DS_Store" "../" "./")
+
+ ("/tmp/gpu/" (21807 7846 0 0) "TAGS" "readme.org" "queue.h" "queue.cu" "ptestoutput" "makefile" "main.cu" "kernel.h" "kernel.cu" "head.h" "function.cu" "cuPrintf.cuh" "cuPrintf.cu" "cscope.out" "cscope.files" "auto/" "a.out.dSYM/" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
  ("/Applications/" (21803 13918 0 0) "爱奇艺视频.app/" "爱奇艺PPS影音.app/" "XtraFinder.app/" "Xcode.app/" "Wireshark.app/" "WeiboX.app/" "WeChat.app/" "VirtualBox.app/" "Utilities/" "Time Machine.app/" "TextEdit.app/" "TeX/" "Telegram.app/" "System Preferences.app/" "Stickies.app/" "ShadowsocksX.app/" "Seil.app/" "Safari.app/" "Reminders.app/" "Reeder.app/" "Ralink Wireless Utility/" "QuickTime Player.app/" "QQ.app/" "Preview.app/" "PPTV网络电视.app/" "Photo Booth.app/" "Pages.app/" "N多手机助手.app/" "Nutstore.app/" "Numbers.app/" "Notes.app/" "NetKeeper.app/" "My Alarm Clock.app/" "MPlayerX.app/" "Mission Control.app/" "Messages.app/" "Maps.app/" "Mail.app/" "MacPorts/" "Launchpad.app/" "Keynote.app/" "Karabiner.app/" "iZip Unarchiver.app/" "iTunes.app/" "iPhoto.app/" "iMovie.app/" "Image Capture.app/" "iBooks.app/" "HyperSwitch.app/" "GPG Keychain.app/" "Google Chrome.app/" "Go2Shell.app/" "GarageBand.app/" "Game Center.app/" "Font Book.app/" "Firefox.app/" "FaceTime.app/" "DVD Player.app/" "Dictionary.app/" "Dia.app/" "Dashboard.app/" "Contents/" "Contacts.app/" "Chess.app/" "Calendar.app/" "Calculator.app/" "CAJViewerMac.app/" "Automator.app/" "AtPill.app/" "App Store.app/" "Android Studio.app/" "Android File Transfer.app/" "AliWangwang.app/" ".localized" ".DS_Store" "../" "./")
-
- ("/tmp/KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/" (21806 20761 0 0) "ksfetch" "../" "./")
 
  ("/Users/pengpengxp/.emacs.d/site-lisp/helm/helm-dash/" (21772 51505 0 0) "test/" "README.md" "misc/" "Makefile" "helm-dash.el" "Cask" ".travis.yml" ".gitignore" "../" "./")
 
  ("/Users/pengpengxp/.emacs.d/site-lisp/helm/emacs-helm-ag-master/" (21797 61853 0 0) "test/" "README.md" "Makefile" "image/" "helm-ag.el" "Changes" "Cask" ".travis.yml" ".gitignore" ".cask/" "../" "./")
 
- ("/tmp/" (21806 20839 0 0) "重庆邮电大学票据粘贴纸.xls" "重庆邮电大学票据报销审批单.xls" "旁证材料说明.docx" "前端技术要求及设计.pptx" "出差旅费报销单.xls" "yasnippet-master/" "xiepeng" "trash.pdf" "Tips.pdf" "thunder_ui_2015-04-13.log" "text" "test.tex" "test.pdf" "test.org" "test.c" "temp/" "Spoon-Knife/" "smex/" "README.pdf" "pengpengxp@172.23.22.107" "org-faces.elc" "org-faces.el" "note.pdf" "mwords.tar.Z" "mwords/" "main.tex" "main.sh" "main.pdf" "main.org" "main.c" "lzx项目重庆市.docx" "KSOutOfProcessFetcher.501.IW-ShwaXJwmHlkfc5wb2ZMHOaJY=/" "kk.tex" "kk.c" "irony-mode-master.zip" "irony-mode-master/" "inbox.pdf" "ido.el" "ido-ubiquitous.el" "icicles/" "helm-master/" "header2.elc" "header2.el" "gpu/" "Fl201504121444386204_1/" "Fl201504121444386204.rar" "Fl201504121444386204/" "Fl201304231106122630.xls" "finished.pdf" "el-get-master.zip" "el-get-master/" "el-get/" "dreams.pdf" "company-mode/" "com.apple.launchd.zBoBvtSYLW/" "com.apple.launchd.VH7z8bOTyn/" "com.apple.launchd.ugKxA2nsp6/" "com.apple.launchd.AA0iQquIR9/" "cfe-3.5.0.src.tar.xz" "blog.pdf" "autopair.elc" "autopair.el" "auto/" "appt-notificaiton.txt" "adb.log" "a.out.dSYM/" "a.out" ".vbox-pengpengxp-ipc/" ".DS_Store" "../" "./")
-
  ("/Users/pengpengxp/.emacs.d/elpa/" (21806 7571 0 0) "yasnippet-20150405.1526/" "smex-20141210.1422/" "rw-ispell-0.1/" "org-pomodoro-20150331.1023/" "log4e-20150105.505/" "idomenu-0.1/" "ido-vertical-mode-20150215.913/" "ido-ubiquitous-2.10/" "ido-complete-space-or-hyphen-20130228.208/" "icicles-20150412.335/" "helm-dictionary-readme.txt" "helm-c-yasnippet-20140131.226/" "helm-ag-20150412.701/" "helm-20150410.2251/" "gnupg/" "gntp-20141024.1950/" "flx-0.1/" "auto-dictionary-readme.txt" "async-20150412.814/" "archives/" "alert-20150402.1246/" "../" "./")
-
- ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/gpu/" (21806 14042 0 0) "TAGS" "readme.org" "queue.h" "queue.cu" "ptestoutput" "makefile" "main.cu" "kernel.h" "kernel.cu" "head.h" "function.cu" "cuPrintf.cuh" "cuPrintf.cu" "cscope.out" "cscope.files" "auto/" "a.out.dSYM/" ".gitignore" ".git/" ".DS_Store" "../" "./")
 
  ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/data/" (21806 11880 0 0) "test-02-11.pcap" "result" "readme.org" "key_debug" "key_bak" "key" "../" "./")
 
  ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/cpu/" (21806 12262 0 0) "TAGS" "readme.org" "queue.h" "queue.c" "ptestoutput" "makefile" "main.c" "head.h" "function.c" "cscope.out" "auto/" ".git/" ".DS_Store" "../" "./")
-
- ("/Users/pengpengxp/Documents/2012研究生培养/big_大论文/src/" (21806 13268 0 0) "result.org" "gpu/" "data/" "cpu_bak_2015-04-08/" "cpu/" ".DS_Store" "../" "./")
 
  ("/Volumes/Linux/pengpengxp/data/tcpdump_file/" (21697 43047 830912 500000) "test.pcap" "tcpdump_eth0.pcap" "../" "./")
 
@@ -79,8 +103,6 @@
  ("/Users/pengpengxp/.emacs.d/site-lisp/ace-jump-mode/" (21772 51504 0 0) "TAGS" "README.md" "ace-jump-mode.el" "../" "./")
 
  ("/Users/pengpengxp/.emacs.d/site-lisp/Mew/" (21772 51505 0 0) "../" "./")
-
- ("/Users/pengpengxp/.emacs.d/site-lisp/" (21805 53436 0 0) "xcscope/" "window-numbering/" "weibo/" "var/" "tabbar/" "stardict.el" "sr-speedbar.el" "sql-indent.el" "smooth-scroll.el" "smartparens/" "smart-tab.el" "slime/" "shell-switcher/" "shell-pop/" "share/" "s/" "quack.el" "powerline/" "popwin-el/" "pinyin-search.el" "paredit.el" "outline-magic.el" "out-xtra.el" "org-page-master/" "org-8.2.7c/" "names/" "mustache.el-master/" "multi-term.el" "moe-theme.el-master/" "Mew/" "markdown-mode/" "magit/" "lusty-explorer.el" "jdee-2.4.1/" "iedit/" "ibuffer-vc.el" "hydra-master/" "ht.el-master/" "hide-region.el" "helm/" "header2/" "guide-key/" "flycheck/" "expand-region/" "evil/" "eshell-z/" "enhanced-ruby-mode/" "emacs-w3m/" "emacs-eim/" "emacs-calfw/" "ecb-master/" "dired/" "deft-turbo/" "dash-at-point-master/" "dash/" "darkroom-mode/" "company-mode/" "color-theme-6.6.0/" "chinese-pyim/" "chinese-fonts-setup/" "cdlatex.el" "cal-china-x.el" "c-eldoc.el" "bm/" "autopair/" "auto-complete-1.3.1/" "auctex-11.87.tar.gz" "auctex/" "ascii.el" "alarm.el" "ace-pinyin.el" "ace-jump-mode/" ".travis.yml" ".gitignore" ".DS_Store" "../" "./")
 
  ("/Users/pengpengxp/.emacs.d/elpa/ido-better-flex-0.2/" (21806 2033 0 0) "ido-better-flex.el" "ido-better-flex-pkg.el" "ido-better-flex-autoloads.el" "../" "./")
 

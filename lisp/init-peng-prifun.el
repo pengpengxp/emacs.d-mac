@@ -29,8 +29,6 @@
   (interactive)
   (yank)
   (newline))
-(global-set-key (kbd "C-c w") 'peng-copy-one-line)
-(global-set-key (kbd "C-c y") 'peng-yank-one-line)
 ;;; ----------------------------------------------------------------------
 
 
@@ -352,5 +350,10 @@ if that buffer is not exits,call org-agenda"
 	  (format "%s" (concat "[[" (format "%s" result) "]" "[" title "]]"))))
 
       ))
+
+(defun peng-switch-to-other-buffer ()
+  "switch to other buffer without ask"
+  (interactive)
+  (switch-to-buffer (other-buffer)))
 
 (provide 'init-peng-prifun)

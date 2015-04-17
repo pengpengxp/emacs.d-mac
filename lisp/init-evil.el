@@ -169,8 +169,64 @@
 (define-key evil-motion-state-map "ei " 'find-file)
 
 ;;; define two special key for personal use
-(require 'init-evil-spc-map)
+;; (require 'init-evil-spc-map)
 
-;; (require 'init-evil-comma-map)
+;;; 自己`hack'evil的各状态的快捷键
+
+;;; 定义从`SPC'和`comma'触发的快捷键
+;;; normal map
+
+(setq peng-space-ctl-x-map (copy-keymap ctl-x-map))
+(define-key peng-space-ctl-x-map (kbd "f") 'find-file)
+
+(define-prefix-command 'peng-evil-normal-map)
+(define-key peng-evil-normal-map (kbd "d") 'kill-this-buffer)
+(define-key peng-evil-normal-map (kbd "x") peng-space-ctl-x-map)
+(define-key peng-evil-normal-map (kbd "z") 'smex)
+(define-key peng-evil-normal-map (kbd "f") 'find-file)
+(define-key peng-evil-normal-map (kbd "c") mode-specific-map)
+(define-key peng-evil-normal-map (kbd "h") help-map)
+(define-key peng-evil-normal-map (kbd ",") 'evilnc-comment-operator)
+(define-key peng-evil-normal-map (kbd "q") 'kill-buffer-and-window)
+(define-key peng-evil-normal-map (kbd "j") 'bookmark-jump)
+(define-key peng-evil-normal-map (kbd "SPC") 'evil-buffer)
+(define-key peng-evil-normal-map (kbd "w") 'save-buffer)
+(define-key peng-evil-normal-map (kbd "t") 'bm-toggle)
+(define-key peng-evil-normal-map (kbd "xx") 'smex)
+(define-key peng-evil-normal-map (kbd "e") 'eshell)
+(define-key peng-evil-normal-map (kbd "b") 'ibuffer)
+(define-key peng-evil-normal-map (kbd "B") 'bookmark-bmenu-list)
+(define-key peng-evil-normal-map (kbd "r") 'ido-recentf-find-file)
+(define-key peng-evil-normal-map (kbd "s") 'shell-command)
+(define-key peng-evil-normal-map (kbd "TAB") 'peng-switch-to-other-buffer)
+(define-key peng-evil-normal-map (kbd "1") 'delete-other-windows)
+(define-key peng-evil-normal-map (kbd "0") 'delete-window)
+(define-key peng-evil-normal-map (kbd "2") 'split-window-below)
+(define-key peng-evil-normal-map (kbd "3") 'split-window-right)
+(define-key peng-evil-normal-map (kbd "DEL") 'delete-other-windows)
+(define-key peng-evil-normal-map (kbd "xg") 'peng-goto-scratch)
+;;; go to specified fileter
+(define-key peng-evil-normal-map (kbd "go") 'peng-ibuffer-filter-org-mode)
+(define-key peng-evil-normal-map (kbd "gc") 'peng-ibuffer-filter-c-mode)
+(define-key peng-evil-normal-map (kbd "ge") 'peng-ibuffer-filter-emacs-lisp-mode)
+(define-key peng-evil-normal-map (kbd "gs") 'peng-ibuffer-filter-sql-mode)
+(define-key peng-evil-normal-map (kbd "gd") 'peng-ibuffer-filter-dired-mode)
+(define-key peng-evil-normal-map (kbd "gp") 'peng-ibuffer-filter-c++-mode)
+(define-key evil-normal-state-map (kbd "SPC") peng-evil-normal-map)
+(define-key evil-normal-state-map (kbd ",") peng-evil-normal-map)
+
+(define-key evil-motion-state-map (kbd "SPC") peng-evil-normal-map)
+(define-key evil-motion-state-map (kbd ",") peng-evil-normal-map)
+
+;;; insert map
+(define-prefix-command 'peng-evil-insert-map)
+(setq peng-evil-insert-map (copy-keymap peng-evil-normal-map))
+;;; insert中的需要可以输入`,'
+(define-key peng-evil-insert-map (kbd ",") (lambda ()
+				      (interactive)
+				      (insert ",")))
+
+(define-key evil-insert-state-map (kbd ",") peng-evil-insert-map)
 
 (provide 'init-evil)
+

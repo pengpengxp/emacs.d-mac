@@ -17,8 +17,6 @@
 ;; (require 'ace-jump-mode)
 
 (require 'evil)
-(require 'ace-pinyin)
-(ace-pinyin-global-mode 1)
 
 (autoload
   'ace-jump-mode
@@ -37,10 +35,24 @@
 (setq ace-jump-mode-case-fold nil)
 
 ;; you can select the key you prefer to
-(peng-global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
-;; (define-key evil-normal-state-map (kbd "f") 'ace-pinyin-jump-char)
-;; (define-key evil-normal-state-map (kbd "F") 'evil-find-char)
+(peng-global-set-key (kbd "C-c SPC") 'ace-jump-char-mode)
+(peng-global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
 
+;;; ----------------------------------------`ace-jump-buffer'
+(require 'ace-jump-buffer)
+
+;;; 这样就可以产生一个`ace-jump-eshell-buffers'
+(make-ace-jump-buffer-function "eshell"
+  (with-current-buffer buffer
+    (not (eq major-mode 'eshell-mode))))
+
+;;; 这样就可以产生一个`ace-jump-org-buffers'
+(make-ace-jump-buffer-function "org"
+  (with-current-buffer buffer
+    (not (eq major-mode 'org-mode))))
+
+(peng-global-set-key (kbd "C-c C-b") 'ace-jump-buffer-with-configuration)
+;;; ======================================================================
 
 (provide 'init-ace-jump.el)
 
