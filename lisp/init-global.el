@@ -249,4 +249,5 @@
 (when window-system
   (peng-global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
+(peng-global-set-key (kbd "C-c j") 'ido-bookmark-jump)
 (provide 'init-global)

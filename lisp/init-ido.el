@@ -5,16 +5,15 @@
 
 (require 'ido)
 (require 'ido-vertical-mode)
-(require 'ido-complete-space-or-hyphen)
+;; (require 'ido-complete-space-or-hyphen)
 (require 'idomenu)
 
 (require 'ido-better-flex)
 (ido-better-flex/disable)
 
-;这样的<tab>才是我想要的。但是开启后`helm'用着不行了。关闭`ido-mode'就行。
-(define-key minibuffer-local-map [tab] 'ido-exit-minibuffer) 
-
 (ido-mode t)
+
+
 (ido-vertical-mode 1)
 (ido-toggle-regexp)
 (setq ido-enable-flex-matching t)
@@ -31,11 +30,10 @@
 (setq ido-case-fold t)
 
 ;;; 使用`ido'来跳转bookmark
-(peng-global-set-key (kbd "C-c j")
-    (lambda ()
-      (interactive)
-      (bookmark-jump
-       (ido-completing-read "Jump to bookmark: " (bookmark-all-names)))))
+(defun ido-bookmark-jump ()
+  (interactive)
+  (bookmark-jump
+       (ido-completing-read "Jump to bookmark: " (bookmark-all-names))))
 
 (defun ido-yank ()
   "Select a kill to yank with `ido-completing-read'."
@@ -95,6 +93,10 @@ predicate PRED used to filter them."
      (ido-cache 'boundp) nil nil
      (and at-point (thing-at-point 'symbol) (format "%s" it))))))
 
+(defun ido-find-function ()
+  (interactive)
+  (find-function (intern (ido-completing-read "Function: " (ido-cache 'functionp)))))
+
 (defun ido-describe-variable-at-point ()
   (interactive)
   (ido-describe-variable t))
@@ -140,5 +142,18 @@ predicate PRED used to filter them."
 ;;   '(define-key ido-common-completion-map "\C-m" 'ido-smart-select-text))
 ;;; *****************************from the wiki***********************************
 (peng-global-set-key (kbd "M-s M-s") 'idomenu)
+
+;;; 这样的`SPC'和`tab'才是我想要的
+(defun peng-ido-define-key ()
+  (interactive)
+  (define-key ido-common-completion-map (kbd "SPC") 'ido-restrict-to-matches)
+  (define-key ido-file-completion-map (kbd "SPC") 'ido-restrict-to-matches)
+  (define-key ido-common-completion-map (kbd "<tab>") 'ido-exit-minibuffer)
+  (define-key ido-common-completion-map (kbd "TAB") 'ido-exit-minibuffer)
+  )
+(add-hook 'ido-setup-hook 'peng-ido-define-key)
+
+;这样的<tab>才是我想要的。但是开启后`helm'用着不行了。关闭`ido-mode'就行。但是这样对smex无效。
+;; (define-key minibuffer-local-map [tab] 'ido-exit-minibuffer) 
 
 (provide 'init-ido)

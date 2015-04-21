@@ -43,7 +43,7 @@
 (evil-set-initial-state 'gnus-group-mode 'emacs)
 (evil-set-initial-state 'inferior-scheme-mode 'emacs)
 (evil-set-initial-state 'Man-mode 'normal)
-(evil-set-initial-state 'eshell-mode 'emacs)
+(evil-set-initial-state 'eshell-mode 'insert)
 (evil-set-initial-state 'cfw:details-mode 'emacs)
 
 ;;; pengpengxp's evil-toc-mode
@@ -122,6 +122,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ;;; evil-define-key
 (define-key evil-normal-state-map (kbd "M-n") 'scroll-up-command)
+(define-key evil-normal-state-map (kbd "/") 'swiper)
 
 (define-key evil-normal-state-map "m" 'point-to-register)
 (define-key evil-normal-state-map "'" 'jump-to-register)
@@ -176,10 +177,13 @@
 ;;; 定义从`SPC'和`comma'触发的快捷键
 ;;; normal map
 
+;;; 可能有点问题？？？
 (setq peng-space-ctl-x-map (copy-keymap ctl-x-map))
 (define-key peng-space-ctl-x-map (kbd "f") 'find-file)
+(define-key peng-space-ctl-x-map (kbd "s") 'save-buffer)
 
 (define-prefix-command 'peng-evil-normal-map)
+(define-key peng-evil-normal-map (kbd "a") 'org-agenda)
 (define-key peng-evil-normal-map (kbd "d") 'kill-this-buffer)
 (define-key peng-evil-normal-map (kbd "x") peng-space-ctl-x-map)
 (define-key peng-evil-normal-map (kbd "z") 'smex)
@@ -188,7 +192,7 @@
 (define-key peng-evil-normal-map (kbd "h") help-map)
 (define-key peng-evil-normal-map (kbd ",") 'evilnc-comment-operator)
 (define-key peng-evil-normal-map (kbd "q") 'kill-buffer-and-window)
-(define-key peng-evil-normal-map (kbd "j") 'bookmark-jump)
+(define-key peng-evil-normal-map (kbd "j") 'ido-bookmark-jump)
 (define-key peng-evil-normal-map (kbd "SPC") 'evil-buffer)
 (define-key peng-evil-normal-map (kbd "w") 'save-buffer)
 (define-key peng-evil-normal-map (kbd "t") 'bm-toggle)
@@ -229,4 +233,3 @@
 (define-key evil-insert-state-map (kbd ",") peng-evil-insert-map)
 
 (provide 'init-evil)
-

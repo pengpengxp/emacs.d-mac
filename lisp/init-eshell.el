@@ -14,6 +14,11 @@
 (setq eshell-smart-space-goes-to-end t)
 ;;; copy from the website
 
+;;; 自己写的`advice'。将`buffer-name'修改为当前目录，当到达同一个目录的时候会出现问题
+(defadvice eshell/cd (after peng-eshell-change-buffer-name activate)
+  (rename-buffer (concat "*eshell*:"
+		       default-directory)))
+
 ;;; 这个find-file比我自己定义的好很多。可以同时打开多个文件。我最后定义了两个alias
 (defun eshell/ff (&rest args)
   "Opens a file in emacs."

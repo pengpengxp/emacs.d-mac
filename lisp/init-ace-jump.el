@@ -35,7 +35,8 @@
 (setq ace-jump-mode-case-fold nil)
 
 ;; you can select the key you prefer to
-(peng-global-set-key (kbd "C-c SPC") 'ace-jump-char-mode)
+;; (peng-global-set-key (kbd "C-c SPC") 'ace-jump-char-mode)
+(peng-global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
 (peng-global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
 
 ;;; ----------------------------------------`ace-jump-buffer'

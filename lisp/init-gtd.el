@@ -159,8 +159,9 @@
 (appt-activate t)
 
 ;;;`appt-display-interval'是在`appt-message-warning-time'到达后，每过多久循环通知
-(setq appt-message-warning-time 5)	;设置提前多久通知
-(setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
+(setq appt-message-warning-time 6)	;设置提前多久通知
+;; (setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
+(setq appt-display-interval 3)		;隔三分钟提醒一次
 
 
 
