@@ -70,6 +70,18 @@
 			    ))
 ;;; ----------------------------------------------------------------------
 
+;;; 利用 highlight-regexp 高亮指定的正则表达式
+
+(defun peng-highlight ()
+  (interactive)
+  (highlight-regexp "`.*'" 'language-lock-face)
+)
+
+; org mode 中开启高亮
+(add-hook 'org-mode-hook (lambda ()
+			   (hi-lock-mode 1)
+			   (peng-highlight)))
+
 ;;; ----------------------------------------------------------------------
 ;;; 如果yas-expand失败后，tab作用就是之前的，一般是org-cycle。对于这个
 ;;; [tab]还不是很理解。
