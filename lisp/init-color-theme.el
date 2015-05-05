@@ -49,10 +49,8 @@
 
 ;; (color-theme-aalto-light)
 
+;;; ====================moe theme==================== 
 (require 'moe-theme)
-
-
-
 ;; ;;; 白天light晚是dark自动切换
 ;; (setq moe-theme-switch-by-sunrise-and-sunset t)	;设置这个后，可以根据本地的日出和日落来切换dark和light
 ;; ;;; 这里先设置重庆的经纬度
@@ -61,8 +59,11 @@
 ;; (require 'moe-theme-switcher)
 
 ;;; 我还是喜欢dark
-(moe-dark)
+;; (moe-dark)
+;;; ====================moe theme==================== 
 
+;; (color-theme-standard)
+(color-theme-gnome2)
 
 (provide 'init-color-theme)
 

@@ -8,11 +8,20 @@
 ;; (require 'ido-complete-space-or-hyphen)
 (require 'idomenu)
 
+;;; ido-hacks可以使ido在尽可能多的地方使用，这样可以几乎很少开helm了
+(require 'ido-hacks)
+;;; 这里不能使用这种形式，没用，只能手动开启
+;;; helm卸载后这就可以了
+;; (ido-hacks-mode)
+
+;;; 开启flex后我的Macbook Air太慢了，配置高了再说吧
 (require 'ido-better-flex)
 (ido-better-flex/disable)
 
-(ido-mode t)
+(ido-mode 1)
 
+;; (peng-global-set-key (kbd "C-h v") 'ido-describe-variable)
+;; (peng-global-set-key (kbd "C-h f") 'ido-describe-function)
 
 (ido-vertical-mode 1)
 (ido-toggle-regexp)
@@ -22,12 +31,16 @@
 ;; (setq ido-use-filename-at-point 'guess)	;可以自动识别当前`point'在的目录。好像没太大用
 
 ;;; 设定ido显示的排列方式
-(setq ido-file-extensions-order '(".org" ".c" ".lisp" ".sh" ".tex" ".pdf" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
+(setq ido-file-extensions-order
+'(".org" ".c" ".lisp" ".sh" ".tex" ".pdf" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
 
 ;;; 这句以后可以设置变量`completion-ignored-extensions'来让`ido'ignore这些东西
 (setq ido-ignore-extensions t)
 ;;; ignore case when search
 (setq ido-case-fold t)
+
+;;; 可以在使用ido的时候显示`.'表示当前目录，避免有些时候不能使用
+(setq ido-show-dot-for-dired t)
 
 ;;; 使用`ido'来跳转bookmark
 (defun ido-bookmark-jump ()
@@ -72,6 +85,9 @@ predicate PRED used to filter them."
   (ido-cache 'boundp    t)
   t)
 
+
+;;; 这两个函数默认不能使用光标当前的文字，比起helm有点不好，默认不使用，
+;;; 当开启了ido-hack-mode，`describe-function'自动就可以调用ido了。
 (defun ido-describe-function (&optional at-point)
   "ido replacement for `describe-function'."
   (interactive "P")
@@ -155,5 +171,89 @@ predicate PRED used to filter them."
 
 ;这样的<tab>才是我想要的。但是开启后`helm'用着不行了。关闭`ido-mode'就行。但是这样对smex无效。
 ;; (define-key minibuffer-local-map [tab] 'ido-exit-minibuffer) 
+
+;;; ido-fasd
+(defun peng-ido-fasd-find-file ()
+  (interactive)
+  (let* ((ido-candidats (split-string  (shell-command-to-string "fasd -a|awk '{print $2}'") "\n"))
+	(ido-results (ido-completing-read "test: " ido-candidats)))
+    (find-file ido-results)))
+
+;;; ido-jump
+(defun peng-ido-jump ()
+  (interactive)
+  (let* ((ido-list (list "Google"
+			 "Baidu"
+			 ))
+	 (ido-result (ido-completing-read "Which do you want to jump: " ido-list)))
+    (cond ((equal ido-result "Google") (peng-ido-jump-google-function))
+	  ((equal ido-result "Baidu") (peng-ido-jump-baidu-function))
+	  (t (message "None")))))
+(defun peng-ido-jump-google-function ()
+  (browse-url (concat "http://www.google.com.hk/search?q="
+		      (format "%s" (read-minibuffer "google for what: ")))))
+(defun peng-ido-jump-baidu-function ()
+  (browse-url (concat "https://www.baidu.com/s?wd="
+		      (format "%s" (read-minibuffer "baidu for what: ")))))
+
+(defun peng-ido-insert-ls-and-grep ()
+  (interactive)
+  (let* ((pattern (read-from-minibuffer "Pattern: " "."))
+	(result (ido-completing-read "Choose: "
+				     (split-string (shell-command-to-string
+						    (concat "ls|grep -i "
+							    pattern))
+						   "\n"))))
+    (insert result)))
+
+;;; ------------------------------------------------------------------
+;;; 
+;;; 有bug
+;;; 
+;;; ------------------------------------------------------------------
+;; (defun peng-ido-insert-ls-and-grep-hanzi ()
+;;   "为了使用ido把汉字转化为拼音，输出的时候再转化回来。有bug"
+;;   (interactive)
+;;   (let* ((pattern (read-from-minibuffer "Pattern: " "."))
+;; 	 (ido-list (split-string (shell-command-to-string
+;; 				  (concat "ls|grep -i "
+;; 					  pattern))
+;; 				 "\n"))
+;; 	 (ido-list-hanzi (mapcar 'pyim-hanzi2pinyin ido-list))
+;; 	 (pinyin-result (ido-completing-read "Choose: "
+;; 					     ido-list-hanzi))
+;; 	 (index 0)
+;; 	 )
+;;     (unless (equal pinyin-result (nth index ido-list-hanzi))
+;;       (setq index (1+ index)))
+;;     (insert (nth index ido-list))))
+
+(defun peng-ido-completing-pinyin-read (Prompt list)
+  "可以读拼音"
+  (let* ((list-pinyin (mapcar 'pyim-hanzi2pinyin list))
+	 (index 0)
+	 (ido-result (ido-completing-read Prompt list-pinyin))
+	 (done 1)
+	 (length-of-list (length list)))
+    (while (> done 0)
+      (if (string= ido-result
+		   (nth index list-pinyin))
+	  (setq done 0)
+	(progn
+	  (setq index (1+ index))
+	  (if (>= index length-of-list)
+	      (setq done 0)))))
+    (nth index list)))
+
+(defun peng-ido-insert-ls-and-grep ()
+  (interactive)
+  (let* ((pattern (read-from-minibuffer "Pattern: " "."))
+	(result (ido-completing-read  "Choose: "
+				     (split-string (shell-command-to-string
+						    (concat "ls|grep -i "
+							    pattern))
+						   "\n"))))
+    (insert result)))
+;;; ------------------------------------------------------------------
 
 (provide 'init-ido)

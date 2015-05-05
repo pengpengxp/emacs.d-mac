@@ -5,7 +5,7 @@
 (require 'helm-ag)
 
 ;;; 默认不打开
-(helm-mode 1)
+(helm-mode -1)
 
 ;;; make sure Enter do what I want
 (setq helm-exit-idle-delay 0)
@@ -30,17 +30,24 @@
 ;; For helm-find-files etc.
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 
-(setq helm-completing-read-handlers-alist '((lusty-buffer-explorer)
+(setq helm-completing-read-handlers-alist '(
+					    (lusty-buffer-explorer)
 					    (lusty-file-explorer)
 					    (lusty-sudo-explorer)
-					    (describe-function . helm-completing-read-symbols)
-					    (describe-variable . helm-completing-read-symbols)
-					    (debug-on-entry . helm-completing-read-symbols)
-					    (find-function . helm-completing-read-symbols)
-					    (find-tag . helm-completing-read-with-cands-in-buffer)
 					    (ffap-alternate-file)
 					    (tmm-menubar)
-					    ;; (find-file . ido) ;set ido manner to find file
+					    ;; (describe-function . helm-completing-read-symbols)
+					    ;; (describe-variable . helm-completing-read-symbols)
+					    ;; (debug-on-entry . helm-completing-read-symbols)
+					    ;; (find-function . helm-completing-read-symbols)
+					    ;; (find-tag . helm-completing-read-with-cands-in-buffer)
+					    ;; 修改下面的，前端都变为ido的了
+					    (describe-function . ido)
+					    (describe-variable . ido)
+					    (debug-on-entry . ido)
+					    (find-function . ido)
+					    (find-tag . ido)
+					    (find-file . ido)
 					    ))
 
 (peng-global-set-key (kbd "M-s o") 'helm-occur)

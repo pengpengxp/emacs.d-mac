@@ -18,8 +18,11 @@
 (add-to-list 'org-export-filter-final-output-functions
              'ox-html-clear-single-linebreak-for-cjk)
 
-(setq org-html-head "<link href=\"css/org-manual.css\" rel=\"stylesheet\" type=\"text/css\">")
 
+;; ;;; 默认使用当前目录中`css/org-manual.css'
+(setq org-html-head "<link href=\"css/main.css\" rel=\"stylesheet\" type=\"text/css\">
+<link rel=\"alternate stylesheet\" type=\"text/css\" href=\"css/prettify.css\" />")
+    
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; setting export the org-file to pdf,copied from others
@@ -79,7 +82,7 @@
 \\usepackage{wasysym}
 \\usepackage{amssymb}
 \\usepackage{booktabs}
-\\usepackage[colorlinks,linkcolor=blue,anchorcolor=black,citecolor=black]{hyperref}
+\\usepackage[colorlinks,linkcolor=blue,anchorcolor=red,citecolor=blue]{hyperref}
 \\tolerance=1000
 "
 				  ("\\section{%s}" . "\\section*{%s}")
@@ -87,6 +90,23 @@
 				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
 				  ("\\paragraph{%s}" . "\\paragraph*{%s}")
 				  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; peng-beamer中有一些它默认加入的package
+(add-to-list 'org-latex-classes '("peng-beamer" "\\documentclass[presentation]{beamer}
+\\usepackage[UTF8,noindent]{ctexcap}
+"
+				  ("\\section{%s}" . "\\section*{%s}")
+				  ("\\subsection{%s}" . "\\subsection*{%s}")
+				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+;;; beamer中没有任何package
+(add-to-list 'org-latex-classes '("beamer" "\\documentclass[presentation]{beamer}
+ [NO-DEFAULT-PACKAGES]
+ [NO-PACKAGES] 
+\\usepackage[UTF8,noindent]{ctexcap}
+"
+				  ("\\section{%s}" . "\\section*{%s}")
+				  ("\\subsection{%s}" . "\\subsection*{%s}")
+				  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
 
 ;; just for my big-thesis
 (add-to-list 'org-latex-classes '("peng-big-thesis" "\\documentclass[11pt]{ctexbook}

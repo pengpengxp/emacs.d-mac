@@ -50,9 +50,10 @@
 (require 'init-org)
 (require 'init-gtd)
 (require 'init-org-export)
+(require 'init-org-publish)
 (require 'init-org-page)
 (require 'init-emacs-lisp)
-;;(require 'init-w3m)
+(require 'init-w3m)
 (require 'init-latex)
 (require 'init-compilation)
 (require 'init-sundry)
@@ -76,18 +77,22 @@
 (require 'init-markdown)
 
 
+
 (require 'init-ido)
 (require 'init-smex)
 (require 'init-icicles)
 ;; (require 'init-ido-cb.el)
+(require 'ido-pinyin)			;可以使ido支持拼音，它修改了ido中的一个函数
 
-(require 'init-helm)
+;; (require 'init-helm)
+
 ;;; the use of dash
-(require 'helm-dash)			; do not need dash
+;; (require 'helm-dash)			; do not need dash
+
 (require 'init-dash)			; use dash in emacs
 
 (require 'init-eim)
-;; (require 'init-chinese-pyim)
+(require 'init-chinese-pyim)
 
 (require 'init-auctex)			;;;;you need to install auctex first
 (require 'init-smartparens)
@@ -115,6 +120,10 @@
 (require 'cdlatex)
 (require 'init-term-mode)
 (require 'init-ispell)
+(require 'init-golden-ratio.el)
+(require 'init-avy)
+(require 'init-web-mode.el)
+(require 'init-workgroups2)
 
 ;;; hydra需要配置，暂时不用
 ;; (require 'hydra)
@@ -152,6 +161,10 @@
 ;;; global settings need to put at last,since It may use some function provided above
 (require 'init-font)
 (require 'init-global)
+
+
+;;; define pengpengxp's key bindings, it should in the last
+(require 'init-keys)
 
 ;;; require the test file
 (require 'init-test)

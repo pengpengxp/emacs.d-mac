@@ -1,3 +1,4 @@
 alias ll ls -al
 alias gbr git branch
 alias gst git status
+alias gck git checkout

@@ -2,13 +2,13 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- '((".baidu.com"
-  [url-cookie "BAIDUPSID" "C79B04000A54D5368C1EFDA29DA2072E" "31 Dec 37 23:55:55 [GMT]" "/" ".baidu.com" nil]
+ '((".stackoverflow.com"
+  [url-cookie "prov" "fe0ab264-2b5c-4329-b0ca-93dc890de7e9" "01-Jan-2055 00:00:00.00 GMT" "/" ".stackoverflow.com" nil]
+  [url-cookie "HttpOnly" nil "01-Jan-2055 00:00:00.00 GMT" "/" ".stackoverflow.com" nil])
+ (".baidu.com"
+  [url-cookie "BAIDUID" "C79B04000A54D5368C1EFDA29DA2072E:FG=1" "31 Dec 37 23:55:55 [GMT]" "/" ".baidu.com" nil]
   [url-cookie "max-age" "2147483647" "31 Dec 37 23:55:55 [GMT]" "/" ".baidu.com" nil]
-  [url-cookie "BAIDUID" "C79B04000A54D5368C1EFDA29DA2072E:FG=1" "31 Dec 37 23:55:55 [GMT]" "/" ".baidu.com" nil])
- (".stackoverflow.com"
-  [url-cookie "HttpOnly" nil "01-Jan-2055 00:00:00.00 GMT" "/" ".stackoverflow.com" nil]
-  [url-cookie "prov" "fe0ab264-2b5c-4329-b0ca-93dc890de7e9" "01-Jan-2055 00:00:00.00 GMT" "/" ".stackoverflow.com" nil]))
+  [url-cookie "BAIDUPSID" "C79B04000A54D5368C1EFDA29DA2072E" "31 Dec 37 23:55:55 [GMT]" "/" ".baidu.com" nil]))
 )
 (setq url-cookie-secure-storage
  'nil)

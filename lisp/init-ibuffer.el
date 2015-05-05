@@ -1,6 +1,8 @@
 ;;; ibuffer mode
 (defun peng-ibuffer-mode ()
   (hl-line-mode 1)
+  (define-key (current-local-map) (kbd ",") peng-evil-insert-map)
+  (define-key (current-local-map) (kbd "SPC") peng-evil-insert-map)
   )
 (add-hook 'ibuffer-mode-hook 'peng-ibuffer-mode)
 

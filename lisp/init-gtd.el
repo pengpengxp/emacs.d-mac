@@ -25,12 +25,12 @@
 (setq ORG-HOME (concat HOME "/org/gtd"))
 
 (setq ORG-AGENDA-FILES (list (concat ORG-HOME "/inbox.org")
-			     ;; (concat ORG-HOME "/book.org")
-			     (concat ORG-HOME "/dreams.org")
 			     (concat ORG-HOME "/note.org")
 			     (concat ORG-HOME "/test.org")
 			     (concat ORG-HOME "/Tips.org")
-			     (concat ORG-HOME "/someday.org")
+			     ;; (concat ORG-HOME "/book.org")
+			     ;; (concat ORG-HOME "/dreams.org")
+			     ;; (concat ORG-HOME "/someday.org")
 			     (concat ORG-HOME "/daily.org")
 			     ))
 
@@ -80,28 +80,19 @@
 (setq org-capture-templates 
       '(
 	("t" "New TODO item" entry (file(concat ORG-HOME "/inbox.org"))
-	 "*  TODO  [#C]  %?\n  %T")
+	 "* TODO  %?\n  %T")
 
 	("p" "New plan item" entry (file(concat ORG-HOME "/daily.org"))
-	 "*  PLAN  %?\n  %T")
+	 "* PLAN  %?\n  %T")
 
 	("i" "Dreams" entry (file(concat ORG-HOME "/dreams.org"))
-	 "*  Dreams  %?\n %T")
-
-	;; ("s" "SOMEDAY" entry (file+datetree (concat ORG-HOME "/inbox.org"))
-	;;  "*  SOMEDAY  %?\n %T")
-
-	;; ("p" "Tips" entry (file+datetree (concat ORG-HOME "/Tips.org"))
-	;;  "*  Tips  %?\n %T")
-
-	;; ("b" "Book" entry (file+datetree (concat ORG-HOME "/book.org"))
-	;;  "*  SOMEDAY  %?\n %T")
+	 "* Dreams  %?\n %T")
 
 	("n" "Notes" entry (file(concat ORG-HOME "/note.org"))
 	 "*  %?\n %T")
 
 	("j" "Important-Day" entry (file+datetree (concat ORG-HOME "/note.org"))
-	 "*  Important-Day  %?\n %T")
+	 "* Important-Day  %?\n %T")
 
 	;; ("a" "Account" table-line (file+headline (concat ORG-HOME "/account.org.gpg") "Web accounts")
 	;;  "|")
@@ -111,6 +102,9 @@
 
 	("k" "test" entry (file(concat ORG-HOME "/test.org") "Tasks")
 	 "* TODO  %?  \n %T")
+
+	("w" "website" entry (file(concat HOME "/org/website.org") "Websites")
+	 "* 未读 %?  \n")
 	))
 
 (setq org-default-notes-file (concat ORG-HOME "/inbox.org"))
@@ -159,9 +153,9 @@
 (appt-activate t)
 
 ;;;`appt-display-interval'是在`appt-message-warning-time'到达后，每过多久循环通知
-(setq appt-message-warning-time 6)	;设置提前多久通知
-;; (setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
-(setq appt-display-interval 3)		;隔三分钟提醒一次
+(setq appt-message-warning-time 2)	;设置提前多久通知
+(setq appt-display-interval (1+ appt-message-warning-time)) ;这句可以禁示多次通知
+;; (setq appt-display-interval 3)		;隔三分钟提醒一次
 
 
 
@@ -175,6 +169,7 @@
 
 ;;; 我的shell-script提醒程序
 (setq my-appt-notification-app (concat (getenv "HOME") "/bin/appt-notification.sh"))
+;; (setq my-appt-notification-app (concat (getenv "HOME") "/bin/sendmail.applescript")) ;这个可以发送邮件
 
 (defun my-appt-display (min-to-app new-time msg)
   (if (atom min-to-app)

@@ -75,9 +75,16 @@ xelatex %t;bibtex %b.aux;xelatex %t;open %b.pdf"
 	    (define-key evil-normal-state-local-map (kbd "k") 'previous-line)
 	    (define-key evil-normal-state-local-map (kbd "<up>") 'previous-line)
 	    (define-key evil-normal-state-local-map (kbd "C-p") 'previous-line)
+
+	    ;; for use of outline mode
 	    (peng-local-set-key (kbd "C-c C-n") 'outline-next-heading)
 	    (peng-local-set-key (kbd "C-c C-p") 'outline-previous-heading)
-
+	    (peng-local-set-key (kbd "<backtab>") 'outline-hide-other)
+	    (peng-local-set-key (kbd "C-c C-u") 'outline-backward-same-level)
+	    (peng-local-set-key (kbd "C-c C-d") 'outline-forward-same-level)
+	    (peng-local-set-key (kbd "C-c C-a") 'show-all)
+	    (peng-local-set-key (kbd "<M-down>") 'outline-move-subtree-down)
+	    (peng-local-set-key (kbd "<M-up>") 'outline-move-subtree-up)
 	    
 	    (hl-line-mode -1)
 	    ))
@@ -244,6 +251,18 @@ inspired from the org-narrow-to-subtree"
 ;;; use cdlatedx
 (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
 
+;; (setq auto-mode-alist
+;;       (append
+;;        ;;File name ends in '.cu'
+;;        '(
+;; 	 ("\\.tex\\'". LaTeX-mode)
+;; 	 ("\\.drv\\'". LaTeX-mode)
+;; 	 ("\\.ltx\\'". LaTeX-mode)
+;; 	 ("\\.sty\\'" . LaTeX-mode)
+;; 	 ("\\.cl[so]\\'" . LaTeX-mode)
+;; 	 ("\\.bbl\\'" . LaTeX-mode)
+;; 	 )
+;;        auto-mode-alist))
 
 (provide 'init-auctex)
 

@@ -16,6 +16,7 @@
 (global-set-key (kbd "<C-backspace>") 'toggle-input-method)
 ;; 用 ; 暂时输入英文
 (define-key evil-insert-state-map (kbd ";") 'eim-insert-ascii)
+
 (peng-global-set-key (kbd "s-;") 'eim-insert-ascii)
 
 (setq default-input-method "eim-wb")
@@ -24,5 +25,6 @@
 			      (setq eim-page-length 9)))
 
 (setq eim-wb-history-file nil)		;不使用五笔记录上次输入位置
+
 
 (provide 'init-eim)

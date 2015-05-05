@@ -112,6 +112,7 @@
    (ruby . t)
    (ditaa . t)
    (R . t)
+   (ditaa . t)
    ))
 ;;; 可以禁止`C-c C-c`在code block中进行执行命令，但是我不需要
 ;; (setq org-babel-no-eval-on-ctrl-c-ctrl-c nil)
@@ -241,5 +242,27 @@ file and open the pdf file. also compile the bibliography"
 	  ))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; 在org-mode中方便地截图并显示
+(defun peng-org-screenshot ()
+  "Take a screenshot into a unique-named file in the current buffer file
+    directory and insert a link to this file."
+  (interactive)
+  (setq filename
+	(concat (make-temp-name "./") ".png"))
+  (setq fullfilename
+	(concat (file-name-directory (buffer-file-name)) "images/blog/" filename))
+  (if (file-accessible-directory-p (concat (file-name-directory
+					    (buffer-file-name)) "images/blog/"))
+      nil
+    (make-directory "images/blog/" t))
+  (call-process-shell-command "screencapture" nil nil nil nil "-i" (concat
+								    "\"" fullfilename "\"" ))
+  (insert (concat "[[./images/blog/" filename "]]"))
+  (org-display-inline-images)
+  )
+
+;;; 使用`org-tree-slide-mode'可以在org-mode中直接进行幻灯片类型的演示
+(require 'init-org-tree-slide-mode)
 
 (provide 'init-org)

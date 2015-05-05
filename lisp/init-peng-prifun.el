@@ -198,41 +198,41 @@ usage: (peng... \"keys-you-want-to-bind\"
   )
 ;;; ----------------------------------------------------------------------
 
-;;; ----------------------------------------------------------------------
-;;; I modified the from the helm-src file
-;;; ----------------------------------------------------------------------
-(defun peng-helm-etags-select (arg)
-  "Preconfigured helm for etags.
-If called with a prefix argument or if any of the tag files have
-been modified, reinitialize cache.
+;; ;;; ----------------------------------------------------------------------
+;; ;;; I modified the from the helm-src file
+;; ;;; ----------------------------------------------------------------------
+;; (defun peng-helm-etags-select (arg)
+;;   "Preconfigured helm for etags.
+;; If called with a prefix argument or if any of the tag files have
+;; been modified, reinitialize cache.
 
-This function aggregates three sources of tag files:
+;; This function aggregates three sources of tag files:
 
-  1) An automatically located file in the parent directories, by `helm-etags-get-tag-file'.
-  2) `tags-file-name', which is commonly set by `find-tag' command.
-  3) `tags-table-list' which is commonly set by `visit-tags-table' command."
-  (interactive "P")
-  (let ((tag-files (helm-etags-all-tag-files))
-        ;; (helm-execute-action-at-once-if-one helm-etags-execute-action-at-once-if-one)
-        (helm-execute-action-at-once-if-one nil)
-        (str (thing-at-point 'symbol))
-	)
-    (if (cl-notany 'file-exists-p tag-files)
-        (message "Error: No tag file found. Create with etags shell command, or visit with `find-tag' or `visit-tags-table'.")
-      (cl-loop for k being the hash-keys of helm-etags-cache
-            unless (member k tag-files)
-            do (remhash k helm-etags-cache))
-      (mapc (lambda (f)
-              (when (or (equal arg '(4))
-                        (and helm-etags-mtime-alist
-                             (helm-etags-file-modified-p f)))
-                (remhash f helm-etags-cache)))
-            tag-files)
-      (helm :sources 'helm-source-etags-select
-            :keymap helm-etags-map
-            :default (list (concat "\\_<" str "\\_>") str)
-            :buffer "*helm etags*"))))
-;;; ----------------------------------------------------------------------
+;;   1) An automatically located file in the parent directories, by `helm-etags-get-tag-file'.
+;;   2) `tags-file-name', which is commonly set by `find-tag' command.
+;;   3) `tags-table-list' which is commonly set by `visit-tags-table' command."
+;;   (interactive "P")
+;;   (let ((tag-files (helm-etags-all-tag-files))
+;;         ;; (helm-execute-action-at-once-if-one helm-etags-execute-action-at-once-if-one)
+;;         (helm-execute-action-at-once-if-one nil)
+;;         (str (thing-at-point 'symbol))
+;; 	)
+;;     (if (cl-notany 'file-exists-p tag-files)
+;;         (message "Error: No tag file found. Create with etags shell command, or visit with `find-tag' or `visit-tags-table'.")
+;;       (cl-loop for k being the hash-keys of helm-etags-cache
+;;             unless (member k tag-files)
+;;             do (remhash k helm-etags-cache))
+;;       (mapc (lambda (f)
+;;               (when (or (equal arg '(4))
+;;                         (and helm-etags-mtime-alist
+;;                              (helm-etags-file-modified-p f)))
+;;                 (remhash f helm-etags-cache)))
+;;             tag-files)
+;;       (helm :sources 'helm-source-etags-select
+;;             :keymap helm-etags-map
+;;             :default (list (concat "\\_<" str "\\_>") str)
+;;             :buffer "*helm etags*"))))
+;; ;;; ----------------------------------------------------------------------
 
 (defun peng-insert-counter-column (n)
   "insert 1 to n in n column
@@ -332,6 +332,7 @@ if that buffer is not exits,call org-agenda"
 			"copy theResult to the end of links\n"
 			"return links as string\n"))))
 	  (insert result)))
+
       (defun peng-get-chrome-current-tab-url-to-org-capture ()
 	"Get the URL of the active tab of the first window"
 	(interactive)
@@ -347,7 +348,9 @@ if that buffer is not exits,call org-agenda"
 			"copy theResult to the end of links\n"
 			"return links as string\n")))
 	      (title (read-from-minibuffer "The title of your linke: " (format-time-string "%Y-%m-%d"))))
-	  (format "%s" (concat "[[" (format "%s" result) "]" "[" title "]]"))))
+	  (org-capture nil "w")
+	  (insert (format "%s" (concat "[[" (format "%s" result) "]" "[" title "]]")))
+	  (org-capture-finalize nil)))
 
       ))
 
@@ -355,5 +358,66 @@ if that buffer is not exits,call org-agenda"
   "switch to other buffer without ask"
   (interactive)
   (switch-to-buffer (other-buffer)))
+
+(defun peng-mark-line ()
+  "mark the current line"
+  (interactive)
+  (push-mark (point))
+  (push-mark (beginning-of-line) nil t)
+  (end-of-line))
+
+(defun peng-mark-to-beginning-of-line ()
+  "mark from current point to the beginning of current line"
+  (interactive)
+  (push-mark (point) nil t)
+  (beginning-of-line))
+
+(defun peng-mark-to-end-of-line ()
+  "mark from current point to the end of current line"
+  (interactive)
+  (push-mark (point) nil t)
+  (end-of-line))
+
+(defun peng-mark-back-to-indentation ()
+  "mark from current point back to the indentation point"
+  (interactive)
+  (push-mark (point) nil t)
+  (back-to-indentation))
+
+;;; copy from wiki
+(defun peng-mark-current-word (&optional arg allow-extend)
+    "Put point at beginning of current word, set mark at end."
+    (interactive "p\np")
+    (setq arg (if arg arg 1))
+    (if (and allow-extend
+             (or (and (eq last-command this-command) (mark t))
+                 (region-active-p)))
+        (set-mark
+         (save-excursion
+           (when (< (mark) (point))
+             (setq arg (- arg)))
+           (goto-char (mark))
+           (forward-word arg)
+           (point)))
+      (let ((wbounds (bounds-of-thing-at-point 'word)))
+        (unless (consp wbounds)
+          (error "No word at point"))
+        (if (>= arg 0)
+            (goto-char (car wbounds))
+          (goto-char (cdr wbounds)))
+        (push-mark (save-excursion
+                     (forward-word arg)
+                     (point)))
+        (activate-mark))))
+
+(defun peng-insert-buffer-file-name ()
+  "insert the name of the current buffer, don't insert the
+absolute path."
+  (interactive)
+  (let ((current-file-name
+	 (file-name-nondirectory (expand-file-name
+				  (buffer-file-name)))))
+    (message current-file-name)
+    (insert current-file-name)))
 
 (provide 'init-peng-prifun)

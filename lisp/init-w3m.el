@@ -4,12 +4,12 @@
 (require 'w3m-load)
 (provide 'w3m-e23)
 (require 'w3m-lnum)
-(setq w3m-home-page "www.baidu.com") ;set your home page
+(setq w3m-home-page "www.google.com") ;set your home page
 (autoload 'w3m "w3m" "Interface for w3m on Emacs." t)
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
 (autoload 'w3m-search "w3m-search" "Search words using emacs-w3m." t)
 (setq w3m-use-toolbar t)
-;; (setq browse-url-browser-function 'w3m-browse-url)                 ;set w3m as emacs's default browser默认还是不启用算了
+(setq browse-url-browser-function 'w3m-browse-url)                 ;set w3m as emacs's default browser默认还是不启用算了
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "open")
