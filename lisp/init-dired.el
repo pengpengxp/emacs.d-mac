@@ -33,6 +33,7 @@
 			       (define-key evil-normal-state-local-map (kbd "s t") #'dired-sort-time)
 			       (define-key evil-normal-state-local-map (kbd "s x") #'dired-sort-extension)
 			       (define-key evil-normal-state-local-map (kbd "s s") #'dired-sort-size)
+			       (define-key evil-normal-state-local-map (kbd "s n") #'dired-sort-name)
 
 			       (define-key evil-normal-state-local-map (kbd ",") peng-evil-insert-map)
 

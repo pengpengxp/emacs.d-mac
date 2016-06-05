@@ -1,8 +1,9 @@
 ;;; use helm to complete
+(add-to-list 'load-path (concat SITE-LISP "emacs-asyn"))
 (add-to-list 'load-path (concat SITE-LISP "helm"))
 (require 'helm-config)
-(require 'helm-etags+)
-(require 'helm-ag)
+;; (require 'helm-etags+)
+;; (require 'helm-ag)
 
 ;;; 默认不打开
 (helm-mode -1)

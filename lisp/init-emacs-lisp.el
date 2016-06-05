@@ -6,6 +6,7 @@
   (paredit-mode 1)
   (autopair-on)
   (yas-minor-mode 1)
+  (company-mode 1)
   )
 (add-hook 'emacs-lisp-mode-hook 'pengpengxp-emacs-lisp-mode)
 

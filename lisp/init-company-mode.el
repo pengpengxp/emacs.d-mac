@@ -1,9 +1,9 @@
 (require 'company)
 
 ;;; 打开company-mode
-(add-hook 'prog-mode-hook 'global-company-mode)
-(add-hook 'cmake-mode-hook 'global-company-mode)
-(add-hook 'after-init-hook 'global-company-mode)
+;; (add-hook 'prog-mode-hook 'global-company-mode)
+;; (add-hook 'cmake-mode-hook 'global-company-mode)
+;; (add-hook 'after-init-hook 'global-company-mode)
 
 ;;; use `C-n C-p' to select
 (define-key company-active-map (kbd "C-n") 'company-select-next)

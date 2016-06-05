@@ -3,6 +3,7 @@
   (hl-line-mode 1)
   (define-key (current-local-map) (kbd ",") peng-evil-insert-map)
   (define-key (current-local-map) (kbd "SPC") peng-evil-insert-map)
+  (peng-local-set-key (kbd "RET") 'ibuffer-visit-buffer)
   )
 (add-hook 'ibuffer-mode-hook 'peng-ibuffer-mode)
 
@@ -20,6 +21,7 @@
 	("cpp"
 	 ((or 
 	   (mode . c++-mode)
+	   (mode . c-mode)
 	   )))
 	("lisp"
 	 ((or 

@@ -52,6 +52,8 @@
 				   (delete-other-windows)
 				   (linum-on)
 				   (hl-line-mode 1)
+				   (peng-local-set-key (kbd "RET") 'org-agenda-switch-to)
+				   (peng-local-set-key (kbd "return") 'org-agenda-switch-to)
 				   ))
 
 ;;; ----------------------------------------------------------------------
@@ -80,28 +82,28 @@
 (setq org-capture-templates 
       '(
 	("t" "New TODO item" entry (file(concat ORG-HOME "/inbox.org"))
-	 "* TODO  %?\n  %T")
+	 "* TODO  %?\n ")
 
 	("p" "New plan item" entry (file(concat ORG-HOME "/daily.org"))
-	 "* PLAN  %?\n  %T")
+	 "* PLAN  %?\n ")
 
 	("i" "Dreams" entry (file(concat ORG-HOME "/dreams.org"))
-	 "* Dreams  %?\n %T")
+	 "* Dreams  %?\n ")
 
 	("n" "Notes" entry (file(concat ORG-HOME "/note.org"))
-	 "*  %?\n %T")
+	 "*  %?\n ")
 
 	("j" "Important-Day" entry (file+datetree (concat ORG-HOME "/note.org"))
-	 "* Important-Day  %?\n %T")
+	 "* Important-Day  %?\n ")
 
 	;; ("a" "Account" table-line (file+headline (concat ORG-HOME "/account.org.gpg") "Web accounts")
 	;;  "|")
 
 	("l" "link" entry (file(concat ORG-HOME "/inbox.org"))
-	 "* TODO  %(peng-get-chrome-current-tab-url-to-org-capture)  \n %T")
+	 "* TODO  %(peng-get-chrome-current-tab-url-to-org-capture)  \n ")
 
 	("k" "test" entry (file(concat ORG-HOME "/test.org") "Tasks")
-	 "* TODO  %?  \n %T")
+	 "* TODO  %?  \n ")
 
 	("w" "website" entry (file(concat HOME "/org/website.org") "Websites")
 	 "* 未读 %?  \n")
@@ -145,7 +147,7 @@
 	))
 
 ;;;默认显示一天的事件
-(setq org-agenda-span 'day)
+(setq org-agenda-span 'week)
 
 
 ;;; 配置org-to-appt进行系统级别的提醒

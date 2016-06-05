@@ -82,7 +82,8 @@
 ;;; 
 ;;;-------------------------------------------------------------------
 ;; (define-prefix-command 'peng-evil-normal-map)
-;;; 定义一个自己的evil-normal-map
+;;; 定义一个自己的evil-normal-map，这个map是在normal模式下绑定到SPC中
+;;; 的。
 (setq peng-evil-normal-map (make-sparse-keymap))
 
 ;;; `universal-argument'
@@ -95,6 +96,14 @@
 
 ;;; 定义从`SPC'和`comma'触发的快捷键
 ;;; normal map
+
+;;; ----------------------------------------------------------------------
+;;; 
+;;; `:'使用`SPC :'或`;'来调用命令
+;;; 
+;;; ----------------------------------------------------------------------
+(define-key peng-evil-normal-map (kbd ":") 'smex)
+(define-key peng-evil-normal-map (kbd ";") 'smex)
 
 ;;; ----------------------------------------------------------------------
 ;;; 
@@ -274,7 +283,8 @@
 ;;; 
 ;;; ----------------------------------------------------------------------
 (define-key evil-normal-state-map (kbd "M-n") 'scroll-up-command)
-(define-key evil-normal-state-map (kbd "/") 'evil-search-forward)
+(define-key evil-normal-state-map (kbd "\\") 'evil-search-forward)
+;; (define-key evil-normal-state-map (kbd "/") 'swiper)
 (define-key evil-normal-state-map "m" 'point-to-register)
 (define-key evil-normal-state-map "'" 'jump-to-register)
 (define-key evil-normal-state-map "-" 'split-window-below)
@@ -433,12 +443,12 @@
 ;;; 在当前文件夹快速打开文件管理器
 (define-key peng-f6-map (kbd "e") '(lambda ()
 				       (interactive)
-				       (peng-async-shell-command (concat "open " 
+				       (peng-async-shell-command (concat "nautilus " 
 									 default-directory
 									 "&"))))
 (define-key peng-f6-map (kbd "n") '(lambda ()
 				       (interactive)
-				       (peng-async-shell-command (concat "nautilus " 
+				       (peng-async-shell-command (concat "dolphin " 
 									 default-directory
 									 "&"))))
 ;;; 在当前文件夹快速打开终端

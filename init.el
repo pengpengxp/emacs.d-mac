@@ -75,6 +75,7 @@
 ;; (require 'init-tabbar)
 (require 'init-deft)
 (require 'init-markdown)
+(require 'etags-select)
 
 
 
@@ -82,7 +83,10 @@
 (require 'init-smex)
 (require 'init-icicles)
 ;; (require 'init-ido-cb.el)
-(require 'ido-pinyin)			;可以使ido支持拼音，它修改了ido中的一个函数
+;; (require 'ido-pinyin)			;可以使ido支持拼音，它修改了ido中的一个函数
+
+(require 'init-ivy)
+(require 'spotlight)
 
 ;; (require 'init-helm)
 

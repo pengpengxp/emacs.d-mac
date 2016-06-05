@@ -28,4 +28,5 @@
 (peng-global-set-key (kbd "C-c s T") 'cscope-tell-user-about-directory)
 (peng-global-set-key (kbd "C-c s D") 'cscope-dired-directory)
 
+
 (provide 'init-xcscope)

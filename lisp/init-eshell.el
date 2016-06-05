@@ -119,6 +119,7 @@
 
 ;;; 根据我的个人爱好设置一下company-mode在eshell中的补全，这个在有了
 ;;; `eshell-ido-pcomplete'后就可能用得少了
+
 (defun peng-eshell-company-files ()
   (interactive)
   (company-begin-backend 'company-files)
@@ -515,5 +516,11 @@
 
 (add-hook 'eshell-mode-hook (lambda ()
 			      (define-key evil-insert-state-local-map (kbd "<tab>") 'eshell-ido-pcomplete)))
+
+(defadvice eshell/grep (after peng-eshell-change-buffer-name activate)
+  (switch-to-buffer "*grep*")
+  (delete-other-windows)
+  (kill-buffer "*compilation*")
+  )
 
 (provide 'init-eshell)

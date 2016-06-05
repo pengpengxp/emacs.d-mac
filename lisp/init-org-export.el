@@ -139,6 +139,9 @@
 ;;; 设置默认的class为ctexart
 (setq org-latex-default-class "ctexart")
 
+;;; 使用org的src块时，可以使用listings环境来包围而不是默认的verbatim
+(setq org-latex-listings t)
+
 (provide 'init-org-export)
 
 ;;; 保存一下的设置，以后可能会用到。

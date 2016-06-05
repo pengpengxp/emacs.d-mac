@@ -1,1 +1,0 @@
-Byte order is not compatible at /usr/lib/perl/5.18/Storable.pm line 380, at ./pyword2tbl.pl line 32.
