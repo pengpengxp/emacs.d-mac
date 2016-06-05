@@ -498,4 +498,39 @@
 
 (peng-global-set-key (kbd "M-c M-x") peng-M-c-x-map)
 
+
+
+;;; global map for cscope
+
+(setq peng-cscope-map (make-sparse-keymap))
+(define-key peng-cscope-map (kbd "A") 'cscope-unset-initial-directory)
+(define-key peng-cscope-map (kbd "B") 'cscope-display-buffer-toggle)
+(define-key peng-cscope-map (kbd "C") 'cscope-find-called-functions)
+(define-key peng-cscope-map (kbd "D") 'cscope-dired-directory)
+(define-key peng-cscope-map (kbd "E") 'cscope-edit-list-of-files-to-index)
+(define-key peng-cscope-map (kbd "G") 'cscope-find-global-definition-no-prompting)
+(define-key peng-cscope-map (kbd "I") 'cscope-index-files)
+(define-key peng-cscope-map (kbd "L") 'cscope-create-list-of-files-to-index)
+(define-key peng-cscope-map (kbd "N") 'cscope-next-file)
+(define-key peng-cscope-map (kbd "P") 'cscope-prev-file)
+(define-key peng-cscope-map (kbd "S") 'cscope-tell-user-about-directory)
+(define-key peng-cscope-map (kbd "W") 'cscope-tell-user-about-directory)
+(define-key peng-cscope-map (kbd "a") 'cscope-set-initial-directory)
+(define-key peng-cscope-map (kbd "b") 'cscope-display-buffer)
+(define-key peng-cscope-map (kbd "c") 'cscope-find-functions-calling-this-function)
+(define-key peng-cscope-map (kbd "d") 'cscope-find-global-definition)
+(define-key peng-cscope-map (kbd "e") 'cscope-find-egrep-pattern)
+(define-key peng-cscope-map (kbd "f") 'cscope-find-this-file)
+(define-key peng-cscope-map (kbd "g") 'cscope-find-global-definition)
+(define-key peng-cscope-map (kbd "i") 'cscope-find-files-including-file)
+(define-key peng-cscope-map (kbd "n") 'cscope-next-symbol)
+(define-key peng-cscope-map (kbd "p") 'cscope-prev-symbol)
+(define-key peng-cscope-map (kbd "s") 'cscope-find-this-symbol)
+(define-key peng-cscope-map (kbd "t") 'cscope-find-this-text-string)
+(define-key peng-cscope-map (kbd "u") 'cscope-pop-mark)
+
+(define-key evil-normal-state-map (kbd "SPC v") peng-cscope-map)
+
+
+
 (provide 'init-keys)

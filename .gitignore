@@ -14,3 +14,7 @@
 /url/cache/*
 /eww-bookmarks
 /eshell/z~
+*cscope*
+/.emacs_workgroups
+ido.last
+.gitignore
