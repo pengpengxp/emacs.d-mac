@@ -18,6 +18,11 @@
 (define-auto-insert 'ruby-mode '(nil "#!/usr/bin/ruby
 "))
 
+(define-auto-insert 'python-mode '(nil "#!/usr/local/bin/python
+"))
+
+
+
 (define-auto-insert 'enh-ruby-mode '(nil "#!/usr/bin/ruby
 "))
 

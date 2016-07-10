@@ -58,6 +58,7 @@
 				   ;; (peng-local-set-key (kbd "s") 'org-save-all-org-buffers)
 
 				   (setq evil-normal-state-local-map org-agenda-mode-map)
+				   (define-key evil-normal-state-local-map (kbd "SPC") peng-evil-normal-map)
 				   (define-key evil-normal-state-local-map (kbd "j") 'evil-next-line)
 				   (define-key evil-normal-state-local-map (kbd "k") 'evil-previous-line)
 				   (define-key evil-normal-state-local-map (kbd "h") 'evil-backward-char)

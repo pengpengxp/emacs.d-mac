@@ -152,6 +152,8 @@
 (require 'init-bookmark-bmemu-mode)
 (require 'init-Info-mode)
 (require 'init-ruby)
+(require 'init-python)
+
 ;; (require 'init-java.el)
 (require 'init-visual-line-mode)
 (require 'init-BSDmakefile-mode)
