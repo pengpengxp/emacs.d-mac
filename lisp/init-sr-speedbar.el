@@ -7,7 +7,7 @@
 
 (setq sr-speedbar-auto-refresh nil) ;nerver refresh automatically
 
-(define-key evil-normal-state-map (kbd ",s") 'sr-speedbar-toggle)
+;; (define-key evil-normal-state-map (kbd ",s") 'sr-speedbar-toggle)
 
 (provide 'init-sr-speedbar)
 

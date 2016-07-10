@@ -16,5 +16,6 @@
 /eshell/z~
 *cscope*
 /.emacs_workgroups
-ido.last
+/ido.last
 .gitignore
+.emacs_workgroups

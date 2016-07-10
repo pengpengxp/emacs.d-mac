@@ -34,7 +34,7 @@
 (define-key peng-M-c-map (kbd "b") 'wg-switch-to-workgroup)
 (define-key peng-M-c-map (kbd "k") 'ido-kill-buffer)
 (define-key peng-M-c-map (kbd "M-i") 'idomenu)
-(define-key peng-M-c-map (kbd "M-o") 'helm-occur)
+(define-key peng-M-c-map (kbd "M-o") 'swiper)
 
 ;; (define-key peng-M-c-map (kbd "M-a") 'helm-ag-this-file)
 ;; (define-key peng-M-c-map (kbd "M-m") 'shell-command)

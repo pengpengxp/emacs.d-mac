@@ -68,11 +68,25 @@
 
 (if (string-equal system-type "darwin")
     (progn
+      (defun eshell/lfdeepa (&rest args)
+	"使用find来递归地查找当前目录中名为args的文件，还可以通过
+使用gnu/find中的-maxdepth选项来控制递归的深度，异步执行"
+	(when (not (null args))
+	  (async-shell-command (concat "gfind -type f -name '*"
+					   (format "%s" (car args))
+					   "*'"))))
+      (defun eshell/lfdeep (&rest args)
+	"使用find来递归地查找当前目录中名为args的文件，还可以通过
+使用gnu/find中的-maxdepth选项来控制递归的深度，同步执行"
+	(when (not (null args))
+	  (shell-command-to-string (concat "gfind -type f -name '*"
+					   (format "%s" (car args))
+					   "*'"))))
       (defun eshell/lf (&rest args)
 	"使用find来递归地查找当前目录中名为args的文件，还可以通过
 使用gnu/find中的-maxdepth选项来控制递归的深度，"
 	(when (not (null args))
-	  (shell-command-to-string (concat "gfind -type f -name '*"
+	  (shell-command-to-string (concat "gfind -maxdepth 1 -type f -name '*"
 					   (format "%s" (car args))
 					   "*'"))))
       (defun eshell/idoff (&rest args)

@@ -52,8 +52,16 @@
 				   (delete-other-windows)
 				   (linum-on)
 				   (hl-line-mode 1)
-				   (peng-local-set-key (kbd "RET") 'org-agenda-switch-to)
-				   (peng-local-set-key (kbd "return") 'org-agenda-switch-to)
+
+				   ;; (peng-local-set-key (kbd "RET") 'org-agenda-switch-to)
+				   ;; (peng-local-set-key (kbd "return") 'org-agenda-switch-to)
+				   ;; (peng-local-set-key (kbd "s") 'org-save-all-org-buffers)
+
+				   (setq evil-normal-state-local-map org-agenda-mode-map)
+				   (define-key evil-normal-state-local-map (kbd "j") 'evil-next-line)
+				   (define-key evil-normal-state-local-map (kbd "k") 'evil-previous-line)
+				   (define-key evil-normal-state-local-map (kbd "h") 'evil-backward-char)
+				   (define-key evil-normal-state-local-map (kbd "l") 'evil-forward-char)
 				   ))
 
 ;;; ----------------------------------------------------------------------
@@ -150,6 +158,9 @@
 (setq org-agenda-span 'week)
 
 
+;;; ----------------------------------------------------------------------
+;;; 设置环境变量
+;;; ----------------------------------------------------------------------
 ;;; 配置org-to-appt进行系统级别的提醒
 (require 'appt)
 (appt-activate t)
