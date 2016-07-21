@@ -66,6 +66,7 @@
         (list "\\.mp4$" "open")
         (list "\\.avi$" "open")
         (list "\\.doc$" "open")
+        (list "\\.tex$" "xelatex")
         ;; 其他
         (list "\\.exe$" "wine")))
 

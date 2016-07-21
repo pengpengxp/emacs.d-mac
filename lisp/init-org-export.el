@@ -80,10 +80,21 @@
 \\usepackage{textcomp}
 \\usepackage{marvosym}
 \\usepackage{wasysym}
+\\usepackage{listings}
 \\usepackage{amssymb}
 \\usepackage{booktabs}
 \\usepackage[colorlinks,linkcolor=blue,anchorcolor=red,citecolor=blue]{hyperref}
 \\tolerance=1000
+
+% 设置源码格式
+\\lstset{framexleftmargin=5mm, frame=shadowbox, rulesepcolor=\\color{blue}}
+\\lstset{basicstyle=\\tiny}
+\\lstset{postbreak=\\space, breakindent=5pt, breaklines}
+
+% 设置verbatim的字体大小
+\\makeatletter
+\\def\\verbatim{\\tiny\\@verbatim \\frenchspacing\\@vobeyspaces \\@xverbatim}
+\\makeatother
 "
 				  ("\\section{%s}" . "\\section*{%s}")
 				  ("\\subsection{%s}" . "\\subsection*{%s}")

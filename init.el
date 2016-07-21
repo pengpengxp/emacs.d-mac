@@ -136,7 +136,7 @@
 ;; (require 'init-ecb)			; 代码浏览起来更加好，但是应该需要更多的资源
 
 ;;; don't use too often
-;; (require 'init-bm)
+(require 'init-bm)
 
 ;;; plugins need no addtional settings
 (require 'autopair)

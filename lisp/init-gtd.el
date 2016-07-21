@@ -57,12 +57,14 @@
 				   ;; (peng-local-set-key (kbd "return") 'org-agenda-switch-to)
 				   ;; (peng-local-set-key (kbd "s") 'org-save-all-org-buffers)
 
-				   (setq evil-normal-state-local-map org-agenda-mode-map)
+				   ;; (setq evil-normal-state-local-map org-agenda-mode-map)
+				   (setq evil-normal-state-local-map org-agenda-keymap)
 				   (define-key evil-normal-state-local-map (kbd "SPC") peng-evil-normal-map)
 				   (define-key evil-normal-state-local-map (kbd "j") 'evil-next-line)
 				   (define-key evil-normal-state-local-map (kbd "k") 'evil-previous-line)
 				   (define-key evil-normal-state-local-map (kbd "h") 'evil-backward-char)
 				   (define-key evil-normal-state-local-map (kbd "l") 'evil-forward-char)
+				   (define-key evil-normal-state-local-map (kbd "c") 'org-agenda-goto-date)
 				   ))
 
 ;;; ----------------------------------------------------------------------

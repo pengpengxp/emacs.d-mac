@@ -536,5 +536,16 @@
   (delete-other-windows)
   (kill-buffer "*compilation*")
   )
+;;; 将就把`rgrep'和`grep'的advice定义在这里
+(defadvice rgrep (after peng-rgrep activate)
+  (switch-to-buffer "*grep*")
+  (delete-other-windows)
+  (kill-buffer "*compilation*")
+  )
+(defadvice grep (after peng-grep activate)
+  (switch-to-buffer "*grep*")
+  (delete-other-windows)
+  (kill-buffer "*compilation*")
+  )
 
 (provide 'init-eshell)

@@ -71,7 +71,8 @@
 
 ;;; peng goto key binding, use avy
 (peng-global-set-key (kbd "M-g M-c") 'avy-goto-char-2)
-(peng-global-set-key (kbd "M-g M-g") 'avy-goto-char)
+;; (peng-global-set-key (kbd "M-g M-g") 'avy-goto-char)
+(peng-global-set-key (kbd "M-g M-g") 'evil-ace-jump-char-mode)
 (peng-global-set-key (kbd "M-g M-l") 'avy-goto-line)
 (peng-global-set-key (kbd "M-g M-w") 'avy-goto-word-1)
 
@@ -140,8 +141,12 @@
 (define-key peng-space-a-map (kbd  "p")  'proced)
 (define-key peng-space-a-map (kbd  "u")  'undo-tree-visualize)
 (define-key peng-space-a-map (kbd  "se") 'eshell)
-(define-key peng-space-a-map (kbd  "si") 'shell)
-(define-key peng-space-a-map (kbd  "sm") 'multi-term)
+;; (define-key peng-space-a-map (kbd  "si") 'shell)
+;; (define-key peng-space-a-map (kbd  "sm") 'multi-term)
+(define-key peng-space-a-map (kbd  "b") 'ace-jump-buffer)
+(define-key peng-space-a-map (kbd  "B") 'ace-jump-buffer-with-configuration)
+(define-key peng-space-a-map (kbd  "s") 'ace-jump-same-mode-buffers)
+(define-key peng-space-a-map (kbd  "w") 'ace-jump-word-mode)
 (define-key peng-evil-normal-map (kbd "a") peng-space-a-map)
 
 ;;; ----------------------------------------------------------------------
@@ -185,7 +190,8 @@
 ;; (define-key peng-space-f-map (kbd  "F") 'helm-find-files)
 (define-key peng-space-f-map (kbd  "f") 'ido-find-file)
 (define-key peng-space-f-map (kbd  "F") 'peng-ido-fasd-find-file)
-(define-key peng-space-f-map (kbd  "g") 'rgrep)
+(define-key peng-space-f-map (kbd  "r") 'rgrep)
+(define-key peng-space-f-map (kbd  "g") 'grep)
 (define-key peng-space-f-map (kbd  "j") 'dired-jump)
 (define-key peng-space-f-map (kbd  "S") 'evil-write-all)
 (define-key peng-space-f-map (kbd  "s") 'lusty-sudo-explorer)
@@ -251,6 +257,21 @@
 
 ;;; ----------------------------------------------------------------------
 ;;; 
+;;; t-map
+;;; 
+;;; ----------------------------------------------------------------------
+(setq peng-space-t-map (make-sparse-keymap))
+(define-key peng-space-t-map (kbd "t") 'bm-toggle)
+(define-key peng-space-t-map (kbd "n") 'bm-next)
+(define-key peng-space-t-map (kbd "p") 'bm-previous)
+(define-key peng-space-t-map (kbd "s") 'bm-show-all)
+(define-key peng-space-t-map (kbd "l") 'bm-show)
+(define-key peng-space-t-map (kbd "d") 'bm-remove-all-all-buffers)
+(define-key peng-space-t-map (kbd "c") 'bm-remove-all-current-buffer)
+(define-key peng-evil-normal-map (kbd "t") peng-space-t-map)
+
+;;; ----------------------------------------------------------------------
+;;; 
 ;;; c-map
 ;;; 
 ;;; ----------------------------------------------------------------------
@@ -259,6 +280,7 @@
 (setq peng-space-c-c-map (make-sparse-keymap))
 (define-key peng-space-c-c-map (kbd "b") 'ace-jump-buffer-with-configuration)
 (define-key peng-space-c-map (kbd "SPC") peng-space-c-c-map)
+
 ;;; ----------------------------------------------------------------------
 ;;; c-x-map 按`SPC c x'后的绑定，for org-mode
 (setq peng-space-c-x-map (make-sparse-keymap))
@@ -339,7 +361,6 @@
 (define-key peng-evil-normal-map (kbd "q") 'kill-buffer-and-window)
 (define-key peng-evil-normal-map (kbd "j") 'ido-bookmark-jump)
 (define-key peng-evil-normal-map (kbd "SPC") 'ace-jump-char-mode)
-(define-key peng-evil-normal-map (kbd "t") 'bm-toggle)
 (define-key peng-evil-normal-map (kbd "e") 'shell-switcher-switch-buffer)
 (define-key peng-evil-normal-map (kbd "B") 'bookmark-bmenu-list)
 (define-key peng-evil-normal-map (kbd "r") 'ido-recentf-find-file)
